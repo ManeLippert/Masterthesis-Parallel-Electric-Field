@@ -1,1 +1,1 @@
-# Masterthesis-Global-Tokamak-GKW
+# Masterthesis
