@@ -1,0 +1,70 @@
+% Author: Manuel Lippert
+% Topic: Bachelor Thesis
+
+% Main-File
+
+
+% Packages
+\documentclass[paper=a4, bibliography=totoc, BCOR=10mm, fontsize=11pt, headsepline, enabledeprecatedfontcommands]{scrreprt}
+
+% twoside, openright or openleft
+
+\input{packages.tex}
+\input{colors.tex}
+\input{variables.tex}
+\input{titlestyle.tex}
+\input{codestyle.tex}
+\input{flowdiagramm.tex}
+\input{functions.tex}
+\input{tikz.tex}
+
+\input{00-cover.tex}
+
+\begin{document}
+    \nonfrenchspacing
+    % 0.Chapter Cover
+    %\input{00-cover.tex}
+
+    \newgeometry{left=2.5cm,right=2.5cm}
+    \maketitle
+    \restoregeometry    
+
+    \input{01-dedication.tex}
+    \input{02-acknowledgement}
+    \input{03-abstract.tex}
+    \input{04-declaration.tex}
+
+    %
+    %\thispagestyle{empty}
+    %\NewPage
+    \cleardoublepage
+    \tableofcontents
+    \cleardoublepage
+    %
+    % 1.Chapter Instruction
+    \input{10-motivation.tex}
+    %
+    % 2.Chapter Theory
+    \input{20-theory.tex}
+    %
+    % 3.Chapter Methods and Material
+    \input{30-methods.tex}
+    %
+    % 4.Chapter Results
+    \input{40-results.tex}
+    %
+    % 5.Chapter Closure
+    \input{50-conclusion.tex}
+    %
+    % Appendix
+    \input{60-appendix.tex}
+    %
+    % Literatur
+    %\nocite{*}
+    \NewPage
+    \bibliographystyle{references.bst}
+    \bibliography{references.bib}
+    %
+    % Eid
+    \input{70-eid.tex}
+\end{document}
