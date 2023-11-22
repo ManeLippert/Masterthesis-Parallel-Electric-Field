@@ -1,0 +1,29 @@
+\section{Gyrokinetic Ordering}
+\label{sub:gyroordering}
+
+% The typical spatio-temporal scales connected to the dynamics in a tokamak plasma allow for the so-called \textit{gyrokinetic ordering} as outlined below. The fast gyromotion is much smaller compared to typical  time scales connected to turbulence ($\omega/\omega_\mathrm{c} \sim 10^{-3})$. The length scales of the turbulence are associated with the wave vector $\vect{k}$ which can be seperated into a perpendicular component $k_\perp = |\vect{k} \times \vect{b}|$ and a parallel component $k_\parallel = |\vect{k} \cdot \vect{b}|$ where $\vect{b}$ is parallel to the poloidal component of the magnetic field. The perpendicular component $k_\perp$ is of the order of the thermal Larmor radius $k_\perp^{-1} \sim \rhoth$ which is significantly smaller than the scale on which the equilibrium density $n_0$ varies, which can be expressed with the gradient length $L_\mathrm{n} = |\nabla \ln n_0 |^{-1}$. The gradient length compares with the machine size $R$ which leads to the normalized thermal Larmor radius $\rho_* = \rhoth/R \sim 10^{-3} - 10^{-4}$ with $R$ as major radius of the tokamak. The parallel component $k_\parallel$ on the other hand scales with the machine size $R$. Experiments show that in the core plasma the fluctuation amplitude of the density perturbation $\delta n/n_0$ and magnetic field fluctuation $\delta B/B_0$, with $B_0$ as strength of the magnetic field in equilibrium, is of order $\sim 10^{-4}$. Together this separation result in the following
+% \begin{gather}
+% 	\frac{\omega}{\omega_\mathrm{c}} \sim \frac{k_\parallel}{k_\perp} \sim \frac{\rhoth}{L_\mathrm{n}} \sim \frac{\delta n}{n_0} \sim \frac{\delta B}{B_0} \sim \frac{v_\mathrm{d}}{\vth} \sim \epsilon_\mathrm{g}
+% 	\label{eq:gyroordering}
+% \end{gather}
+% with $\epsilon_\mathrm{g} \ll 1$ which applies to the typical dynamics of a fusion core plasma. \cite{Brizard2007,Garbet2010} The gyrokinetic ordering allows formulating reduced governing equations referred to as the gyrokinetic formalism.
+
+% \newpage
+
+In the derivation of the gyrokinetic theory the aim is to decouple the effect of small-scale, small amplitude fluctuations of the plasma in the Langrangian. For this it is chosen to take the properties of fluctuations as small parameter, which will get in the ordering assumptions applied in gyrokinetic theory
+\begin{gather}
+	\begin{aligned}
+		\frac{\abs{\vect{A_1}}}{\abs{\vect{A_0}}} &\sim \frac{\Phi_1}{\Phi_0} \sim \epsilon_\delta \ll 1 \\[0.3cm]
+		\rho \frac{\nabla B_0}{B_0} &\sim \rho \frac{\nabla E_0}{E_0} \sim \frac{\rho}{L_B} \sim \epsilon_B \ll 1 \\[0.3cm]
+		k_\perp \rho &\sim \epsilon_\perp \sim 1 \\[0.3cm]
+		\frac{\omega}{\omega_\mathrm{L}} &\sim \epsilon_\omega \ll 1
+	\end{aligned}
+\end{gather}
+where $\vect{A}$ and $\Phi$ are the vector and scalar potentials, $\vect{B}$ and $\vect{E}$ are the magnetic and electric fields, $\omega$ and $k_\perp$ are the typical mode frequency and perpendicular wavenumber, $\rho$ and $\omega_\mathrm{L}$ are the Larmor radius and Larmor frequency and $L_B$ the equilibrium magnetic length scale. The equilibrium quantities are denoted with 0 and the fluctuations with 1 subscript. \bigskip
+
+The above-mentioned equations state that fluctuations have a much smaller magnitude than the corresponding equilibrium values, their typical timescale is much slower than the Larmor frequency, their characteristic length scale is of the order of the Larmor radius, and it is typically much shorter the equilibrium spatial variation scale. Teh gyrokinetic equations are valid under these ordering assumptions. \bigskip
+
+The small parameters $\epsilon_\delta$, $\epsilon_B$, $\epsilon_\perp$ and $\epsilon_\omega$ are due to different physical but in practice it is assumed that they are of simular order and substitute them with one parameter. For the derivation of the gyrokinetic equations of GKW all derived equations are evaluated up to the first order of the ratio of the reference thermal Larmor radius $\rhoref$ and the equilibrium magnetic length scale $L_B$ as small parameter and is defined as 
+\begin{gather}
+	\rhost = \frac{\rhoref}{L_B} = \frac{\mref \vthref}{e \Bref} \sim \epsilon_B \sim \epsilon_\delta \sim \epsilon_\omega~.
+\end{gather}
