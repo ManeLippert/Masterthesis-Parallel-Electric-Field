@@ -1,0 +1,45 @@
+% \usetikzlibrary{mindmap,backgrounds}
+% \usetikzlibrary{decorations.pathmorphing}
+% \usetikzlibrary{decorations.markings}
+% \usetikzlibrary{arrows.meta,bending}
+
+\begin{tikzpicture}
+
+    % Coordinate System
+    \draw[thick, ->] (-3,-3) -- (-3,3) node[above left]{$y$}; 
+    \draw[thick, ->] (-3,-3) -- (3,-3) node[below right]{$x$};
+
+    % Gyroangle
+    \draw[thick, ->] (5,0) ++ (0:2) arc (0:20:2) node[midway, right]{$\theta$};
+    \draw[thick, dashed, lightgray] (5,0) -- (7.5,0);
+    \draw[thick, dashed, lightgray] (5,0) -- ++ (20:2.5);
+    \draw[thick, black, ->, Notared] (5,0) -- ++ (20:1.5);
+
+    % Unit Vecctor System
+    \draw[thick, ->] (5,0) -- (5,1.5) node[above left]{$\hat{\vect{e}}_2$}; 
+    \draw[thick, ->] (5,0) -- (6.5,0) node[below  right]{$\hat{\vect{e}}_1$}; 
+
+    % Circle
+    \draw (0,0) circle (2.5);
+    
+    % Velocity
+    \draw[thick,Notaorange, ->] (20:2.5) -- ++(110:1.5cm) node[above, Notaorange]{$\vect{v}_\perp$};
+
+    % Charges
+    \draw [fill=Notablue,Notablue] (20:2.5) circle (0.2);
+
+    % Larmor radius
+    \draw[thick, black, ->, Notared] (0,0) -- ++ (20:2.3) node[midway, above, Notared, sloped]{$\rho\vect{a}$};
+
+    % Position Vectors
+    \draw[thick, black, ->] (-3,-3) -- (15:2.0) node[midway, below, sloped]{$\x$};
+    \draw[thick, black, ->] (-3,-3) -- (-0.1,-0.1) node[midway, above, sloped]{$\X$};
+
+    % Guiding Center
+    \filldraw (0,0) circle (3pt);
+    
+    % Magnetic field
+    \draw [thick, Notagreen] (4.7,-0.3) circle (0.2);
+    \filldraw [Notagreen] (4.7,-0.3) circle (1.5pt);
+    \draw (4.7,-0.7) node[Notagreen]{$\vect{b}$};
+\end{tikzpicture}
