@@ -96,4 +96,20 @@ where the $\nabla \omega_\varphi$ terms are the result of the derivatives of the
 	\end{aligned}
 	\label{eq:sourceTerm}
 \end{gather}
-where $\tilde{\nabla}$ referres to only the $\nabla n_0$, $\nabla T$ and $\nabla \omega_\varphi$ terms of $\nabla \fmax$.
+where $\tilde{\nabla}$ referres to only the $\nabla n_0$, $\nabla T$ and $\nabla \omega_\varphi$ terms of $\nabla \fmax$. \bigskip
+
+In Equation (\ref{eq:sourceTerm}) the appearence of the term of the pertrubed vector potential $\bar{A}_{1 \parallel}$ is computationally difficult to evaluate. To avoid further complications a modified distribution function $g$ will be introduced as
+\begin{gather}
+	g = \delta f + \frac{Ze \vpar}{T} \bar{A}_{1\parallel} \fmax ~.
+	\label{eq:modifiedDistrubutionFunction}
+\end{gather}
+Substituting the modified distribution function $g$ into Equation (\ref{eq:gyrocenterDeltafSubVlasov}) results in
+\begin{gather}
+	\frac{\partial g}{\partial t} + \vchi \cdot \nabla g + (\vpar \vecb_0 + \vD) \cdot \nabla f_1 - \frac{\vecb_0}{m} \cdot (Z e \nabla \Phi_0 + \mu \nabla B_0 - m R \Omega^2 \nabla R) \frac{\partial f_1}{\partial \vpar} = S
+	\label{eq:modifiedGyrocenterDeltafSubVlasov}
+\end{gather}
+\begin{gather}
+	S = - (\vchi + \vD) \cdot \tilde{\nabla} \fmax + \frac{\fmax}{T} (\vpar \vecb_0 + \vD) \cdot (-Ze \nabla \bar{\Phi}_1 - \mu \nabla \bar{B}_{1\parallel}) ~.
+	\label{eq:modifiedSourceTerm}
+\end{gather}
+This is the for of the Vlasov equation currently implemented in GKW (SOURCE) and which will be further modified in the course of this thesis.
