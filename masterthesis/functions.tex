@@ -56,6 +56,15 @@
 	\end{center}
 }
 
+\newcommand{\inputgraphicsHere}[3]{
+	\begin{center}
+		\captionsetup{type=figure}
+    	\input{#1}
+		\captionof{figure}{#2}
+    	\label{#3}
+	\end{center}
+}
+
 \newcommand\invisiblesection[1]{%
   \refstepcounter{section}%
   \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
