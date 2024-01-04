@@ -55,14 +55,10 @@ where the guiding center follows the magnetic field with the parallel velocity $
 \end{gather} 
 The vectors $\vect{b}$, $\hat{\vect{e}}_1$ and $\hat{\vect{e}}_2$ form a local Cartesian coordinate system at the guiding center position. 
 
-\begin{center}
-    \captionsetup{type=figure}
-    \input{../pictures/Theory/Guiding-Center-Coordinates.tex}
-    \captionof{figure}{
-        Sketch of guiding center coordinates where the charged particle performs a circular motion around the guiding center. \cite{Krommes2000}
-    }
-    \label{fig:guidingcenterCoords}
-\end{center}
+\inputgraphicsHere{../pictures/Theory/Guiding-Center-Coordinates.tex}{
+    Sketch of guiding center coordinates where the charged particle performs a circular motion around the guiding center. \cite{Krommes2000}
+}{fig:guidingcenterCoords}
+
 \newpage
 
 To transform the fundamental one-from into the guiding center coordinates the following relation will be used
@@ -159,7 +155,7 @@ Finally, the fundamental one-form in the guiding center phase space $\Gamma$ wit
 \subsection{Lagrangian in Gyrocenter Phase Space}
 \label{sub:gyrocenterLagrangian}
 
-The transformation of the guiding center Lagrangian $\Gamma$ into the Lagrangian in gyrocenter phase space $\bar{\Gamma}$ aims to remove the gyroangle $\theta$ dependence resulting from the introduction of fluctuations. To destinguish between the guiding center and the gyrocenter coordinates all quantities associated with the gyrocenter are getting an overbar, i.e. $\bar{\Gamma}$.  The new set of gyrocenter coordinates are given by $\{\bar{\X}, \bar{v_\parallel}, \bar{\mu}\}$. Since the derivation of fundamental the one-form in gyrocenter phase space $\bar{\Gamma}$ uses the Lie transform pertubation method, which is beyond the scopes of this thesis, the reader is referred to the Refs. \citenum{Dannert_PHD, Derivation} for more details. The Lagrangian in the gyrocenter phase space can be expressed as
+The transformation of the guiding center Lagrangian $\Gamma$ into the Lagrangian in gyrocenter phase space $\bar{\Gamma}$ aims to remove the gyroangle $\theta$ dependence resulting from the introduction of fluctuations. To destinguish between the guiding center and the gyrocenter coordinates all quantities associated with the gyrocenter are getting an overbar, i.e. $\bar{\Gamma}$.  The new set of gyrocenter coordinates are given by $\{\bar{\X}, \bar{v_\parallel}, \bar{\mu}\}$ but these coordinates will not been used in this thesis. Since the derivation of fundamental the one-form in gyrocenter phase space $\bar{\Gamma}$ uses the Lie transform pertubation method, which is beyond the scopes of this thesis, the reader is referred to the Refs. \citenum{Dannert_PHD} and \citenum{Derivation} for more details. The Lagrangian in the gyrocenter phase space can be expressed as
 \begin{gather}
     \begin{aligned}
         \bar{\Gamma} &= \bar{\Gamma}_0 + \bar{\Gamma}_1 \\
@@ -171,14 +167,14 @@ The transformation of the guiding center Lagrangian $\Gamma$ into the Lagrangian
 where $B_0$ is the equilibrium magnetic field and $\bar{B}_{1\parallel}$ is the magnetic field introduced by the vector potential $\A_1$. Note, that the quantities $\bar{\Phi}_1$, $\bar{\A}_1$ and $\bar{B}_{1\parallel}$ are the shorter notation of following gyroaveraged quantities defined as
 \begin{gather}
     \begin{aligned}
-        \langle \Phi_1(\x) \rangle &= \bar{\Phi}_1(\X) \\
-        \langle \A_1(\x)   \rangle &= \bar{\A}_1(\X) \\ 
-        Ze \langle \A_1(\x) \cdot \velo_\perp (\X,\mu,\theta) \rangle &= \mu\bar{B}_{1\parallel}(\X)~.
+        \langle \Phi_1(\x) \rangle &= J_0(\lambda) \Phi_1(\X) = \bar{\Phi}_1(\X) \\
+        \langle \A_1(\x)   \rangle &= J_0(\lambda) \A_1(\X) = \bar{\A}_1(\X) \\ 
+        Ze \langle \A_1(\x) \cdot \velo_\perp (\X,\mu,\theta) \rangle &= - \hat{J}_1(\lambda) \mu B_{1 \parallel}(\X) = \mu\bar{B}_{1\parallel}(\X)~.
     \end{aligned}
-    \label{eq:gyrocenterGyroaveragedQuantities}
-\end{gather} 
-The components of the gyrocenter Lagrangian are again indepedent of the gyrophase $\theta$, and therefore the teh magnetic moment $\mu$ remains in the gyrocenter pahse space an invariant of motion.
+    \label{eq:gyrocenterGyroaveragedQuantitiesFourierspace}
+\end{gather}
+To obtain Equation (\ref{eq:gyrocenterGyroaveragedQuantitiesFourierspace}) the particle coordinate $\x$ gets seperated gyrocenter coordinate $\X$ and the Larmor radius vector $\rho\vect{a}$ while express the gyroaveraged quantity in the Fourier space with the wave vector $\vect{k}$ defined as $\vect{k} = \hat{e}_1 k_\perp$. $J_0$ is the zeroth order Bessel function and $\hat{J}_1$ is a modified first order Bessel function of first kind defined as $\hat{J}_1(z) = 2/z J_1(Z)$. The argument $\lambda$ is given by $i \rho \nabla_{\!\perp}$ which is the inverse Fourier transformated expression of $\rho k_\perp$.
 
-% TODO: Rewrite guiding center corrdinate to gyrocenter coordinate (?)
+The components of the gyrocenter Lagrangian are again indepedent of the gyrophase $\theta$, and therefore the teh magnetic moment $\mu$ remains in the gyrocenter pahse space an invariant of motion.
 
 \newpage

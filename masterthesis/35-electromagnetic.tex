@@ -1,0 +1,46 @@
+\newpage
+\section{Electromagnetic Gyrokinetic Models in GKW}
+\label{sec:electromagnetic}
+
+% TODO: Get barApar into this Paragraph
+Global Gyrokinetic simulations are suffering from nummerical problems, mainly from the cancellation problem examined codes which uses the paticle-in-cell or the Eulerian methods. \source This problem limits the electromagnetic investigations to extremely low $\beta$ parameters. As in Chapter \ref{sub:approximation} discussed gets the density distribution function $f$ seperated into an equilibrium part $f_0$, i.e. a Maxwellian $\fm$, and a pertrubated part $\df$. This seperation results in the appearence of the term of the pertrubed vector potential $\bar{A}_{1 \parallel}$ in the Source term [Eq. (\ref{eq:sourceTerm})] which is computationally difficult to evaluate. To avoid further complications a modified distribution function $g$ will be introduced as
+\begin{gather}
+	g = \df + \frac{Ze \vpar}{T} \bar{A}_{1\parallel} \fm ~.
+	\label{eq:modifiedDistrubutionFunction}
+\end{gather}
+Substituting the modified distribution function $g$ into Equation (\ref{eq:gyrocenterDeltafSubVlasov}) results in
+\begin{gather}
+	\frac{\partial g}{\partial t} + \vchi \cdot \nabla g + (\vpar \vecb_0 + \vD) \cdot \nabla \df - \frac{\vecb_0}{m} \cdot (Z e \nabla \Phi_0 + \mu \nabla B_0 - m R \Omega^2 \nabla R) \frac{\partial \df}{\partial \vpar} = S
+	\label{eq:modifiedGyrocenterDeltafSubVlasov}
+\end{gather}
+\begin{gather}
+	S = - (\vchi + \vD) \cdot \tilde{\nabla} \fm + \frac{\fm}{T} (\vpar \vecb_0 + \vD) \cdot (-Ze \nabla \bar{\Phi}_1 - \mu \nabla \bar{B}_{1\parallel}) ~.
+	\label{eq:modifiedSourceTerm}
+\end{gather}
+This is the form of the Vlasov equation currently implemented in GKW\source. The goal of this Chapter is to handle the $\partial_t \barApar$ term with the consideration of electromagnetic fields and rework the Vlasov equation and Maxwell's equations for GKW. This section follows the work of P.C. Crandall in his Disseration\cite{Crandall_PHD}.
+
+\subsection{Introduction of the Induktive Field $\Epar$}
+\label{sub:eparallel}
+
+First the Vlasov equation gets written down in the $\df$ framework with the source term [Eq. (\ref{eq:gyrocenterDeltafSubVlasov}) \& (\ref{eq:sourceTerm})] will get simplified into 
+\begin{gather}
+    \frac{\partial \df}{\partial t} - \frac{Ze \vpar}{T} \partial \barApar \fm = R~,
+    \label{eq:gyrocenterDeltafSubVlasovReduced}
+\end{gather}
+where $R$ represents all terms which excludes the plasma induction $\partial_t \barApar$. The equation of the $\barApar$ is given by 
+\begin{gather}
+    \nabla \A_{1 \parallel} = - \mu \vect{j}_{1\parallel} ~.
+    \label{eq:Aparallel}
+\end{gather}
+% Equation (\ref{eq:Aparallel}) describes also the plasma induction term. In the next step all terms containing the plasma induction $\barApar$ has to be extracted from the Vlasov equation. Since all terms containing $\barApar$ are conviently stored in the modified distrubution function the corresponding terms are given by
+% \begin{gather}
+%     \frac{\partial g}{\partial t} + \vchi \cdot \nabla g = R ~,
+%     \label{eq:AparallelValsov}
+% \end{gather}
+% where $R$ represents the entire right-hand side of Vlasov equation that excludes the plasma induction.
+
+% Since this distrubution function is important for this chapter a recall of the equation will be made
+% \begin{gather}
+% 	g = \df + \frac{Ze \vpar}{T} \barApar \fm ~.
+% 	\label{eq:modifiedDistrubutionFunctionRecall}
+% \end{gather}
