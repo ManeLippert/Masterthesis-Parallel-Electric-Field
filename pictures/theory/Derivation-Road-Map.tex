@@ -1,0 +1,36 @@
+\newcommand{\distanceOne}{4.5cm}
+\newcommand{\distanceTwo}{3cm}
+
+\begin{tikzpicture}[node distance=2cm]
+
+    \node (lagrangian)   [startstop]                                                                      {Lagrangian};
+    \node (euler)        [init, below of = lagrangian]                                      {Euler-Lagrange Equations};
+    \node (motion)       [init, below of = euler]                                                {Equations of Motion};
+    \node (vlasov)       [process, below of=motion]                                                   {Vlasov Equaton};
+
+    \node (distribution) [init, below of=vlasov, xshift=\distanceOne, yshift=-0.5cm]       {Distrubution Function $f$};
+    \node (fields)       [startstop, below of=vlasov, xshift=-\distanceOne, yshift=-0.5cm]           {Field Equations};
+
+    \node (moments)      [init, below of=vlasov, xshift=\distanceTwo, yshift=-4cm]       {Moments of Distrubution $f$};
+    \node (maxwell)      [init, below of=vlasov, xshift=-\distanceTwo, yshift=-4cm]              {Maxwell's Eqautions};
+    
+
+
+    \draw [arrow] (lagrangian)       --              (euler);
+    \draw [arrow] (euler)            --              (motion);
+    \draw [arrow] (motion)           --              (vlasov);
+
+
+    %\draw [arrow] (vlasov)           to[bend left]   (distribution);
+    %\draw [arrow] (distribution)     to[bend left]   (moments);
+    \draw [arrow] (moments)          to[bend left]   (maxwell);
+    %\draw [arrow] (maxwell)          to[bend left]   (fields);
+    %\draw [arrow] (fields)           to[bend left]   (vlasov);
+
+    \draw [arrow] (vlasov)           --              (distribution);
+    \draw [arrow] (distribution)     --              (moments);
+    %\draw [arrow] (moments)          --              (maxwell);
+    \draw [arrow] (maxwell)          --              (fields);
+    \draw [arrow] (fields)           --              (vlasov);
+
+\end{tikzpicture}
