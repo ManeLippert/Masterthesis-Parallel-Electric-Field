@@ -11,9 +11,9 @@ Because of the large number of particles in the fusion plasma a prediction on th
 	\label{eq:vlasov}
 \end{gather}
 
-In the gyrocenter phase space $\{\X, v_\parallel, \mu\}$. The overbar introduced in Chapter \ref{sub:gyrocenterLagrangian} gets droped for simplicity for all quantities. the Vlasov equation takes following form
+In the gyrocenter phase space $\{\X, v_\parallel, \mu\}$, the overbar introduced in Chapter \ref{sub:gyrocenterLagrangian} gets droped for simplicity for all quantities, the Vlasov equation takes following form
 \begin{gather}
-	\frac{\partial f}{\partial t} + \dot{\X} \cdot \frac{\partial f}{\partial \vect{X}} + \dot{v}_\parallel \cdot \frac{\partial f}{\partial v_\parallel} = 0~,
+	\frac{\partial \fgy}{\partial t} + \dot{\X} \cdot \frac{\partial \fgy}{\partial \vect{X}} + \dot{v}_\parallel \cdot \frac{\partial \fgy}{\partial v_\parallel} = 0~,
 	\label{eq:gyrocenterVlasov}
 \end{gather}
 where the gyrophase $\theta$ is still an ignorable coordinate and the time derivative of the magnetic moment $\mu$ is zero, beacause the magnetic moment $\mu$ is an exact invariant. In Equation (\ref{eq:gyrocenterVlasov}) the terms of the time derivative of the gyrocenter $\dot{\X}$ and the parallel velocity $\dot{v_\parallel}$ have to be expressed through the gyrocenter Lagrangian with the Euler-Lagrange equation. The Euler-Lagrange equation can be written as 
@@ -56,29 +56,35 @@ since the time derivative of the vector potential $\partial_t \bar{\A}_{1\perp}$
 \subsection{The delta-\!$f$ Approximation}
 \label{sub:approximation}
 
-The delta-\!$f$ approximation separates the density distrubution function $f$ into an equilibrium part $f_0$ and pertubation part $\df$, i.e. $f = f_0 + \df$. Applying the delta-\!$f$ approximation on the gyrocenter Vlasov equation leads to
+The delta-\!$f$ approximation separates the density distrubution function $\fgy$ into an equilibrium part $\fgy_0$ and pertubation part $\df$, i.e. $\fgy = \fgy_0 + \df$. Applying the delta-\!$f$ approximation on the gyrocenter Vlasov equation leads to
 \begin{gather}
-	\frac{\partial \df}{\partial t} + \dot{\X} \cdot \nabla \df + \dot{v}_\parallel \cdot \frac{\partial \df}{\partial v_\parallel} = \underbrace{- \dot{\X} \cdot \nabla f_0 - \dot{v}_\parallel \frac{\partial f_0}{\partial v_\parallel}}_S~,
+	\frac{\partial \df}{\partial t} + \dot{\X} \cdot \nabla \df + \dot{v}_\parallel \cdot \frac{\partial \df}{\partial v_\parallel} = \underbrace{- \dot{\X} \cdot \nabla \fgy_0 - \dot{v}_\parallel \frac{\partial \fgy_0}{\partial v_\parallel}}_S~,
 	\label{eq:gyrocenterDeltafVlasov}
 \end{gather}
-with the source term $S$. Substituting from Equation (\ref{eq:motionEquation}) the equations for $\dot{\X}$ and $\dot{v}_\parallel$ into the delta-$f$ aproximated Vlasov equation results in
+with the source term $S$. Substituting from Equation (\ref{eq:motionEquation}) the equations for $\dot{\X}$ and $\dot{v}_\parallel$ into the delta-$f$ approximated Vlasov equation results in
 \begin{gather}
 	\frac{\partial \df}{\partial t} + \dot{\X} \cdot \nabla \df - \frac{\vecb_0}{m} \cdot \left(Ze\nabla \Phi_0 + \mu \nabla B_0 - mR \Omega^2 \nabla R \right) \cdot \frac{\partial \df}{\partial v_\parallel} = S~.
 	\label{eq:gyrocenterDeltafSubVlasov}
 \end{gather}
 Note that only the terms of order $\rhost$ has to be kept in $\dot{v}_\parallel \partial_{v_\parallel} \df$, which results in neglecting the drift velocities $\vchi$ and $\vD$ and the contribution of $\bar{B}_{1\parallel}$ and $\bar{\Phi}_1$, since these terms are after calculation of order $\rhost^2$. \bigskip
 
-The equilibrium distribution fuction $f_0$ is assumed to be a Maxwellian which includes a finite equilibrium electric field $\Phi_0$ to balance the centrifugal force (in the co-rotating frame) due toridial rotation of the plasma. In the rotating frame the included term can be written as\source
+The equilibrium distribution fuction $\fgy_0$ is assumed to be a Maxwellian which includes a finite equilibrium electric field $\Phi_0$ to balance the centrifugal force (in the co-rotating frame) due toridial rotation of the plasma. In the rotating frame the included term can be written as\source
 \begin{gather}
 	\mathcal{E} = Z e \langle \Phi_0 \rangle - \frac{1}{2} m \omega_\varphi^2 \left(R^2 - R_0^2\right)~,
 	\label{eq:rotEnergy}
 \end{gather}
 where $\langle\;\cdot\;\rangle$ denote flux-surface averaging, $\omega_\varphi$ the plasma rotation frequency [Eq. (\ref{eq:refFramePlasmaFrequency})], $R$ the local major radius and $R_0$ is an integration constant which can be chosen, i.e. major radius of the plasma or flux surface average of the major radius\source. The Maxwellian is given by the following expression
 \begin{gather}
-	f_0 = \fm(\X, \vpar, \mu) = \frac{n_0}{(2\pi T/m)^{3/2}}\exp\left(-\frac{\frac{1}{2} m (\vpar - \upar)^2 + \mu B_0 + \mathcal{E}}{T}\right)~,
+	\fgy_0 = \fm(\X, \vpar, \mu) = \frac{n_0}{(2\pi T/m)^{3/2}}\exp\left(-\frac{\frac{1}{2} m (\vpar - \upar)^2 + \mu B_0 + \mathcal{E}}{T}\right)~,
 	\label{eq:maxwellian}
 \end{gather}   
-where $n_0$ is the equilibrium particle density and $\upar$ is the rotation speed of the plasma in the rotating frame parallel to the magnetic field [Eq. (\ref{eq:rotParallelVelocity})]. The derivatives of the Maxwellian can be expressed as\source 
+where $n_0$ is the equilibrium particle density and $\upar$ is the rotation speed of the plasma in the rotating frame parallel to the magnetic field [Eq. (\ref{eq:rotParallelVelocity})]. Furthermore the Maxwellian can seperated in 
+\begin{gather}
+	\fm(\X, \vpar, \mu) = \fm(\vpar) \fm(\mu) e^{-\mathcal{E}/T} , \\[0,5cm]
+	\fm(\vpar) = \frac{n_0}{(2\pi T/m)^{3/2}} \exp\left(-\frac{\frac{1}{2} m (\vpar - \upar)^2}{T}\right) \qquad \fm(\mu) = \exp\left(-\frac{\mu B_0}{T}\right) ~.
+	\label{eq:maxwellianSeperated}
+\end{gather}
+The derivatives of the Maxwellian can be expressed as\source 
 \begin{gather}
 	\begin{aligned}
 		\nabla \fm           &= \left[\frac{\nabla n_0}{n_0} + \left(\frac{\frac{1}{2} m \vpar^2 + \mu B_0 + \mathcal{E}}{T} - \frac{3}{2}\right)\frac{\nabla T}{T} - \frac{\mu B_0}{T} \frac{\nabla B_0}{B_0} \right. \\ 

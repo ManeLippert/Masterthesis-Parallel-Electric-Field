@@ -24,7 +24,7 @@ After performing the transformation outlined in Ref. \citenum{Peeters2009B} the 
 
 In the next step small scale perturbations of the electromagnetic field gets introduced as following
 \begin{gather}
-    \A = \A_0 + \A_1 \qquad \Phi = \Phi_0 + \Phi_1~.
+    \Phi = \Phi_0 + \Phi_1 \qquad \A = \A_0 + \A_1~.
     \label{eq:electromagneticPertubation}
 \end{gather}
 Here, it is assumend that the equilibrium electric field is zero in a stationary plasma, but it will be kept in case for finite plasma rotation. According to the gyrokinetic ordering [Ch. \ref{sec:gyroordering}] the perturbations are in the first order of $\rhost$. Taking everything into account the Lagrangian in the particle phase space with perturbations can be written as
@@ -43,12 +43,12 @@ Here, it is assumend that the equilibrium electric field is zero in a stationary
 For the description of charged particle behaviour in the tokamak device the \textit{guiding center coordinates} are used [Fig. \ref{fig:guidingcenterCoords}]. This set of coordinates are defined as the following
 \begin{gather}
     \begin{aligned}
-        \X(\x,\velo) &= \x - \rho(\x,\velo)\vect{a}(\x,\velo) &\qquad v_\parallel &= \velo \cdot \vect{b}(\x) \\
+        \X(\x,\velo) &= \x - \rrho &\qquad v_\parallel &= \velo \cdot \vect{b}(\x) \\
         \mu(\x,\velo) &= \frac{m v_\perp^2(\x)}{2B(\x)} &\qquad \theta(\x,\velo) &= \arccos\left(\frac{1}{v_\perp}\left(\vect{b}(\x) \times \velo\right)\cdot \hat{\vect{e}}_1\right)~,\\
     \end{aligned}
     \label{eq:guidingcenterCoords}
 \end{gather}
-where the guiding center follows the magnetic field with the parallel velocity $v_{\parallel}$. The gyromotion is described together with the magnetic moment $\mu$, the guiding center $\vect{X}$ and the gyro phase $\theta$ which gives a parameter set of six quantities $\{\vect{X}, v_{\parallel}, \mu, \theta\}$. Vector $\vect{b}(\x)$ is the unit vector in the direction of the equilibrium magnetic field and $\rho(\x,\velo)\vect{a}(\x,\velo)$ is the vector pointing from the guiding center to the particles postion, which is defined by the unit vector $\vect{a}(\x,\velo)$ and its length is the Lamor radius $\rho(\x,\velo)$. The unit vector $\vect{a}(\x,\velo)$ can be expressed in a local orthonormal basis as the function of the gyroangle $\theta$ 
+where the guiding center follows the magnetic field with the parallel velocity $v_{\parallel}$. The gyromotion is described together with the magnetic moment $\mu$, the guiding center $\vect{X}$ and the gyro phase $\theta$ which gives a parameter set of six quantities $\{\vect{X}, v_{\parallel}, \mu, \theta\}$. Vector $\vect{b}(\x)$ is the unit vector in the direction of the equilibrium magnetic field and $\vect{r} = \rho(\x,\velo)\vect{a}(\x,\velo)$ is the vector pointing from the guiding center to the particles postion, which is defined by the unit vector $\vect{a}(\x,\velo)$ and its length is the Lamor radius $\rho(\x,\velo)$. The unit vector $\vect{a}(\x,\velo)$ can be expressed in a local orthonormal basis as the function of the gyroangle $\theta$ 
 \begin{gather}
     \vect{a}(\theta) = \hat{\vect{e}}_1 \cos\theta + \hat{\vect{e}}_2 \sin\theta~.
     \label{eq:guidingcenterUnitvect}
@@ -100,7 +100,7 @@ Note, that to the Hamiltonian part $\Gamma_t$ the energy term of the magnetic fi
 \newpage
 In Equation (\ref{eq:guidingcenterLagrangianTrafo}) the components of the fundamental one-form of the particle phase space $\gamma_\nu$ and the equation for $\velo$ in guiding center coordinates [Eq. (\ref{eq:guidingcenterVelocityCoord})] will be inserted and the Taylor expansion up to the first order applied for terms containing the particle position $\x$ as argument. After that the gyroaveraging operator will be used, which is defined as the integral over the gyrophase $\theta$
 \begin{gather}
-    \langle \;\cdot\; \rangle = \frac{1}{2\pi} \int_{0}^{2\pi} (\;\cdot\;)~\mathrm{d}\theta~.
+    \langle \;\cdot\; \rangle = \frac{1}{2\pi} \int_{0}^{2\pi} \dtheta ~ (\;\cdot\;)~.
     \label{eq:gyroaveraging}
 \end{gather}
 Due to the definition of the vector $\vect{a}$ [Eq. (\ref{eq:guidingcenterUnitvect})] the first order terms in $\vect{a}$ and $\dot{\vect{a}}$ disappear under gyroaveraging. Following all the previous steps, one can obtain
@@ -155,7 +155,7 @@ Finally, the fundamental one-form in the guiding center phase space $\Gamma$ wit
 \subsection{Lagrangian in Gyrocenter Phase Space}
 \label{sub:gyrocenterLagrangian}
 
-The transformation of the guiding center Lagrangian $\Gamma$ into the Lagrangian in gyrocenter phase space $\bar{\Gamma}$ aims to remove the gyroangle $\theta$ dependence resulting from the introduction of fluctuations. To destinguish between the guiding center and the gyrocenter coordinates all quantities associated with the gyrocenter are getting an overbar, i.e. $\bar{\Gamma}$.  The new set of gyrocenter coordinates are given by $\{\bar{\X}, \bar{v_\parallel}, \bar{\mu}\}$ but these coordinates will not been used in this thesis. Since the derivation of fundamental the one-form in gyrocenter phase space $\bar{\Gamma}$ uses the Lie transform pertubation method, which is beyond the scopes of this thesis, the reader is referred to the Refs. \citenum{Dannert_PHD} and \citenum{Derivation} for more details. The Lagrangian in the gyrocenter phase space can be expressed as
+The transformation of the guiding center Lagrangian $\Gamma$ into the Lagrangian in gyrocenter phase space $\bar{\Gamma}$ aims to remove the gyroangle $\theta$ dependence resulting from the introduction of fluctuations. To destinguish between the guiding center and the gyrocenter coordinates all quantities associated with the gyrocenter are getting an overbar, i.e. $\bar{\Gamma}$.  The new set of gyrocenter coordinates are given by $\{\bar{\X}, \bar{v}_\parallel, \bar{\mu}\}$, but these coordinates will not been used in this thesis. Since the derivation of fundamental the one-form in gyrocenter phase space $\bar{\Gamma}$ uses the Lie transform pertubation method, which is beyond the scopes of this thesis, the reader is referred to the Refs. \citenum{Dannert_PHD} and \citenum{Derivation} for more details. The Lagrangian in the gyrocenter phase space can be expressed as
 \begin{gather}
     \begin{aligned}
         \bar{\Gamma} &= \bar{\Gamma}_0 + \bar{\Gamma}_1 \\
@@ -164,17 +164,39 @@ The transformation of the guiding center Lagrangian $\Gamma$ into the Lagrangian
     \end{aligned}
     \label{eq:gyrocenterPertrubationLagrangian}
 \end{gather}
-where $B_0$ is the equilibrium magnetic field and $\bar{B}_{1\parallel}$ is the magnetic field introduced by the vector potential $\A_1$. Note, that the quantities $\bar{\Phi}_1$, $\bar{\A}_1$ and $\bar{B}_{1\parallel}$ are the shorter notation of following gyroaveraged quantities defined as
+where $B_0$ is the equilibrium magnetic field and $\bar{B}_{1\parallel}$ is the magnetic field introduced by the vector potential $\A_1$. Note, that the pertubations of the scalar and vector potential will be seperated into an oscillating and a gyroaveraged part which will be expressed as
+\begin{gather}
+    \Phi_1 = \widetilde{\Phi}_1 + \langle \Phi_1 \rangle  \qquad \A_1 = \widetilde{\A}_1 + \langle \A_1 \rangle~,
+    \label{eq:electromagneticPertubationSeperated}
+\end{gather}
+although the oscillating parts will be added to the gauge function of the Lie transformation and will not be included in the Lagrangian of the gyrocenter. The quantities $\bar{\Phi}_1$, $\bar{\A}_1$ and $\bar{B}_{1\parallel}$ are the shorter notation of following gyroaveraged quantities defined as
 \begin{gather}
     \begin{aligned}
         \langle \Phi_1(\x) \rangle &= J_0(\lambda) \Phi_1(\X) = \bar{\Phi}_1(\X) \\
         \langle \A_1(\x)   \rangle &= J_0(\lambda) \A_1(\X) = \bar{\A}_1(\X) \\ 
-        Ze \langle \A_1(\x) \cdot \velo_\perp (\X,\mu,\theta) \rangle &= - \hat{J}_1(\lambda) \mu B_{1 \parallel}(\X) = \mu\bar{B}_{1\parallel}(\X)~.
+        Ze \langle \A_1(\x) \cdot \velo_\perp (\X,\mu,\theta) \rangle &= - \hat{J}_1(\lambda) \mu B_{1 \parallel}(\X) = \mu\bar{B}_{1\parallel}(\X)~,
     \end{aligned}
     \label{eq:gyrocenterGyroaveragedQuantitiesFourierspace}
 \end{gather}
-To obtain Equation (\ref{eq:gyrocenterGyroaveragedQuantitiesFourierspace}) the particle coordinate $\x$ gets seperated gyrocenter coordinate $\X$ and the Larmor radius vector $\rho\vect{a}$ while express the gyroaveraged quantity in the Fourier space with the wave vector $\vect{k}$ defined as $\vect{k} = \hat{e}_1 k_\perp$. $J_0$ is the zeroth order Bessel function and $\hat{J}_1$ is a modified first order Bessel function of first kind defined as $\hat{J}_1(z) = 2/z J_1(Z)$. The argument $\lambda$ is given by $i \rho \nabla_{\!\perp}$ which is the inverse Fourier transformated expression of $\rho k_\perp$.
-
+with $J_0$ as the zeroth order Bessel function and $I_1$ as the modified first order Bessel function of first kind defined as $I_1(\lambda) = 2/\lambda \, J_1(\lambda)$.
 The components of the gyrocenter Lagrangian are again indepedent of the gyrophase $\theta$, and therefore the teh magnetic moment $\mu$ remains in the gyrocenter pahse space an invariant of motion.
 
 \newpage
+\subsection{Bessel Function}
+\label{sub:Besselfunction}
+
+To obtain Equation (\ref{eq:gyrocenterGyroaveragedQuantitiesFourierspace}) the process of gyroaveraging will be performend in the Fourier space as follows
+\begin{gather}
+    \begin{aligned}
+        \langle \vect{G}(\x) \rangle &= \langle \vect{G}(\X + \vect{r}) \rangle = \langle \int \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot (\X + \vect{r})} \rangle \\
+                                     &= \frac{1}{2\pi} \int_{0}^{2\pi} \dtheta ~ \int \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} e^{ i k_\perp \rho \cos \theta} \\
+                                     &= \int \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} \underbrace{\frac{1}{2\pi} \int_{0}^{2\pi} \dtheta ~ e^{ i k_\perp \rho \cos \theta}}_{J_0(\rho k_\perp)}\\
+                                     &= \int \mathrm{d}\vect{k} ~ J_0(\rho k_\perp) \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} = J_0(\lambda) \vect{G}(\X)~,
+    \end{aligned}
+    \label{eq:gyroOperator}
+\end{gather}
+where the wave vector $\vect{k}$ is defined as $\vect{k} = \hat{e}_1 k_\perp$. The argument $\lambda$ is given by $i \rho \nabla_{\!\perp}$ which is the inverse Fourier transformated expression of $\rho k_\perp$. The Bessel function $J_0$ is sometimes also referred to as gyro-average operator $\mathcal{G}$. In general the Bessel function and modified Bessel function is defined as \source
+\begin{gather}
+    J_n(z) = \left(\frac{z}{2}\right)^n \underbrace{\sum^{\infty}_{\nu = 0} \frac{(\left(- 1/4 z^2\right)^\nu)}{\nu! (1 + \nu) !}}_{I_n(z)}~.
+    \label{eq:Besselfunction}
+\end{gather}

@@ -31,11 +31,16 @@
 \pagestyle{headings}            
 \graphicspath{{../pictures/}}    % Path for pictures
 
-% Functions
-%\newcommand\tab[1][1cm]{\hspace*{#1}}
+% Vector Quantities bold
 \newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
-\newcolumntype{g}{>{\columncolor[rgb]{ .741,  .843,  .933}}l}
 
+% Add _sp to any Quantity with seperation into Species
+\newcommand{\spec}[1]{#1_s}
+
+% Add negative space to integral
+\renewcommand{\inf}{\int \!\!}
+
+% Put Grapihics into Document at specific Place
 \newcommand{\includegraphicsHere}[4]{
 	\begin{center}
 		\centering
@@ -65,10 +70,12 @@
 	\end{center}
 }
 
+% Create Section without list it in Table of Contents
 \newcommand\invisiblesection[1]{%
   \refstepcounter{section}%
   \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
   \sectionmark{#1}}
 
+% Blank new page
 %\newcommand*\NewPage{\newpage\null\thispagestyle{empty}\newpage}
 \newcommand*\NewPage{\newpage}
