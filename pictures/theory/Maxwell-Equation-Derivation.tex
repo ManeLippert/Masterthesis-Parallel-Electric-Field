@@ -1,12 +1,12 @@
-\newcommand{\distance}{3cm}
+\newcommand{\distance}{5cm}
 
 \begin{tikzpicture}[node distance=2cm]
 
-        \node (guidingcenter)  [startstop]                                         {Guiding Center Space};
-        \node (vlasov)         [init, above of=guidingcenter, xshift= \distance]   {Vlasov Equation for $\fgy$};
-        \node (moments)        [init, above of=guidingcenter, xshift=-\distance]   {Moments of $f$: $n(\x)$, $\vecj(\x)$};
+        \node (guidingcenter)  [startstop, align=center]                            {Guiding Center\\ Phase Space};
+        \node (vlasov)         [init, xshift= \distance, align=center]             {Vlasov Equation \\ for $\fgy$};
+        \node (moments)        [init, xshift=-\distance, align=center]   {Moments of $f$: \\ $n(\x)$, $\vecj(\x)$};
         
-        \draw [arrow] (vlasov)   -- (guidingcenter);
+        \draw [arrow] (vlasov)   -- node[anchor=north, yshift=0.6cm]{pull} node[anchor=south, yshift=-0.6cm]{back} (guidingcenter);
         \draw [arrow] (moments)  -- (guidingcenter);
 
 \end{tikzpicture}

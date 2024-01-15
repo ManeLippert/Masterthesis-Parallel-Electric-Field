@@ -6,34 +6,34 @@
 \begin{tikzpicture}
 
     % Coordinate System
-    \draw[thick, ->] (-3,-3) -- (-3,3) node[above left]{$y$}; 
-    \draw[thick, ->] (-3,-3) -- (3,-3) node[below right]{$x$};
+    \draw[thick, ->, >=stealth] (-3,-3) -- (-3,3) node[above left]{$y$}; 
+    \draw[thick, ->, >=stealth] (-3,-3) -- (3,-3) node[below right]{$x$};
 
     % Gyroangle
-    \draw[thick, ->] (5,0) ++ (0:2) arc (0:20:2) node[midway, right]{$\theta$};
+    \draw[thick, ->, >=stealth] (5,0) ++ (0:2) arc (0:21:2) node[midway, right]{$\theta$};
     \draw[thick, dashed, lightgray] (5,0) -- (7.5,0);
-    \draw[thick, dashed, lightgray] (5,0) -- ++ (20:2.5);
-    \draw[thick, black, ->, Notared] (5,0) -- ++ (20:1.5);
+    \draw[thick, dashed, lightgray] (5,0) -- ++ (21:2.5);
+    \draw[thick, black, ->, Notared, >=stealth] (5,0) -- ++ (21:1.5);
 
     % Unit Vecctor System
-    \draw[thick, ->] (5,0) -- (5,1.5) node[above left]{$\hat{\vect{e}}_2$}; 
-    \draw[thick, ->] (5,0) -- (6.5,0) node[below  right]{$\hat{\vect{e}}_1$}; 
+    \draw[thick, ->, >=stealth] (5,0) -- (5,1.5) node[above left]{$\hat{\vect{e}}_2$}; 
+    \draw[thick, ->, >=stealth] (5,0) -- (6.5,0) node[below  right]{$\hat{\vect{e}}_1$}; 
 
     % Circle
-    \draw (0,0) circle (2.5);
+    \draw (0,0) circle (2.5) node[above left, align=center]{Guiding \\ Center};
     
     % Velocity
-    \draw[thick,Notaorange, ->] (20:2.5) -- ++(110:1.5cm) node[above, Notaorange]{$\vect{v}_\perp$};
+    \draw[thick,Notaorange, ->, >=stealth] (20:2.5) -- ++(110:1.5cm) node[above, Notaorange]{$\vect{v}_\perp$};
 
     % Charges
-    \draw [fill=Notablue,Notablue] (20:2.5) circle (0.2);
+    \draw [fill=Notablue,Notablue] (20:2.5) circle (0.2) node[right, above right, xshift = 4, yshift = 10, Notablue]{Particle};
 
     % Larmor radius
-    \draw[thick, black, ->, Notared] (0,0) -- ++ (20:2.3) node[midway, above, Notared, sloped]{$\rho\vect{a}$};
+    \draw[thick, ->, >=stealth, Notared] (0,0) -- ++ (20:2.26) node[midway, above, Notared, sloped]{$\rrho$};
 
     % Position Vectors
-    \draw[thick, black, ->] (-3,-3) -- (15:2.0) node[midway, below, sloped]{$\x$};
-    \draw[thick, black, ->] (-3,-3) -- (-0.1,-0.1) node[midway, above, sloped]{$\X$};
+    \draw[thick, black, ->, >=stealth] (-3,-3) -- (17:2.28) node[midway, below, sloped]{$\x$};
+    \draw[thick, black, ->, >=stealth] (-3,-3) -- (-0.1,-0.1) node[midway, above, sloped]{$\X$};
 
     % Guiding Center
     \filldraw (0,0) circle (3pt);
@@ -42,4 +42,8 @@
     \draw [thick, Notagreen] (4.7,-0.3) circle (0.2);
     \filldraw [Notagreen] (4.7,-0.3) circle (1.5pt);
     \draw (4.7,-0.7) node[Notagreen]{$\vect{b}$};
+
+    % Coordinate System Vector
+    \draw[thick, black, ->, >=stealth] (20:2.8) to[bend left] (4.8,0.2);
+
 \end{tikzpicture}

@@ -8,16 +8,16 @@
     \draw[lightgray] (0,0) circle (1.5);
     \filldraw (0,0) circle (1.5pt);
     % Force
-    \draw[thick, Notagrey, <-] (90:0.5) node[right, Notagrey]{$\vect{F}_{\perp, B}$} -- ++ (90:1.0) node[coordinate] (x) {};
+    \draw[thick, Notagrey, <-, >=stealth] (90:0.5) node[right, Notagrey]{$\vect{F}_{\perp, B}$} -- ++ (90:1.0) node[coordinate] (x) {};
     % Larmor radius
-    \draw[thick, black, ->] (0,0) -- ++(0:1.5);
+    \draw[thick, black, ->, >=stealth] (0,0) -- ++(0:1.5);
     \draw (0.6,-0.4) node {$\rho$};
     % Velocity
-    \draw[thick,Notaorange, ->] (x) -- ++(180:1cm) node[left, Notaorange]{$\vect{v}^-$};
-    \draw[thick,Notaorange, ->] (0,-1.5) -- ++(180:1cm) node[left, Notaorange]{$\vect{v}^+$};
+    \draw[thick,Notaorange, ->, >=stealth] (x) -- ++(180:1cm) node[left, Notaorange]{$\vect{v}^-$};
+    \draw[thick,Notaorange, ->, >=stealth] (0,-1.5) -- ++(180:1cm) node[left, Notaorange]{$\vect{v}^+$};
     % Cyclontron freqency
-    \draw[thick, ->, blue] (90:1.0*1.5) arc(90:150:1.0*1.5);
-    \draw[thick, <-, red] (210:1.0*1.5) arc(210:270:1.0*1.5);
+    \draw[thick, ->, blue, >=stealth] (90:1.0*1.5) arc(90:150:1.0*1.5);
+    \draw[thick, <-, red, >=stealth] (210:1.0*1.5) arc(210:270:1.0*1.5);
     % Charges
     \draw [fill=blue, blue] (x) circle (0.2) node[white, font=\boldmath]{$-$};
     \draw [fill=red, red] (0,-1.5) circle (0.2) node[white, font=\boldmath]{$+$};
