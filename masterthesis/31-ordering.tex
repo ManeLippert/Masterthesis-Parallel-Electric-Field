@@ -1,7 +1,7 @@
 \section{Gyrokinetic Ordering}
 \label{sec:gyroordering}
 
-% The typical spatio-temporal scales connected to the dynamics in a tokamak plasma allow for the so-called \textit{gyrokinetic ordering} as outlined below. The fast gyromotion is much smaller compared to typical  time scales connected to turbulence ($\omega/\omega_\mathrm{c} \sim 10^{-3})$. The length scales of the turbulence are associated with the wave vector $\vect{k}$ which can be seperated into a perpendicular component $k_\perp = |\vect{k} \times \vect{b}|$ and a parallel component $k_\parallel = |\vect{k} \cdot \vect{b}|$ where $\vect{b}$ is parallel to the poloidal component of the magnetic field. The perpendicular component $k_\perp$ is of the order of the thermal Larmor radius $k_\perp^{-1} \sim \rhoth$ which is significantly smaller than the scale on which the equilibrium density $n_0$ varies, which can be expressed with the gradient length $L_\mathrm{n} = |\nabla \ln n_0 |^{-1}$. The gradient length compares with the machine size $R$ which leads to the normalized thermal Larmor radius $\rho_* = \rhoth/R \sim 10^{-3} - 10^{-4}$ with $R$ as major radius of the tokamak. The parallel component $k_\parallel$ on the other hand scales with the machine size $R$. Experiments show that in the core plasma the fluctuation amplitude of the density perturbation $\delta n/n_0$ and magnetic field fluctuation $\delta B/B_0$, with $B_0$ as strength of the magnetic field in equilibrium, is of order $\sim 10^{-4}$. Together this separation result in the following
+% The typical spatio-temporal scales connected to the dynamics in a tokamak plasma allow for the so-called \textit{gyrokinetic ordering} as outlined below. The fast gyromotion is much smaller compared to typical  time scales connected to turbulence ($\omega/\omega_\mathrm{c} \sim 10^{-3})$. . The perpendicular component $k_\perp$ is of the order of the thermal Larmor radius $k_\perp^{-1} \sim \rhoth$ which is significantly smaller than the scale on which the equilibrium density $n_0$ varies, which can be expressed with the gradient length $L_\mathrm{n} = |\nabla \ln n_0 |^{-1}$. The gradient length compares with the machine size $R$ which leads to the normalized thermal Larmor radius $\rho_* = \rhoth/R \sim 10^{-3} - 10^{-4}$ with $R$ as major radius of the tokamak. The parallel component $k_\parallel$ on the other hand scales with the machine size $R$. Experiments show that in the core plasma the fluctuation amplitude of the density perturbation $\delta n/n_0$ and magnetic field fluctuation $\delta B/B_0$, with $B_0$ as strength of the magnetic field in equilibrium, is of order $\sim 10^{-4}$. Together this separation result in the following
 % \begin{gather}
 % 	\frac{\omega}{\omega_\mathrm{c}} \sim \frac{k_\parallel}{k_\perp} \sim \frac{\rhoth}{L_\mathrm{n}} \sim \frac{\delta n}{n_0} \sim \frac{\delta B}{B_0} \sim \frac{v_\mathrm{d}}{\vth} \sim \epsilon_\mathrm{g}
 % 	\label{eq:gyroordering}
@@ -10,24 +10,66 @@
 
 % \newpage 
 
-In the derivation of the gyrokinetic theory the aim is to decouple the effect of small-scale, small amplitude fluctuations of the plasma in the Langrangian. For this it is chosen to take the properties of fluctuations as small parameter, which will get in the ordering assumptions applied in gyrokinetic theory \cite{Brizard2007}
+% In the derivation of the gyrokinetic theory the aim is to decouple the effect of small-scale, small amplitude fluctuations of the plasma in the Langrangian. For this it is chosen to take the properties of fluctuations as small parameter, which will get in the ordering assumptions applied in gyrokinetic theory \cite{Brizard2007}
+% \end{itemize}
+% \begin{gather}
+% 	\begin{aligned}
+% 		\frac{\abs{\vect{A_1}}}{\abs{\vect{A_0}}} &\sim \frac{\Phi_1}{\Phi_0} \sim \epsilon_\delta \ll 1 \\[0.3cm]
+% 		\rho \frac{\nabla B_0}{B_0} &\sim \rho \frac{\nabla E_0}{E_0} \sim \frac{\rho}{L_B} \sim \epsilon_B \ll 1 \\[0.3cm]
+% 		k_\perp \rho &\sim \epsilon_\perp \sim 1 \\[0.3cm]
+% 		\frac{\omega}{\omega_\mathrm{c}} &\sim \epsilon_\omega \ll 1
+% 	\end{aligned}
+% 	\label{eq:gyroordering}
+% \end{gather}
+% where $\vect{A}$ and $\Phi$ are the vector and scalar potentials, $\vect{B}$ and $\vect{E}$ are the magnetic and electric fields, $\omega$ and $k_\perp$ are the typical mode frequency and perpendicular wavenumber defined as $k_\perp = |\vect{k} \times \vect{b}|$, $\rho$ and $\omega_\mathrm{c}$ are the Larmor radius and cyclotron frequency and $L_B$ the equilibrium magnetic length scale. The equilibrium quantities are denoted with 0 and the fluctuations with 1 subscript. \bigskip
+
+% The above-mentioned equations state that fluctuations have a much smaller magnitude than the corresponding equilibrium values, their typical timescale is much slower than the Larmor frequency, their characteristic length scale is of the order of the Larmor radius, and it is typically much shorter the equilibrium spatial variation scale. Teh gyrokinetic equations are valid under these ordering assumptions. \bigskip
+
+% The small parameters $\epsilon_\delta$, $\epsilon_B$, $\epsilon_\perp$ and $\epsilon_\omega$ are due to different physical but in practice it is assumed that they are of simular order and substitute them with one parameter. For the derivation of the gyrokinetic equations of GKW all derived equations are evaluated up to the first order of the ratio of the reference thermal Larmor radius $\rhothref$ and the equilibrium magnetic length scale $L_B$ as small parameter and is defined as \cite{Derivation}
+% \begin{gather}
+% 	\rhost = \frac{\rhothref}{L_B} = \frac{\mref \vthref}{e \Bref} \sim \epsilon_B \sim \epsilon_\delta \sim \epsilon_\omega~.
+% 	\label{eq:rhostar}
+% \end{gather}
+
+In the derivation of the gyrokinetic theory the aim is to decouple the effect of small-scale, small amplitude fluctuations of the plasma in the Langrangian. For this it is chosen to take the properties of fluctuations as small parameter, which will get in the ordering assumptions applied in gyrokinetic theory
+
+\begin{itemize}
+	\item \textbf{Low Frequency}:\\
+		The characteristic fluctuation frequency is small compared to the cyclotron frequency 
+		\begin{gather*}
+			\Rightarrow \frac{\omega}{\omega_\mathrm{c}} \ll 1~.
+		\end{gather*}
+	\item \textbf{Anisotropy}:\\
+		The length scales of the turbulence are associated with the wave vector $\vect{k}$ which can be seperated into a perpendicular component $k_\perp = |\vect{k} \times \vect{b}|$ and a parallel component $k_\parallel = |\vect{k} \cdot \vect{b}|$ where $\vect{b}$ is parallel to the poloidal component of the magnetic field. The perpendicular correlation length of the turbulance has a length scale of around $10 - 100$ gyroradii while the parallel length scales can be of the order of meters, which can be expressed in wavenaumber as
+		\begin{gather*}
+			\Rightarrow \frac{k_\parallel}{k_\perp} \ll 1~.
+		\end{gather*}
+	\item \textbf{Strong Magnetization}:\\
+		The Larmor radius $\rho$ is small compared to the gradient length scales for
+		\begin{itemize}
+			\item Background Density: $L_n = n_0 \left(\frac{\mathrm{d}n_0}{\mathrm{d}x}\right)^{-1}$
+			\item Background Temperature: $L_T = T_0 \left(\frac{\mathrm{d}T_0}{\mathrm{d}x}\right)^{-1}$
+			\item Background Magnetic Field: $L_B = B_0 \left(\frac{\mathrm{d}B_0}{\mathrm{d}x}\right)^{-1}$
+		\end{itemize}
+		\begin{gather*}
+			\Rightarrow \frac{\rho}{L_n} \sim \frac{\rho}{L_T} \sim \frac{\rho}{L_B}\ll 1~.
+		\end{gather*}
+	\item \textbf{Small Fluctuations}:\\
+		The fluctuating part of the gyrocenter distribution function $\fgy_1$ is assumend to be small compared to the background distribution function $\fgy_0$ 
+		\begin{gather*}
+			\Rightarrow \frac{\fgy_1}{\fgy_0} \ll 1~.
+		\end{gather*}
+		Furthermore, the fluctuations of the vector potential $\vect{A}_1$ and scalar potentials $\Phi_1$ are small compared to there background part
+		\begin{gather*}
+			\Rightarrow \frac{\A_1}{\A_0} \sim \frac{\Phi_1}{\Phi_0}  \ll 1~.
+		\end{gather*}
+\end{itemize}
+Taken together these assumptions leads to the gyrokinetic ordering
 \begin{gather}
-	\begin{aligned}
-		\frac{\abs{\vect{A_1}}}{\abs{\vect{A_0}}} &\sim \frac{\Phi_1}{\Phi_0} \sim \epsilon_\delta \ll 1 \\[0.3cm]
-		\rho \frac{\nabla B_0}{B_0} &\sim \rho \frac{\nabla E_0}{E_0} \sim \frac{\rho}{L_B} \sim \epsilon_B \ll 1 \\[0.3cm]
-		k_\perp \rho &\sim \epsilon_\perp \sim 1 \\[0.3cm]
-		\frac{\omega}{\omega_\mathrm{c}} &\sim \epsilon_\omega \ll 1
-	\end{aligned}
-	\label{eq:gyroordering}
+	\frac{\omega}{\omega_\mathrm{c}} \sim \frac{k_\parallel}{k_\perp} \sim \frac{\rho}{L_n} \sim \frac{\rho}{L_T} \sim \frac{\rho}{L_B} \sim \frac{\fgy_1}{\fgy_0} \sim \frac{\A_1}{\A_0} \sim \frac{\Phi_1}{\Phi_0} \sim \epsilon_\delta~,
 \end{gather}
-where $\vect{A}$ and $\Phi$ are the vector and scalar potentials, $\vect{B}$ and $\vect{E}$ are the magnetic and electric fields, $\omega$ and $k_\perp$ are the typical mode frequency and perpendicular wavenumber defined as $k_\perp = |\vect{k} \times \vect{b}|$, $\rho$ and $\omega_\mathrm{c}$ are the Larmor radius and cyclotron frequency and $L_B$ the equilibrium magnetic length scale. The equilibrium quantities are denoted with 0 and the fluctuations with 1 subscript. \bigskip
-
-The above-mentioned equations state that fluctuations have a much smaller magnitude than the corresponding equilibrium values, their typical timescale is much slower than the Larmor frequency, their characteristic length scale is of the order of the Larmor radius, and it is typically much shorter the equilibrium spatial variation scale. Teh gyrokinetic equations are valid under these ordering assumptions. \bigskip
-
-The small parameters $\epsilon_\delta$, $\epsilon_B$, $\epsilon_\perp$ and $\epsilon_\omega$ are due to different physical but in practice it is assumed that they are of simular order and substitute them with one parameter. For the derivation of the gyrokinetic equations of GKW all derived equations are evaluated up to the first order of the ratio of the reference thermal Larmor radius $\rhothref$ and the equilibrium magnetic length scale $L_B$ as small parameter and is defined as \cite{Derivation}
+where $\epsilon_\delta$ is a small parameter. For the derivation of the gyrokinetic equations of GKW all derived equations are evaluated up to the first order of the ratio of the reference thermal Larmor radius $\rhothref$ and the equilibrium magnetic length scale $L_B$ as small parameter and is defined as \cite{Derivation}
 \begin{gather}
-	\rhost = \frac{\rhothref}{L_B} = \frac{\mref \vthref}{e \Bref} \sim \epsilon_B \sim \epsilon_\delta \sim \epsilon_\omega~.
+	\rhost = \frac{\rhothref}{L_B} = \frac{\mref \vthref}{e \Bref} \sim \epsilon_\delta ~.
 	\label{eq:rhostar}
 \end{gather}
-
-% TODO: #5 Rewrite Ordering with seperate section and include formulas for length scales
