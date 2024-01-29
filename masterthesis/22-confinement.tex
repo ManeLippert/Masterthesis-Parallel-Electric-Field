@@ -7,16 +7,18 @@ In tokamak devices strong magnetic fields confine the hot plasma. As mentioned i
     \beta = \frac{nT}{B^2/2\mu_0}~,
 \end{gather} 
 with $n$ the plasma density, $T$ as temperature, $\mu_0$ the permeability in vacuum and the magnetic field strength $B$. Respectively, the plasma beta compares the thermal plasma pressure $nT$ to the ambient magnetic field pressure $B^2/2\mu_0 $. For fusion devices the plasma beta has to be a bit smaller than 1 ($\beta < 1$) for optimal confinement. In a tokamak reactor the plasma beta has a typical order of a few percent. \cite{Wesson2011}
-\includegraphicsHere{Theory/Tokamak-Torus.pdf}{
-	Toroidal flux surfaces in tokamak plasma with helical magnetic field (\textcolor{Ubtgreen}{green} line) in torus coordinates ($\rho$ (radial), $\phi$ (toroidal), $\theta$ (poloidal)) or cylindrical coordinates ($Z$, $R$, $\phi$). \cite{Barton2015}
-}{fig:confinement}{0.7}
+\bigskip
 
 The rotation of the plasma can be described in a co-rotating frame of reference, which is rigidly rotating with the velocity $\ueq$ and will be used later on in the derivation of the gyrokinetic equations in Chapter \ref{sec:lagrangian}. It assumend that the poloidal component of the plasma rotation is much smaller compared to the toridial component and will be neglected. With this assumption in mind the reference frame is chosen to move in the toridial direction exclusivly and its velocity $\ueq$ can be expressed as
 \begin{gather}
     \ueq = \vect{\Omega} \times \x = R^2 \Omega \nabla \varphi~,
     \label{eq:rotvelocity}
 \end{gather}
-where $\vect{\Omega}$ is the constant angular frequency, $\varphi$ is the toroidal angle and $R \nabla\varphi$ is the unit vector in the toroidal direction. Since the rotation of the plasma in the labortory frame is not a rigid body rotation, it will be characterized by the radial profile of the angular velocity $\hat{\Omega}(\psi)$. Then the angular frequency of the rotating frame $\Omega$ is chosen to match the the plasma rotation on a certain point, i.e. $\Omega = \hat{\Omega}(\psi_r)$. The plasma rotation in the co-rotating frame of reference will be denoted as
+where $\vect{\Omega}$ is the constant angular frequency, $\varphi$ is the toroidal angle and $R \nabla\varphi$ is the unit vector in the toroidal direction. 
+
+\newpage
+
+Since the rotation of the plasma in the labortory frame is not a rigid body rotation, it will be characterized by the radial profile of the angular velocity $\hat{\Omega}(\psi)$. Then the angular frequency of the rotating frame $\Omega$ is chosen to match the plasma rotation on a certain point, i.e. $\Omega = \hat{\Omega}(\psi_r)$. The plasma rotation in the co-rotating frame of reference will be denoted as
 \begin{gather}
     \omega_\varphi(\psi) = \hat{\Omega}(\psi) - \Omega.\
     \label{eq:refFramePlasmaFrequency}
@@ -27,5 +29,9 @@ with the rotation speed along the magnetic field line
     \label{eq:rotParallelVelocity}
 \end{gather}
 where $B_\mathrm{t}$ is the toridial component of the magnetic field. \cite{Peeters2009B}
+
+\inputgraphicsHere{../pictures/theory/Tokamak-Torus.tex}{
+	Toroidal flux surfaces in tokamak plasma with helical magnetic field (\textcolor{Notagreen}{green} line) in torus coordinates ($\psi$ (radial), $\varphi$ (toroidal), $\theta$ (poloidal)) or cylindrical coordinates ($z$, $R$, $-\varphi$). \cite{Barton2015}
+}{fig:confinement}
 
 \newpage
