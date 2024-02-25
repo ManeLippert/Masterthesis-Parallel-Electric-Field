@@ -3,5 +3,5 @@
 	url = https://bitbucket.org/gkw/gkw.git
 
 [submodule "Literature"]
-	path = literature
+	path = Literature
 	url = https://github.com/ManeLippert/Literature.git
