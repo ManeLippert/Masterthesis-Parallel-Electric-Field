@@ -98,24 +98,24 @@ Now, the transformation [Eq. (\ref{eq:trafoLagrangian})] can be applied to expre
 \end{gather}
 Note, that to the Hamiltonian part $\Gamma_t$ the energy term of the magnetic field $B$ at the guiding center $\X$ has to be added, due to the circular motion of the particle around the center.
 \newpage
-In Equation (\ref{eq:guidingcenterLagrangianTrafo}) the components of the fundamental one-form of the particle phase space $\gamma_\nu$ and the equation for $\velo$ in guiding center coordinates [Eq. (\ref{eq:guidingcenterVelocityCoord})] will be inserted and the Taylor expansion up to the first order applied for terms containing the particle position $\x$ as argument. After that the gyroaveraging operator will be used, which is defined as the integral over the gyrophase $\theta$
+In Equation (\ref{eq:guidingcenterLagrangianTrafo}) the components of the fundamental one-form of the particle phase space $\gamma_\nu$ and the equation for $\velo$ in guiding center coordinates [Eq. (\ref{eq:guidingcenterVelocityCoord})] will be inserted and the Taylor expansion up to the first order applied for terms containing the particle position $\x$ as argument. After that, the gyroaveraging operator $\mathcal{G}$ will be used, which is defined as the integral over the gyrophase $\theta$
 \begin{gather}
-    \langle \;\cdot\; \rangle = \frac{1}{2\pi} \int_{0}^{2\pi} \dtheta ~ (\;\cdot\;)~.
-    \label{eq:gyroaveraging}
+    \tga{\{G(\x)\}} = \ga{G}(\X) = \frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ G(\X + \rrho(\theta))~,
+    \label{eq:gyroOperator}
 \end{gather}
-Due to the definition of the vector $\vect{a}$ [Eq. (\ref{eq:guidingcenterUnitvect})] the first order terms in $\vect{a}$ and $\dot{\vect{a}}$ disappear under gyroaveraging. Following all the previous steps, one can obtain
+with an example field $G(\x)$. Due to the definition of the vector $\vect{a}$ [Eq. (\ref{eq:guidingcenterUnitvect})] the first order terms in $\vect{a}$ and $\dot{\vect{a}}$ disappear under gyroaveraging. Following all the previous steps, one can obtain
 \begin{gather}
     \begin{aligned}
-        \langle \Gamma_{\X} \rangle &= m v_\parallel b_i(\X) + mu_{0i} + Ze\A(\X) &\qquad \langle \Gamma_{v_\parallel} \rangle &= 0 \\
-        \langle \Gamma_{\mu} \rangle &= 0                                           &\qquad \langle \Gamma_{\theta}      \rangle &= \frac{2\mu m}{Ze}\\
-        \langle \Gamma_{t}   \rangle &= - \left(\frac{1}{2}mv_\parallel^2 - \frac{1}{2}mu_0^2 + Ze\Phi(\X) + \mu B(\X) \right) ~, & & \\
+        \ga{\Gamma}_{\X}  &= m v_\parallel b_i(\X) + mu_{0i} + Ze\A(\X)  &\qquad \ga{\Gamma}_{v_\parallel} &= 0 \\
+        \ga{\Gamma}_{\mu} &= 0                                           &\qquad \ga{\Gamma}_{\theta}      &= \frac{2\mu m}{Ze}\\
+        \ga{\Gamma}_{t}   &= - \left(\frac{1}{2}mv_\parallel^2 - \frac{1}{2}mu_0^2 + Ze\Phi(\X) + \mu B(\X) \right) ~, & & \\
     \end{aligned}
     \label{eq:guidingcenterLagrangianTrafoAverage}
 \end{gather}
 which results in the fundamental one-form in guiding center coordinates
 \begin{gather}
     \begin{aligned}
-        \langle \Gamma \rangle =  &\left(m v_\parallel \vect{b}(\X) + m\ueq + Ze\A(\X)\right) \cdot \mathrm{d}\X + \frac{2\mu m}{Ze} \mathrm{d}\theta \\
+        \ga{\Gamma} =  &\left(m v_\parallel \vect{b}(\X) + m\ueq + Ze\A(\X)\right) \cdot \mathrm{d}\X + \frac{2\mu m}{Ze} \mathrm{d}\theta \\
                                   &- \left(\frac{1}{2}mv_\parallel^2 - \frac{1}{2}mu_0^2 + Ze\Phi(\X) + \mu B(\X) \right) \mathrm{d}t~.
     \end{aligned}
     \label{eq:guidingcenterLagrangian}
@@ -143,10 +143,10 @@ After inserting the components of the perturbated Lagrangian $\gamma_1$ and negl
 Finally, the fundamental one-form in the guiding center phase space $\Gamma$ with perturbation can be written as
 \begin{gather}
     \begin{aligned}
-        \Gamma                   &= \langle \Gamma_0 \rangle + \Gamma_1 \\
-        \langle \Gamma_0 \rangle &= \left(m v_\parallel \vect{b}(\X) + m\ueq + Ze\A_0(\X)\right) \cdot \mathrm{d}\X + \frac{2\mu m}{Ze} \mathrm{d}\theta \\
-                                 &\quad - \left(\frac{1}{2}mv_\parallel^2 - \frac{1}{2}mu_0^2 + Ze\Phi_0(\X) + \mu B_0(\X) \right) \mathrm{d}t \\
-        \Gamma_1                 &= Ze\A_{1}(\x) \cdot \mathrm{d}\X + \frac{Z}{\abs{Z}} \frac{1}{v_\perp} \A_1(\x) \cdot \vect{a} \mathrm{d}\mu + \frac{Z}{\abs{Z}} \frac{2\mu}{v_\perp} \A_1(\x) \cdot \frac{\mathrm{d}\vect{a}}{\mathrm{d}\theta} \mathrm{d}\theta - Ze \Phi_1(\x) \mathrm{d}t~. 
+        \Gamma        &= \ga{\Gamma}_0 + \Gamma_1 \\
+        \ga{\Gamma}_0 &= \left(m v_\parallel \vect{b}(\X) + m\ueq + Ze\A_0(\X)\right) \cdot \mathrm{d}\X + \frac{2\mu m}{Ze} \mathrm{d}\theta \\
+                      &\quad - \left(\frac{1}{2}mv_\parallel^2 - \frac{1}{2}mu_0^2 + Ze\Phi_0(\X) + \mu B_0(\X) \right) \mathrm{d}t \\
+        \Gamma_1      &= Ze\A_{1}(\x) \cdot \mathrm{d}\X + \frac{Z}{\abs{Z}} \frac{1}{v_\perp} \A_1(\x) \cdot \vect{a} \mathrm{d}\mu + \frac{Z}{\abs{Z}} \frac{2\mu}{v_\perp} \A_1(\x) \cdot \frac{\mathrm{d}\vect{a}}{\mathrm{d}\theta} \mathrm{d}\theta - Ze \Phi_1(\x) \mathrm{d}t~. 
     \end{aligned}
 \end{gather}
 
@@ -159,44 +159,18 @@ The transformation of the guiding center Lagrangian $\Gamma$ into the Lagrangian
 \begin{gather}
     \begin{aligned}
         \bar{\Gamma} &= \bar{\Gamma}_0 + \bar{\Gamma}_1 \\
-                     &= \left(mv_\parallel \vect{b}_0(\X) + m\ueq + Ze\left(\A_0(\X) + \bar{\A}_1(\X)\right)\right) \cdot \mathrm{d}\X + \frac{2\mu m}{Ze} \mathrm{d}\theta \\
-                     &\quad - \left(\frac{1}{2} m \left(v_\parallel^2 - u_0^2 \right) + Ze \left(\Phi_0(\X) + \bar{\Phi}_1(\X)\right) + \mu\left(B_0(\X) + \bar{B}_{1\parallel}(\X)\right)\right)\;\dt~,
+                     &= \left(mv_\parallel \vect{b}_0(\X) + m\ueq + Ze\left(\A_0(\X) + \gaA(\X)\right)\right) \cdot \mathrm{d}\X + \frac{2\mu m}{Ze} \mathrm{d}\theta \\
+                     &\quad - \left(\frac{1}{2} m \left(v_\parallel^2 - u_0^2 \right) + Ze \left(\Phi_0(\X) + \gaPhi(\X)\right) + \mu\left(B_0(\X) + \gaBpar(\X)\right)\right)\;\dt~,
     \end{aligned}
     \label{eq:gyrocenterPertrubationLagrangian}
 \end{gather}
-where $B_0$ is the equilibrium magnetic field and $\bar{B}_{1\parallel}$ is the magnetic field introduced by the vector potential $\A_1$. Note, that the pertubations of the scalar and vector potential will be seperated into an oscillating and a gyroaveraged part which will be expressed as
+where $B_0$ is the equilibrium magnetic field and $\gaBpar$ is the magnetic field introduced by the vector potential $\A_1$. Note, that the pertubations of the scalar and vector potential will be seperated into an oscillating and a gyroaveraged part which will be expressed as
 \begin{gather}
-    \Phi_1 = \widetilde{\Phi}_1 + \langle \Phi_1 \rangle  \qquad \A_1 = \widetilde{\A}_1 + \langle \A_1 \rangle~,
+    \Phi_1 = \widetilde{\Phi}_1 + \gaPhi  \qquad \A_1 = \widetilde{\A}_1 + \gaA ~,
     \label{eq:electromagneticPertubationSeperated}
 \end{gather}
-although the oscillating parts will be added to the gauge function of the Lie transformation and will not be included in the Lagrangian of the gyrocenter. The quantities $\bar{\Phi}_1$, $\bar{\A}_1$ and $\bar{B}_{1\parallel}$ are the shorter notation of following gyroaveraged quantities defined as
+although the oscillating parts will be added to the gauge function of the Lie transformation and will not be included in the Lagrangian of the gyrocenter. The quantity $\gaBpar$ is the shorter notation of following gyroaveraged quantity defined as
 \begin{gather}
-    \begin{aligned}
-        \langle \Phi_1(\x) \rangle &= J_0(\lambda) \Phi_1(\X) = \bar{\Phi}_1(\X) \\
-        \langle \A_1(\x)   \rangle &= J_0(\lambda) \A_1(\X) = \bar{\A}_1(\X) \\ 
-        Ze \langle \A_1(\x) \cdot \velo_\perp (\X,\mu,\theta) \rangle &= - \hat{J}_1(\lambda) \mu B_{1 \parallel}(\X) = \mu\bar{B}_{1\parallel}(\X)~,
-    \end{aligned}
-    \label{eq:gyrocenterGyroaveragedQuantitiesFourierspace}
-\end{gather}
-with $J_0$ as the zeroth order Bessel function and $I_1$ as the modified first order Bessel function of first kind defined as $I_1(\lambda) = 2/\lambda \, J_1(\lambda)$.
-The components of the gyrocenter Lagrangian are again indepedent of the gyrophase $\theta$, and therefore the teh magnetic moment $\mu$ remains in the gyrocenter pahse space an invariant of motion.
-
-\newpage
-\subsection{Bessel Function}
-\label{sub:Besselfunction}
-
-To obtain Equation (\ref{eq:gyrocenterGyroaveragedQuantitiesFourierspace}) the process of gyroaveraging will be performend in the Fourier space as follows
-\begin{gather}
-    \begin{aligned}
-        \langle \vect{G}(\x) \rangle &= \langle \vect{G}(\X + \vect{r}) \rangle = \langle \int \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot (\X + \vect{r})} \rangle \\
-                                     &= \frac{1}{2\pi} \int_{0}^{2\pi} \dtheta ~ \int \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} e^{ i k_\perp \rho \cos \theta} \\
-                                     &= \int \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} \underbrace{\frac{1}{2\pi} \int_{0}^{2\pi} \dtheta ~ e^{ i k_\perp \rho \cos \theta}}_{J_0(\rho k_\perp)}\\
-                                     &= \int \mathrm{d}\vect{k} ~ J_0(\rho k_\perp) \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} = J_0(\lambda) \vect{G}(\X)~,
-    \end{aligned}
-    \label{eq:gyroOperator}
-\end{gather}
-where the wave vector $\vect{k}$ is defined as $\vect{k} = \hat{e}_1 k_\perp$. The argument $\lambda$ is given by $i \rho \nabla_{\!\perp}$ which is the inverse Fourier transformated expression of $\rho k_\perp$. The Bessel function $J_0$ is sometimes also referred to as gyro-average operator $\mathcal{G}$. In general the Bessel function and modified Bessel function is defined as \source
-\begin{gather}
-    J_n(z) = \left(\frac{z}{2}\right)^n \underbrace{\sum^{\infty}_{\nu = 0} \frac{(\left(- 1/4 z^2\right)^\nu)}{\nu! (1 + \nu) !}}_{I_n(z)}~.
-    \label{eq:Besselfunction}
+    \tga{\{Ze \A_1(\x) \cdot \velo_\perp (\X,\mu,\theta)\}} = \mu\gaBpar(\X)~. 
+    \label{eq:gyrocenterGyroaveragedMagnetic}
 \end{gather}

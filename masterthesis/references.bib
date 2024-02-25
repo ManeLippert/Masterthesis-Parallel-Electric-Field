@@ -21,8 +21,80 @@
     eprint = {https://pubs.aip.org/aip/pop/article-pdf/doi/10.1063/1.3097263/15927767/042310\_1\_online.pdf},
 }
 
+@article{Maurer2020,
+    title = {GENE-3D: A global gyrokinetic turbulence code for stellarators},
+    journal = {Journal of Computational Physics},
+    volume = {420},
+    pages = {109694},
+    year = {2020},
+    issn = {0021-9991},
+    doi = {https://doi.org/10.1016/j.jcp.2020.109694},
+    url = {https://www.sciencedirect.com/science/article/pii/S002199912030468X},
+    author = {M. Maurer and A. {Bañón Navarro} and T. Dannert and M. Restelli and F. Hindenlang and T. Görler and D. Told and D. Jarema and G. Merlo and F. Jenko},
+    keywords = {Plasma turbulence, Transport in plasmas, Gyrokinetics, Plasma simulation},
+    abstract = {A detailed description of GENE-3D, a newly developed global stellarator version of the well established gyrokinetic turbulence code GENE, is provided – along with some initial simulation results. First, the underlying gyrokinetic equations and the use of field-aligned coordinates in non-axisymmetric magnetohydrodynamic equilibria are discussed. Then, various aspects regarding the numerical implementation in GENE-3D are described. Finally, the code is validated and its parallel performance is assessed, along with the influence of numerical precision.}
+}
 
-% BACHELORTHESIS
+% Cancellation Problem
+@article{Chen2001,
+    author = {Chen, Yang and Parker, Scott},
+    title = "{Gyrokinetic turbulence simulations with kinetic electrons}",
+    journal = {Physics of Plasmas},
+    volume = {8},
+    number = {5},
+    pages = {2095-2100},
+    year = {2001},
+    month = {05},
+    abstract = "{Gyrokinetic turbulence simulations are presented with full drift-kinetic electron dynamics including both trapped and passing particle effects. This is made possible by using a generalization of the split-weight scheme [I. Manuilskiy and W. W. Lee, Phys. Plasmas 7, 1381 (2000)] that allows for a variable adiabatic part, as well as use of the parallel canonical momentum formulation. Linear simulations in shearless slab geometry and nonlinear simulations using representative tokamak parameters demonstrate the applicability of this generalized split-weight scheme to the turbulence transport problem in the low β regime [β(mi/me)⩽1]. The issues relating to difficulties at higher β, and initial three-dimensional toroidal simulations results will be discussed.}",
+    issn = {1070-664X},
+    doi = {10.1063/1.1351828},
+    url = {https://doi.org/10.1063/1.1351828},
+    eprint = {https://pubs.aip.org/aip/pop/article-pdf/8/5/2095/19188016/2095\_1\_online.pdf},
+}
+
+@article{Naitou1995,
+    author = {Naitou, Hiroshi and Tsuda, Kenji and Lee, W. W. and Sydora, R. D.},
+    title = "{Gyrokinetic simulation of internal kink modes}",
+    journal = {Physics of Plasmas},
+    volume = {2},
+    number = {11},
+    pages = {4257-4268},
+    year = {1995},
+    month = {11},
+    abstract = "{Internal disruption in a tokamak has been simulated using a three‐dimensional magneto‐inductive gyrokinetic particle code. The code operates in both the standard gyrokinetic mode (total‐f code) and the fully nonlinear characteristic mode (δf code). The latter is a quiet low noise algorithm. The computational model represents a straight tokamak with periodic boundary conditions in the toroidal direction and a square cross section with perfectly conducting walls in the poloidal direction. The linear mode structure of an unstable m=1 (poloidal) and n=1 (toroidal) kinetic internal kink mode is clearly observed, especially in the δf code. The width of the current layer around the x‐point, where magnetic reconnection occurs, is found to be close to the collisionless electron skin depth, indicating the importance of electron inertia. Both codes give very similar nonlinear results, in which full reconnection in the Alfvén time scale is observed along with the electrostatic potential structures created during this phase. The resulting E×B drift from the potential dominates the nonlinear phase after the full reconnection.}",
+    issn = {1070-664X},
+    doi = {10.1063/1.871051},
+    url = {https://doi.org/10.1063/1.871051},
+    eprint = {https://pubs.aip.org/aip/pop/article-pdf/2/11/4257/19277130/4257\_1\_online.pdf},
+}
+
+@phdthesis{Cummings_PHD,
+    title    = {Gyrokinetic simulation of ﬁnite-beta and self-generated sheared-ﬂow eﬀects on pressure-gradient-driven instabilities},
+    school   = {Princeton University},
+    author   = {Cummings, J.C.},
+    year     = {1995},
+}
+
+@phdthesis{Told_PHD,
+    title    = {Gyrokinetic microturbulence in transport barriers},
+    school   = {Universit{\"a}t Ulm},
+    author   = {Told, D.},
+    year     = {2012},
+}
+
+@phdthesis{Merlo_PHD,
+    title    = {Flux-tube and global grid-based gyrokinetic simulations of plasma microturbulence and comparisons with experimental TCV measurements},
+    school   = {\'{E}cole polytechnique f\'{e}d\'{e}rale de Lausanne},
+    author   = {Merlo, G.},
+    year     = {2016},
+}
+
+@phdthesis{Maurer_PHD,
+    title    = {Gyrokinetic microturbulence in transport barriers},
+    school   = {Technische Universit{\"a}t M\"{u}nchen},
+    author   = {Maurer, M.},
+    year     = {2012},
+}
 
 %%% Paper on which brief communication is based on
 % title = {Gradient-driven flux-tube simulations of ion temperature gradient turbulence close to the non-linear threshold},
@@ -424,8 +496,7 @@ structures in the surface density},
 }
 
 @phdthesis{Crandall_PHD,
-    title    = {Collisional and Electromagnetic Physics in Gyrokinetic Models
-},
+    title    = {Collisional and Electromagnetic Physics in Gyrokinetic Models},
     school   = {University of Carlifornia Los Angeles},
     author   = {Crandall,P.C.},
     year     = {2019},

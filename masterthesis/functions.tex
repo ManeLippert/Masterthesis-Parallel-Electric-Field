@@ -34,11 +34,32 @@
 % Vector Quantities bold
 \newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
 
-% Add _sp to any Quantity with seperation into Species
-\newcommand{\spec}[1]{#1_s}
+% Common Indexes in Gyrokinetics
+\newcommand{\iref}[1]{#1_\mathrm{ref}}
+\newcommand{\ith}[1]{#1_\mathrm{th}}
 
-% Add negative space to integral
-\renewcommand{\inf}{\int \!\!}
+% Add _s to any Quantity with seperation into Species
+\newcommand{\spec}[1]{#1_s}
+\newcommand{\specN}[1]{#1_{\mathrm{N},s}}
+\newcommand{\specthN}[1]{#1_{\mathrm{th}\mathrm{N},s}}
+\newcommand{\specR}[1]{#1_{\mathrm{R},s}}
+\newcommand{\specthR}[1]{#1_{\mathrm{th}\mathrm{R},s}}
+\newcommand{\specref}[1]{#1_{\mathrm{ref},s}}
+
+\newcommand{\specc}[2]{#1_{#2,s}}
+\newcommand{\speccrm}[2]{#1_{\mathrm{#2},s}}
+
+% Gyroaverage Operator
+\newcommand{\ga}[1]{\bar{#1}}
+\newcommand{\gad}[1]{\langle#1\rangle}
+% \newcommand{\tga}[1]{\mathcal{G}\!\left\{ #1 \right\}}
+% \newcommand{\tgad}[1]{\mathcal{G}^\dagger\!\left\{ #1 \right\}}
+\newcommand{\tga}[1]{\mathcal{G} #1}
+\newcommand{\tgad}[1]{\mathcal{G}^\dagger #1}
+
+% Optimize Spacing of integrals
+\newcommand{\ints}{\int \!}
+\newcommand{\intss}[2]{\int_{#1}^{#2} \!\!\!\!\!}
 
 % Put Grapihics into Document at specific Place
 \newcommand{\includegraphicsHere}[4]{
