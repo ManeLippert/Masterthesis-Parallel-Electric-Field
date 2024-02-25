@@ -319,7 +319,7 @@ libs/AMD/Demo
 __pycache__
 
 # folder
-literature
+#literature
 literature_old
 response
 corrections
