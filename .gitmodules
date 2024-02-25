@@ -1,7 +1,3 @@
 [submodule "GKW"]
 	path = gkw
 	url = https://bitbucket.org/gkw/gkw.git
-
-[submodule "Literature"]
-	path = Literature
-	url = https://github.com/ManeLippert/Literature.git
