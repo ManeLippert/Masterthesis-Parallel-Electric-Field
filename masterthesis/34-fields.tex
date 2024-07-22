@@ -103,17 +103,17 @@ where $n_0$ is a background density, T is a background temperature. To derive th
 
 \newpage
 
-\subsection{Perturbated Parallel Magnetic Field $B_{1\parallel}$}
+\subsection{Perturbated Parallel Magnetic Field $\Bpar$}
 \label{sub:fieldMagnetic}
 
 The perpendicular compentent of Ampere's law can be written as 
 \begin{gather}
-	(\nabla \times B_{1\parallel})_\perp = \left( \begin{array}{c} \partial_y B_{1 \parallel} - \partial_z B_{1 y} \\ \partial_z B_{1x} - \partial_x B_{1 \parallel} \end{array} \right) = \mu_0 \vecj_{1 \perp}~,
+	(\nabla \times \Bpar)_\perp = \left( \begin{array}{c} \partial_y \Bpar - \partial_z B_{1 y} \\ \partial_z B_{1x} - \partial_x \Bpar \end{array} \right) = \mu_0 \vecj_{1 \perp}~,
 	\label{eq:perpendicularAmpereLaw}
 \end{gather}
 where $z$ is the direction of the equilibrium magnetic field $B_0$. The parallel gradients of the pertrubated magnetic field can be neglegted since they are one order smaller than the perpendicular ones, which results in
 \begin{gather}
-	\left( \begin{array}{r} \partial_y B_{1 \parallel} \\ - \partial_x B_{1 \parallel} \end{array} \right) = \nabla_{\!\perp} B_{1\parallel} \times \vecb = \mu_0 \vecj_{1 \perp}~.
+	\left( \begin{array}{r} \partial_y \Bpar \\ - \partial_x \Bpar \end{array} \right) = \nabla_{\!\perp} \Bpar \times \vecb = \mu_0 \vecj_{1 \perp}~.
 \end{gather}
 After performing the pull back operation the perpendicular current $\vecj_{1\perp}$ is given by 
 \begin{gather}
@@ -130,12 +130,12 @@ Inserting the pertrubated perpenedicular current $\vecj_{1 \perp}$ into Ampere's
 
 \newpage
 
-\subsection{Plasma Induction $\A_{1\parallel}$}
+\subsection{Plasma Induction $\Apar$}
 \label{sub:fieldInduction}
 
-To express the parallel pertrubation of the vector potential $A_{1\parallel}$, i.e. the plasma induction, the method is analogous to Chapter \ref{sub:fieldPotential}. Using the Coulomb gauge $\nabla \cdot \A_1 = 0$ in the parallel compentent of Ampere's law results in
+To express the parallel pertrubation of the vector potential $\Apar$, i.e. the plasma induction, the method is analogous to Chapter \ref{sub:fieldPotential}. Using the Coulomb gauge $\nabla \cdot \A_1 = 0$ in the parallel compentent of Ampere's law results in
 \begin{gather}
-	\nabla^2 A_{1\parallel} = - \mu_0 j_{1\parallel} = - \mu_0 \spec{\sum} j_{1\parallel,s}~.
+	\nabla^2 \Apar = - \mu_0 j_{1\parallel} = - \mu_0 \spec{\sum} j_{1\parallel,s}~.
 	\label{eq:parallelAmpereLaw}
 \end{gather}
 Performing the pull back one last time the parallel perturbation of the current density $j_{1\parallel}$ is given by
@@ -150,12 +150,12 @@ Performing the pull back one last time the parallel perturbation of the current 
 although the term $\vpar \fm$ vanishes during the integration along $\vpar$, due to symmetry of the Maxwellian $\fm$. 
 Inserting Equation (\ref{eq:parallelCurrentPullback}) into Ampere's law yields the field equation for the plasma induction as follows
 \begin{gather}
-	\nabla^2 A_{1\parallel} = - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \int \dvpar\dmu ~ \gad{\vpar \spec{\fgy}}~.
+	\nabla^2 \Apar = - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \int \dvpar\dmu ~ \gad{\vpar \spec{\fgy}}~.
 	\label{eq:fieldInduction}
 \end{gather}
 \newpage
 
-\subsection{Inductive Electric Field $\vect{E}_{1 \parallel}$}
+\subsection{Inductive Electric Field $\Epar$}
 \label{sub:fieldEpar}
 
 Global Gyrokinetic simulations are suffering from numerical problems, mainly from the cancellation problem \cite{Chen2001} examined codes \cite{Cummings_PHD} which uses the paticle-in-cell or the Eulerian methods. This problem limits the electromagnetic investigations to extremely low $\beta$ parameters. \cite{Naitou1995} As in Chapter \ref{sub:approximation} discussed gets the density distribution function $f$ seperated into an equilibrium part $f_0$, i.e. a Maxwellian $\fm$, and a pertrubated part $\df$. Through the total electric field $\gaE$ in the time derivative from the parallel velocity $\vpar$ [Eq. (\ref{eq:totalElectricField}) \& (\ref{eq:motionEquation})] the time derivative of the pertrubed vector potential $\partial_t \gaApar$ appears in the Source term [Eq. (\ref{eq:sourceTerm})] which is computationally difficult to evaluate. To avoid further complications a modified distribution function $g$ will be introduced as
@@ -182,12 +182,12 @@ First the Vlasov equation gets written down in the $\df$ framework with the sour
 \end{gather}
 where $\vlaright$ represents all terms of the Vlasov Equation which excludes the time derivative of plasma induction $\partial_t \gaApar$. The equation of the $\gaApar$ is already astablished in Chapter \ref{sub:fieldInduction} but for this derivation a recall will be made. The equation for $\gaApar$ is given by
 \begin{gather}
-    \nabla^2 A_{1 \parallel} = - \mu_0 j_{1\parallel} = - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}} \int \dvpar\dmu ~ \gad{\vpar \spec{\fgy}}~.
+    \nabla^2 \Apar = - \mu_0 j_{1\parallel} = - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}} \int \dvpar\dmu ~ \gad{\vpar \spec{\fgy}}~.
     \label{eq:Aparallel}
 \end{gather}
 Now the following formalism will be used
 \begin{gather}
-	E_{1\parallel} = - \frac{\partial A_{1\parallel}}{\partial t}~.
+	\Epar = - \frac{\partial \Apar}{\partial t}~.
 \end{gather}
 Taking the time derivative of Equation (\ref{eq:Aparallel}) results into the field equation for the induced electric field $
 \Epar$ which can be expressed as

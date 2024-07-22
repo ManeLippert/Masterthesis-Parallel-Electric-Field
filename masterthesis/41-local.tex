@@ -7,7 +7,7 @@
 In the case of local simulations the gyrooperators $\mathcal{G}$ and $\mathcal{G}^\dagger$ simplies to
 \begin{gather}
     \begin{aligned}
-        \ga{\vect{G}(\x)} &= J_0(\lambda) \vect{G}(\X) \\
+        \ga{\vect{G}}(\x) &= J_0(\lambda) \vect{G}(\X) \\
         \gad{\vect{G}(\X)} &= J_0(\lambda) \vect{G}(\x)
     \end{aligned}
     \label{eq:gyroOperatorLocal}
@@ -16,9 +16,9 @@ with $J_0$ as the zeroth order Bessel function. Note, that $\gaBpar(\X) = - I_1(
 \begin{gather}
     \begin{aligned}
         \ga{\vect{G}}(\x) &= \ga{\vect{G}}(\X + \vect{r}) = \tga{\left\{\int \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot (\X + \vect{r})} \right\}} \\
-                                     &= \frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ \int \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} e^{ i k_\perp \rho \cos \theta} \\
-                                     &= \int \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} \underbrace{\frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ e^{ i k_\perp \rho \cos \theta}}_{J_0(\rho k_\perp)}\\
-                                     &= \int \mathrm{d}\vect{k} ~ J_0(\rho k_\perp) \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} = J_0(\lambda) \vect{G}(\X)~,
+                          &= \frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ \int \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} e^{ i k_\perp \rho \cos \theta} \\
+                          &= \int \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} \underbrace{\frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ e^{ i k_\perp \rho \cos \theta}}_{J_0(\rho k_\perp)}\\
+                          &= \int \mathrm{d}\vect{k} ~ J_0(\rho k_\perp) \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} = J_0(\lambda) \vect{G}(\X)~,
     \end{aligned}
     \label{eq:gyroOperatorLocalDerivation}
 \end{gather}
@@ -97,7 +97,7 @@ and for convenience reason the small parameter $\rhost$ got redefined.
             \item \textbf{Fluctuating Fields:}
                 \begin{gather}
                     \Phi_1 = \rhost \frac{\Tref}{e} \PhiN \qquad \Bpar = \rhost \Bref \BparN \\
-                    \Apar = \Bref \Rref \rhost^2 \AparN \qquad \Epar = \frac{\Tref}{e} \frac{1}{\Rref} \rhost \EparN
+                    \Apar = \Bref \Rref \rhost^2 \AparN \qquad \Epar = \frac{2\Tref}{e} \frac{1}{\Rref} \rhost \EparN
                 \end{gather}
             \item \textbf{Time, Frequency and Centrifugal Energy:}
                 \begin{gather}
@@ -123,7 +123,7 @@ and for convenience reason the small parameter $\rhost$ got redefined.
 With the use of the local of the local gyrooperator the density of the gyrocenter $\ga{n}$ and the polarization density $n_\mathcal{P}$ can be expressed as
 \begin{gather}
 	\ga{n}(\x) = \frac{2\pi B_0}{m} \int \dvpar\dmu ~ J_0(\lambda) \fgy(\x, \vpar, \mu)~, \\
-	n_\mathcal{P}(\x) = \frac{Ze \nReq(\x)}{T} e^{-\cfen/T} (\Gamma_0(b) - 1) \Phi_1(\x) + \nReq(\x) e^{-\cfen/T} (\Gamma_0(b) - \Gamma_1(b))\frac{B_{1\parallel}(\x)}{B_0}~,
+	n_\mathcal{P}(\x) = \frac{Ze \nReq(\x)}{T} e^{-\cfen/T} (\Gamma_0(b) - 1) \Phi_1(\x) + \nReq(\x) e^{-\cfen/T} (\Gamma_0(b) - \Gamma_1(b))\frac{\Bpar(\x)}{B_0}~,
 	\label{eq:particleDensityLocal}
 \end{gather}
 where $n_0$ is a background density, T is a background temperature. To derive the term for the polarization density $n_\mathcal{P}$ the integrals mentioned in Chapter \ref{sub:integralBesselfunction} were performed. The field equation for the perturbated electrostatic potential $\Phi_1$ in the local simulation is given by
@@ -143,12 +143,12 @@ and takes the following form after performing the Fourier-transform and applying
     \end{aligned}
 \end{gather}
 
-\subsection*{Plasma Induction $\A_{1\parallel}$}
+\subsection*{Plasma Induction $\Apar$}
 \label{sub:fieldInductionLocal}
 
 The field equation for the plasma induction follows simply after the use of the local gyroperator and is given by
 \begin{gather}
-	\nabla^2 A_{1\parallel} = - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \int \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \spec{\fgy}(\x, \vpar, \mu)~.
+	\nabla^2 \Apar = - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \int \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \spec{\fgy}(\x, \vpar, \mu)~.
 	\label{eq:fieldInductionLocal}
 \end{gather}
 Fourier transformation and normalization yields
@@ -157,27 +157,27 @@ Fourier transformation and normalization yields
 	\label{eq:fieldInductionLocalNorm}
 \end{gather}
 
-\subsection*{Perturbated Parallel Magnetic Field $B_{1\parallel}$}
+\subsection*{Perturbated Parallel Magnetic Field $\Bpar$}
 \label{sub:fieldMagneticLocal}
 
 The perpendicular compentent of Ampere's law can be written as 
 \begin{gather}
-	(\nabla \times B_{1\parallel})_\perp = \left( \begin{array}{c} \partial_y B_{1 \parallel} - \partial_z B_{1 y} \\ \partial_z B_{1x} - \partial_x B_{1 \parallel} \end{array} \right) = \mu_0 \vecj_{1 \perp}~,
+	(\nabla \times \Bpar)_\perp = \left( \begin{array}{c} \partial_y \Bpar - \partial_z B_{1 y} \\ \partial_z B_{1x} - \partial_x \Bpar \end{array} \right) = \mu_0 \vecj_{1 \perp}~,
 	\label{eq:perpendicularAmpereLawLocal}
 \end{gather}
 where $z$ is the direction of the equilibrium magnetic field $B_0$. The parallel gradients of the pertrubated magnetic field can be neglegted since they are one order smaller than the perpendicular ones, which results in
 \begin{gather}
-	\left( \begin{array}{r} \partial_y B_{1 \parallel} \\ - \partial_x B_{1 \parallel} \end{array} \right) = \nabla_{\!\perp} B_{1\parallel} \times \vecb = \mu_0 \vecj_{1 \perp}~.
+	\left( \begin{array}{r} \partial_y \Bpar \\ - \partial_x \Bpar \end{array} \right) = \nabla_{\!\perp} \Bpar \times \vecb = \mu_0 \vecj_{1 \perp}~.
 \end{gather}
 After performing the pull back operation the perpendicular current $\vecj_{1\perp}$ is given by 
 \begin{gather}
 		\vecj_{1\perp} = \frac{Ze B_0}{m} \int \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vperp \left(\fgy - \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right) \right) ~.
 	\label{eq:perpendicularCurrentPullbackLocal}
 \end{gather}
-Inserting the pertrubated perpenedicular current $\vecj_{1 \perp}$ into Ampere's law and apply the same method as in Ref \citenum{Derivation} results in the field equation for the pertrubated parallel magnetic field $B_{1\parallel}$ which can be expressed as
+Inserting the pertrubated perpenedicular current $\vecj_{1 \perp}$ into Ampere's law and apply the same method as in Ref \citenum{Derivation} results in the field equation for the pertrubated parallel magnetic field $\Bpar$ which can be expressed as
 \begin{gather}
     \begin{aligned}
-        &\left(1 + \spec{\sum} \spec{\beta} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b})) e^{-\spec{\cfen}/\spec{T}}\right) B_{1\parallel} = \\
+        &\left(1 + \spec{\sum} \spec{\beta} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b})) e^{-\spec{\cfen}/\spec{T}}\right) \Bpar = \\
 	    &- \spec{\sum} \frac{2\pi \mu_0 B_0}{\spec{m}} \int \dvpar\dmu ~ \mu I_n(\spec{\lambda}) \spec{\fgy}  \\
         &- \spec{\sum} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b}))e^{-\spec{\cfen}/\spec{T}} \frac{\spec{Z}e \mu_0 \specc{n}{R_0}}{B_0} \Phi_1 ~,
     \end{aligned}
@@ -219,12 +219,12 @@ with $\spec{\beta}$ as the plasma beta of a given species. Fourier transformatio
 % \end{gather}
 % where $\vlaright$ represents all terms of the Vlasov Equation which excludes the time derivative of plasma induction $\partial_t \gaApar$. The equation of the $\gaApar$ is already astablished in Chapter \ref{sub:fieldInduction} but for this derivation a recall will be made. The equation for $\gaApar$ is given by
 % \begin{gather}
-%     \nabla^2 A_{1 \parallel} = - \mu_0 j_{1\parallel} = \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}} \int \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \spec{\fgy}~.
+%     \nabla^2 \Apar = - \mu_0 j_{1\parallel} = \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}} \int \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \spec{\fgy}~.
 %     \label{eq:Aparallel}
 % \end{gather}
 % Now the following formalism will be used
 % \begin{gather}
-% 	E_{1\parallel} = - \frac{\partial A_{1\parallel}}{\partial t}~.
+% 	\Epar = - \frac{\partial \Apar}{\partial t}~.
 % \end{gather}
 % Taking the time derivative of Equation (\ref{eq:Aparallel}) results into the field equation for the induced electric field $
 % \Epar$ which can be expressed as
@@ -266,7 +266,7 @@ where the seperation of the Maxwellian was used [Eq. (\ref{eq:maxwellianSeperate
 After performing the Fourier transform and normalize Equation (\ref{eq:fieldElectricLocal}) the final field equation for the inductive electric field is given by
 \begin{gather}
     \begin{aligned}
-        &\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \frac{\FEparN}{2} = \\
+        &\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \FEparN = \\
         &- 2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \int \dvparN \dmuN ~ \vparN J_0(\kperp \spec{\rho}) \specN{\Fvlaright} ~.
     \end{aligned}
     \label{eq:fieldElectricLocalNorm}
