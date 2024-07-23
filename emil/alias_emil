@@ -1,0 +1,56 @@
+#--------------------------------
+# Monitor SLURM job
+#--------------------------------
+
+# View all running monitors
+alias mstat="ps ax | grep python3"
+
+#--------------------------------
+# SLURM Commands
+#--------------------------------
+
+#alias jstat="cd /scratch/bt712347/data && find . -name status.txt -exec cat {} \; && cd /scratch/bt712347/"
+alias jstat="cd /scratch/bt712347/data && find . -name status.txt -exec tail -8 {} \; && cd /scratch/bt712347/"
+alias rstat="squeue -u bt712347"
+alias slurm-monitor="python3 $WORKDIR/slurm_monitor.py"
+
+#--------------------------------
+# MANIPULATE HDF5
+#--------------------------------
+
+alias h5extract='$SCRIPTS_PATH/hdf5_extract.sh'
+alias h5close='$SCRIPTS_PATH/hdf5_close.py'
+
+#--------------------------------
+# Custom locations
+#--------------------------------
+
+alias nas="cd $USERDIR"
+alias work="cd $WORKDIR"
+alias bachelor="cd $USERDIR/Bachelorthesis-Shearingrate-Convergence"
+alias master="cd $USERDIR/Masterthesis-Parallel-Electric-Field"
+
+alias scratch="cd /scratch/bt712347/"
+
+#--------------------------------
+# GKW Shortcuts
+#--------------------------------
+
+alias rename-gkw-run="mv $GKW_RUN/gkw*.x $GKW_RUN/gkw.x && mv $GKW_RUN/gkw*.x.info $GKW_RUN/gkw.x.info"
+alias clean-gkw-run="cd $GKW_RUN && rm -fv !('gkw.x'|'gkw.x.info'|'input.dat') && cd $WORKDIR"
+alias gkwmake-new="gkwmake && rm -f $GKW_RUN/gkw.x && rm -f $GKW_RUN/gkw.x.info && rename-gkw-run"
+alias gkwmake-clean="clean-gkw-run && gkwmake clean"
+
+alias gkw-make="gkwmake-clean && gkwmake-new"
+
+alias gkw-exec="mpirun $GKW_EXEC"
+alias gkw-exec1="gkw-exec -np 1 > output.dat"
+alias gkw-exec8="gkw-exec -np 8 > output.dat"
+alias gkw-exec12="gkw-exec -np 12 > output.dat"
+alias gkw-exec16="gkw-exec -np 16 > output.dat"
+
+alias gkw-run1="cd $GKW_RUN && gkw-exec -np 1 > output.dat && cd $WORKDIR"
+alias gkw-run8="cd $GKW_RUN && gkw-exec -np 8 > output.dat && cd $WORKDIR"
+alias gkw-run12="cd $GKW_RUN && gkw-exec -np 12 > output.dat && cd $WORKDIR"
+alias gkw-run16="cd $GKW_RUN && gkw-exec -np 16 > output.dat && cd $WORKDIR"
+alias gkw-cases="gkw_run_tests 2>&1 | tee output_cases.txt"
