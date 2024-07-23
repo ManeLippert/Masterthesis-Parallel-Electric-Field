@@ -302,7 +302,7 @@ def get_fft_mean_max_shearingrate_amplitude(wexb_mean):
     return wexb_rad_mean_amp, wexb_rad_mean_amp_max
 
 def get_data_info(df_path, boxsize, 
-                  finit = "cosine2", 
+                  finit = 'cosine2', 
                   Ns = 16, Nvpar = 48, Nmu = 9, 
                   rlt = 6.0,
                   dtim = 0.020, krhomax = 1.4):
@@ -319,3 +319,62 @@ def get_data_info(df_path, boxsize,
     df = df.loc[df['finit'] == finit]
     
     return df
+
+# Returns the data from parallel.dat organized by indexes
+# as numpy array or dictionary with column namesa as key
+#
+#   - icol = index column
+#   - isp  = index species
+#   - imod = index binormal gird
+#   - ix   = index radial grid
+#
+# Note that the index starts as always in python at one!
+#
+# numpy array: parallel_array[ical][isp][imod][ix]
+# dictionary : parallel_dict[key][isp][imod][ix]
+def get_parallel_data(hdf5_file, DICTIONARY = False):
+    
+    Nx   = int(hdf5_file['input/grid/n_x_grid'][0])
+    Ns   = int(hdf5_file['input/grid/n_s_grid'][0])
+    Nmod = int(hdf5_file['input/grid/nmod'][0]) 
+    Nsp  = int(hdf5_file['input/grid/number_of_species'][0])
+        
+    parallel_data = hdf5_file['diagnostic/diagnos_mode_struct/parallel'][()]
+    parallel_key  = ['SGRID', 
+                     'PHI', 'iPHI', 
+                     'APAR', 'iAPAR', 
+                     'DENS', 'iDENS',
+                     'ENE_PAR', 'iENE_PAR',
+                     'ENE_PERP', 'iENE_PERP',
+                     'WFLOW', 'iWFLOW',
+                     'BPAR', 'iBPAR',
+                     'EPAR', 'iEPAR']
+    
+    parallel_Nsp, parallel_Nmod, parallel_Nx = [], [], []
+    
+    for icol in range(len(parallel_data)):
+        split_Nsp = np.reshape(parallel_data[icol], (Nsp, Nmod*Nx*Ns))
+        
+        for isp in range(len(split_Nsp)):
+            split_Nmod = np.reshape(split_Nsp[isp], (Nmod, Nx*Ns))
+            
+            for imod in range(len(split_Nmod)):
+                split_Nx = np.reshape(split_Nmod[imod], (Nx, Ns))
+                parallel_Nx.append(split_Nx)
+            
+            parallel_Nmod.append(np.array(parallel_Nx))
+            parallel_Nx = []
+        
+        parallel_Nsp.append(np.array(parallel_Nmod))
+        parallel_Nmod = []
+
+    parallel_array = np.array(parallel_Nsp)
+    
+    if DICTIONARY:
+        parallel_dict = {}
+        for k,v in zip(parallel_key, parallel_array):
+            parallel_dict[k] = v
+        
+        return parallel_dict
+    else:
+        return parallel_array
