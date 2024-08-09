@@ -1,0 +1,3113 @@
+
+ Running with            8  MPI processes
+
+ Number of threads requested when encountering parallel  regions (on each process):           1
+
+
+ With mode_box off input value of krhomax is ignored
+ No 2D diagnostics will be written
+ Ensure you have            1  value(s) in kthrho list
+
+*** WARNING *** Perpendicular dissipation is only with mode_box
+*** WARNING *** spcgeneral: zonal_adiabatic always false for kinetic electrons
+*** WARNING *** spcgeneral: beta_ref=0 input, this run is electrostatic
+*** WARNING *** spcgeneral: When adiabatic_electrons=.false. the initialization option finit="cosine2" (default) may lead to initial bursts. The option finit="cosine5" may be used instead.
+ * Optional namelist eiv_integration MISSING.
+ * Optional namelist linear_terms MISSING.
+ * Optional namelist collisions MISSING.
+ * Optional namelist krook MISSING.
+ * Optional namelist gyroaverage MISSING.
+ * Optional namelist source_time MISSING.
+ * Optional namelist finite_rho_parallel MISSING.
+ * Optional namelist diagnostic MISSING.
+ SZIP compression is available but is not used.
+*** WARNING *** You use the f version of gkw. nlapar will be set to .true.
+  --- parallel report --- 
+
+ given:
+  number of processors =           8
+
+  number of species    =           2
+  n_mu_grid            =          16
+  n_vpar_grid          =          64
+  n_s_grid             =         288
+  n_x_grid             =           1
+
+ The code will:
+
+ parallelise over mu      
+    with
+ procs           =           8
+ points per proc =           2
+
+
+  --- end of parallel report ---
+
+ Geometry numerical accuracy:  2.131E-13
+
+*** WARNING *** xy_slice_ipar out of range, will use central point
+*** WARNING *** Cannot use the field_fsa_kyzero (Rosenbluth-Hinton) diagnostic: There is no k_y=0 mode.
+ No restart file FDS found, intialising new run
+ matrix "matrix of the linear terms" has format gkw-crs
+
+ Von Neumann stability factor for the Alfven wave (also ES limit)
+ Timestep (unscaled for scheme):   1.14715E-03
+ ------------------------------------------------------
+
+ Von Neumann stability factor for linear term: I: vpar_grad_df
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1   1   1   1    2
+ Timestep (unscaled for scheme):   7.67592E-04
+ ------------------------------------------------------
+
+ Von Neumann stability factor for linear term: parallel dissipation
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1 288   1   1    2
+ Timestep (unscaled for scheme):   1.30889E-03
+ ------------------------------------------------------
+
+ Von Neumann stability factor for linear term: IV: trapdf_4d
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1  71   2   1    2
+ Timestep (unscaled for scheme):   3.77515E-03
+ ------------------------------------------------------
+
+ Von Neumann stability factor for linear term: parallel velocity dissipation
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1  71   1   1    2
+ Timestep (unscaled for scheme):   5.29004E-02
+ ------------------------------------------------------
+
+ Von Neumann stability factor for linear term: VII: vpar_grd_phi (Landau damping)
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1   1   1  25    2
+ Timestep (unscaled for scheme):   2.97529E-02
+ ------------------------------------------------------
+
+*** WARNING *** Diffusive dominated: EXP meth -4,-6,-7 should allow larger timesteps
+*** WARNING *** Linear timestep automatically reduced
+
+ Maximum linear timestep estimate:  1.84222E-03
+ Input timestep:                    1.00000E-02
+ Timestep in use:                   1.75011E-03
+
+ matrix "matrix of the linear Maxwell background terms" has format gkw-crs
+ matrix "poisson matrix" has format gkw-crs
+ matrix "additional field matrix, int part" has format gkw-crs
+ matrix "field matrix, diag part" has format gkw-crs
+ matrix "additional field matrix, diag part" has format gkw-crs
+ matrix "f-to-g conversion matrix" has format gkw-crs
+ For initialization of the distribution funciton use amplitude:    1.0000000000000000E-003   0.0000000000000000     
+*** WARNING *** No zero mode exists. Radial diagnostics are disabled.
+
+ Enter main loop (time integration)...
+
+nMode   1 xMode   1 Growth rate  -1.87990E+00
+nMode   1 xMode   1 Real frequency  -1.15742E+00
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   1.41994E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.30777E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.05872E-19   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   1.41994E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.56081E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.02174E-17   0.00000E+00   0.00000E+00
+
+Time step :     100 Normalised time :   1.75011E-01
+
+
+
+ Iteration 1 completed successfully.
+ Predicted runtime:          918  minutes
+
+==============================================================
+ Number of code pieces tracked    17
+==============================================================
+Name                     Number of calls   time spent  percent
+==============================================================
+rk4                                   98  0.20370E+02   100.00
+Calc RHS                             490  0.25007E+02   122.76
+Calc Fields                          490  0.15125E+02    74.25
+fields - poisson mat multiply        490  0.21181E+00     1.04
+fields - MPI allreduce               490  0.14911E+02    73.20
+fields - n4 renorm diag              490  0.12155E-02     0.01
+Copy fdis vector to tmp              980  0.17496E+00     0.86
+Collisions conservation              490  0.64850E-04     0.00
+Init RHS to zero                     490  0.53790E-01     0.26
+MPI radial ghost comms               490  0.11444E-03     0.00
+Non linear terms: FFT, No MPI        490  0.10282E+00     0.50
+MPI other ghost comms                490  0.58413E-04     0.00
+Linear terms matmul, No MPI          490  0.30334E+01    14.89
+Calc Additonal Fields                490  0.65161E+01    31.99
+add fields - int mat multiply        490  0.45061E-04     0.00
+add fields - MPI allreduce           490  0.65144E+01    31.98
+add fields - n4 renorm diag          490  0.72861E-03     0.00
+perflib / other                        - -0.51283E+02  -251.75
+
+   (timing error:  0.000000s)
+==============================================================
+nMode   1 xMode   1 Growth rate  -2.46102E+00
+nMode   1 xMode   1 Real frequency  -2.86197E+00
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   4.41203E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   2.96897E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.22200E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   4.41203E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.41899E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.73066E-17   0.00000E+00   0.00000E+00
+
+Time step :     200 Normalised time :   3.50022E-01
+
+
+nMode   1 xMode   1 Growth rate  -4.31989E-01
+nMode   1 xMode   1 Real frequency  -1.95259E+00
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   5.89342E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.40825E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.97616E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   5.89342E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.78789E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.16678E-17   0.00000E+00   0.00000E+00
+
+Time step :     300 Normalised time :   5.25033E-01
+
+
+nMode   1 xMode   1 Growth rate   1.63974E-01
+nMode   1 xMode   1 Real frequency  -1.76195E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   5.30435E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.11965E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.69957E-19   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   5.30435E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.96115E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.37602E-17   0.00000E+00   0.00000E+00
+
+Time step :     400 Normalised time :   7.00044E-01
+
+
+nMode   1 xMode   1 Growth rate   9.35013E-02
+nMode   1 xMode   1 Real frequency   1.46303E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   3.68094E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   2.41931E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.35665E-19   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   3.68094E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   2.83078E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.31508E-17   0.00000E+00   0.00000E+00
+
+Time step :     500 Normalised time :   8.75055E-01
+
+
+nMode   1 xMode   1 Growth rate  -1.78970E-01
+nMode   1 xMode   1 Real frequency  -1.43018E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.04397E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.83470E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.85759E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.04397E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.98975E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.43319E-17   0.00000E+00   0.00000E+00
+
+Time step :     600 Normalised time :   1.05007E+00
+
+
+nMode   1 xMode   1 Growth rate  -2.53978E-01
+nMode   1 xMode   1 Real frequency  -4.10048E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   5.92789E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.53386E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   9.51967E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   5.92789E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.39824E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.97051E-17   0.00000E+00   0.00000E+00
+
+Time step :     700 Normalised time :   1.22508E+00
+
+
+nMode   1 xMode   1 Growth rate  -1.89276E-01
+nMode   1 xMode   1 Real frequency  -4.98309E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -6.57597E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.54537E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.13587E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -6.57597E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   9.38080E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.62116E-17   0.00000E+00   0.00000E+00
+
+Time step :     800 Normalised time :   1.40009E+00
+
+
+nMode   1 xMode   1 Growth rate  -7.13804E-02
+nMode   1 xMode   1 Real frequency  -3.86528E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.78841E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.73139E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.02251E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.78841E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   5.07346E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.54019E-17   0.00000E+00   0.00000E+00
+
+Time step :     900 Normalised time :   1.57510E+00
+
+
+nMode   1 xMode   1 Growth rate  -7.19893E-02
+nMode   1 xMode   1 Real frequency  -2.89505E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.88832E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.93861E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.34740E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.88832E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.01176E-03   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.49361E-17   0.00000E+00   0.00000E+00
+
+Time step :    1000 Normalised time :   1.75011E+00
+
+
+nMode   1 xMode   1 Growth rate  -9.95561E-02
+nMode   1 xMode   1 Real frequency  -2.12916E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -4.00865E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   2.11647E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -9.67000E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -4.00865E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -3.21063E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.67713E-17   0.00000E+00   0.00000E+00
+
+Time step :    1100 Normalised time :   1.92512E+00
+
+
+nMode   1 xMode   1 Growth rate  -1.21103E-01
+nMode   1 xMode   1 Real frequency  -1.02414E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -5.12861E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   2.28178E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.74611E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -5.12861E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -6.44209E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.52909E-17   0.00000E+00   0.00000E+00
+
+Time step :    1200 Normalised time :   2.10013E+00
+
+
+nMode   1 xMode   1 Growth rate  -1.33814E-01
+nMode   1 xMode   1 Real frequency  -9.34930E-03
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -6.21136E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   2.46269E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.12398E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -6.21136E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -8.61990E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.99958E-17   0.00000E+00   0.00000E+00
+
+Time step :    1300 Normalised time :   2.27514E+00
+
+
+nMode   1 xMode   1 Growth rate  -1.06836E-01
+nMode   1 xMode   1 Real frequency   1.23080E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -7.15256E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   2.67203E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.46066E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -7.15256E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -9.50053E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.85516E-18   0.00000E+00   0.00000E+00
+
+Time step :    1400 Normalised time :   2.45015E+00
+
+
+nMode   1 xMode   1 Growth rate  -6.55162E-02
+nMode   1 xMode   1 Real frequency   3.19290E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -7.93718E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   2.90169E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.92845E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -7.93718E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -9.11300E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.68135E-18   0.00000E+00   0.00000E+00
+
+Time step :    1500 Normalised time :   2.62517E+00
+
+
+nMode   1 xMode   1 Growth rate  -1.89621E-02
+nMode   1 xMode   1 Real frequency   6.66624E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -8.53746E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.14443E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.64599E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -8.53746E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -7.75416E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.90415E-17   0.00000E+00   0.00000E+00
+
+Time step :    1600 Normalised time :   2.80018E+00
+
+
+nMode   1 xMode   1 Growth rate   7.58113E-02
+nMode   1 xMode   1 Real frequency   8.55936E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -8.69648E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.38736E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.17788E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -8.69648E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -5.51665E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.94717E-18   0.00000E+00   0.00000E+00
+
+Time step :    1700 Normalised time :   2.97519E+00
+
+
+nMode   1 xMode   1 Growth rate   1.14377E-01
+nMode   1 xMode   1 Real frequency   6.21412E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -8.74133E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.60181E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.48777E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -8.74133E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -2.85918E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.62395E-18   0.00000E+00   0.00000E+00
+
+Time step :    1800 Normalised time :   3.15020E+00
+
+
+nMode   1 xMode   1 Growth rate   1.71025E-01
+nMode   1 xMode   1 Real frequency   7.09707E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -8.57757E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.79137E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   8.88083E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -8.57757E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -9.20473E-04   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.98707E-17   0.00000E+00   0.00000E+00
+
+Time step :    1900 Normalised time :   3.32521E+00
+
+
+nMode   1 xMode   1 Growth rate   2.14816E-01
+nMode   1 xMode   1 Real frequency   8.34657E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -8.36170E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.92039E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.00657E-16   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -8.36170E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.84967E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.74138E-17   0.00000E+00   0.00000E+00
+
+Time step :    2000 Normalised time :   3.50022E+00
+
+
+nMode   1 xMode   1 Growth rate   2.30334E-01
+nMode   1 xMode   1 Real frequency   6.70005E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -8.11454E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.02112E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   7.90114E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -8.11454E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   2.92258E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.00031E-17   0.00000E+00   0.00000E+00
+
+Time step :    2100 Normalised time :   3.67523E+00
+
+
+nMode   1 xMode   1 Growth rate   2.33275E-01
+nMode   1 xMode   1 Real frequency   5.31046E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -7.82582E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.10628E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.01231E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -7.82582E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.29731E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.31624E-17   0.00000E+00   0.00000E+00
+
+Time step :    2200 Normalised time :   3.85024E+00
+
+
+nMode   1 xMode   1 Growth rate   2.35145E-01
+nMode   1 xMode   1 Real frequency   4.22566E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -7.54575E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.17303E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.24632E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -7.54575E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.01626E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.38984E-18   0.00000E+00   0.00000E+00
+
+Time step :    2300 Normalised time :   4.02525E+00
+
+
+nMode   1 xMode   1 Growth rate   2.24114E-01
+nMode   1 xMode   1 Real frequency   3.98866E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -7.27587E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.24010E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.04414E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -7.27587E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   2.26303E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.49994E-19   0.00000E+00   0.00000E+00
+
+Time step :    2400 Normalised time :   4.20026E+00
+
+
+nMode   1 xMode   1 Growth rate   2.11236E-01
+nMode   1 xMode   1 Real frequency   3.95496E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -6.96699E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.32128E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.12929E-19   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -6.96699E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.24869E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.32428E-17   0.00000E+00   0.00000E+00
+
+Time step :    2500 Normalised time :   4.37528E+00
+
+
+nMode   1 xMode   1 Growth rate   1.99608E-01
+nMode   1 xMode   1 Real frequency   4.06105E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -6.61497E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.41585E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.76897E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -6.61497E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.85297E-03   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.15357E-17   0.00000E+00   0.00000E+00
+
+Time step :    2600 Normalised time :   4.55029E+00
+
+
+nMode   1 xMode   1 Growth rate   1.93263E-01
+nMode   1 xMode   1 Real frequency   4.87757E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -6.16460E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.52570E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.10109E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -6.16460E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -7.30949E-03   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.50084E-18   0.00000E+00   0.00000E+00
+
+Time step :    2700 Normalised time :   4.72530E+00
+
+
+nMode   1 xMode   1 Growth rate   1.96535E-01
+nMode   1 xMode   1 Real frequency   6.29612E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -5.57147E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.64388E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.13767E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -5.57147E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -1.32493E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.17798E-17   0.00000E+00   0.00000E+00
+
+Time step :    2800 Normalised time :   4.90031E+00
+
+
+nMode   1 xMode   1 Growth rate   2.09061E-01
+nMode   1 xMode   1 Real frequency   7.92988E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -4.82868E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.75927E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.33233E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -4.82868E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -1.45067E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -7.76436E-18   0.00000E+00   0.00000E+00
+
+Time step :    2900 Normalised time :   5.07532E+00
+
+
+nMode   1 xMode   1 Growth rate   2.25748E-01
+nMode   1 xMode   1 Real frequency   9.66134E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -3.96747E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.86295E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.90436E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -3.96747E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -1.02695E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.49373E-18   0.00000E+00   0.00000E+00
+
+Time step :    3000 Normalised time :   5.25033E+00
+
+
+nMode   1 xMode   1 Growth rate   2.48369E-01
+nMode   1 xMode   1 Real frequency   1.13682E+00
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -3.01074E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.94819E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.97506E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -3.01074E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -4.44513E-04   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.20638E-18   0.00000E+00   0.00000E+00
+
+Time step :    3100 Normalised time :   5.42534E+00
+
+
+nMode   1 xMode   1 Growth rate   2.78535E-01
+nMode   1 xMode   1 Real frequency   1.26729E+00
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.98961E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   5.00657E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.65699E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.98961E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.43069E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.64192E-18   0.00000E+00   0.00000E+00
+
+Time step :    3200 Normalised time :   5.60035E+00
+
+
+nMode   1 xMode   1 Growth rate   3.17161E-01
+nMode   1 xMode   1 Real frequency   1.29860E+00
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -9.76585E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   5.02485E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.94633E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -9.76585E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.26478E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.14650E-17   0.00000E+00   0.00000E+00
+
+Time step :    3300 Normalised time :   5.77536E+00
+
+
+nMode   1 xMode   1 Growth rate   3.41642E-01
+nMode   1 xMode   1 Real frequency   1.16940E+00
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -6.01025E-05   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   5.01901E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.86039E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -6.01025E-05   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   5.29034E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.63340E-17   0.00000E+00   0.00000E+00
+
+Time step :    3400 Normalised time :   5.95037E+00
+
+
+nMode   1 xMode   1 Growth rate   3.69986E-01
+nMode   1 xMode   1 Real frequency   9.16631E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   8.33727E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.97944E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.48403E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   8.33727E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.24315E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.22975E-17   0.00000E+00   0.00000E+00
+
+Time step :    3500 Normalised time :   6.12539E+00
+
+
+nMode   1 xMode   1 Growth rate   3.88447E-01
+nMode   1 xMode   1 Real frequency   7.25133E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   1.52213E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.91640E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   7.72195E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   1.52213E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   9.00851E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.41138E-17   0.00000E+00   0.00000E+00
+
+Time step :    3600 Normalised time :   6.30040E+00
+
+
+nMode   1 xMode   1 Growth rate   4.02007E-01
+nMode   1 xMode   1 Real frequency   5.36482E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.03053E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.83384E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.05489E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.03053E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.04606E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   8.83382E-18   0.00000E+00   0.00000E+00
+
+Time step :    3700 Normalised time :   6.47541E+00
+
+
+nMode   1 xMode   1 Growth rate   4.12357E-01
+nMode   1 xMode   1 Real frequency   4.63642E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.38500E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.74000E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.31923E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.38500E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.15842E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.38948E-17   0.00000E+00   0.00000E+00
+
+Time step :    3800 Normalised time :   6.65042E+00
+
+
+nMode   1 xMode   1 Growth rate   4.12490E-01
+nMode   1 xMode   1 Real frequency   3.89852E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.58929E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.64387E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.93991E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.58929E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.23814E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.94912E-18   0.00000E+00   0.00000E+00
+
+Time step :    3900 Normalised time :   6.82543E+00
+
+
+nMode   1 xMode   1 Growth rate   4.10026E-01
+nMode   1 xMode   1 Real frequency   3.33061E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.66659E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.54893E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.31853E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.66659E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.28871E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.59630E-19   0.00000E+00   0.00000E+00
+
+Time step :    4000 Normalised time :   7.00044E+00
+
+
+nMode   1 xMode   1 Growth rate   4.03800E-01
+nMode   1 xMode   1 Real frequency   2.98013E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.64543E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.46024E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.49042E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.64543E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.31590E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.51481E-18   0.00000E+00   0.00000E+00
+
+Time step :    4100 Normalised time :   7.17545E+00
+
+
+nMode   1 xMode   1 Growth rate   3.96068E-01
+nMode   1 xMode   1 Real frequency   2.77275E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.54359E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.37922E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -7.42465E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.54359E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.32482E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.76554E-18   0.00000E+00   0.00000E+00
+
+Time step :    4200 Normalised time :   7.35046E+00
+
+
+nMode   1 xMode   1 Growth rate   3.87122E-01
+nMode   1 xMode   1 Real frequency   2.65312E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.38072E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.30731E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.57500E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.38072E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.32096E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.66144E-18   0.00000E+00   0.00000E+00
+
+Time step :    4300 Normalised time :   7.52547E+00
+
+
+nMode   1 xMode   1 Growth rate   3.77926E-01
+nMode   1 xMode   1 Real frequency   2.59535E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.17306E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.24488E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.17865E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.17306E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.30894E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.14079E-18   0.00000E+00   0.00000E+00
+
+Time step :    4400 Normalised time :   7.70048E+00
+
+
+nMode   1 xMode   1 Growth rate   3.68996E-01
+nMode   1 xMode   1 Real frequency   2.57687E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   1.93399E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.19167E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.81115E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   1.93399E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.29238E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.11008E-18   0.00000E+00   0.00000E+00
+
+Time step :    4500 Normalised time :   7.87550E+00
+
+
+nMode   1 xMode   1 Growth rate   3.60578E-01
+nMode   1 xMode   1 Real frequency   2.58119E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   1.67357E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.14698E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.24207E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   1.67357E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.27383E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.13224E-17   0.00000E+00   0.00000E+00
+
+Time step :    4600 Normalised time :   8.05051E+00
+
+
+nMode   1 xMode   1 Growth rate   3.52925E-01
+nMode   1 xMode   1 Real frequency   2.58818E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   1.39936E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.10979E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.41979E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   1.39936E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.25486E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.05042E-17   0.00000E+00   0.00000E+00
+
+Time step :    4700 Normalised time :   8.22552E+00
+
+
+nMode   1 xMode   1 Growth rate   3.46118E-01
+nMode   1 xMode   1 Real frequency   2.59781E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   1.11603E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.07881E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.44690E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   1.11603E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.23620E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.21988E-18   0.00000E+00   0.00000E+00
+
+Time step :    4800 Normalised time :   8.40053E+00
+
+
+nMode   1 xMode   1 Growth rate   3.39759E-01
+nMode   1 xMode   1 Real frequency   2.66577E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   8.28365E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.05331E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.07810E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   8.28365E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.21801E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.90284E-18   0.00000E+00   0.00000E+00
+
+Time step :    4900 Normalised time :   8.57554E+00
+
+
+nMode   1 xMode   1 Growth rate   3.34848E-01
+nMode   1 xMode   1 Real frequency   2.76186E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   5.41533E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.03219E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -7.90988E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   5.41533E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.19959E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.06251E-18   0.00000E+00   0.00000E+00
+
+Time step :    5000 Normalised time :   8.75055E+00
+
+
+nMode   1 xMode   1 Growth rate   3.28997E-01
+nMode   1 xMode   1 Real frequency   2.79300E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.55176E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.01514E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.59865E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.55176E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.18057E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.67678E-18   0.00000E+00   0.00000E+00
+
+Time step :    5100 Normalised time :   8.92556E+00
+
+
+nMode   1 xMode   1 Growth rate   3.24182E-01
+nMode   1 xMode   1 Real frequency   2.83536E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.70868E-04   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.00141E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.01393E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.70868E-04   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.16028E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.28442E-18   0.00000E+00   0.00000E+00
+
+Time step :    5200 Normalised time :   9.10057E+00
+
+
+nMode   1 xMode   1 Growth rate   3.19174E-01
+nMode   1 xMode   1 Real frequency   2.87253E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -3.05023E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.99068E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.30853E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -3.05023E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.13788E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.41105E-18   0.00000E+00   0.00000E+00
+
+Time step :    5300 Normalised time :   9.27558E+00
+
+
+nMode   1 xMode   1 Growth rate   3.14330E-01
+nMode   1 xMode   1 Real frequency   2.89705E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -5.77264E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.98260E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.32833E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -5.77264E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.11284E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.07040E-18   0.00000E+00   0.00000E+00
+
+Time step :    5400 Normalised time :   9.45060E+00
+
+
+nMode   1 xMode   1 Growth rate   3.09602E-01
+nMode   1 xMode   1 Real frequency   2.94030E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -8.41045E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.97717E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.34696E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -8.41045E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.08495E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.99994E-18   0.00000E+00   0.00000E+00
+
+Time step :    5500 Normalised time :   9.62561E+00
+
+
+nMode   1 xMode   1 Growth rate   3.04351E-01
+nMode   1 xMode   1 Real frequency   2.95865E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.09586E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.97458E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.56623E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.09586E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.05410E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.03564E-17   0.00000E+00   0.00000E+00
+
+Time step :    5600 Normalised time :   9.80062E+00
+
+
+nMode   1 xMode   1 Growth rate   2.99618E-01
+nMode   1 xMode   1 Real frequency   3.01462E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.33955E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.97446E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   8.42297E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.33955E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   1.02050E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.38944E-18   0.00000E+00   0.00000E+00
+
+Time step :    5700 Normalised time :   9.97563E+00
+
+
+nMode   1 xMode   1 Growth rate   2.94709E-01
+nMode   1 xMode   1 Real frequency   3.07537E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.57053E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.97700E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   9.06456E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.57053E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   9.84564E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -7.42345E-19   0.00000E+00   0.00000E+00
+
+Time step :    5800 Normalised time :   1.01506E+01
+
+
+nMode   1 xMode   1 Growth rate   2.89956E-01
+nMode   1 xMode   1 Real frequency   3.14213E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.78709E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.98215E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.84548E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.78709E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   9.46925E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.19514E-17   0.00000E+00   0.00000E+00
+
+Time step :    5900 Normalised time :   1.03257E+01
+
+
+nMode   1 xMode   1 Growth rate   2.85471E-01
+nMode   1 xMode   1 Real frequency   3.22121E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.98708E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   3.98989E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.03990E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.98708E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   9.08382E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.49741E-17   0.00000E+00   0.00000E+00
+
+Time step :    6000 Normalised time :   1.05007E+01
+
+
+nMode   1 xMode   1 Growth rate   2.81351E-01
+nMode   1 xMode   1 Real frequency   3.31337E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.16878E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.00009E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.27880E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.16878E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.69760E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.39821E-18   0.00000E+00   0.00000E+00
+
+Time step :    6100 Normalised time :   1.06757E+01
+
+
+nMode   1 xMode   1 Growth rate   2.77659E-01
+nMode   1 xMode   1 Real frequency   3.41641E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.33036E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.01266E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.97751E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.33036E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.31929E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.26290E-18   0.00000E+00   0.00000E+00
+
+Time step :    6200 Normalised time :   1.08507E+01
+
+
+nMode   1 xMode   1 Growth rate   2.74485E-01
+nMode   1 xMode   1 Real frequency   3.52746E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.47028E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.02740E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.04622E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.47028E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.95719E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.71377E-18   0.00000E+00   0.00000E+00
+
+Time step :    6300 Normalised time :   1.10257E+01
+
+
+nMode   1 xMode   1 Growth rate   2.71867E-01
+nMode   1 xMode   1 Real frequency   3.64574E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.58718E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.04414E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.17394E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.58718E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.61879E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.48137E-18   0.00000E+00   0.00000E+00
+
+Time step :    6400 Normalised time :   1.12007E+01
+
+
+nMode   1 xMode   1 Growth rate   2.69977E-01
+nMode   1 xMode   1 Real frequency   3.77426E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.67996E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.06256E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.95519E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.67996E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.31011E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.02953E-18   0.00000E+00   0.00000E+00
+
+Time step :    6500 Normalised time :   1.13757E+01
+
+
+nMode   1 xMode   1 Growth rate   2.68757E-01
+nMode   1 xMode   1 Real frequency   3.91415E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.74817E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.08233E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.09079E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.74817E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.03572E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.37155E-18   0.00000E+00   0.00000E+00
+
+Time step :    6600 Normalised time :   1.15507E+01
+
+
+nMode   1 xMode   1 Growth rate   2.68095E-01
+nMode   1 xMode   1 Real frequency   4.05108E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.79086E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.10333E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.44726E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.79086E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.79991E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.25280E-19   0.00000E+00   0.00000E+00
+
+Time step :    6700 Normalised time :   1.17257E+01
+
+
+nMode   1 xMode   1 Growth rate   2.68183E-01
+nMode   1 xMode   1 Real frequency   4.17775E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.80895E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.12501E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.38497E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.80895E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.60392E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   7.69325E-18   0.00000E+00   0.00000E+00
+
+Time step :    6800 Normalised time :   1.19007E+01
+
+
+nMode   1 xMode   1 Growth rate   2.68796E-01
+nMode   1 xMode   1 Real frequency   4.30528E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.80284E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.14713E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.46328E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.80284E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.44863E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.89255E-18   0.00000E+00   0.00000E+00
+
+Time step :    6900 Normalised time :   1.20758E+01
+
+
+nMode   1 xMode   1 Growth rate   2.70007E-01
+nMode   1 xMode   1 Real frequency   4.42114E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.77377E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.16927E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.27557E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.77377E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.33314E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.88676E-18   0.00000E+00   0.00000E+00
+
+Time step :    7000 Normalised time :   1.22508E+01
+
+
+nMode   1 xMode   1 Growth rate   2.71738E-01
+nMode   1 xMode   1 Real frequency   4.52747E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.72327E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.19104E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.96768E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.72327E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.25602E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -7.67546E-19   0.00000E+00   0.00000E+00
+
+Time step :    7100 Normalised time :   1.24258E+01
+
+
+nMode   1 xMode   1 Growth rate   2.73870E-01
+nMode   1 xMode   1 Real frequency   4.62365E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.65311E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21214E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.10729E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.65311E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.21526E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.03775E-18   0.00000E+00   0.00000E+00
+
+Time step :    7200 Normalised time :   1.26008E+01
+
+
+nMode   1 xMode   1 Growth rate   2.76323E-01
+nMode   1 xMode   1 Real frequency   4.70375E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.56575E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23220E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.10893E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.56575E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.20808E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.34261E-18   0.00000E+00   0.00000E+00
+
+Time step :    7300 Normalised time :   1.27758E+01
+
+
+nMode   1 xMode   1 Growth rate   2.79100E-01
+nMode   1 xMode   1 Real frequency   4.77200E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.46350E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.25091E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.39120E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.46350E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.23189E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.28862E-18   0.00000E+00   0.00000E+00
+
+Time step :    7400 Normalised time :   1.29508E+01
+
+
+nMode   1 xMode   1 Growth rate   2.82030E-01
+nMode   1 xMode   1 Real frequency   4.82171E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.34901E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.26803E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.18392E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.34901E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.28385E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.28242E-18   0.00000E+00   0.00000E+00
+
+Time step :    7500 Normalised time :   1.31258E+01
+
+
+nMode   1 xMode   1 Growth rate   2.85121E-01
+nMode   1 xMode   1 Real frequency   4.85915E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.22499E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.28330E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.00077E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.22499E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.36121E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.72146E-19   0.00000E+00   0.00000E+00
+
+Time step :    7600 Normalised time :   1.33008E+01
+
+
+nMode   1 xMode   1 Growth rate   2.88273E-01
+nMode   1 xMode   1 Real frequency   4.88150E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -2.09420E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.29655E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.61206E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -2.09420E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.46123E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.63374E-18   0.00000E+00   0.00000E+00
+
+Time step :    7700 Normalised time :   1.34758E+01
+
+
+nMode   1 xMode   1 Growth rate   2.91436E-01
+nMode   1 xMode   1 Real frequency   4.88898E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.95936E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.30764E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.59699E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.95936E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.58116E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.63974E-19   0.00000E+00   0.00000E+00
+
+Time step :    7800 Normalised time :   1.36509E+01
+
+
+nMode   1 xMode   1 Growth rate   2.94560E-01
+nMode   1 xMode   1 Real frequency   4.88252E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.82311E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.31650E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   7.15306E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.82311E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.71825E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   7.16050E-19   0.00000E+00   0.00000E+00
+
+Time step :    7900 Normalised time :   1.38259E+01
+
+
+nMode   1 xMode   1 Growth rate   2.97604E-01
+nMode   1 xMode   1 Real frequency   4.86264E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.68796E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.32309E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.59598E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.68796E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   6.86961E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.86101E-18   0.00000E+00   0.00000E+00
+
+Time step :    8000 Normalised time :   1.40009E+01
+
+
+nMode   1 xMode   1 Growth rate   3.00520E-01
+nMode   1 xMode   1 Real frequency   4.83116E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.55633E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.32742E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.33803E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.55633E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.03217E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.94540E-18   0.00000E+00   0.00000E+00
+
+Time step :    8100 Normalised time :   1.41759E+01
+
+
+nMode   1 xMode   1 Growth rate   3.03270E-01
+nMode   1 xMode   1 Real frequency   4.79143E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.43031E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.32955E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.22708E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.43031E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.20278E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.10453E-18   0.00000E+00   0.00000E+00
+
+Time step :    8200 Normalised time :   1.43509E+01
+
+
+nMode   1 xMode   1 Growth rate   3.05849E-01
+nMode   1 xMode   1 Real frequency   4.74362E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.31177E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.32958E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   9.28659E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.31177E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.37811E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.03981E-18   0.00000E+00   0.00000E+00
+
+Time step :    8300 Normalised time :   1.45259E+01
+
+
+nMode   1 xMode   1 Growth rate   3.08154E-01
+nMode   1 xMode   1 Real frequency   4.68721E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.20241E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.32768E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.67795E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.20241E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.55483E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.98352E-20   0.00000E+00   0.00000E+00
+
+Time step :    8400 Normalised time :   1.47009E+01
+
+
+nMode   1 xMode   1 Growth rate   3.10236E-01
+nMode   1 xMode   1 Real frequency   4.62607E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.10351E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.32401E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.73983E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.10351E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.72957E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.14132E-18   0.00000E+00   0.00000E+00
+
+Time step :    8500 Normalised time :   1.48759E+01
+
+
+nMode   1 xMode   1 Growth rate   3.12030E-01
+nMode   1 xMode   1 Real frequency   4.56135E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.01615E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.31877E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.28448E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.01615E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.89910E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.22330E-18   0.00000E+00   0.00000E+00
+
+Time step :    8600 Normalised time :   1.50509E+01
+
+
+nMode   1 xMode   1 Growth rate   3.13539E-01
+nMode   1 xMode   1 Real frequency   4.49457E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -9.41046E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.31218E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.04729E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -9.41046E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.06047E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.31488E-19   0.00000E+00   0.00000E+00
+
+Time step :    8700 Normalised time :   1.52260E+01
+
+
+nMode   1 xMode   1 Growth rate   3.14754E-01
+nMode   1 xMode   1 Real frequency   4.42783E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -8.78597E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.30446E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.26000E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -8.78597E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.21107E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.44724E-19   0.00000E+00   0.00000E+00
+
+Time step :    8800 Normalised time :   1.54010E+01
+
+
+nMode   1 xMode   1 Growth rate   3.15663E-01
+nMode   1 xMode   1 Real frequency   4.36255E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -8.28918E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.29587E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.64718E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -8.28918E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.34872E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.46609E-18   0.00000E+00   0.00000E+00
+
+Time step :    8900 Normalised time :   1.55760E+01
+
+
+nMode   1 xMode   1 Growth rate   3.16278E-01
+nMode   1 xMode   1 Real frequency   4.29956E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -7.91896E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.28661E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.57081E-19   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -7.91896E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.47170E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.39334E-18   0.00000E+00   0.00000E+00
+
+Time step :    9000 Normalised time :   1.57510E+01
+
+
+nMode   1 xMode   1 Growth rate   3.16612E-01
+nMode   1 xMode   1 Real frequency   4.24055E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -7.67127E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.27693E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.43461E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -7.67127E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.57883E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.55095E-18   0.00000E+00   0.00000E+00
+
+Time step :    9100 Normalised time :   1.59260E+01
+
+
+nMode   1 xMode   1 Growth rate   3.16670E-01
+nMode   1 xMode   1 Real frequency   4.18583E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -7.54038E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.26702E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.39200E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -7.54038E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.66941E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.93450E-18   0.00000E+00   0.00000E+00
+
+Time step :    9200 Normalised time :   1.61010E+01
+
+
+nMode   1 xMode   1 Growth rate   3.16486E-01
+nMode   1 xMode   1 Real frequency   4.13637E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -7.51885E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.25709E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.89296E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -7.51885E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.74321E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.30649E-18   0.00000E+00   0.00000E+00
+
+Time step :    9300 Normalised time :   1.62760E+01
+
+
+nMode   1 xMode   1 Growth rate   3.16075E-01
+nMode   1 xMode   1 Real frequency   4.09203E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -7.59788E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.24732E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.28854E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -7.59788E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.80040E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.86083E-18   0.00000E+00   0.00000E+00
+
+Time step :    9400 Normalised time :   1.64510E+01
+
+
+nMode   1 xMode   1 Growth rate   3.15470E-01
+nMode   1 xMode   1 Real frequency   4.05343E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -7.76777E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23786E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.05864E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -7.76777E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.84150E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.88633E-18   0.00000E+00   0.00000E+00
+
+Time step :    9500 Normalised time :   1.66260E+01
+
+
+nMode   1 xMode   1 Growth rate   3.14699E-01
+nMode   1 xMode   1 Real frequency   4.02032E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -8.01824E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22885E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -7.25570E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -8.01824E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.86733E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.58107E-18   0.00000E+00   0.00000E+00
+
+Time step :    9600 Normalised time :   1.68011E+01
+
+
+nMode   1 xMode   1 Growth rate   3.13789E-01
+nMode   1 xMode   1 Real frequency   3.99263E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -8.33859E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22042E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.83017E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -8.33859E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.87886E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -7.62240E-18   0.00000E+00   0.00000E+00
+
+Time step :    9700 Normalised time :   1.69761E+01
+
+
+nMode   1 xMode   1 Growth rate   3.12776E-01
+nMode   1 xMode   1 Real frequency   3.97032E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -8.71808E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21265E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   9.72547E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -8.71808E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.87724E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.33644E-18   0.00000E+00   0.00000E+00
+
+Time step :    9800 Normalised time :   1.71511E+01
+
+
+nMode   1 xMode   1 Growth rate   3.11681E-01
+nMode   1 xMode   1 Real frequency   3.95335E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -9.14608E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.20563E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.70892E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -9.14608E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.86366E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   9.36714E-19   0.00000E+00   0.00000E+00
+
+Time step :    9900 Normalised time :   1.73261E+01
+
+
+nMode   1 xMode   1 Growth rate   3.10532E-01
+nMode   1 xMode   1 Real frequency   3.94115E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -9.61195E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.19940E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.69872E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -9.61195E-03   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.83939E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.00677E-18   0.00000E+00   0.00000E+00
+
+Time step :   10000 Normalised time :   1.75011E+01
+
+
+nMode   1 xMode   1 Growth rate   3.09353E-01
+nMode   1 xMode   1 Real frequency   3.93324E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.01059E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.19400E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.51966E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.01059E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.80567E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.98557E-18   0.00000E+00   0.00000E+00
+
+Time step :   10100 Normalised time :   1.76761E+01
+
+
+nMode   1 xMode   1 Growth rate   3.08162E-01
+nMode   1 xMode   1 Real frequency   3.92970E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.06182E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.18945E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.30656E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.06182E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.76373E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.89635E-18   0.00000E+00   0.00000E+00
+
+Time step :   10200 Normalised time :   1.78511E+01
+
+
+nMode   1 xMode   1 Growth rate   3.06980E-01
+nMode   1 xMode   1 Real frequency   3.92992E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.11400E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.18575E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.32883E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.11400E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.71477E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.74144E-18   0.00000E+00   0.00000E+00
+
+Time step :   10300 Normalised time :   1.80261E+01
+
+
+nMode   1 xMode   1 Growth rate   3.05821E-01
+nMode   1 xMode   1 Real frequency   3.93371E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.16628E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.18288E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   9.80119E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.16628E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.65998E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.37661E-18   0.00000E+00   0.00000E+00
+
+Time step :   10400 Normalised time :   1.82011E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04699E-01
+nMode   1 xMode   1 Real frequency   3.94077E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.21788E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.18081E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.01264E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.21788E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.60049E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.47585E-18   0.00000E+00   0.00000E+00
+
+Time step :   10500 Normalised time :   1.83762E+01
+
+
+nMode   1 xMode   1 Growth rate   3.03623E-01
+nMode   1 xMode   1 Real frequency   3.95076E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.26810E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.17952E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.21297E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.26810E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.53744E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.86711E-18   0.00000E+00   0.00000E+00
+
+Time step :   10600 Normalised time :   1.85512E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02606E-01
+nMode   1 xMode   1 Real frequency   3.96337E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.31629E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.17895E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.12910E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.31629E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.47190E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.93300E-18   0.00000E+00   0.00000E+00
+
+Time step :   10700 Normalised time :   1.87262E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01656E-01
+nMode   1 xMode   1 Real frequency   3.97835E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.36189E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.17906E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   7.78637E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.36189E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.40496E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.01134E-18   0.00000E+00   0.00000E+00
+
+Time step :   10800 Normalised time :   1.89012E+01
+
+
+nMode   1 xMode   1 Growth rate   3.00779E-01
+nMode   1 xMode   1 Real frequency   3.99530E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.40439E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.17980E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.33549E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.40439E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.33765E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.76918E-19   0.00000E+00   0.00000E+00
+
+Time step :   10900 Normalised time :   1.90762E+01
+
+
+nMode   1 xMode   1 Growth rate   2.99984E-01
+nMode   1 xMode   1 Real frequency   4.01394E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.44337E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.18110E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.80358E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.44337E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.27100E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.19095E-18   0.00000E+00   0.00000E+00
+
+Time step :   11000 Normalised time :   1.92512E+01
+
+
+nMode   1 xMode   1 Growth rate   2.99276E-01
+nMode   1 xMode   1 Real frequency   4.03391E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.47847E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.18290E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   8.89951E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.47847E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.20595E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -9.26013E-19   0.00000E+00   0.00000E+00
+
+Time step :   11100 Normalised time :   1.94262E+01
+
+
+nMode   1 xMode   1 Growth rate   2.98662E-01
+nMode   1 xMode   1 Real frequency   4.05488E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.50942E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.18516E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.14894E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.50942E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.14343E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   8.73900E-19   0.00000E+00   0.00000E+00
+
+Time step :   11200 Normalised time :   1.96012E+01
+
+
+nMode   1 xMode   1 Growth rate   2.98144E-01
+nMode   1 xMode   1 Real frequency   4.07642E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.53601E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.18781E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -7.11845E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.53601E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.08426E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.51906E-19   0.00000E+00   0.00000E+00
+
+Time step :   11300 Normalised time :   1.97762E+01
+
+
+nMode   1 xMode   1 Growth rate   2.97727E-01
+nMode   1 xMode   1 Real frequency   4.09823E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.55812E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.19078E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.80430E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.55812E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.02920E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.14742E-19   0.00000E+00   0.00000E+00
+
+Time step :   11400 Normalised time :   1.99513E+01
+
+
+nMode   1 xMode   1 Growth rate   2.97412E-01
+nMode   1 xMode   1 Real frequency   4.12001E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.57569E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.19402E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.14838E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.57569E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.97889E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   7.20310E-19   0.00000E+00   0.00000E+00
+
+Time step :   11500 Normalised time :   2.01263E+01
+
+
+nMode   1 xMode   1 Growth rate   2.97199E-01
+nMode   1 xMode   1 Real frequency   4.14137E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.58873E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.19745E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.12101E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.58873E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.93386E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.85131E-18   0.00000E+00   0.00000E+00
+
+Time step :   11600 Normalised time :   2.03013E+01
+
+
+nMode   1 xMode   1 Growth rate   2.97084E-01
+nMode   1 xMode   1 Real frequency   4.16196E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.59734E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.20103E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.96682E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.59734E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.89452E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.11457E-18   0.00000E+00   0.00000E+00
+
+Time step :   11700 Normalised time :   2.04763E+01
+
+
+nMode   1 xMode   1 Growth rate   2.97068E-01
+nMode   1 xMode   1 Real frequency   4.18152E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.60165E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.20469E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.96737E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.60165E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.86116E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.92862E-18   0.00000E+00   0.00000E+00
+
+Time step :   11800 Normalised time :   2.06513E+01
+
+
+nMode   1 xMode   1 Growth rate   2.97142E-01
+nMode   1 xMode   1 Real frequency   4.19977E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.60187E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.20837E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.42893E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.60187E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.83392E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.22199E-18   0.00000E+00   0.00000E+00
+
+Time step :   11900 Normalised time :   2.08263E+01
+
+
+nMode   1 xMode   1 Growth rate   2.97300E-01
+nMode   1 xMode   1 Real frequency   4.21648E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.59828E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21201E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.57144E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.59828E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.81286E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.84115E-18   0.00000E+00   0.00000E+00
+
+Time step :   12000 Normalised time :   2.10013E+01
+
+
+nMode   1 xMode   1 Growth rate   2.97535E-01
+nMode   1 xMode   1 Real frequency   4.23147E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.59117E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21555E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.16421E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.59117E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.79787E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.25936E-18   0.00000E+00   0.00000E+00
+
+Time step :   12100 Normalised time :   2.11763E+01
+
+
+nMode   1 xMode   1 Growth rate   2.97836E-01
+nMode   1 xMode   1 Real frequency   4.24459E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.58088E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21895E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.24915E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.58088E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.78879E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.65296E-20   0.00000E+00   0.00000E+00
+
+Time step :   12200 Normalised time :   2.13513E+01
+
+
+nMode   1 xMode   1 Growth rate   2.98193E-01
+nMode   1 xMode   1 Real frequency   4.25575E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.56781E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22216E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.69424E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.56781E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.78534E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.62546E-18   0.00000E+00   0.00000E+00
+
+Time step :   12300 Normalised time :   2.15264E+01
+
+
+nMode   1 xMode   1 Growth rate   2.98597E-01
+nMode   1 xMode   1 Real frequency   4.26489E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.55234E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22513E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.74598E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.55234E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.78717E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.70148E-18   0.00000E+00   0.00000E+00
+
+Time step :   12400 Normalised time :   2.17014E+01
+
+
+nMode   1 xMode   1 Growth rate   2.99037E-01
+nMode   1 xMode   1 Real frequency   4.27199E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.53489E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22784E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.12954E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.53489E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.79386E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.63080E-19   0.00000E+00   0.00000E+00
+
+Time step :   12500 Normalised time :   2.18764E+01
+
+
+nMode   1 xMode   1 Growth rate   2.99502E-01
+nMode   1 xMode   1 Real frequency   4.27709E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.51587E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23026E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.30863E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.51587E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.80496E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.83654E-18   0.00000E+00   0.00000E+00
+
+Time step :   12600 Normalised time :   2.20514E+01
+
+
+nMode   1 xMode   1 Growth rate   2.99983E-01
+nMode   1 xMode   1 Real frequency   4.28024E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.49570E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23237E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.66363E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.49570E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.81997E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.84155E-18   0.00000E+00   0.00000E+00
+
+Time step :   12700 Normalised time :   2.22264E+01
+
+
+nMode   1 xMode   1 Growth rate   3.00471E-01
+nMode   1 xMode   1 Real frequency   4.28153E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.47479E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23415E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.62696E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.47479E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.83837E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.60621E-18   0.00000E+00   0.00000E+00
+
+Time step :   12800 Normalised time :   2.24014E+01
+
+
+nMode   1 xMode   1 Growth rate   3.00957E-01
+nMode   1 xMode   1 Real frequency   4.28107E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.45353E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23560E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.02716E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.45353E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.85964E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.47185E-19   0.00000E+00   0.00000E+00
+
+Time step :   12900 Normalised time :   2.25764E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01434E-01
+nMode   1 xMode   1 Real frequency   4.27900E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.43229E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23672E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.16631E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.43229E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.88324E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.77209E-19   0.00000E+00   0.00000E+00
+
+Time step :   13000 Normalised time :   2.27514E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01895E-01
+nMode   1 xMode   1 Real frequency   4.27548E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.41141E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23752E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.50342E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.41141E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.90863E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.69303E-18   0.00000E+00   0.00000E+00
+
+Time step :   13100 Normalised time :   2.29264E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02335E-01
+nMode   1 xMode   1 Real frequency   4.27068E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.39121E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23800E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.17321E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.39121E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.93529E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.77933E-18   0.00000E+00   0.00000E+00
+
+Time step :   13200 Normalised time :   2.31015E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02748E-01
+nMode   1 xMode   1 Real frequency   4.26476E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.37196E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23818E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.30790E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.37196E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.96272E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.83046E-18   0.00000E+00   0.00000E+00
+
+Time step :   13300 Normalised time :   2.32765E+01
+
+
+nMode   1 xMode   1 Growth rate   3.03129E-01
+nMode   1 xMode   1 Real frequency   4.25790E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.35391E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23809E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.57844E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.35391E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   7.99042E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.49998E-18   0.00000E+00   0.00000E+00
+
+Time step :   13400 Normalised time :   2.34515E+01
+
+
+nMode   1 xMode   1 Growth rate   3.03476E-01
+nMode   1 xMode   1 Real frequency   4.25029E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.33728E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23773E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.40140E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.33728E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.01795E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.97377E-18   0.00000E+00   0.00000E+00
+
+Time step :   13500 Normalised time :   2.36265E+01
+
+
+nMode   1 xMode   1 Growth rate   3.03785E-01
+nMode   1 xMode   1 Real frequency   4.24210E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.32222E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23713E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   8.75136E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.32222E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.04486E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.71799E-18   0.00000E+00   0.00000E+00
+
+Time step :   13600 Normalised time :   2.38015E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04054E-01
+nMode   1 xMode   1 Real frequency   4.23352E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.30887E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23632E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.11187E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.30887E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.07077E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.56794E-18   0.00000E+00   0.00000E+00
+
+Time step :   13700 Normalised time :   2.39765E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04280E-01
+nMode   1 xMode   1 Real frequency   4.22471E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.29733E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23532E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.01122E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.29733E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.09531E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -9.57974E-19   0.00000E+00   0.00000E+00
+
+Time step :   13800 Normalised time :   2.41515E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04463E-01
+nMode   1 xMode   1 Real frequency   4.21584E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.28766E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23417E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.08775E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.28766E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.11818E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.11938E-18   0.00000E+00   0.00000E+00
+
+Time step :   13900 Normalised time :   2.43265E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04603E-01
+nMode   1 xMode   1 Real frequency   4.20705E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.27988E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23289E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.54006E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.27988E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.13912E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.76456E-18   0.00000E+00   0.00000E+00
+
+Time step :   14000 Normalised time :   2.45015E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04700E-01
+nMode   1 xMode   1 Real frequency   4.19848E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.27397E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23150E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.27355E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.27397E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.15790E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.50331E-18   0.00000E+00   0.00000E+00
+
+Time step :   14100 Normalised time :   2.46766E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04755E-01
+nMode   1 xMode   1 Real frequency   4.19026E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.26991E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.23004E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.66313E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.26991E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.17437E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.06877E-19   0.00000E+00   0.00000E+00
+
+Time step :   14200 Normalised time :   2.48516E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04770E-01
+nMode   1 xMode   1 Real frequency   4.18249E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.26763E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22854E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.01669E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.26763E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.18842E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   7.31331E-19   0.00000E+00   0.00000E+00
+
+Time step :   14300 Normalised time :   2.50266E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04747E-01
+nMode   1 xMode   1 Real frequency   4.17528E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.26703E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22702E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.96819E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.26703E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.19997E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.24173E-18   0.00000E+00   0.00000E+00
+
+Time step :   14400 Normalised time :   2.52016E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04689E-01
+nMode   1 xMode   1 Real frequency   4.16869E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.26801E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22551E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.83393E-19   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.26801E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.20903E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   7.72561E-19   0.00000E+00   0.00000E+00
+
+Time step :   14500 Normalised time :   2.53766E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04600E-01
+nMode   1 xMode   1 Real frequency   4.16279E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.27043E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22404E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.24692E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.27043E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.21562E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.23924E-18   0.00000E+00   0.00000E+00
+
+Time step :   14600 Normalised time :   2.55516E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04483E-01
+nMode   1 xMode   1 Real frequency   4.15763E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.27416E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22262E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   7.85156E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.27416E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.21981E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.69829E-19   0.00000E+00   0.00000E+00
+
+Time step :   14700 Normalised time :   2.57266E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04343E-01
+nMode   1 xMode   1 Real frequency   4.15322E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.27903E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22128E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.07786E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.27903E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.22171E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.02092E-19   0.00000E+00   0.00000E+00
+
+Time step :   14800 Normalised time :   2.59016E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04183E-01
+nMode   1 xMode   1 Real frequency   4.14959E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.28490E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22003E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.10287E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.28490E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.22146E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -8.81927E-18   0.00000E+00   0.00000E+00
+
+Time step :   14900 Normalised time :   2.60766E+01
+
+
+nMode   1 xMode   1 Growth rate   3.04009E-01
+nMode   1 xMode   1 Real frequency   4.14674E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.29158E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21889E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.31138E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.29158E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.21923E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.78579E-18   0.00000E+00   0.00000E+00
+
+Time step :   15000 Normalised time :   2.62517E+01
+
+
+nMode   1 xMode   1 Growth rate   3.03824E-01
+nMode   1 xMode   1 Real frequency   4.14465E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.29893E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21787E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.28122E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.29893E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.21520E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.05618E-18   0.00000E+00   0.00000E+00
+
+Time step :   15100 Normalised time :   2.64267E+01
+
+
+nMode   1 xMode   1 Growth rate   3.03632E-01
+nMode   1 xMode   1 Real frequency   4.14330E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.30676E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21698E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.83736E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.30676E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.20958E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.54039E-18   0.00000E+00   0.00000E+00
+
+Time step :   15200 Normalised time :   2.66017E+01
+
+
+nMode   1 xMode   1 Growth rate   3.03437E-01
+nMode   1 xMode   1 Real frequency   4.14264E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.31493E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21622E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.66047E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.31493E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.20257E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.29239E-18   0.00000E+00   0.00000E+00
+
+Time step :   15300 Normalised time :   2.67767E+01
+
+
+nMode   1 xMode   1 Growth rate   3.03243E-01
+nMode   1 xMode   1 Real frequency   4.14265E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.32328E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21560E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.24070E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.32328E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.19438E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.95402E-18   0.00000E+00   0.00000E+00
+
+Time step :   15400 Normalised time :   2.69517E+01
+
+
+nMode   1 xMode   1 Growth rate   3.03052E-01
+nMode   1 xMode   1 Real frequency   4.14327E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.33165E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21512E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.66403E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.33165E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.18524E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.79634E-18   0.00000E+00   0.00000E+00
+
+Time step :   15500 Normalised time :   2.71267E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02867E-01
+nMode   1 xMode   1 Real frequency   4.14445E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.33993E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21478E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.98973E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.33993E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.17535E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.96225E-18   0.00000E+00   0.00000E+00
+
+Time step :   15600 Normalised time :   2.73017E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02691E-01
+nMode   1 xMode   1 Real frequency   4.14612E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.34798E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21456E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.01308E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.34798E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.16493E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.14157E-18   0.00000E+00   0.00000E+00
+
+Time step :   15700 Normalised time :   2.74767E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02525E-01
+nMode   1 xMode   1 Real frequency   4.14822E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.35569E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21447E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.01119E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.35569E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.15418E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.99122E-18   0.00000E+00   0.00000E+00
+
+Time step :   15800 Normalised time :   2.76517E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02372E-01
+nMode   1 xMode   1 Real frequency   4.15069E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.36297E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21449E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.48380E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.36297E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.14328E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.47547E-18   0.00000E+00   0.00000E+00
+
+Time step :   15900 Normalised time :   2.78268E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02233E-01
+nMode   1 xMode   1 Real frequency   4.15347E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.36973E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21462E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.20305E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.36973E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.13241E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.70963E-18   0.00000E+00   0.00000E+00
+
+Time step :   16000 Normalised time :   2.80018E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02109E-01
+nMode   1 xMode   1 Real frequency   4.15648E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.37590E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21485E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.11751E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.37590E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.12174E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.56651E-18   0.00000E+00   0.00000E+00
+
+Time step :   16100 Normalised time :   2.81768E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02001E-01
+nMode   1 xMode   1 Real frequency   4.15967E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.38142E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21516E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.10006E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.38142E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.11143E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.46476E-18   0.00000E+00   0.00000E+00
+
+Time step :   16200 Normalised time :   2.83518E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01908E-01
+nMode   1 xMode   1 Real frequency   4.16298E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.38625E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21555E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.58112E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.38625E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.10160E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -7.35114E-18   0.00000E+00   0.00000E+00
+
+Time step :   16300 Normalised time :   2.85268E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01833E-01
+nMode   1 xMode   1 Real frequency   4.16635E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.39037E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21600E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.72680E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.39037E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.09238E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.18570E-18   0.00000E+00   0.00000E+00
+
+Time step :   16400 Normalised time :   2.87018E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01774E-01
+nMode   1 xMode   1 Real frequency   4.16972E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.39376E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21651E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.34998E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.39376E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.08387E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.42994E-18   0.00000E+00   0.00000E+00
+
+Time step :   16500 Normalised time :   2.88768E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01731E-01
+nMode   1 xMode   1 Real frequency   4.17303E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.39641E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21705E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   8.18900E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.39641E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.07616E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.08682E-18   0.00000E+00   0.00000E+00
+
+Time step :   16600 Normalised time :   2.90518E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01705E-01
+nMode   1 xMode   1 Real frequency   4.17625E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.39834E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21763E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.42875E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.39834E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.06931E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -9.09625E-19   0.00000E+00   0.00000E+00
+
+Time step :   16700 Normalised time :   2.92268E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01694E-01
+nMode   1 xMode   1 Real frequency   4.17933E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.39956E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21822E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.38432E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.39956E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.06337E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.33295E-18   0.00000E+00   0.00000E+00
+
+Time step :   16800 Normalised time :   2.94019E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01697E-01
+nMode   1 xMode   1 Real frequency   4.18222E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.40010E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21881E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.98769E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.40010E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.05839E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.76915E-18   0.00000E+00   0.00000E+00
+
+Time step :   16900 Normalised time :   2.95769E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01713E-01
+nMode   1 xMode   1 Real frequency   4.18490E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.40000E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21941E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.58681E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.40000E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.05437E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.14619E-18   0.00000E+00   0.00000E+00
+
+Time step :   17000 Normalised time :   2.97519E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01742E-01
+nMode   1 xMode   1 Real frequency   4.18733E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.39932E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.21999E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.51607E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.39932E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.05131E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.05382E-18   0.00000E+00   0.00000E+00
+
+Time step :   17100 Normalised time :   2.99269E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01782E-01
+nMode   1 xMode   1 Real frequency   4.18950E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.39809E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22055E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   5.19026E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.39809E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.04921E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.38491E-18   0.00000E+00   0.00000E+00
+
+Time step :   17200 Normalised time :   3.01019E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01831E-01
+nMode   1 xMode   1 Real frequency   4.19138E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.39637E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22108E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.56947E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.39637E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.04802E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.16252E-18   0.00000E+00   0.00000E+00
+
+Time step :   17300 Normalised time :   3.02769E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01889E-01
+nMode   1 xMode   1 Real frequency   4.19296E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.39424E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22158E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.70918E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.39424E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.04770E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   8.97383E-18   0.00000E+00   0.00000E+00
+
+Time step :   17400 Normalised time :   3.04519E+01
+
+
+nMode   1 xMode   1 Growth rate   3.01953E-01
+nMode   1 xMode   1 Real frequency   4.19424E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.39174E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22203E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.42572E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.39174E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.04820E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.27719E-18   0.00000E+00   0.00000E+00
+
+Time step :   17500 Normalised time :   3.06269E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02022E-01
+nMode   1 xMode   1 Real frequency   4.19522E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.38895E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22245E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.64308E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.38895E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.04946E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.23693E-18   0.00000E+00   0.00000E+00
+
+Time step :   17600 Normalised time :   3.08019E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02095E-01
+nMode   1 xMode   1 Real frequency   4.19590E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.38593E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22281E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.87280E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.38593E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.05140E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.18545E-19   0.00000E+00   0.00000E+00
+
+Time step :   17700 Normalised time :   3.09770E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02170E-01
+nMode   1 xMode   1 Real frequency   4.19629E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.38275E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22312E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.45739E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.38275E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.05394E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.59131E-18   0.00000E+00   0.00000E+00
+
+Time step :   17800 Normalised time :   3.11520E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02246E-01
+nMode   1 xMode   1 Real frequency   4.19640E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.37947E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22338E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   9.32808E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.37947E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.05699E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.58711E-19   0.00000E+00   0.00000E+00
+
+Time step :   17900 Normalised time :   3.13270E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02321E-01
+nMode   1 xMode   1 Real frequency   4.19626E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.37615E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22359E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.06759E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.37615E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.06048E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.06920E-18   0.00000E+00   0.00000E+00
+
+Time step :   18000 Normalised time :   3.15020E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02395E-01
+nMode   1 xMode   1 Real frequency   4.19588E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.37284E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22374E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.17264E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.37284E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.06431E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.53996E-19   0.00000E+00   0.00000E+00
+
+Time step :   18100 Normalised time :   3.16770E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02467E-01
+nMode   1 xMode   1 Real frequency   4.19529E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.36960E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22385E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   3.67845E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.36960E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.06840E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.00062E-18   0.00000E+00   0.00000E+00
+
+Time step :   18200 Normalised time :   3.18520E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02534E-01
+nMode   1 xMode   1 Real frequency   4.19451E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.36648E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22390E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.00652E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.36648E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.07265E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.39652E-18   0.00000E+00   0.00000E+00
+
+Time step :   18300 Normalised time :   3.20270E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02598E-01
+nMode   1 xMode   1 Real frequency   4.19357E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.36351E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22391E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.90229E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.36351E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.07700E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.46011E-18   0.00000E+00   0.00000E+00
+
+Time step :   18400 Normalised time :   3.22020E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02656E-01
+nMode   1 xMode   1 Real frequency   4.19250E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.36074E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22388E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.99864E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.36074E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.08136E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.83113E-18   0.00000E+00   0.00000E+00
+
+Time step :   18500 Normalised time :   3.23770E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02708E-01
+nMode   1 xMode   1 Real frequency   4.19133E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.35820E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22381E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.50348E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.35820E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.08567E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.39840E-18   0.00000E+00   0.00000E+00
+
+Time step :   18600 Normalised time :   3.25520E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02754E-01
+nMode   1 xMode   1 Real frequency   4.19007E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.35590E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22370E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.57928E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.35590E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.08985E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.18301E-18   0.00000E+00   0.00000E+00
+
+Time step :   18700 Normalised time :   3.27271E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02794E-01
+nMode   1 xMode   1 Real frequency   4.18877E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.35387E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22356E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.79680E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.35387E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.09385E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.77804E-18   0.00000E+00   0.00000E+00
+
+Time step :   18800 Normalised time :   3.29021E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02827E-01
+nMode   1 xMode   1 Real frequency   4.18743E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.35213E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22340E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.89631E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.35213E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.09762E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   6.13257E-18   0.00000E+00   0.00000E+00
+
+Time step :   18900 Normalised time :   3.30771E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02854E-01
+nMode   1 xMode   1 Real frequency   4.18610E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.35067E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22321E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.33163E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.35067E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.10111E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -7.56048E-19   0.00000E+00   0.00000E+00
+
+Time step :   19000 Normalised time :   3.32521E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02873E-01
+nMode   1 xMode   1 Real frequency   4.18478E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.34951E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22301E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -5.20099E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.34951E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.10428E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.07783E-18   0.00000E+00   0.00000E+00
+
+Time step :   19100 Normalised time :   3.34271E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02887E-01
+nMode   1 xMode   1 Real frequency   4.18350E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.34864E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22279E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.21588E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.34864E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.10712E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.00077E-18   0.00000E+00   0.00000E+00
+
+Time step :   19200 Normalised time :   3.36021E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02894E-01
+nMode   1 xMode   1 Real frequency   4.18228E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.34805E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22256E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -3.82698E-18   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.34805E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.10960E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.52101E-18   0.00000E+00   0.00000E+00
+
+Time step :   19300 Normalised time :   3.37771E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02895E-01
+nMode   1 xMode   1 Real frequency   4.18113E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.34774E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22233E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.68942E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.34774E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.11170E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   8.21614E-19   0.00000E+00   0.00000E+00
+
+Time step :   19400 Normalised time :   3.39521E+01
+
+
+nMode   1 xMode   1 Growth rate   3.02891E-01
+nMode   1 xMode   1 Real frequency   4.18006E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.34768E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22210E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -4.55768E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.34768E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.11342E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.61135E-18   0.00000E+00   0.00000E+00
+
+Time step :   19500 Normalised time :   3.41271E+01
+
+
+ **** Growth rate convergence reached for all modes: STOP ****
+nMode   1 xMode   1 Growth rate   3.02881E-01
+nMode   1 xMode   1 Real frequency   4.17909E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :  -1.34787E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   4.22187E-01   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   4.88021E-17   0.00000E+00   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :  -1.34787E-02   0.00000E+00   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :   8.11475E-02   0.00000E+00   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.73277E-18   0.00000E+00   0.00000E+00
+
+Time step :   19600 Normalised time :   3.43022E+01
+
+
+ Internal: stop
+ * wrote restart file FDS, count=       73728
+ * restart_file_version=           2
+ * in   1.49840E-01 seconds
+
+
+ parallel.dat: normalized (rotated in complex plane) by: 
+            (-3.9924084007640332,-0.52293631673936225)
+
+ Run successfully completed, Run time :   5351.2723994255066     
+                     (main loop time):   5337.1783173084259     
+
+==============================================================
+ Number of code pieces tracked    17
+==============================================================
+Name                     Number of calls   time spent  percent
+==============================================================
+rk4                                19598  0.40392E+04   100.00
+Calc RHS                           97990  0.49537E+04   122.64
+Calc Fields                        97990  0.23626E+04    58.49
+fields - poisson mat multiply      97990  0.38573E+02     0.95
+fields - MPI allreduce             97990  0.23235E+04    57.52
+fields - n4 renorm diag            97990  0.24172E+00     0.01
+Copy fdis vector to tmp           195980  0.35350E+02     0.88
+Collisions conservation            97990  0.13924E-01     0.00
+Init RHS to zero                   97990  0.10864E+02     0.27
+MPI radial ghost comms             97990  0.27256E-01     0.00
+Non linear terms: FFT, No MPI      97990  0.20846E+02     0.52
+MPI other ghost comms              97990  0.10568E-01     0.00
+Linear terms matmul, No MPI        97990  0.79271E+03    19.63
+Calc Additonal Fields              97990  0.17310E+04    42.85
+add fields - int mat multiply      97990  0.48249E-01     0.00
+add fields - MPI allreduce         97990  0.17304E+04    42.84
+add fields - n4 renorm diag        97990  0.13476E+00     0.00
+perflib / other                        - -0.99607E+04  -246.60
+
+   (timing error:  0.000000s)
+==============================================================
