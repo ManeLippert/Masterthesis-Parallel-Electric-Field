@@ -1,0 +1,35 @@
+\newcommand{\distance}{5cm}
+
+\tikzstyle{dist} = [
+    rectangle, rounded corners, 
+    minimum width=2cm, 
+    minimum height=1cm,
+    text centered,  
+    align=center,
+    fill=Notagreen!30
+]
+
+\tikzstyle{fields} = [
+    rectangle, rounded corners, 
+    minimum width=3cm, 
+    minimum height=1cm,
+    text centered,  
+    align=center,
+    fill=Notablue!30
+]
+
+\begin{tikzpicture}[node distance=2cm]
+
+        \node (dist)      [dist]                                  {$\df^i$};
+        \node (fields)    [fields, xshift= 3cm]                   {$\Phi_1^i,~\Apar^i,~\Bpar^i$};
+        \node (rhs)       [dist,   xshift= 6cm]                   {$\vlaright^{i+1}$};
+        \node (distp)     [dist,   xshift= 9cm]                   {$\df^{i+1}$};
+        \node (addfields) [fields, xshift= 6cm, yshift = -1.5cm]  {$\Epar^{i+1}$};
+
+        
+        \draw [arrow] (dist)   -- (fields);
+        \draw [arrow] (fields) -- (rhs);
+        \draw [arrow] (rhs)    -- (distp);
+        \draw [arrow] (rhs)    -- (addfields);
+
+\end{tikzpicture}

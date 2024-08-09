@@ -41,6 +41,7 @@
 % Add _s to any Quantity with seperation into Species
 \newcommand{\spec}[1]{#1_s}
 \newcommand{\specN}[1]{#1_{\mathrm{N},s}}
+\newcommand{\speccN}[2]{#1_{#2\mathrm{N},s}}
 \newcommand{\specthN}[1]{#1_{\mathrm{th}\mathrm{N},s}}
 \newcommand{\specR}[1]{#1_{\mathrm{R},s}}
 \newcommand{\specthR}[1]{#1_{\mathrm{th}\mathrm{R},s}}
@@ -100,3 +101,9 @@
 % Blank new page
 %\newcommand*\NewPage{\newpage\null\thispagestyle{empty}\newpage}
 \newcommand*\NewPage{\newpage}
+
+% Equations in arabic order
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+
+% Render in code format
+\newcommand{\code}[1]{{\ttfamily\footnotesize{#1}}}

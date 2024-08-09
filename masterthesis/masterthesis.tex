@@ -5,7 +5,7 @@
 
 
 % Packages
-\documentclass[paper=a4, bibliography=totoc, BCOR=10mm, fontsize=11pt, headsepline, enabledeprecatedfontcommands]{scrreprt}
+\documentclass[paper=a4, bibliography=totoc, BCOR=10mm, fontsize=11pt, enabledeprecatedfontcommands]{scrreprt}
 
 % twoside, openright or openleft
 
@@ -56,7 +56,8 @@
     %
     % 4.Chapter Simulations
     \input{40-simulations.tex}
-    \input{41-local.tex}
+    \input{41-gkw.tex}
+    \input{42-local.tex}
     %\input{42-global.tex}
 
     % 5.Chapter Implementation
@@ -74,8 +75,8 @@
     % Literatur
     %\nocite{*}
     \NewPage
-    \bibliographystyle{references.bst}
-    \bibliography{references.bib}
+    \bibliographystyle{../literature/literaturestyle.bst}
+    \bibliography{../literature/literature.bib}
     %
     % Eid
     %\input{90-eid.tex}

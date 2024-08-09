@@ -1,0 +1,436 @@
+\section{Local Simulations}
+\label{sec:localSimulation}
+
+\subsection{Gyro-Operator in Local Simulations}
+\label{sub:gyroOperatorLocal}
+
+In the case of local simulations the gyrooperators $\mathcal{G}$ and $\mathcal{G}^\dagger$ simplies to
+\begin{gather}
+    \begin{aligned}
+        \ga{\vect{G}}(\x) &= J_0(\lambda) \vect{G}(\X) \\
+        \gad{\vect{G}(\X)} &= J_0(\lambda) \vect{G}(\x)
+    \end{aligned}
+    \label{eq:gyroOperatorLocal}
+\end{gather}
+with $J_0$ as the zeroth order Bessel function. Note, that $\gaBpar(\X) = - I_1(\lambda)\mu \Bpar (\X)$, where $I_1$ is the modified first order Bessel function of first kind defined as $I_1(\lambda) = 2/\lambda \, J_1(\lambda)$. To obtain Equation (\ref{eq:gyroOperatorLocal}) the process of gyroaveraging will be performend in the Fourier space as follows
+\begin{gather}
+    \begin{aligned}
+        \ga{\vect{G}}(\x) &= \ga{\vect{G}}(\X + \vect{r}) = \tga{\left\{\ints \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot (\X + \vect{r})} \right\}} \\
+                          &= \frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ \ints \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} e^{ i k_\perp \rho \cos \theta} \\
+                          &= \ints \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} \underbrace{\frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ e^{ i k_\perp \rho \cos \theta}}_{J_0(\rho k_\perp)}\\
+                          &= \ints \mathrm{d}\vect{k} ~ J_0(\rho k_\perp) \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} = J_0(\lambda) \vect{G}(\X)~,
+    \end{aligned}
+    \label{eq:gyroOperatorLocalDerivation}
+\end{gather}
+where the wave vector $\vect{k}$ is defined as $\vect{k} = \hat{e}_1 k_\perp$. The argument $\lambda$ is given by $i \rho \nabla_{\!\perp}$ which is the inverse Fourier transformated expression of $\rho k_\perp$. The same routine can be applied for the gyrooperator $\mathcal{G}^\dagger$ with the same result. In general the Bessel function and modified Bessel function is defined as \cite{Dannert_PHD}
+\begin{gather}
+    \begin{aligned}
+        J_n(z) &= \left(\frac{z}{2}\right)^n \underbrace{\sum^{\infty}_{\nu = 0} \frac{(\left(- 1/4 z^2\right)^\nu)}{\nu! (1 + \nu) !}}_{I_n(z)}~, \\
+        J_n(z) &= \frac{i^{-n}}{\pi} \int_{0}^{\pi}\!\!\dtheta ~ e^{i z \cos \theta} \cos (n\theta)~.
+    \end{aligned}
+    \label{eq:Besselfunction}
+\end{gather}
+
+\newpage
+
+\subsection*{Integrals with Bessel Function}
+\label{sub:integralBesselfunction}
+
+In the upcoming section there will be often integrals which contain the zeroth Besselfunction $J_0(\lambda)$ and the modified Besselfunctions $I_1(\lambda)$. In general this types of integrals have the form
+\begin{gather}
+	\ints \dvpar\dmu~ \mu^n J_0^{2-n}(\lambda) I_1^n(\lambda) \fm ,
+	\label{eq:integralBesselfunctionGeneral}
+\end{gather}
+wuth the natural number $n = \{0, 1, 2\}$. Equation (\ref{eq:integralBesselfunctionGeneral}) can be seperated together with the Maxwellian [Eq. (\ref{eq:maxwellianSeperated}) with $\upar = 0$, because of reference system to
+\begin{gather}
+	e^{-\cfen/T} \ints \dvpar ~ \fm(\vpar) \ints \dmu ~ \mu^n J_0^{2-n}(\lambda) I_1^n(\lambda) \fm(\mu) ~.
+	\label{eq:integralBesselfunctionGeneralSperated}
+\end{gather}
+The first integral appears in the following types
+\begin{gather}
+	\begin{aligned}
+		1)& \ints \dvpar ~         \fm(\vpar) &\quad &= \frac{\nReq m}{2\pi T} \\
+		2)& \ints \dvpar ~ \vpar   \fm(\vpar) &\quad &= 0 \qquad \mathrm{(Due~to~symmetry)}\\
+		3)& \ints \dvpar ~ \vpar^2 \fm(\vpar) &\quad &= \frac{\nReq}{2\pi} \\
+	\end{aligned}
+	\label{eq:integralMaxwellian}
+\end{gather}
+and the last integral occurs in three types
+\begin{gather}
+	\begin{aligned}
+		1)& \ints \dmu ~ J_0^2(\lambda) \fm(\mu) &\quad &= \frac{T}{B_0} \Gamma_0(b) \\
+		2)& \ints \dmu ~ \mu J_0(\lambda) I_1(\lambda) \fm(\mu) &\quad &= \frac{T^2}{B_0^2} (\Gamma_0(b) - \Gamma_1(b)) \\
+		3)& \ints \dmu ~ \mu^2 I_1^2(\lambda) \fm(\mu) &\quad &= \frac{T^3}{B_0^3} 2 (\Gamma_0(b) - \Gamma_1(b))~, \\
+	\end{aligned}
+	\label{eq:integralBesselfunction}
+\end{gather}
+with the notation $\Gamma_n(b) = I_n(b) e^{-b}$ with the modified Bessel function $I_n$ [Eq. (\ref{eq:Besselfunction})] and $b= - \rhoth^2 \nabla^2\!_\perp$. $\rhoth$ referres the thermal Larmor radius [Eq. (\ref{eq:thermalLarmorradius})]. \cite{GKWDerivation}
+
+\newpage
+
+\subsection{Normalization}
+\label{sub:normalizationLocal}
+
+To implement the field equations from Chapter \ref{sec:fields} into the local version of GKW, one has to normalize the quantities in the equations. This section is based on Ref. \citenum{Peeters2009A}. The reference values are indicated by the index "ref", the dimensionless noramlized by "N" and the relative dimensionless values by the index "R". This section is based on Ref \citenum{Crandall_PHD}, \citenum{GKWDerivation} and \citenum{Peeters2009A}.
+\bigskip
+
+A reference mass $\mref$, density $\nref$, temperature $\Tref$, magnetic field $\Bref$ and major radius $\Rref$ is chosen. With these quantities the reference thermal velocity $\vthref$ and reference thermal Larmor radius $\rhothref$ gets defines as
+\begin{gather}
+    \Tref = \frac{1}{2} \mref \vthref^2 \qquad \rhothref = \frac{\mref \vthref}{e \Bref} = \frac{2 \Tref}{e \Bref \vthref} \qquad  \rhost = \frac{\rhothref}{\Rref}
+\end{gather}
+and for convenience reason the small parameter $\rhost$ got redefined.
+\bigskip
+
+
+\begin{itemize}
+    \item \textbf{Relative Quantities:}
+        \begin{gather}
+            m = \mref \mR \qquad \nReq = \nref \nR \qquad T = \Tref \TR \qquad \vth = \vthref \vthR
+        \end{gather}
+    \item \textbf{Normalized Quantities:}
+        \begin{gather}
+            R = \Rref \RN \qquad B_0 = \Bref \BN \qquad \mu = \frac{2 \Tref \TR}{\Bref} \muN \qquad \vpar = \vth \vparN \\
+            k = \frac{\kN}{\rhost} \qquad \kpar = \frac{\kparN}{\rhost} \qquad \kperp = \frac{\kperpN}{\rhothref} \\
+            \beta = \betaref \betaN \qquad \betaref = \frac{2 \mu_0 \nref \Tref}{\Bref^2}
+        \end{gather}
+        \begin{itemize}
+            \item \textbf{Fluctuating Fields:}
+                \begin{gather}
+                    \Phi_1 = \rhost \frac{\Tref}{e} \PhiN \qquad \Bpar = \rhost \Bref \BparN \\
+                    \Apar = \Bref \Rref \rhost^2 \AparN \qquad \Epar = \frac{2\Tref}{e} \frac{1}{\Rref} \rhost \EparN
+                \end{gather}
+            \item \textbf{Time, Frequency and Centrifugal Energy:}
+                \begin{gather}
+                    t = \frac{\Rref}{\vthref} \tN \qquad \Omega = \dfrac{\vthref}{\Rref} \OmegaN \qquad \cfen = \Tref \cfenN
+                \end{gather}
+            \item \textbf{Distrubution Function and Vlasov Equation:}
+                \begin{gather}
+                    \fgy = \rhost \frac{\nReq}{\vth^3}\fgyN \qquad \fm = \frac{\nReq}{\vth^3} \fmN \qquad \vlaright = \rhost \frac{\vthref}{\Rref}\frac{\nReq}{\vth^3}\vlarightN
+                \end{gather}
+            \item \textbf{Gradients:}
+                \begin{gather}
+                    \nabperp = \frac{1}{\Rref} \nabperpN \qquad \nabpar = \frac{1}{\Rref} \nabparN ~.
+                \end{gather}
+        \end{itemize}
+\end{itemize}
+
+\subsection{Field Equations in Local Simulations}
+\label{sub:fieldLocal}
+
+\subsection*{Perturbated Electrostatic Potential $\Phi_1$}
+\label{sub:fieldPotentialLocal}
+
+With the use of the local of the local gyrooperator the density of the gyrocenter $\ga{n}$ and the polarization density $n_\mathcal{P}$ can be expressed as
+\begin{gather}
+	\ga{n}(\x) = \frac{2\pi B_0}{m} \ints \dvpar\dmu ~ J_0(\lambda) \fgy(\x, \vpar, \mu)~, \\
+    \begin{aligned}
+	    n_\mathcal{P}(\x) = &\frac{Ze \nReq(\x)}{T} e^{-\cfen/T} (\Gamma_0(b) - 1) \Phi_1(\x) \\
+                            &+ \nReq(\x) e^{-\cfen/T} (\Gamma_0(b) - \Gamma_1(b))\frac{\Bpar(\x)}{B_0}~,
+    \end{aligned}
+	\label{eq:particleDensityLocal}
+\end{gather}
+where $n_0$ is a background density, T is a background temperature. To derive the term for the polarization density $n_\mathcal{P}$ the integrals mentioned in Chapter \ref{sub:integralBesselfunction} were performed. The field equation for the perturbated electrostatic potential $\Phi_1$ in the local simulation is given by
+\begin{gather}
+    \begin{aligned}
+        &\spec{\sum} \frac{\spec{Z}^2e^2}{\spec{T}} \specc{n}{R_0} e^{-\spec{\cfen}/\spec{T}} \left(1 - \Gamma_0(\spec{b})\right) \Phi_1(\x) = \\
+        &\spec{\sum} \spec{Z}e \left(\spec{\ga{n}} + \specc{n}{R_0} e^{-\spec{\cfen}/\spec{T}} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b}))\frac{\Bpar(\x)}{B_0} \right)
+        \label{eq:fieldPotentialLocal}
+    \end{aligned}
+\end{gather}
+and takes the following form after performing the Fourier-transform and applying the normalizing expressions [Ch. \ref{sub:normalizationLocal}]
+\begin{gather}
+    \begin{aligned}
+        &\spec{\sum} \spec{Z} \specR{n} e^{-\specN{\cfen}/\specR{T}} \left(1 - \Gamma_0(\spec{b})\right) \frac{\spec{Z}}{\specR{T}} \FPhiN = \\
+        &\spec{\sum} \spec{Z}\specR{n} 2\pi\BN \ints \dvparN \dmuN ~ J_0(k_\perp \spec{\rho}) \speccN{\Ffgy}{1} \\
+        + & \spec{\sum} \spec{Z}\specR{n} e^{-\specN{\cfen}/\specR{T}} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b}))\frac{\FBparN}{\BN}
+        \label{eq:fieldPotentialLocalNorm}
+    \end{aligned}
+\end{gather}
+
+\subsection*{Plasma Induction $\Apar$}
+\label{sub:fieldInductionLocal}
+
+The field equation for the plasma induction follows simply after the use of the local gyroperator and is given by
+\begin{gather}
+	\nabla^2 \Apar = - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \ints \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \specc{\fgy}{1}(\x, \vpar, \mu)~.
+	\label{eq:fieldInductionLocal}
+\end{gather}
+Fourier transformation and normalization yields
+\begin{gather}
+	\kperpN^2 \FAparN = 2 \pi \BN \betaref\spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN\dmuN ~ \vparN J_0(\kperp \spec{\rho}) \speccN{\Ffgy}{1}~.
+	\label{eq:fieldInductionLocalNorm}
+\end{gather}
+
+\subsection*{Perturbated Parallel Magnetic Field $\Bpar$}
+\label{sub:fieldMagneticLocal}
+
+The perpendicular compentent of Ampere's law can be written as 
+\begin{gather}
+	(\nabla \times \Bpar)_\perp = \left( \begin{array}{c} \partial_y \Bpar - \partial_z B_{1 y} \\ \partial_z B_{1x} - \partial_x \Bpar \end{array} \right) = \mu_0 \vecj_{1 \perp}~,
+	\label{eq:perpendicularAmpereLawLocal}
+\end{gather}
+where $z$ is the direction of the equilibrium magnetic field $B_0$. The parallel gradients of the pertrubated magnetic field can be neglegted since they are one order smaller than the perpendicular ones, which results in
+\begin{gather}
+	\left( \begin{array}{r} \partial_y \Bpar \\ - \partial_x \Bpar \end{array} \right) = \nabla_{\!\perp} \Bpar \times \vecb = \mu_0 \vecj_{1 \perp}~.
+\end{gather}
+After performing the pull back operation the perpendicular current $\vecj_{1\perp}$ is given by 
+\begin{gather}
+		\vecj_{1\perp} = \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vperp \left(\df - \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right) \right) ~.
+	\label{eq:perpendicularCurrentPullbackLocal}
+\end{gather}
+Inserting the pertrubated perpenedicular current $\vecj_{1 \perp}$ into Ampere's law and apply the same method as in Ref \citenum{GKWDerivation} results in the field equation for the pertrubated parallel magnetic field $\Bpar$ which can be expressed as
+\begin{gather}
+    \begin{aligned}
+        &\left(1 + \spec{\sum} \spec{\beta} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b})) e^{-\spec{\cfen}/\spec{T}}\right) \Bpar = \\
+	 &- \spec{\sum} \frac{2\pi \mu_0 B_0}{\spec{m}} \ints \dvpar\dmu ~ \mu I_n(\spec{\lambda}) \specc{\fgy}{1}  \\
+        &- \spec{\sum} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b}))e^{-\spec{\cfen}/\spec{T}} \frac{\spec{Z}e \mu_0 \specc{n}{R_0}}{B_0} \Phi_1 ~,
+    \end{aligned}
+    \label{eq:fieldMagneticLocal}
+\end{gather}
+with $\spec{\beta}$ as the plasma beta of a given species. Fourier transformation and normalization with $\beta = \betaref \betaN$ yields
+\begin{gather}
+    \begin{aligned}
+        &\left(1 + \spec{\sum} \frac{\specR{T}\specN{n}}{\BN^2} \betaref (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b})) e^{-\specN{\cfen}/\specR{T}}\right) \FBparN = \\
+        &-\spec{\sum} \betaref 2\pi \BN \specR{T} \specR{n} \ints \dvparN \dmuN ~ \muN I_1(\kperp \spec{\rho}) \speccN{\Ffgy}{1} \\
+        &-\spec{\sum} \betaref (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b})) e^{-\specN{\cfen}/\specR{T}} \frac{\spec{Z}\specR{n}}{2 \BN} \FPhiN ~.
+    \end{aligned}
+\end{gather}
+
+\subsection*{Inductive Electric Field $\vect{E}_{1 \parallel}$}
+\label{sub:fieldEparLocal}
+
+Using the new definition of the gyrooperator into Equation (\ref{eq:preFieldElectric}), one can derive the equation for the included electric field 
+\begin{gather}
+    \begin{aligned}
+        &\left(\nabla^2 - \spec{\sum} \frac{2\pi (\spec{Z}e)^2 \mu_0 B_0}{\spec{T}\spec{m}}  \ints \dvpar\dmu ~ \vpar^2 J_0^2(\spec{\lambda}) F_{\mathrm{M}s} \right) \Epar = \\
+	    &\spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \ints \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \spec{\vlaright} = \mu_0 \frac{\partial j_{1\parallel}}{\partial t}~,
+    \end{aligned}
+	\label{eq:prefieldElectricLocal}
+\end{gather}
+although the relation of $\gaEpar = \tga{\left\{\Epar\right\}} = J_0(\lambda) \Epar$ was used to simplyfied the integral on the right-hand side. The integral itself can be more simplified with performing the integral over $\vpar$ and $\mu$
+\begin{gather}
+	\begin{aligned}
+		I &= \frac{2\pi (Ze)^2 \mu_0 B_0}{Tm}  \ints \dvpar\dmu ~ \vpar^2 J_0^2(\lambda) \fm \\
+		  &= \frac{2\pi (Ze)^2 \mu_0 B_0}{Tm} e^{-\cfen/T} \underbrace{\ints \dvpar ~ \vpar^2 \fm(\vpar)}_{\nReq/2\pi} \underbrace{\ints \dmu ~ J_0^2(\lambda) \fm(\mu)}_{T/B_0~\Gamma_0(b)} \\
+		  &= \frac{(Ze)^2 \mu_0 \nReq}{m} \Gamma_0(b) e^{-\cfen/T} ~,
+	\end{aligned}
+\end{gather}
+where the seperation of the Maxwellian was used [Eq. (\ref{eq:maxwellianSeperated})]. Finally, the field equation for the induced electric field can be written as
+\begin{gather}
+    \begin{aligned}
+        &\left(\nabla^2 - \spec{\sum} \frac{\spec{Z}^2e^2 \mu_0 \specc{n}{R_0}}{\spec{m}} \Gamma_0(\spec{b}) e^{-\spec{\cfen}/\spec{T}} \right) \Epar = \\
+	    &\spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \ints \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \spec{\vlaright} = \mu_0 \frac{\partial j_{1\parallel}}{\partial t}~.
+    \end{aligned}
+	\label{eq:fieldElectricLocal}
+\end{gather}
+After performing the Fourier transform and normalize Equation (\ref{eq:fieldElectricLocal}) the final field equation for the inductive electric field is given by
+\begin{gather}
+    \begin{aligned}
+        &\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \FEparN = \\
+        &- 2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN \dmuN ~ \vparN J_0(\kperp \spec{\rho}) \specN{\Fvlaright} ~.
+    \end{aligned}
+    \label{eq:fieldElectricLocalNorm}
+\end{gather}
+
+\newpage
+
+\subsection{Implementation of $\Epar$ Field Equation into the local version of GKW}
+\label{sub:implementationFieldEpar}
+
+At the beginning, it is necessary to talk about the applied code improvements which where done to ensure a valid implementation of the Faraday Law into GKW.
+\begin{enumerate}
+    \item[(1)] In diagnostics part of GKW serveral subroutines and functions relies on the definition of the variable \code{requirements} from the module \code{diagnostics.f90}. The variable \code{requirements} is a matrix which communticates which type of data or ghost cell needs to be provided to the diagnostic. In the previous implementation the number of columns were hard coded the field identifier for the gyroaveraged parallel magnetic field $\gaBpar$ with \code{BPAR\_GA\_FIELD}. This type of problem was found on multiple occasions throughout the code most noteable in \code{dist.f90} with \code{derivs\_in\_lin\_terms} and the token array in \code{diagnos\_generic.f90}. Furthermore, it was found that in the code more inconvienece sturcutures were established. For example slicing the \code{requirements} matrix was performend by \code{PHI\_FIELD:BPAR\_FIELD} and \code{PHI\_GA\_FIELD:BPAR\_GA\_FIELD}, the start of the tokens for moments with \code{BPAR\_GA\_FIELD} and the definition for the distrubution function to the number 4. To prevent any errors with future modifications, for example an additional new field, new variabels and scheme gets introduced in \code{global.f90} as
+    \begin{itemize}
+        \item \code{MIN\_FIELD} as the smallest number of field identifier, 
+        \item \code{MIN\_GA\_FIELD} as the smallest number of gyroaverages field identifier
+        \item \code{MAX\_FIELD} as the greatest number of field identifier, 
+        \item \code{MAX\_GA\_FIELD} as the greatest number of gyroaverages field identifier,
+        \item \code{DISTRIBUTION} should always have the greatest number and
+        \item \code{MAX\_IDX\_FIELD} is the greatest number, i.e. \code{DISTRIBUTION}.
+    \end{itemize}
+    These changes allowed to the implementation \code{EPAR\_FIELD} and \code{EPAR\_GA\_FIELD} as 
+    \begin{itemize}
+        \item \code{EPAR\_FIELD = 4}, 
+        \item \code{EPAR\_GA\_FIELD = 8}
+    \end{itemize}
+    as well as a new scheme for slicing gets introduced 
+    \begin{itemize}
+        \item \code{PHI\_FIELD:BPAR\_FIELD} replaced by \code{MIN\_FIELD:MAX\_FIELD}, 
+        \item \code{PHI\_GA\_FIELD:BPAR\_GA\_FIELD} replaced by \code{MIN\_GA\_FIELD:MAX\_GA\_FIELD}.
+    \end{itemize}
+    Note that, with the variables the slicing gets performend from \code{PHI\_FIELD} to \code{EPAR\_FIELD} and \code{PHI\_GA\_FIELD} to \code{EPAR\_GA\_FIELD}, since the field indentifier for inductive electric field $\Epar$ is the greatest number in both cases.
+    The field identifier for the distribution functionen $\df$ changed to the number 9 and the size of the arrays or matrix is defined by \code{MAX\_IDX\_FIELD}. It is advicable to make sure that the field identifier for the distrubution function is always the greatest number. Further changes were performed in the whole code to ensure the new scheme. The changed code sequence in \code{global.f90} is listed below
+    \lstinputlisting[language=Fortran, firstline=131, lastline=155]{../gkw/src/global.F90}
+    \item[(2)] Since the calculation of $\Epar$ needs the right-hand side of the Vlasov equation $\vlaright$ and the regular fields perform the calculation with the distrubution function $df$ a seperation between additional and regular field equations were done. For that purpose new the variables gets introduced in \code{dist.f90} that follows the existing notation 
+    \begin{itemize}
+        \item \code{nregular\_fields\_start} as the start of the solutions of the regular fields, i.e. $\Phi$, $\Apar$ and $\Bpar$, in \code{fdisi},
+        \item \code{nadditional\_fields\_start} as the start of the solutions of the additional fields, i.e. $\Epar$, in \code{fdisi},
+        \item \code{nadditional\_fields\_end} as the end of the solutions of the regular fields in \code{fdisi}.
+    \end{itemize}
+    Here, \code{nregular\_fields\_start} replaces the variable \code{n\_phi\_start} to improve the code to a more general naming scheme. Note that, the declaration of the new variables have a specific place in the code and should not be changed. So, if someone wants to add a new regular field the definition of the number of elements in \code{fdisi} and ghost cells should be put above the declaration from \code{nregular\_fields\_start} and \code{nregular\_fields\_end} the same goes for additonal fields. 
+    \newpage
+    \item[(3)] The size of the field matrix \code{poisson\_int} and \code{mat\_field\_diag} in the module \code{matdat.f90} was implemented to big with the size of \code{ntot} which is the number grid points for the whole array \code{fdisi}. To add a more natrual way to define the size of the regular field matrices the new variable \code{nelem\_regular\_fields} gets defined as \code{nelem\_regular\_fields = nf \ast (1 * number\_of\_fields)} in \code{dist.f90}. Here, \code{nf = nsp\ast nx\ast nmu\ast nvpar\ast nmod} stands for the number of grid points for the distribution function $\df$ and \code{number\_of\_fields} is an integer which gets incremented by one for every activated field calculation. In general, \code{nelem\_regular\_fields} is always lesser than \code{ntot} which could improve the runtime of the code, because allocating the field matixes does take less time than before. The declaration of \code{nelem\_regular\_fields} is in the same code block as \code{nregular\_fields\_start} and \code{nregular\_fields\_end} and should not be changed, since it relies heavily on the parameter \code{number\_of\_fields}.
+    \item[(4)] In the subroutine \code{calculate\_fields} in \code{fields.f90} the division of the diagonal parts of the regular fields was performed by a loop starting at \code{nregular\_fields\_start} and ends at the size of \code{mat\_field\_diag}. Since it was very unintuitiv to start a loop not at one further investigations were done and it was found that in \code{linear\_terms.f90} a unity block of the size of \code{nf} was added in the front of the first element of \code{mat\_field\_diag}. This performed action was removed and teh loop in \code{calculate\_fields} adjust to loop from the first element to the last element of \code{mat\_field\_diag}.
+\end{enumerate} 
+
+\newpage
+
+Since the code is capable of parallization the inserted code is written to use the OpenMPI libary. This will from now on uncomment. Further subtile changes or import statements will be uncommented since most of them are just following the eastablished stucture for $\Apar$ and add them for $\Epar$ into the code as well. The reader is referred to the branch in bibucket\cite{FeatureEparBitbucket} for more in depth documentation on the process and implementation.
+
+\subsubsection*{Feature Switch}
+
+For the calculation for $\Epar$ one has to add a switch into \code{control.f90} which relates to the parameter \code{nlepar}. By default, \code{nlepar} is set to \code{.false.} what also relates to the so called g-version of GKW. If \code{nlepar} is set to \code{.true.}, GKW switches to the f-version of the code. Additionally, \code{nlapar} will also be set \code{.true.}, because $\Epar = \partial_t \Apar$, and a warning messages will be printed, that the user now uses the f-version of GKW. If needed a new switch called \code{fversion} could be implemented to turn all necessary switches on until now \code{nlepar} will be used for that purpose. In the subroutine \code{control\_initt} one could add additonal switches for the f-version of GKW into the given code sequence below
+\lstinputlisting[language=Fortran, firstline=670, lastline=674]{../gkw/src/control.f90}
+All upcoming changes in the code can only be accessed if \code{nlepar} is set to \code{.true.} which gets implemented with an if statement.
+
+\subsubsection*{Identifiers \code{iepar} and \code{iepar\_ga}}
+
+In the next step the identifieres for the $\Epar$ and $\gaEpar$ will be defined in \code{dist.f90}. These identifieres makes it possible to access only $\Epar$ and $\gaEpar$ in teh solution \code{fdisi} with the use of the index function from the module \code{index\_function.f90}. The definition of the identifieres follows the already established scheme with the name \code{iepar} and \code{iepar\_ga} although 
+\begin{itemize}
+    \item \code{iepar = 4 + IS\_3D\_FIELD = 12} with \code{IS\_3D\_FIELD = 2\ast\ast 3 = 8} and
+    \item \code{iepar\_ga = 4 + IS\_GYROAVG\_FIELD = 36} with \code{IS\_GYROAVG\_FIELD = 2\ast\ast 5 = 32}.
+\end{itemize}
+It was checked, if the new indentifiers are not used from the existing implementation. \bigskip
+
+\subsubsection*{Definition of Grid Points and Ghost Cells}
+
+To continue the implementation, the grid points of $\Epar$ gets defined as well as the ghost cells of $\Epar$. 
+\lstinputlisting[language=Fortran, firstline=615, lastline=626]{../gkw/src/dist.f90}
+Here, \code{number\_of\_fields} refers to the total number of fields that gets calculated, \code{n\_epar} to the start of the grid points for $\Epar$ in \code{fdisi}, \code{nelem\_epar} for the amount of grid points and \code{nfields} for all grid points for the fields calculation, i.e. additonal and regular fields. Additionally, the maximum number of grid points for $\Epar$ (\code{nf}) gets added to the total number of grid points \code{ntot} with \code{ntot = ntot + nf}, where \code{nf} equals the number of grid points for the distribution function $\df$. \bigskip
+
+It is necessary to mentioned that the implementation of the grid points for $\Epar$ results in an compliation error of GKW. The error is strongly connected to the variable \code{field\_id} which is used to create an quick look up array for the fields in the function \code{get\_field\_index\_lookup\_array} in \code{diagnos\_growth\_freq} and \code{diagnos\_timetrace} as well as in a code section in the subroutine \code{normalise\_init} in the module \code{normalise}. The main problem in the function \code{get\_field\_index\_lookup\_array} is, that the size of the array \code{field\_id} gets allocated with the variable \code{number\_of\_fields} form module \code{dist}. The incremtation of \code{number\_of\_fields} by $\Epar$ results in an GKW error called "bad identifier". Adding $\Epar$ into the function solves the issue. In the subroutine \code{normalise\_init} the code for $\Epar$ and $\gaEpar$ has to be added as well as the allocated size of \code{field\_id} increased by two. At the end in the subroutine \code{calc\_phase} from the module \code{diagnos\_growth\_freq} the size of the array \code{field\_id} has also be incremented by one to prevent any bad identifiers.
+
+\newpage
+
+\subsection*{Calculation of $\Epar$}
+
+Before the implementation for the calculation of $\Epar$ gets discussed it is necessary to talk about the scheme of the calculation. As stated in Equation (\ref{eq:fieldElectricLocalNorm}) is the right-hand side of the Vlasov equation $\vlaright$ necessary for the calculation of $\Epar$. Now, if one takes a closer look at Equations (\ref{eq:modifiedDistrubutionFunction}) and (\ref{eq:gyrocenterDeltafSubVlasovReduced}) it can be derived that
+\begin{gather}
+    \vlaright = \frac{\partial g}{\Dt}~,
+    \label{eq:rightHandSide}
+\end{gather}
+where $g$ is the modified distribution. Since GKW has already implemented $\partial_t g$ as \code{rhs} (right-hand side) and the Vlasov equation with the modified distribution function [Eq (\ref{eq:modifiedGyrocenterDeltafSubVlasov})] has only one additional term containing $g$, which is nonlinear, i.e. ignored in linear cases, \code{rhs} will be used as the right-hand side of the Vlasov equation in the calculation of $\Epar$. In the next step the numerical scheme for every Runge Kutta step ($i \rightarrow i+1$) has to be considered. Figure \ref{fig:numericalSchemeEpar} gives an illustration of the scheme.
+
+\inputgraphicsHere{../pictures/methods/Numerical-Scheme-Epar}{
+	Numerical scheme used to calculate the induced eletric field $\Epar$ in GKW.
+}{fig:numericalSchemeEpar}
+
+As visible, the order of calculations is important in the numerical scheme, i.e. first calculate the right-hand side of the Vlasov equation $\vlaright$ and afterwards the induced electric field $\Epar$. To achieve this structure the calculation of $\Epar$ gets performed in \code{calculate\_rhs} from the module \code{exp\_integration}. For that, the following code lines get added in \code{calculate\_rhs}
+
+\lstinputlisting[language=Fortran, firstline=924, lastline=943]{../gkw/src/exp_integration.F90}
+
+To ensure that the right Runge Kutta step for the calculatation of $\Epar$ is used, the following lines have to be adjusted in the subroutine \code{advance\_large\_step\_explicit} in the same module.
+
+\lstinputlisting[language=Fortran, firstline=231, lastline=243]{../gkw/src/exp_integration.F90}
+
+Note that, before the implementation of $\Epar$ feature, \code{calculate\_fields} gets called for local simulations, but since the calculation of $\Epar$ requires the calculation of the right-hand side $\vlaright$, which calculates the regular fields already in the subroutine \code{calculate\_rhs}, the call for \code{calculate\_fields} can be neglected if $\Epar$ gets calculated.
+
+The calculation of $\Epar$ itself gets performed by \code{calculate\_additonal\_fields} from the module \code{fields}. The subroutine is listed below
+
+\lstinputlisting[language=Fortran, firstline=329, lastline=417]{../gkw/src/fields.F90}
+
+This subroutine has the same structure as \code{calculate\_fields} with two major differences.
+No tearing modes are implemented yet and if tearing modes are activated, a warning gets printed to the console. \code{rhs} and \code{DTIM} as additonal argument for the subroutine. The use of \code{rhs} was already discussed at the beginning of this section but the variable \code{rhs}, which gets communticated in \code{calculate\_rhs} is not already the right right-hand side needed for the calculation of $\Epar$. \code{rhs} is a product of \code{rhs} and the time step \code{deltatime}. This is due to the Runge Kutta scheme for the calculatation of the distribution function $g$. To ensure that the "pure" right-hand side $\vlaright$ will be used for $\Epar$ the argument \code{DTIM} in \code{calculate\_additonal\_fields} is used to divide \code{rhs} by \code{DTIM}, which is \code{deltatime} from \code{calculate\_rhs}. \bigskip
+
+In GKW the calculation of the $\Epar$ field gets performed in two steps:
+\begin{enumerate}
+    \item [(1)] Matrix vector multiplication of the matrix containing the integral part of $\Epar$ with the "pure" right-hand side array \code{rhs/DTIM} \\
+                \code{fdisi = mat\_add\_field\_int \ast~(rhs / DTIM) }
+    \item [(2)] Division of the matrix containing the diagonal part of $\Epar$ \\
+                \code{fdisi = fdisi / mat\_add\_field\_diag}.
+\end{enumerate}
+Both operations gets saved in the solution array \code{fdisi}. The integral part (\code{faraday\_int}) and the diagonal part (\code{faraday\_dia}) gets extracted from Equation (\ref{eq:fieldElectricLocalNorm}) and defined as
+\begin{gather}
+    \begin{aligned}
+        \texttt{faraday\_int} &= - 2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN \dmuN ~ \vparN J_0(\kperp \spec{\rho})\\
+        \texttt{faraday\_dia} &= \left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right)~.
+    \end{aligned}
+\end{gather}
+\code{faraday\_int} and \code{faraday\_dia} both are defined in the module \code{linear\_terms} in two seperate subroutions given below
+
+\lstinputlisting[language=Fortran, firstline=3208, lastline=3264]{../gkw/src/linear_terms.f90}
+
+\lstinputlisting[language=Fortran, firstline=3688, lastline=3780]{../gkw/src/linear_terms.f90}
+
+Note that, the $2\pi$ factor in \code{faraday\_int} is already included in the array \code{intmu} \cite{GKWManual} and will be ignored. Additionally, in \code{faraday\_dia} a new calculation for the $\Gamma_0(b)$ [Eq (\ref{eq:integralBesselfunction})] was introduced from Yann Camenen in February 2023. The integral part will get added to the matrix \code{mat\_add\_field\_int} and the diagonal part in \code{mat\_add\_field\_diag}. Both matrices are defined in \code{matdat}. The size of the matrices gets defined with \code{nelem\_additional\_fields} in \code{dist} with the same method as \code{nelem\_regular\_fields}. It is important to mention, that the declaration has to be after the definition of grid points and ghost cells for the additional fields. Also, during the optimizition of the number of elements for \code{mat\_add\_field\_int} and \code{mat\_add\_field\_diag} it was found that the \code{nelem\_additional\_fields} can not be further reduced. It seems like the field matrices for the additional fields has to account the number of elements for regular field matrices as well. To investigate the matrices, they got added to the diagnostic module \code{diagnos\_matrix} which handles the output.
+
+\subsubsection*{Diagnostic for $\Epar$}
+
+To extract $\Epar$ from \code{fdisi} the subroutine \code{get\_epar} in \code{dist.f90} is needed and is given in greater detail below
+\lstinputlisting[language=Fortran, firstline=1452, lastline=1490]{../gkw/src/dist.f90}
+
+In general the given subroutine checks if any parallization was done and copies all real and complex entries of $\Epar$ into the argument \code{eparc} by looping over all grid points for $s$, $\psi$ and $\zeta$ coordinate. If \code{nlepar} is set to \code{.false.}, a zero data set will be return.
+
+The subroutine \code{get\_epar} gets called in \code{diagnostic} in the subroutine \code{fill\_buffer} where the new defined field identifier \code{EPAR\_FIELD} form module \code{global} is used. 
+\lstinputlisting[language=Fortran, firstline=869, lastline=876]{../gkw/src/diagnostic.f90}
+Here, the calculated values for $\Epar$ gets copied from \code{fdisi} (or \code{fdis\_tmp} for parallization) to the variable \code{epar} from the module \code{dist}. In GKW, each diagnostics computes and outputs a distinct physical quantity. \cite{GKWManual}. In \code{diagnos\_mode\_struct} the code gets adapted for the implementation of $\Epar$ and the new field identifier \code{EPAR\_FIELD} by increasing the size of the arrays \code{mode\_struct\_lus}, \code{mode\_struct\_ids}, \code{mode\_struct\_names}, \code{local\_write} and \code{global\_write} by one element. It is worth mentioning that from now on the variabels \code{epar} and \code{eperp} are renamed to \code{ene\_par} and \code{ene\_perp}. After loading the data for $\Epar$ from the variable \code{epar} in a loop for each species $\spec{N}$, grid points in binormal direction $N_\mathrm{mod}$, radial direction $N_x$ and in field direction $N_s$ into the variable \code{epad}. Then, \code{epad} gets normalised by rotating relative to the maximum electrostatic potential $\Phi_1$ in the complex plane for each mode is $1 + 0i$ and saved in parallel data structure. For that, the end of the loop with variable \code{il} will be increased from 8 to 9 and the parallel data structure got adjusted for two additional columns for $\Epar$, i.e. for real and imaginary values. Note that if \code{nlepar} is set to \code{.false.} the variable \code{epad} returns an zero array. Due to this behaviour the testcases 
+\begin{itemize}
+    \item \code{adiabat\_collisions\_momcon\_ap},
+    \item \code{chease\_cf\_modebox},
+    \item \code{collisions\_please\_dont\_break\_me} and
+    \item \code{zonal\_flow\_sixth\_order\_FD}
+\end{itemize}
+have to adjusted to contain the two zero columns from $\Epar$ in the file \code{parallel.dat}
+
+\subsection{Benchmark of $\Epar$ Field Equation - Linear $\beta$ Scan}
+\label{sub:benchmarkFieldEpar}
+
+To benchmark the implementation of Faraday's law with $\Epar$ multiple linear simulations for different plasma beta $\beta$ gets performed. The goal is to extract the linear growth rate $\gamma$ and frequency $\omega$ to compare the result for $\Epar$ with $\Apar$. General a given quantity saved in \code{parallel.dat} gets saved in two columns containing real and imaginary values. The rows are sorted by the species $\Nsp$, bidnormal gird points $\Nmod$, radial grid points $\Nx$ and grid points along the field line $\Ns$ and therefore $\Nsp\Nmod\Nx\Ns$ rows. Data stored in \code{parallel.dat} is defined as
+\begin{gather}
+    \widehat{L}(s,t) = \exp (\gamma t + i\omega t) \widehat{L}(s)~,
+    \label{eq:parallelData}
+\end{gather}
+where $\widehat{L}(s,t)$ is the calculated data and $\widehat{L}(s)$ is the stored values. \cite{GKWManual} Note that, $\widehat{L}(s,t)$ and $\widehat{L}(s)$ are complex. With Equation (\ref{eq:parallelData}) one can derive the relation between $\FEpar$ and $\FApar$ with Faraday's law [Eq. (\ref{eq:faradayLaw})] as
+\begin{gather}
+    \begin{aligned}
+        \FEpar(s,t) &= - \partial_t \FApar(s,t) \\
+        \exp (\gamma t + i\omega t) \FEpar(s) &= - \partial_t \left[\exp(\gamma t + i\omega t) \FApar(s)\right] \\
+        \FEpar(s) &= - (\gamma + i\omega) \FApar(s) \\
+        \FEpar^\mathrm{R}(s) + i \FEpar^\mathrm{I}(s) &= - (\gamma + i\omega) \left(\FApar^\mathrm{R}(s) + i \FApar^\mathrm{I}(s)\right)
+    \end{aligned} \\[0.5cm] 
+    \Rightarrow \boxed{
+    \begin{aligned}
+        \FEpar^\mathrm{R}(s) &= - \gamma \FApar^\mathrm{R}(s) + \omega \FApar^\mathrm{I}(s) \\ 
+        \FEpar^\mathrm{I}(s) &= - \omega \FApar^\mathrm{R}(s) - \gamma \FApar^\mathrm{I}(s)   
+    \end{aligned}
+    } \nonumber
+    \label{eq:parallelDataEparEqApar}
+\end{gather}
+
+\subsection*{Simulation Setup}
+For the plasma beta following values are investigated
+\begin{gather}
+    \beta \in [0.0,~0.2,~0.4,~0.6,~0.8,~1.0,~1.1,~1.2,~1.4,~1.6]\,\%~.
+\end{gather}
+The values will be set with the parameter \code{beta} in the input file. As base input file the cyclone benchmark case provided by the GKW Team was used. The input file can be found in the GKW repository under \code{doc/input/cyclone}. Here, the input parameter were adjust for linear $\beta$ scan and are displayed in Table \ref{tab:adjustInputparameter}. Additionally following parameter were set
+\begin{itemize}
+    \item \code{NON\_LINEAR} = \code{.false.} to enable linear simulations, 
+    \item \code{nlepar}      = \code{.true.} to enable the calculatation of $\Epar$,
+    \item \code{io\_format}  = \code{'hdf5} output data to \code{hdf5} format,
+    \item \code{gama\_tol}   = $1 \cdot 10^{-5}$ defines tolerance for linear growth rate $\gamma$,
+    \item \code{adiabatic\_electrons} = \code{.false.} to enable kinetic electrons,
+    \item \code{mode\_box}   = \code{.false.} deactivates 2D mode grid and
+    \item $k_\zeta \rho$     = 0.3 defines \enquote{poloidal} wave vector which corresponds roughly to the position of the maximum of the nonlinear transport spectrum in GKW.
+\end{itemize}
+\begin{center}
+    \centering
+    \captionsetup{type=table}
+    \begin{tabular}{c c c | c c c c c c c}
+        \code{DTIM} & \code{NTIME} & \code{NAVERAGE} & $\Nmod$ & $\Nx$ & $\Ns$ & $\Nvpar$ & $\Nmu$ & $\Nsp$ & \code{nperiod} \\ \hline
+        0.01 & 2000 & 100 & 1 & 1 & 288 & 64 & 16 & 2 & 5
+    \end{tabular}
+    \captionof{table}{Adjusted input parameter for linear $\beta$ scan: \textbf{Variables}}
+    \label{tab:adjustInputparameter}
+\end{center}
+The simulations were performed local on the maschine \code{btppx25} and in the University Bayreuth cluster \code{emil}. Since the simulation perfroms well on the cluster it was shown that parallelization with OpenMPI works. The result of the linear $\beta$ scan can be seen in Figure \ref{fig:betaScan}.
+
+\includegraphicsHere{../pictures/Uni_Logo.png}{
+    Growth rate $\gamma$ and frequency $\omega$ for different plasma beta $\beta$ benchmarked with linear $\beta$ scan
+}{fig:betaScan}{0.5}
+
+% TODO: Add code from gaEpar
+
+% For $\gaEpar$ the function \code{get\_averaged\_epar} in \code{fields} gets used and works like \code{get\_epar}. Here, the function differs between local and global simulations. As defined in Chapter \ref{sub:gyroOperatorLocal} is the gyroaverage of a quantity in a local simulation the product with the zeroth order Besselfunction $J_0$ and the quantity self, i.e. $\gaEpar = J_0 \Epar$, which gets calculated in \code{get\_averaged\_epar}. If the simulation is global it will return the calculated $\gaEpar$ from \code{fdisi} and as in \code{get\_epar} if \code{nlepar} is \code{.false.} it will return a zero data set. The function \code{get\_averaged\_epar} is listed below for a closer look.
+% \lstinputlisting[language=Fortran, firstline=114, lastline=140]{../gkw/src/fields.f90}
+
+% number of grid points for \gaEpar as well... 
