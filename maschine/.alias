@@ -1,0 +1,40 @@
+#--------------------------------
+# Custom locations
+#--------------------------------
+
+alias nas="cd $USERDIR"
+alias work="cd $WORKDIR"
+alias bachelor="cd $USERDIR/Bachelorthesis-Shearingrate-Convergence"
+alias master="cd $USERDIR/Masterthesis-Parallel-Electric-Field"
+
+#--------------------------------
+# SSH print
+#--------------------------------
+
+alias print="lp -d btppp2"
+
+#--------------------------------
+# GKW Shortcuts
+#--------------------------------
+
+alias gkw-rename-run="mv $GKW_RUN/gkw*.x $GKW_RUN/gkw.x && mv $GKW_RUN/gkw*.x.info $GKW_RUN/gkw.x.info"
+
+alias gkw-clean-run="cd $GKW_RUN && rm -fv !('gkw.x'|'gkw.x.info'|'input.dat') && cd $WORKDIR"
+alias gkw-clean-data="find $WORKDIR/data -type f \( -name "slurm*" -o -name "*_first.dat" \) -print -delete 2>/dev/null"
+
+alias gkw-make-new="gkwmake && rm -f $GKW_RUN/gkw.x && rm -f $GKW_RUN/gkw.x.info && gkw-rename-run"
+alias gkw-make-clean="gkw-clean-run && gkwmake clean"
+alias gkw-make="gkw-make-clean && gkw-make-new"
+
+alias gkw-exec="mpirun $GKW_EXEC"
+alias gkw-exec1="gkw-exec -np 1 > output.dat"
+alias gkw-exec8="gkw-exec -np 8 > output.dat"
+alias gkw-exec12="gkw-exec -np 12 > output.dat"
+alias gkw-exec16="gkw-exec -np 16 > output.dat"
+
+alias gkw-run1="cd $GKW_RUN && gkw-exec -np 1 > output.dat && cd $WORKDIR"
+alias gkw-run8="cd $GKW_RUN && gkw-exec -np 8 > output.dat && cd $WORKDIR"
+alias gkw-run12="cd $GKW_RUN && gkw-exec -np 12 > output.dat && cd $WORKDIR"
+alias gkw-run16="cd $GKW_RUN && gkw-exec -np 16 > output.dat && cd $WORKDIR"
+
+alias gkw-cases="gkw_run_tests 2>&1 | tee output_cases.txt"
