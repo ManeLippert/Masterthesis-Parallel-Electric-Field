@@ -291,9 +291,10 @@ TSWLatexianTemp*
 *Notes.bib
 
 # gkw ignore
-*.h5
-FDS
+#*.h5
+#FDS
 DM*
+*_first.dat
 *.o
 *#
 *~

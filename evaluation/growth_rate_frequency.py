@@ -15,7 +15,7 @@ sys.path.insert(1, '../python')
 
 import h5tools, plot, gkw
 
-picDir = '../pictures/evaluation/benchmark'
+picDir = '../pictures/evaluation/benchmark_cluster'
 # Create target Directory if don't exist
 if not os.path.exists(picDir):
     os.makedirs(picDir)
@@ -26,7 +26,10 @@ colors = [['#a11a5b', '#029e73', '#de8f05', '#0173b2'],
 
 # BETA-SCAN ===========================
 
-data_path          = "../data/benchmark/beta_scan"
+data_path          = "../data/benchmark/beta_scan_cluster"
+
+isp, imod, ix = 0, 0, 0
+
 beta, beta_percent = [], []
 growth_rates       = []
 frequencies        = []
@@ -64,11 +67,11 @@ for b in range(0,17):
     
             times.append(time/Naverage)
     
-            s_grid.append(parallel_dict["SGRID"][0][0][0])
-            apar.append(parallel_dict["APAR"][0][0][0])
-            iapar.append(parallel_dict["iAPAR"][0][0][0])
-            epar.append(parallel_dict["EPAR"][0][0][0])
-            iepar.append(parallel_dict["iEPAR"][0][0][0])
+            s_grid.append(parallel_dict["SGRID"][isp][imod][ix])
+            apar.append(parallel_dict["APAR"][isp][imod][ix])
+            iapar.append(parallel_dict["iAPAR"][isp][imod][ix])
+            epar.append(parallel_dict["EPAR"][isp][imod][ix])
+            iepar.append(parallel_dict["iEPAR"][isp][imod][ix])
         
     except (FileNotFoundError, BlockingIOError):
         print(f"gkwdata.h5 for beta{b/1000:.3f} does not exist or is busy")

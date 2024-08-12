@@ -1,17 +1,17 @@
-rk4                                19598  0.41771E+04   100.00
-Calc RHS                           78588  0.38125E+04    91.27
-Calc Fields                        78588  0.27874E+03     6.67
-fields - poisson mat multiply      78588  0.27836E+03     6.66
-fields - MPI allreduce             78588  0.11579E-01     0.00
-fields - n4 renorm diag            78588  0.19946E+00     0.00
-Copy fdis vector to tmp           157176  0.21346E+03     5.11
-Collisions conservation            78588  0.11852E-01     0.00
-Init RHS to zero                   78588  0.68036E+02     1.63
-MPI radial ghost comms             78588  0.17597E-01     0.00
-Non linear terms: FFT, No MPI      78588  0.13183E+03     3.16
-MPI other ghost comms              78588  0.16164E-01     0.00
-Linear terms matmul, No MPI        78588  0.29857E+04    71.48
-Calc Additonal Fields              78588  0.13446E+03     3.22
-add fields - int mat multiply      78588  0.13419E+03     3.21
-add fields - MPI allreduce         78588  0.71850E-02     0.00
-add fields - n4 renorm diag        78588  0.12011E+00     0.00
+rk4                                19598  0.66906E+02   100.00
+Calc RHS                           78588  0.63712E+02    95.23
+Calc Fields                        78588  0.42317E+01     6.32
+fields - poisson mat multiply      78588  0.32802E+01     4.90
+fields - MPI allreduce             78588  0.87471E+00     1.31
+fields - n4 renorm diag            78588  0.46196E-01     0.07
+Copy fdis vector to tmp           157176  0.32719E+01     4.89
+Collisions conservation            78588  0.11537E-01     0.02
+Init RHS to zero                   78588  0.57153E+00     0.85
+MPI radial ghost comms             78588  0.15924E-01     0.02
+Non linear terms: FFT, No MPI      78588  0.14677E+01     2.19
+MPI other ghost comms              78588  0.11742E+01     1.75
+Linear terms matmul, No MPI        78588  0.43497E+02    65.01
+Calc Additonal Fields              78588  0.93821E+01    14.02
+add fields - int mat multiply      78588  0.78336E+01    11.71
+add fields - MPI allreduce         78588  0.14608E+01     2.18
+add fields - n4 renorm diag        78588  0.37858E-01     0.06
