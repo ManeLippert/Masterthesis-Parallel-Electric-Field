@@ -15,18 +15,14 @@ sys.path.insert(1, '../python')
 
 import h5tools, plot, gkw
 
-picDir = '../pictures/evaluation/benchmark_cluster'
+picDir = '../pictures/evaluation/benchmark'
 # Create target Directory if don't exist
 if not os.path.exists(picDir):
     os.makedirs(picDir)
 
-colors = [['#a11a5b', '#029e73', '#de8f05', '#0173b2'],
- 		  ['#66c2a5', 'orange',  '#dbb757', 'red', '#0173b2'],
-		  ['#87429b', '#66c2a5', '#d55e00', '#d55e00', '#56b4e9']]
-
 # BETA-SCAN ===========================
 
-data_path          = "../data/benchmark/beta_scan_cluster"
+data_path          = "../data/benchmark/beta_scan"
 
 isp, imod, ix = 0, 0, 0
 

@@ -320,7 +320,7 @@ def get_data_info(df_path, boxsize,
     
     return df
 
-# Returns the data from parallel.dat organized by indexes
+# Returns the data from parallel data organized by indexes
 # as numpy array or dictionary with column namesa as key
 #
 #   - icol = index column
@@ -328,7 +328,9 @@ def get_data_info(df_path, boxsize,
 #   - imod = index binormal gird
 #   - ix   = index radial grid
 #
-# Note that the index starts as always in python at one!
+# Note that the index starts as always in python at zero!
+# If multipile runs gets performed the last data set will 
+# be extracted
 #
 # numpy array: parallel_array[ical][isp][imod][ix]
 # dictionary : parallel_dict[key][isp][imod][ix]
@@ -338,8 +340,8 @@ def get_parallel_data(hdf5_file, DICTIONARY = False):
     Ns   = int(hdf5_file['input/grid/n_s_grid'][0])
     Nmod = int(hdf5_file['input/grid/nmod'][0]) 
     Nsp  = int(hdf5_file['input/grid/number_of_species'][0])
-        
-    parallel_data = hdf5_file['diagnostic/diagnos_mode_struct/parallel'][()]
+    
+    parallel_data = hdf5_file['diagnostic/diagnos_mode_struct/parallel'][:, - Nx*Ns*Nmod*Nsp:]
     parallel_key  = ['SGRID', 
                      'PHI', 'iPHI', 
                      'APAR', 'iAPAR', 
