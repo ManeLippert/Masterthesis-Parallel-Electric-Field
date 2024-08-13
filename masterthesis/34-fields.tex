@@ -15,8 +15,11 @@ To obtain a closed system the Vlasov equation gets combined with the Maxwell equ
 \end{gather}
 where the index $s$ refers to the species of particles, i.e. proton or electron and $\spec{\sum}$ means that all species will be taken into account. For simplicity of the derivation the "s" index gets droped if not explicitly needed. The Maxwell's equation contain densities $n$ and currents $\vecj$ of part icles which can be expressed through the moments of the particle phase space distribution function $f$ as follows
 \begin{gather}
-	n(\x) = \ints \dvelo ~ f(\x, \velo) \\
-	j_\parallel = Ze \ints \dvelo ~ \vpar f(\x, \velo) \qquad \vecj_\perp = Ze \ints \dvelo ~ \vperp f(\x, \velo)~.
+	\begin{aligned}
+		n(\x) &= \ints \dvelo ~ f(\x, \velo) \\
+		j_\parallel &= Ze \ints \dvelo ~ \vpar f(\x, \velo) \\
+		\vecj_\perp &= Ze \ints \dvelo ~ \vperp f(\x, \velo)~.
+	\end{aligned}
 	\label{eq:momentsParticleSpace}
 \end{gather}
 \newpage
@@ -38,7 +41,7 @@ where $\widetilde{\Phi}_1$ donates to the oscillating part of the pertubation $\
 The particle density $n$ and currents $\vecj$ of one species can be expressed with the guiding center distribution function $\fgc$ as
 \begin{gather}
 	\begin{aligned}
-		n(\x) &= \ints \dvelo ~ f(\x, \velo) = \frac{B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \fgc \\
+		n &= \ints \dvelo ~ f(\x, \velo) = \frac{B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \fgc \\
 		j_\parallel &= Ze \ints \dvelo ~ \vpar f(\x, \velo)= \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vpar \fgc \\
 		\vecj_\perp &= Ze \ints \dvelo ~ \vperp f(\x, \velo) = \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vperp \fgc ~,
 	\end{aligned}
@@ -71,20 +74,20 @@ where $\mathcal{G}^\dagger$ the hermitian conjugate of $\mathcal{G}$\cite{Told_P
 which performs a gyroaverage of the field value at all gyrocenter positions $\X$ with particle position $\x$ in their trajectory. \cite{Maurer_PHD}
 \newpage
 
-\subsection{Perturbated Electrostatic Potential $\Phi_1$}
+\subsection{Coulomb's Law - Perturbated Electrostatic Potential $\Phi_1$}
 \label{sub:fieldPotential}
 
 To evaluate the pertrubated electrostatic potential $\Phi_1$ the modified guiding center distribution function $\fgc$ [Eq. (\ref{eq:pullback})] gets inserted into the equation for the particle density $n(\x)$ which results in
 \begin{gather}
 	\begin{aligned}
-		n(\x) &= \frac{B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \left(\fgy - \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right) \right)\\
-		     &= \bar{n}(\x) + n_\mathcal{P}(\x)~,
+		n_1(\x) &= \frac{B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \left(\df - \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right) \right)\\
+		     &= \ga{n}_1(\x) + n_\mathcal{P}(\x)~,
 	\end{aligned}
 	\label{densityPullback}
 \end{gather}
-with the density of the gyrocenter $\ga{n}(\x)$ and the variations on the gyro orbit to the particle density $n_\mathcal{P}(\x)$ which describes the polarization effects of the fluctuating fields on the gyro orbit \cite{Brizard2007}. The gyrocenter density can be simplyfied with the gyroperator $\mathcal{G}^\dagger$ [Eq. (\ref{eq:gyroOperatorDagger})] to
+with the density of the gyrocenter $\ga{n}_1(\x)$ and the variations on the gyro orbit to the particle density $n_\mathcal{P}(\x)$ which describes the polarization effects of the fluctuating fields on the gyro orbit \cite{Brizard2007}. The gyrocenter density can be simplyfied with the gyroperator $\mathcal{G}^\dagger$ [Eq. (\ref{eq:gyroOperatorDagger})] to
 \begin{gather}
-		\ga{n}(\x) = \frac{B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \fgy = \frac{2\pi B_0}{m} \ints \dvpar\dmu ~ \gad{\fgy}~.
+		\ga{n}_1(\x) = \frac{B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \df = \frac{2\pi B_0}{m} \ints \dvpar\dmu ~ \gad{\df}~.
 	\label{eq:gyrocenterDensity}
 \end{gather}
 The polarization density $n_\mathcal{P}$ is given by
@@ -92,7 +95,7 @@ The polarization density $n_\mathcal{P}$ is given by
 	n_\mathcal{P}(\x) =  - \frac{2\pi B_0}{m} \ints \dvpar\dmu ~ \frac{\fm}{T} \left( Ze \left(\Phi_1(\x) - \gad{\gaPhi}(\x) \right) -  \mu \gad{\gaBpar} \right) ~,
 	\label{eq:polarizationDensity}
 \end{gather}
-where $n_0$ is a background density, T is a background temperature. To derive the term for the polarization density $n_\mathcal{P}$ the oscillating Part of the electro static potential got replaced with $\widetilde{\Phi}_1(\X+ \rrho) = \Phi_1(\X + \rrho) - \gaPhi (\X)$ and the gyrooperator $\mathcal{G}^\dagger$ were used. Taking everything into account and insert it into the quaisneutrality equation $\spec{\sum} \spec{Z} e \, \spec{n} = 0$ the field equation for the perturbated electrostatic potential $\Phi_1$ is given by
+where $\nReq$ is a background density and $T$ is a background temperature. To derive the term for the polarization density $n_\mathcal{P}$ the oscillating Part of the electro static potential got replaced with $\widetilde{\Phi}_1(\X+ \rrho) = \Phi_1(\X + \rrho) - \gaPhi (\X)$ and the gyrooperator $\mathcal{G}^\dagger$ were used. Taking everything into account and insert it into the quaisneutrality equation $\spec{\sum} \spec{Z} e \, \specc{n}{1} = 0$ the field equation for the perturbated electrostatic potential $\Phi_1$ is given by
 \begin{gather}
 	\begin{aligned}
 		&\spec{\sum} \frac{\spec{Z^2} e^2}{\spec{m}} \ints \dvpar\dmu ~ \frac{\speccrm{F}{M}}{\spec{T}} \left(\Phi_1(\x) - \gad{\gaPhi}(\x) \right) =  \\
@@ -101,36 +104,37 @@ where $n_0$ is a background density, T is a background temperature. To derive th
 	\label{eq:fieldPotential}
 \end{gather}
 
+%  TODO: Exclude Bpar from work 
+% \newpage
+
+% \subsection{Perturbated Parallel Magnetic Field $\Bpar$}
+% \label{sub:fieldMagnetic}
+
+% The perpendicular compentent of Ampere's law can be written as 
+% \begin{gather}
+% 	(\nabla \times \Bpar)_\perp = \left( \begin{array}{c} \partial_y \Bpar - \partial_z B_{1 y} \\ \partial_z B_{1x} - \partial_x \Bpar \end{array} \right) = \mu_0 \vecj_{1 \perp}~,
+% 	\label{eq:perpendicularAmpereLaw}
+% \end{gather}
+% where $z$ is the direction of the equilibrium magnetic field $B_0$. The parallel gradients of the pertrubated magnetic field can be neglegted since they are one order smaller than the perpendicular ones, which results in
+% \begin{gather}
+% 	\left( \begin{array}{r} \partial_y \Bpar \\ - \partial_x \Bpar \end{array} \right) = \nabla_{\!\perp} \Bpar \times \vecb = \mu_0 \vecj_{1 \perp}~.
+% \end{gather}
+% After performing the pull back operation the perpendicular current $\vecj_{1\perp}$ is given by 
+% \begin{gather}
+% 		\vecj_{1\perp} = \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vperp \left(\df - \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right) \right) ~.
+% 	\label{eq:perpendicularCurrentPullback}
+% \end{gather}
+% Inserting the pertrubated perpenedicular current $\vecj_{1 \perp}$ into Ampere's law.
+
+% \textbf{TODO:}
+% \begin{itemize}
+% 	\item Derive Equation for pertrubated parallel magnetic Field $\Bpar$ with Gyrooperators
+% 	\item Think about gettting $\Bpar$ without the use of the technic from Ref. \citenum{GKWDerivation}
+% \end{itemize}
+
 \newpage
 
-\subsection{Perturbated Parallel Magnetic Field $\Bpar$}
-\label{sub:fieldMagnetic}
-
-The perpendicular compentent of Ampere's law can be written as 
-\begin{gather}
-	(\nabla \times \Bpar)_\perp = \left( \begin{array}{c} \partial_y \Bpar - \partial_z B_{1 y} \\ \partial_z B_{1x} - \partial_x \Bpar \end{array} \right) = \mu_0 \vecj_{1 \perp}~,
-	\label{eq:perpendicularAmpereLaw}
-\end{gather}
-where $z$ is the direction of the equilibrium magnetic field $B_0$. The parallel gradients of the pertrubated magnetic field can be neglegted since they are one order smaller than the perpendicular ones, which results in
-\begin{gather}
-	\left( \begin{array}{r} \partial_y \Bpar \\ - \partial_x \Bpar \end{array} \right) = \nabla_{\!\perp} \Bpar \times \vecb = \mu_0 \vecj_{1 \perp}~.
-\end{gather}
-After performing the pull back operation the perpendicular current $\vecj_{1\perp}$ is given by 
-\begin{gather}
-		\vecj_{1\perp} = \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vperp \left(\df - \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right) \right) ~.
-	\label{eq:perpendicularCurrentPullback}
-\end{gather}
-Inserting the pertrubated perpenedicular current $\vecj_{1 \perp}$ into Ampere's law.
-
-\textbf{TODO:}
-\begin{itemize}
-	\item Derive Equation for pertrubated parallel magnetic Field $\Bpar$ with Gyrooperators
-	\item Think about gettting $\Bpar$ without the use of the technic from Ref. \citenum{GKWDerivation}
-\end{itemize}
-
-\newpage
-
-\subsection{Plasma Induction $\Apar$}
+\subsection{Ampere's Law - Plasma Induction $\Apar$}
 \label{sub:fieldInduction}
 
 To express the parallel pertrubation of the vector potential $\Apar$, i.e. the plasma induction, the method is analogous to Chapter \ref{sub:fieldPotential}. Using the Coulomb gauge $\nabla \cdot \A_1 = 0$ in the parallel compentent of Ampere's law results in
@@ -173,15 +177,15 @@ with the source term $S$ defined as
 	S = - (\vchi + \vD) \cdot \tilde{\nabla} \fm + \frac{\fm}{T} (\vpar \vecb_0 + \vD) \cdot (-Ze \nabla \gaPhi - \mu \nabla \gaBpar) ~.
 	\label{eq:modifiedSourceTerm}
 \end{gather}
-This method is currently implemented in GKW\cite{Peeters2009A}.
+This method is currently implemented in \gkw\cite{Peeters2009A}.
 
 \newpage
 
 
-\subsection{Inductive Electric Field $\Epar$}
+\subsection{Faraday's Law - Inductive Electric Field $\Epar$}
 \label{sub:fieldEpar}
 
-The goal of this Chapter is to handle the $\partial_t \gaApar$ term with the consideration of electromagnetic fields and rework the Vlasov equation and fiels equations for GKW. This section follows the work of P.C. Crandall in his Disseration\cite{Crandall_PHD}.
+The goal of this Chapter is to handle the $\partial_t \gaApar$ term with the consideration of electromagnetic fields and rework the Vlasov equation and fiels equations for \gkw. This section follows the work of P.C. Crandall in his Disseration\cite{Crandall_PHD}.
 \bigskip
 
 First the Vlasov equation gets written down in the $\df$ framework with the source term [Eq. (\ref{eq:gyrocenterDeltafSubVlasov}) \& (\ref{eq:sourceTerm})] will get simplified into 
