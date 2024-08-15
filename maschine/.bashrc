@@ -34,7 +34,8 @@
 # Default work folder
 #--------------------------------
 
-export USERDIR=/tp5-peeters/bt712347
+# export USERDIR=/tp5-peeters/bt712347
+export USERDIR=~/Documents
 export WORKDIR=$USERDIR/Masterthesis-Parallel-Electric-Field
 
 #--------------------------------
