@@ -1,0 +1,207 @@
+ 
+ Running with           32  MPI processes
+ 
+ Number of threads requested when encountering parallel  regions (on each proces
+ s):           1
+ 
+ 
+ With mode_box off input value of krhomax is ignored
+ No 2D diagnostics will be written
+ Ensure you have            1  value(s) in kthrho list
+ 
+*** WARNING *** Perpendicular dissipation is only with mode_box
+*** WARNING *** spcgeneral: beta_ref value has been overriden by beta.  "beta" input deprecated, use "beta_ref" instead
+*** WARNING *** spcgeneral: zonal_adiabatic always false for kinetic electrons
+*** WARNING *** spcgeneral_check: input value of beta_ref ignored for this electrostatic run
+*** WARNING *** spcgeneral: When adiabatic_electrons=.false. the initialization option finit="cosine2" (default) may lead to initial bursts. The option finit="cosine5" may be used instead.
+ * Optional namelist eiv_integration MISSING.
+ * Optional namelist linear_terms MISSING.
+ * Optional namelist collisions MISSING.
+ * Optional namelist krook MISSING.
+ * Optional namelist gyroaverage MISSING.
+ * Optional namelist source_time MISSING.
+ * Optional namelist finite_rho_parallel MISSING.
+ * Optional namelist diagnostic MISSING.
+*** WARNING *** You use the f version of gkw. nlapar will be set to .true.
+  --- parallel report --- 
+ 
+ given:
+  number of processors =          32
+ 
+  number of species    =           2
+  n_mu_grid            =          16
+  n_vpar_grid          =          64
+  n_s_grid             =         288
+  n_x_grid             =           1
+ 
+ The code will:
+ 
+ parallelise over mu      
+    with
+ procs           =           8
+ points per proc =           2
+ 
+ parallelise over s       
+    with
+ procs           =           4
+ points per proc =          72
+ 
+ 
+  --- end of parallel report ---
+ 
+ Geometry numerical accuracy:  1.453E-13
+ 
+*** WARNING *** xy_slice_ipar out of range, will use central point
+*** WARNING *** Cannot use the field_fsa_kyzero (Rosenbluth-Hinton) diagnostic: There is no k_y=0 mode.
+ No restart file FDS found, intialising new run
+ matrix "matrix of the linear terms" has format gkw-crs
+ 
+ Von Neumann stability factor for the Alfven wave (also ES limit)
+ Timestep (unscaled for scheme):   2.06771E-02
+ ------------------------------------------------------
+ 
+ Von Neumann stability factor for linear term: I: vpar_grad_df
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1   1   1   1    2
+ Timestep (unscaled for scheme):   7.67592E-04
+ ------------------------------------------------------
+ 
+ Von Neumann stability factor for linear term: parallel dissipation
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1   1   1  33    2
+ Timestep (unscaled for scheme):   1.30889E-03
+ ------------------------------------------------------
+ 
+ Von Neumann stability factor for linear term: IV: trapdf_4d
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1  71   2   1    2
+ Timestep (unscaled for scheme):   3.77515E-03
+ ------------------------------------------------------
+ 
+ Von Neumann stability factor for linear term: parallel velocity dissipation
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1  71   1   1    2
+ Timestep (unscaled for scheme):   5.29004E-02
+ ------------------------------------------------------
+ 
+ Von Neumann stability factor for linear term: 
+ VII: vpar_grd_phi (Landau damping)
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1   1   1  25    2
+ Timestep (unscaled for scheme):   2.97523E-02
+ ------------------------------------------------------
+ 
+*** WARNING *** Diffusive dominated: EXP meth -4,-6,-7 should allow larger timesteps
+*** WARNING *** Linear timestep automatically reduced
+ 
+ Maximum linear timestep estimate:  1.84222E-03
+ Input timestep:                    1.00000E-02
+ Timestep in use:                   1.75011E-03
+ 
+ matrix "matrix of the linear Maxwell background terms" has format gkw-crs
+ matrix "poisson matrix" has format gkw-crs
+ matrix "additional field matrix, int part" has format gkw-crs
+ matrix "field matrix, diag part" has format gkw-crs
+ matrix "additional field matrix, diag part" has format gkw-crs
+ matrix "rhs-for-f conversion matrix" has format gkw-crs
+ For initialization of the distribution funciton use amplitude: 
+  1.000000000000000E-003  0.000000000000000E+000
+*** WARNING *** No zero mode exists. Radial diagnostics are disabled.
+ 
+ Enter main loop (time integration)...
+ 
+*** WARNING *** amplitude of mode imod=  1 ix=  1 mode_label=   1 has become tiny, cannot measure its growthrate anymore.
+ isnan1 T
+ isnan2 F
+ isnan3 F
+ isnan4 T
+ isnan5 T
+ isnan6 T
+ isnan7 T
+  ******* Hit a NaN in fluxes: stop *******
+ 
+nMode   1 xMode   1 Growth rate           NaN
+nMode   1 xMode   1 Real frequency           NaN
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :           NaN           NaN   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :           NaN           NaN   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :           NaN           NaN   0.00000E+00
+ 
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :           NaN           NaN   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :           NaN           NaN   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :           NaN           NaN   0.00000E+00
+ 
+ WARNING: Diagnostics are slow:
+ Diagnostics time (last call):       5.23697E-02
+ Non-diagnostics time (last step):   4.00223E-01
+ 
+Time step :     100 Normalised time :   1.75011E-01
+ 
+ 
+ 
+ Iteration 1 completed successfully.
+ Predicted runtime:           16  minutes
+ 
+==============================================================
+ Number of code pieces tracked    18
+==============================================================
+Name                     Number of calls   time spent  percent
+==============================================================
+rk4                                   98  0.38835E+00   100.00
+Calc RHS                             393  0.36634E+00    94.33
+Calc Fields                          393  0.37139E-01     9.56
+fields - poisson mat multiply        393  0.31971E-01     8.23
+fields - MPI allreduce               393  0.47033E-02     1.21
+fields - n4 renorm diag              393  0.26566E-03     0.07
+Copy fdis vector to tmp              786  0.10028E-01     2.58
+Collisions conservation              393  0.61652E-04     0.02
+Init RHS to zero                     393  0.26965E-02     0.69
+MPI radial ghost comms               393  0.59520E-04     0.02
+Non linear terms: FFT, No MPI        393  0.77379E-02     1.99
+MPI other ghost comms                393  0.47095E-02     1.21
+Linear terms matmul, No MPI          393  0.22616E+00    58.24
+Calc Additonal Fields                393  0.61701E-01    15.89
+add fields - int mat multiply        393  0.54318E-01    13.99
+add fields - MPI allreduce           393  0.69340E-02     1.79
+add fields - n4 renorm diag          393  0.18412E-03     0.05
+Apply epar correction                393  0.15487E-01     3.99
+perflib / other                        - -0.44216E+00  -113.85
+ 
+   (timing error:  0.000000s)
+==============================================================
+ Internal: stop
+ 
+ parallel.dat: normalized (rotated in complex plane) by: 
+ (NaN,NaN)
+ 
+ Run successfully completed, Run time :   1.36153846886009     
+                     (main loop time):  0.532438091002405     
+ 
+==============================================================
+ Number of code pieces tracked    18
+==============================================================
+Name                     Number of calls   time spent  percent
+==============================================================
+rk4                                   98  0.38835E+00   100.00
+Calc RHS                             393  0.36634E+00    94.33
+Calc Fields                          393  0.37139E-01     9.56
+fields - poisson mat multiply        393  0.31971E-01     8.23
+fields - MPI allreduce               393  0.47033E-02     1.21
+fields - n4 renorm diag              393  0.26566E-03     0.07
+Copy fdis vector to tmp              786  0.10028E-01     2.58
+Collisions conservation              393  0.61652E-04     0.02
+Init RHS to zero                     393  0.26965E-02     0.69
+MPI radial ghost comms               393  0.59520E-04     0.02
+Non linear terms: FFT, No MPI        393  0.77379E-02     1.99
+MPI other ghost comms                393  0.47095E-02     1.21
+Linear terms matmul, No MPI          393  0.22616E+00    58.24
+Calc Additonal Fields                393  0.61701E-01    15.89
+add fields - int mat multiply        393  0.54318E-01    13.99
+add fields - MPI allreduce           393  0.69340E-02     1.79
+add fields - n4 renorm diag          393  0.18412E-03     0.05
+Apply epar correction                393  0.15487E-01     3.99
+perflib / other                        - -0.44216E+00  -113.85
+ 
+   (timing error:  0.000000s)
+==============================================================

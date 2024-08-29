@@ -1,0 +1,74 @@
+&CONTROL
+ silent = .true.
+ order_of_the_scheme = 'fourth_order'
+ parallel_boundary_conditions = 'open'
+ READ_FILE  = .true.
+ NON_LINEAR = .false.
+ zonal_adiabatic = .true.
+ METHOD = 'EXP'
+ METH   = 2
+ DTIM   = 0.01
+ NTIME  = 2000
+ NAVERAGE = 100
+ nlapar = .true.
+ nlepar = .true.
+ collisions = .false.
+ disp_par = 1.0
+ disp_vp  = 0.2
+ disp_x   = 0.1
+ disp_y   = 0.1
+ io_format = 'hdf5'
+ gamatol   = 1.0e-5
+ !!! IMPORTANT: Set this value 10-15 min smaller than walltime specified in slurm jobscript.
+ !!!            GKW needs some time to close everything and to write the restart file.
+ max_seconds = 85500   ! 24h = 86400s 15min = 900s -> 85500
+/
+&GRIDSIZE
+ NX = 1
+ N_s_grid = 288
+ N_mu_grid = 16
+ n_vpar_grid = 64
+ NMOD = 1
+ nperiod = 5
+ number_of_species = 2 ! Number of species. Note: do not count the adiabatic species
+
+ N_procs_mu   = 8                                                     
+ N_procs_vpar = 1                    
+ N_procs_s    = 4              
+/
+&MODE
+ mode_box = .false.
+ kthrho = 0.3
+ kr_type = 'chin'
+ chin = 0.
+/
+&GEOM
+ SHAT = 0.78
+ Q    = 1.4
+ EPS  = 0.19
+/
+&SPCGENERAL
+ beta = 0.012
+ adiabatic_electrons = .false.
+/
+&SPECIES
+ MASS  =  1.0
+ Z     =  1.0
+ TEMP  =  1.0
+ DENS  =  1.0
+ rlt   =  6.9
+ rln   =  2.2
+ uprim =  0.0
+/
+&SPECIES
+ MASS  =  2.72e-4
+ Z     = -1.0
+ DENS  =  1.0
+ TEMP  =  1.0
+ rlt   =  6.9
+ rln   =  2.2
+ uprim =  0.0
+/
+&ROTATION
+ VCOR = 0.0
+/

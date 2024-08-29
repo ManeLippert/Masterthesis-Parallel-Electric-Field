@@ -1,0 +1,23 @@
+#!/bin/bash -l
+
+# jobname
+#SBATCH --job-name=0.200apar
+
+# MPI tasks
+#SBATCH --ntasks-per-node=32
+
+# number of nodes
+#SBATCH --nodes=1
+
+# working directory
+#SBATCH --chdir=./
+
+# walltime
+#              d-hh:mm:ss
+#SBATCH --time=0-24:00:00
+
+# execute the job
+time mpirun -np $SLURM_NTASKS $GKW_EXEC > output.dat
+
+# end
+exit 0
