@@ -1,0 +1,45 @@
+\section{Normalization}
+\label{sec:normalizationLocal}
+
+To implement the field equations into the local version of \gkw, one has to normalize the quantities in the equations. This section is based on Ref. \citenum{Peeters2009A}. The reference values are indicated by the index "ref", the dimensionless noramlized by "N" and the relative dimensionless values by the index "R". This section is based on Ref \citenum{Crandall_PHD}, \citenum{GKWDerivation} and \citenum{Peeters2009A}.
+\bigskip
+
+A reference mass $\mref$, density $\nref$, temperature $\Tref$, magnetic field $\Bref$ and major radius $\Rref$ is chosen. With these quantities the reference thermal velocity $\vthref$ and reference thermal Larmor radius $\rhothref$ gets defines as
+\begin{gather*}
+    \Tref = \frac{1}{2} \mref \vthref^2 \qquad \rhothref = \frac{\mref \vthref}{e \Bref} = \frac{2 \Tref}{e \Bref \vthref} \qquad  \rhost = \frac{\rhothref}{\Rref}
+\end{gather*}
+and for convenience reason the small parameter $\rhost$ got redefined.
+\bigskip
+
+
+\begin{itemize}
+    \item \textbf{Relative Quantities:}
+        \begin{gather*}
+            m = \mref \mR \qquad \nReq = \nref \nR \qquad T = \Tref \TR \qquad \vth = \vthref \vthR
+        \end{gather*}
+    \item \textbf{Normalized Quantities:}
+        \begin{gather*}
+            R = \Rref \RN \qquad B_0 = \Bref \BN \qquad \mu = \frac{2 \Tref \TR}{\Bref} \muN \qquad \vpar = \vth \vparN \\
+            k = \frac{\kN}{\rhost} \qquad \kpar = \frac{\kparN}{\rhost} \qquad \kperp = \frac{\kperpN}{\rhothref} \\
+            \beta = \betaref \betaN \qquad \betaref = \frac{2 \mu_0 \nref \Tref}{\Bref^2}
+        \end{gather*}
+        \begin{itemize}
+            \item \textbf{Fluctuating Fields:}
+                \begin{gather*}
+                    \Phi_1 = \rhost \frac{\Tref}{e} \PhiN \qquad \Bpar = \rhost \Bref \BparN \\
+                    \Apar = \Bref \Rref \rhost^2 \AparN \qquad \Epar = \frac{2\Tref}{e} \frac{1}{\Rref} \rhost \EparN
+                \end{gather*}
+            \item \textbf{Time, Frequency and Centrifugal Energy:}
+                \begin{gather*}
+                    t = \frac{\Rref}{\vthref} \tN \qquad \Omega = \dfrac{\vthref}{\Rref} \OmegaN \qquad \cfen = \Tref \cfenN
+                \end{gather*}
+            \item \textbf{Distrubution Function and Vlasov Equation:}
+                \begin{gather*}
+                    \fgy = \rhost \frac{\nReq}{\vth^3}\fgyN \qquad \fm = \frac{\nReq}{\vth^3} \fmN \qquad \vlaright = \rhost \frac{\vthref}{\Rref}\frac{\nReq}{\vth^3}\vlarightN
+                \end{gather*}
+            \item \textbf{Gradients:}
+                \begin{gather*}
+                    \nabperp = \frac{1}{\Rref} \nabperpN \qquad \nabpar = \frac{1}{\Rref} \nabparN ~.
+                \end{gather*}
+        \end{itemize}
+\end{itemize}

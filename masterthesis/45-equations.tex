@@ -1,78 +1,5 @@
-\newpage
-\section{Gyrokinetic Field Equations}
-\label{sec:fields}
-
-\subsection{Maxwell's Equations}
-\label{sub:maxwellEquations}
-
-To obtain a closed system the Vlasov equation gets combined with the Maxwell equations to calculate the pertubated electromagnetic fields. As usual in fusion plasma the Gauss law gets replaced by the quasi neutrality condition which implies that any deviation from neutrality can only happen on small length scales within the Debye lenght and on a timescale much shorter than that of the fluctuations. Due to non-relativistic timescale of the turbulence the dissplacement current in Ampere's law gets also neglected. Taking everything into account the Maxwell's equations can be written as
-\begin{gather}
-	\begin{aligned}
-		\spec{\sum} \spec{Z} e \, \spec{n} &= 0  &\qquad \nabla \times \vect{E}_1 &= - \frac{\partial \vect{B}_1}{\partial t}\\
-		\nabla \cdot \vect{B}_1 &= 0 &\qquad \nabla \times \vect{B}_1 &= \mu_0 \spec{\sum} \spec{\vecj}~,
-	\end{aligned}
-	\label{eq:maxwellEquations}
-\end{gather}
-where the index $s$ refers to the species of particles, i.e. proton or electron and $\spec{\sum}$ means that all species will be taken into account. For simplicity of the derivation the "s" index gets droped if not explicitly needed. The Maxwell's equation contain densities $n$ and currents $\vecj$ of part icles which can be expressed through the moments of the particle phase space distribution function $f$ as follows
-\begin{gather}
-	\begin{aligned}
-		n(\x) &= \ints \dvelo ~ f(\x, \velo) \\
-		j_\parallel &= Ze \ints \dvelo ~ \vpar f(\x, \velo) \\
-		\vecj_\perp &= Ze \ints \dvelo ~ \vperp f(\x, \velo)~.
-	\end{aligned}
-	\label{eq:momentsParticleSpace}
-\end{gather}
-\newpage
-
-\subsection{Pull Back Operation into the Guiding Center Phase Space}
-\label{sub:pullback}
-
-Since the Vlasov equations [Eq. (\ref{eq:gyrocenterDeltafSubVlasov})] describes the evolution of the distribution function in the gyrocenter phase space $\fgy$, the particle moments will be expressed with the guiding center phase space distribution function $\fgc$ and which itself will be described through the gyrocenter distrubution function $\fgy$ by performing a pull back from $\fgy$ to the guiding center phase space. A schemamtic about the general idea can be seen in Figure \ref{fig:maxwellEquations}. The pull back will be performed with the pull back operator $\mathcal{P}$ which results in
-\begin{gather}
-	\fgc = \mathcal{P} \left\{ \fgy \right\} = \fgy \underbrace{- \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right)}_{\mathrm{Correction~Term}}~,
-	\label{eq:pullback}
-\end{gather}
-where $\widetilde{\Phi}_1$ donates to the oscillating part of the pertubation $\Phi_1$. Here, the correction term contain the fluctuations of the electro-magnetic fields and describes physically the polarization and magnetization effects of the fluctuations on the gyro orbit. \cite{Brizard2007}
- 
-\inputgraphicsHere{../pictures/theory/Maxwell-Equation-Derivation.tex}{
-	Idea of gyrokinetic Maxwell's equations: The particle density $n(\x)$, the current density $\vecj(\x)$ and the gyrocenter distribution function $\fgy$ are expressed in the guiding center phase space.
-}{fig:maxwellEquations}
-
-The particle density $n$ and currents $\vecj$ of one species can be expressed with the guiding center distribution function $\fgc$ as
-\begin{gather}
-	\begin{aligned}
-		n &= \ints \dvelo ~ f(\x, \velo) = \frac{B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \fgc \\
-		j_\parallel &= Ze \ints \dvelo ~ \vpar f(\x, \velo)= \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vpar \fgc \\
-		\vecj_\perp &= Ze \ints \dvelo ~ \vperp f(\x, \velo) = \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vperp \fgc ~,
-	\end{aligned}
-	\label{eq:momentsGuidingCenter}
-\end{gather}
-where $B_0/m$ is the Jacobian of the guiding center coordinates. The delta function $\delta$ appears due to the change of coordinates and gurantees that the spatial region taken into account in the integral remains unchanged during the coordinate transformation. Physically, the delta function $\delta$ expresses that all particles which have a Larmor orbit crossing a given point $\x$ in the real space contribute to the particle density [Fig. \ref{fig:densityContribution}]. 
-
-\inputgraphicsHere{../pictures/theory/Particle-Density.tex}{
-	Connection between density of particles $\spec{n}(\x)$ and density of guiding centers: Gyro orbits with different guiding center $\X$ (gray dashed circles) can cross in postion $\x$, such that the respective gyrating particles add to the particle density $\spec{n}$ there. For a fixed Larmor radius $\spec{\rho} = \abs{\spec{\rrho}} = \abs{\spec{\rho} \vect{a}}$ (\textcolor{Notared}{red}) the particle density $\spec{n}$ at $\x$ is obtained by collecting the contributions of all guiding centers on a circle with radius $\spec{\rho}$ centered at position $\x$ (\textcolor{Notablue}{blue} circle).
-}{fig:densityContribution}
-
-\subsection{Gyrooperator $\mathcal{G}$}
-\label{sub:gyroOperator}
-
-As stated in Chapter \ref{sub:guidingcenterLagrangian} the gyrooperator $\mathcal{G}$ averages over the gyrophase $\theta$ which is mostly used in the derivation of the Vlasov equation and is defined as
-\begin{gather}
-    \tga{\{G(\x)\}} = \ga{G}(\X) = \frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ G(\X + \rrho(\theta))~.
-    \label{eq:gyroOperatorRevision}
-\end{gather}
-To derive the field equations a second kind of gyrooperator will be introduced as
-\begin{gather}
-    \tgad{\{G(\X)\}} = \gad{G}(\x) = \frac{1}{2\pi} \intss{0}{2\pi} \dX\dtheta ~ \delta(\X + \rrho(\theta) - \x) G(\X)~,
-    \label{eq:gyroOperatorDagger}
-\end{gather}
-where $\mathcal{G}^\dagger$ the hermitian conjugate of $\mathcal{G}$\cite{Told_PHD} and the delta function $\delta$ originates from the pull back operation from Chapter \ref{sub:pullback}.\cite{Merlo_PHD} Furthermore, the double gyroaverage operator is defined as
-\begin{gather}
-    \tgad{\bigl\{ \tga{\{G(\x)\}} \bigr\}} = \gad{\ga{G}}(\x) = \frac{1}{(2\pi)^2} \intss{0}{2\pi} \dtheta \intss{0}{2\pi} \dtheta' ~ G(\X - \rrho(\theta) + \rrho(\theta'))~,
-    \label{eq:gyroOperatorDouble}
-\end{gather}
-which performs a gyroaverage of the field value at all gyrocenter positions $\X$ with particle position $\x$ in their trajectory. \cite{Maurer_PHD}
-\newpage
+\section{Field Equations}
+\label{sec:fieldEquations}
 
 \subsection{Coulomb's Law - Perturbated Electrostatic Potential $\Phi_1$}
 \label{sub:fieldPotential}
@@ -104,34 +31,68 @@ where $\nReq$ is a background density and $T$ is a background temperature. To de
 	\label{eq:fieldPotential}
 \end{gather}
 
-%  TODO: Exclude Bpar from work 
-% \newpage
+With the use of the local gyrooperator $\mathcal{G}$ the density of the gyrocenter $\ga{n}_1$ and the polarization density $n_\mathcal{P}$ can be expressed as
+\begin{gather}
+	\ga{n}_1(\x) = \frac{2\pi B_0}{m} \ints \dvpar\dmu ~ J_0(\lambda) \df(\x, \vpar, \mu)~, \\
+    \begin{aligned}
+	    n_\mathcal{P}(\x) = &\frac{Ze \nReq(\x)}{T} e^{-\cfen/T} (\Gamma_0(b) - 1) \Phi_1(\x) \\
+                            &+ \nReq(\x) e^{-\cfen/T} (\Gamma_0(b) - \Gamma_1(b))\frac{\Bpar(\x)}{B_0}~,
+    \end{aligned}
+	\label{eq:particleDensityLocal}
+\end{gather}
+where $\nReq$ is the background density at postion $R_0$ and $T$ is the background temperature. To derive the term for the polarization density $n_\mathcal{P}$ the integrals mentioned in Chapter \ref{sub:integralBesselfunction} were performed. The field equation for the perturbated electrostatic potential $\Phi_1$ in the local simulation is given by
+\begin{gather}
+    \begin{aligned}
+        &\spec{\sum} \frac{\spec{Z}^2e^2}{\spec{T}} \specc{n}{R_0} e^{-\spec{\cfen}/\spec{T}} \left(1 - \Gamma_0(\spec{b})\right) \Phi_1(\x) = \\
+        &\spec{\sum} \spec{Z}e \left(\specc{\ga{n}}{1} + \specc{n}{R_0} e^{-\spec{\cfen}/\spec{T}} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b}))\frac{\Bpar(\x)}{B_0} \right)
+        \label{eq:fieldPotentialLocal}
+    \end{aligned}
+\end{gather}
+and takes the following form after performing the Fourier-transform and applying the normalizing expressions [Ch. \ref{sub:normalizationLocal}]
+\begin{gather}
+    \begin{aligned}
+        &\spec{\sum} \spec{Z} \specR{n} e^{-\specN{\cfen}/\specR{T}} \left(1 - \Gamma_0(\spec{b})\right) \frac{\spec{Z}}{\specR{T}} \FPhiN = \\
+        &\spec{\sum} \spec{Z}\specR{n} 2\pi\BN \ints \dvparN \dmuN ~ J_0(k_\perp \spec{\rho}) \speccN{\Ffgy}{1} \\
+        + & \spec{\sum} \spec{Z}\specR{n} e^{-\specN{\cfen}/\specR{T}} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b}))\frac{\FBparN}{\BN}
+        \label{eq:fieldPotentialLocalNorm}
+    \end{aligned}
+\end{gather}
+\newpage
 
-% \subsection{Perturbated Parallel Magnetic Field $\Bpar$}
-% \label{sub:fieldMagnetic}
+\subsection{Plasma Compression - Perturbated Parallel Magnetic Field $\Bpar$}
+\label{sub:fieldMagnetic}
 
-% The perpendicular compentent of Ampere's law can be written as 
-% \begin{gather}
-% 	(\nabla \times \Bpar)_\perp = \left( \begin{array}{c} \partial_y \Bpar - \partial_z B_{1 y} \\ \partial_z B_{1x} - \partial_x \Bpar \end{array} \right) = \mu_0 \vecj_{1 \perp}~,
-% 	\label{eq:perpendicularAmpereLaw}
-% \end{gather}
-% where $z$ is the direction of the equilibrium magnetic field $B_0$. The parallel gradients of the pertrubated magnetic field can be neglegted since they are one order smaller than the perpendicular ones, which results in
-% \begin{gather}
-% 	\left( \begin{array}{r} \partial_y \Bpar \\ - \partial_x \Bpar \end{array} \right) = \nabla_{\!\perp} \Bpar \times \vecb = \mu_0 \vecj_{1 \perp}~.
-% \end{gather}
-% After performing the pull back operation the perpendicular current $\vecj_{1\perp}$ is given by 
-% \begin{gather}
-% 		\vecj_{1\perp} = \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vperp \left(\df - \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right) \right) ~.
-% 	\label{eq:perpendicularCurrentPullback}
-% \end{gather}
-% Inserting the pertrubated perpenedicular current $\vecj_{1 \perp}$ into Ampere's law.
-
-% \textbf{TODO:}
-% \begin{itemize}
-% 	\item Derive Equation for pertrubated parallel magnetic Field $\Bpar$ with Gyrooperators
-% 	\item Think about gettting $\Bpar$ without the use of the technic from Ref. \citenum{GKWDerivation}
-% \end{itemize}
-
+The perpendicular compentent of Ampere's law can be written as 
+\begin{gather}
+	(\nabla \times \Bpar)_\perp = \left( \begin{array}{c} \partial_y \Bpar - \partial_z B_{1 y} \\ \partial_z B_{1x} - \partial_x \Bpar \end{array} \right) = \mu_0 \vecj_{1 \perp}~,
+	\label{eq:perpendicularAmpereLawLocal}
+\end{gather}
+where $z$ is the direction of the equilibrium magnetic field $B_0$. The parallel gradients of the pertrubated magnetic field can be neglegted since they are one order smaller than the perpendicular ones, which results in
+\begin{gather}
+	\left( \begin{array}{r} \partial_y \Bpar \\ - \partial_x \Bpar \end{array} \right) = \nabla_{\!\perp} \Bpar \times \vecb = \mu_0 \vecj_{1 \perp}~.
+\end{gather}
+After performing the pull back operation the perpendicular current $\vecj_{1\perp}$ is given by 
+\begin{gather}
+		\vecj_{1\perp} = \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vperp \left(\df - \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right) \right) ~.
+	\label{eq:perpendicularCurrentPullbackLocal}
+\end{gather}
+Inserting the pertrubated perpenedicular current $\vecj_{1 \perp}$ into Ampere's law and apply the same method as in Ref \citenum{GKWDerivation} results in the field equation for the pertrubated parallel magnetic field $\Bpar$ which can be expressed as
+\begin{gather}
+    \begin{aligned}
+        &\left(1 + \spec{\sum} \spec{\beta} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b})) e^{-\spec{\cfen}/\spec{T}}\right) \Bpar = \\
+	 &- \spec{\sum} \frac{2\pi \mu_0 B_0}{\spec{m}} \ints \dvpar\dmu ~ \mu I_n(\spec{\lambda}) \specc{\fgy}{1}  \\
+        &- \spec{\sum} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b}))e^{-\spec{\cfen}/\spec{T}} \frac{\spec{Z}e \mu_0 \specc{n}{R_0}}{B_0} \Phi_1 ~,
+    \end{aligned}
+    \label{eq:fieldMagneticLocal}
+\end{gather}
+with $\spec{\beta}$ as the plasma beta of a given species. Fourier transformation and normalization with $\beta = \betaref \betaN$ yields
+\begin{gather}
+    \begin{aligned}
+        &\left(1 + \spec{\sum} \frac{\specR{T}\specN{n}}{\BN^2} \betaref (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b})) e^{-\specN{\cfen}/\specR{T}}\right) \FBparN = \\
+        &-\spec{\sum} \betaref 2\pi \BN \specR{T} \specR{n} \ints \dvparN \dmuN ~ \muN I_1(\kperp \spec{\rho}) \speccN{\Ffgy}{1} \\
+        &-\spec{\sum} \betaref (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b})) e^{-\specN{\cfen}/\specR{T}} \frac{\spec{Z}\specR{n}}{2 \BN} \FPhiN ~.
+    \end{aligned}
+\end{gather}
 \newpage
 
 \subsection{Ampere's Law - Plasma Induction $\Apar$}
@@ -157,6 +118,17 @@ Inserting Equation (\ref{eq:parallelCurrentPullback}) into Ampere's law yields t
 	\nabla^2 \Apar = - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \ints \dvpar\dmu ~ \gad{\vpar \specc{\fgy}{1}}~.
 	\label{eq:fieldInduction}
 \end{gather}
+
+The field equation for the plasma induction follows simply after the use of the local gyroperator and is given by
+\begin{gather}
+	\nabla^2 \Apar = - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \ints \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \specc{\fgy}{1}(\x, \vpar, \mu)~.
+	\label{eq:fieldInductionLocal}
+\end{gather}
+Fourier transformation and normalization yields
+\begin{gather}
+	\kperpN^2 \FAparN = 2 \pi \BN \betaref\spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN\dmuN ~ \vparN J_0(\kperp \spec{\rho}) \speccN{\Ffgy}{1}~.
+	\label{eq:fieldInductionLocalNorm}
+\end{gather}
 \newpage
 
 \subsection{Cancellation Problem}
@@ -178,9 +150,7 @@ with the source term $S$ defined as
 	\label{eq:modifiedSourceTerm}
 \end{gather}
 This method is currently implemented in \gkw\cite{Peeters2009A}.
-
 \newpage
-
 
 \subsection{Faraday's Law - Inductive Electric Field $\Epar$}
 \label{sub:fieldEpar}
@@ -236,17 +206,36 @@ with the source term
 	\label{eq:sourceTermElectric}
 \end{gather}
 
-% To obtain a closed system the Vlasov equation gets combined with the Maxwell equations. The particle density $n$ and current density $j$ can be described with the distribution function $f$ as follows
-% \begin{gather}
-% 	n = \ints \mathrm{d}\vect{v}\,f(\vect{x}, \vect{v}, t) \qquad j = q \ints \mathrm{d}\vect{v}\, v f(\vect{x}, \vect{v}, t)~,
-% 	\label{eq:densitycurrent}
-% \end{gather}
-% which are then substituted into the Maxwell equations
-% \begin{gather}
-% 	\begin{aligned}
-% 		\nabla \cdot \vect{B} &= 0 &\qquad \nabla \times \vect{B} &= \mu_0\left( \sum_\mathrm{species} j + \epsilon_0 \frac{\partial \vect{E}}{\partial t} \right) \\
-% 		\nabla \cdot \vect{E} &= \frac{1}{\epsilon_0} \sum_\mathrm{species} qn &\qquad \nabla \times \vect{E} &= - \frac{\partial \vect{B}}{\partial t}~.
-% 	\end{aligned}
-% 	\label{eq:maxwell}
-% \end{gather}
-% The Vlasov equation (\ref{eq:vlasov}) in combination with the Maxwell equations (\ref{eq:densitycurrent}) and (\ref{eq:maxwell}) is the basis of the gyrokinetic model. \cite{Krommes2012}
+Using the new definition of the gyrooperator into Equation (\ref{eq:preFieldElectric}), one can derive the equation for the included electric field 
+\begin{gather}
+    \begin{aligned}
+        &\left(\nabla^2 - \spec{\sum} \frac{2\pi (\spec{Z}e)^2 \mu_0 B_0}{\spec{T}\spec{m}}  \ints \dvpar\dmu ~ \vpar^2 J_0^2(\spec{\lambda}) F_{\mathrm{M}s} \right) \Epar = \\
+	    &\spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \ints \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \spec{\vlaright} = \mu_0 \frac{\partial j_{1\parallel}}{\partial t}~,
+    \end{aligned}
+	\label{eq:prefieldElectricLocal}
+\end{gather}
+although the relation of $\gaEpar = \tga{\left\{\Epar\right\}} = J_0(\lambda) \Epar$ was used to simplyfied the integral on the right-hand side. The integral itself can be more simplified with performing the integral over $\vpar$ and $\mu$
+\begin{gather}
+	\begin{aligned}
+		I &= \frac{2\pi (Ze)^2 \mu_0 B_0}{Tm}  \ints \dvpar\dmu ~ \vpar^2 J_0^2(\lambda) \fm \\
+		  &= \frac{2\pi (Ze)^2 \mu_0 B_0}{Tm} e^{-\cfen/T} \underbrace{\ints \dvpar ~ \vpar^2 \fm(\vpar)}_{\nReq/2\pi} \underbrace{\ints \dmu ~ J_0^2(\lambda) \fm(\mu)}_{T/B_0~\Gamma_0(b)} \\
+		  &= \frac{(Ze)^2 \mu_0 \nReq}{m} \Gamma_0(b) e^{-\cfen/T} ~,
+	\end{aligned}
+\end{gather}
+where the seperation of the Maxwellian was used [Eq. (\ref{eq:maxwellianSeperated})]. Finally, the field equation for the induced electric field can be written as
+\begin{gather}
+    \begin{aligned}
+        &\left(\nabla^2 - \spec{\sum} \frac{\spec{Z}^2e^2 \mu_0 \specc{n}{R_0}}{\spec{m}} \Gamma_0(\spec{b}) e^{-\spec{\cfen}/\spec{T}} \right) \Epar = \\
+	    &\spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \ints \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \spec{\vlaright} = \mu_0 \frac{\partial j_{1\parallel}}{\partial t}~.
+    \end{aligned}
+	\label{eq:fieldElectricLocal}
+\end{gather}
+After performing the Fourier transform and normalize Equation (\ref{eq:fieldElectricLocal}) the final field equation for the inductive electric field is given by
+\begin{gather}
+    \begin{aligned}
+        &\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \FEparN = \\
+        &- 2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN \dmuN ~ \vparN J_0(\kperp \spec{\rho}) \specN{\Fvlaright} ~.
+    \end{aligned}
+    \label{eq:fieldElectricLocalNorm}
+\end{gather}
+\newpage

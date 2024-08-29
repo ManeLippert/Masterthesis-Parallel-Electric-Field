@@ -1,0 +1,21 @@
+\section{Maxwell's Equations}
+\label{sec:maxwellEquations}
+
+To obtain a closed system the Vlasov equation gets combined with the Maxwell equations to calculate the pertubated electromagnetic fields. As usual in fusion plasma the Gauss law gets replaced by the quasi neutrality condition which implies that any deviation from neutrality can only happen on small length scales within the Debye lenght and on a timescale much shorter than that of the fluctuations. Due to non-relativistic timescale of the turbulence the dissplacement current in Ampere's law gets also neglected. Taking everything into account the Maxwell's equations can be written as
+\begin{gather}
+	\begin{aligned}
+		\spec{\sum} \spec{Z} e \, \spec{n} &= 0  &\qquad \nabla \times \vect{E}_1 &= - \frac{\partial \vect{B}_1}{\partial t}\\
+		\nabla \cdot \vect{B}_1 &= 0 &\qquad \nabla \times \vect{B}_1 &= \mu_0 \spec{\sum} \spec{\vecj}~,
+	\end{aligned}
+	\label{eq:maxwellEquations}
+\end{gather}
+where the index $s$ refers to the species of particles, i.e. proton or electron and $\spec{\sum}$ means that all species will be taken into account. For simplicity of the derivation the "s" index gets droped if not explicitly needed. The Maxwell's equation contain densities $n$ and currents $\vecj$ of part icles which can be expressed through the moments of the particle phase space distribution function $f$ as follows
+\begin{gather}
+	\begin{aligned}
+		n(\x) &= \ints \dvelo ~ f(\x, \velo) \\
+		j_\parallel &= Ze \ints \dvelo ~ \vpar f(\x, \velo) \\
+		\vecj_\perp &= Ze \ints \dvelo ~ \vperp f(\x, \velo)~.
+	\end{aligned}
+	\label{eq:momentsParticleSpace}
+\end{gather}
+\newpage

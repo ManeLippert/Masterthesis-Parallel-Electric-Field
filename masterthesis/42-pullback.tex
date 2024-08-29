@@ -1,0 +1,29 @@
+\section{Pull Back Operation into the Guiding Center Phase Space}
+\label{sec:pullback}
+
+Since the Vlasov equations [Eq. (\ref{eq:gyrocenterDeltafSubVlasov})] describes the evolution of the distribution function in the gyrocenter phase space $\fgy$, the particle moments will be expressed with the guiding center phase space distribution function $\fgc$ and which itself will be described through the gyrocenter distrubution function $\fgy$ by performing a pull back from $\fgy$ to the guiding center phase space. A schemamtic about the general idea can be seen in Figure \ref{fig:maxwellEquations}. The pull back will be performed with the pull back operator $\mathcal{P}$ which results in
+\begin{gather}
+	\fgc = \mathcal{P} \left\{ \fgy \right\} = \fgy \underbrace{- \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right)}_{\mathrm{Correction~Term}}~,
+	\label{eq:pullback}
+\end{gather}
+where $\widetilde{\Phi}_1$ donates to the oscillating part of the pertubation $\Phi_1$. Here, the correction term contain the fluctuations of the electro-magnetic fields and describes physically the polarization and magnetization effects of the fluctuations on the gyro orbit. \cite{Brizard2007}
+ 
+\inputgraphicsHere{../pictures/theory/Maxwell-Equation-Derivation.tex}{
+	Idea of gyrokinetic Maxwell's equations: The particle density $n(\x)$, the current density $\vecj(\x)$ and the gyrocenter distribution function $\fgy$ are expressed in the guiding center phase space.
+}{fig:maxwellEquations}
+
+The particle density $n$ and currents $\vecj$ of one species can be expressed with the guiding center distribution function $\fgc$ as
+\begin{gather}
+	\begin{aligned}
+		n &= \ints \dvelo ~ f(\x, \velo) = \frac{B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \fgc \\
+		j_\parallel &= Ze \ints \dvelo ~ \vpar f(\x, \velo)= \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vpar \fgc \\
+		\vecj_\perp &= Ze \ints \dvelo ~ \vperp f(\x, \velo) = \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vperp \fgc ~,
+	\end{aligned}
+	\label{eq:momentsGuidingCenter}
+\end{gather}
+where $B_0/m$ is the Jacobian of the guiding center coordinates. The delta function $\delta$ appears due to the change of coordinates and gurantees that the spatial region taken into account in the integral remains unchanged during the coordinate transformation. Physically, the delta function $\delta$ expresses that all particles which have a Larmor orbit crossing a given point $\x$ in the real space contribute to the particle density [Fig. \ref{fig:densityContribution}]. 
+
+\inputgraphicsHere{../pictures/theory/Particle-Density.tex}{
+	Connection between density of particles $\spec{n}(\x)$ and density of guiding centers: Gyro orbits with different guiding center $\X$ (gray dashed circles) can cross in postion $\x$, such that the respective gyrating particles add to the particle density $\spec{n}$ there. For a fixed Larmor radius $\spec{\rho} = \abs{\spec{\rrho}} = \abs{\spec{\rho} \vect{a}}$ (\textcolor{Notared}{red}) the particle density $\spec{n}$ at $\x$ is obtained by collecting the contributions of all guiding centers on a circle with radius $\spec{\rho}$ centered at position $\x$ (\textcolor{Notablue}{blue} circle).
+}{fig:densityContribution}
+\newpage

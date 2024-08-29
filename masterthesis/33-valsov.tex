@@ -31,7 +31,7 @@ Inserting Equation (\ref{eq:gyrocenterPertrubationLagrangian}) into the Euler-La
 \end{gather}
 with the drift velocity $\vchi$ defined as the sum of the streaming velocity perpendicular to the pertubated magnetic field $\velo_{\gaBperp}$, the $\exb$ drift in the total electric field $\velo_{\ga{E}}$ and the grad-$B$ dirft of the parallel perturbed magnetic field $\velo_{\nabla \gaBpar}$. The drift velocity $\vD$ containing the sum of the curvature drift $\velo_C$, the grad-$B$ drift of the equilibrium magnetic field $\velo_{\nabla B_0}$ and the drifts due to the Coriolis force $\velo_\mathrm{Co}$ and centrifugal force $\velo_\mathrm{Ce}$. The quantity $\chi$ can be expressed as
 \begin{gather}
-	\chi = \underbrace{(\Phi_0 + \gaPhi)}_{\gaPhi} - \vpar \gaApar + \frac{\mu}{Ze} \gaBpar
+	\chi = \underbrace{(\Phi_0 + \gaPhi)}_{\bar{\Phi}} - \vpar \gaApar + \frac{\mu}{Ze} \gaBpar
 	\label{eq:driftPotential}
 \end{gather}
 with which follows the drift velocity $\vchi$ 
@@ -43,10 +43,10 @@ with which follows the drift velocity $\vchi$
 
 Note that the term containing $u_0^2$ got replaced with Equation (\ref{eq:rotvelocity}) with $u_0^2 = R^2 \Omega^2$ and the total electric field $\gaE$ is defined as 
 \begin{gather}
-	\gaE = - \nabla \gaPhi - \partial_t \gaA \approx - \nabla \gaPhi - \partial_t \gaApar ~,
+	\gaE = - \nabla \bar{\Phi} - \partial_t \gaA \approx - \nabla \gaPhi ~,
 	\label{eq:totalElectricField}
 \end{gather}
-since the time derivative of the vector potential $\partial_t \gaAperp$ is one order smaller as the gradient of the electrostatic potential $\nabla \gaPhi$ due to normalization assumptions in gyrokinetics\cite{Peeters2009A}.
+since the time derivative of the vector potential $\partial_t \gaA$ is one order smaller as the gradient of the electrostatic potential $\nabla \bar{\Phi}$ due to normalization assumptions in gyrokinetics\cite{Peeters2009A}.
 
 
 
