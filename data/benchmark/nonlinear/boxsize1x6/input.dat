@@ -1,0 +1,103 @@
+! CBC like parameters + circular geometry
+
+! ----------------------------------------------------------------------
+! Possible variations in box size:
+! nmod=21, ikxspace = 6, nx = 97 -> standard box size Lpsi x Lzeta
+! nmod=41, ikxspace = 3, nx = 97 -> double box size Lpsi x 2*Lzeta
+! nmod=61, ikxspace = 2, nx = 97 -> threefold box size Lpsi x 3*Lzeta
+! nmod=121, ikxspace = 1, nx = 97 -> sixfold box size Lpsi x 6*Lzeta
+! -> Check this!
+
+
+&CONTROL
+ silent = .true.
+ order_of_the_scheme = 'fourth_order'
+ order_of_the_zf_scheme='sixth_order'
+ parallel_boundary_conditions = 'open'
+
+ read_file  = .true.
+ non_linear = .true.
+ zonal_adiabatic = .true.
+ method = 'EXP'
+ meth   = 2
+
+ dtim   = 0.0015
+ ntime  = 20000
+ naverage = 50
+
+ nlapar = .true.
+ collisions = .false.
+
+ disp_par = 1.0
+ disp_vp  = 0.2
+ disp_x   = 0.1
+ disp_y   = 0.1
+
+ ! write dump file every 50 time steps
+ ndump_ts = 50
+
+ ! 23 h -> plenty of time to write parallel.dat and restart files
+ max_seconds = 82800
+
+ io_format = 'hdf5'
+
+/
+&GRIDSIZE
+
+ n_procs_s = 8 
+ n_procs_mu = 8 
+ n_procs_vpar = 4 
+ n_procs_sp = 2
+ 
+ nx = 97
+ n_s_grid = 32
+ n_mu_grid = 8 
+ n_vpar_grid = 64
+ nmod = 121
+ nperiod = 1
+ number_of_species = 2
+
+/
+&MODE
+ mode_box = .true.
+ krhomax = 1.4
+ ikxspace = 1
+/
+&GEOM
+ geom_type = 'circ'
+ SHAT = 0.78
+ Q    = 1.4
+ EPS  = 0.19
+/
+&SPCGENERAL
+ ! turbulence runaways occur for beta > 8e-3 -> choose a well 
+ ! electromagnetic case below the non-zonal transition
+ beta = 6e-3
+ adiabatic_electrons = .false.
+ amp_init = 3e-4
+/
+&SPECIES
+ MASS  =  1.0
+ Z     =  1.0
+ TEMP  =  1.0
+ DENS  =  1.0
+ rlt   =  6.9
+ rln   =  2.2
+ uprim =  0.0
+/
+&SPECIES
+ MASS  =  2.72e-4
+ Z     = -1.0
+ DENS  =  1.0
+ TEMP  =  1.0
+ rlt   =  6.9
+ rln   =  2.2
+ uprim =  0.0
+/
+&ROTATION
+ VCOR = 0.0
+/
+&DIAGNOSTIC
+ ! electromagnetic fluxes spectra
+ lfluxes_em_spectra = .true.
+/
