@@ -1,0 +1,65 @@
+\newcommand{\distance}{5cm}
+
+\tikzstyle{dist} = [
+    rectangle, rounded corners, 
+    minimum width=2cm, 
+    minimum height=1cm,
+    text centered,  
+    align=center,
+    fill=Notagreen!30
+]
+
+\tikzstyle{fields} = [
+    rectangle, rounded corners, 
+    minimum width=3cm, 
+    minimum height=1cm,
+    text centered,  
+    align=center,
+    fill=Notablue!30
+]
+
+\tikzstyle{addfields} = [
+    rectangle, rounded corners, 
+    minimum width=2cm, 
+    minimum height=1cm,
+    text centered,  
+    align=center,
+    fill=Notablue!30
+]
+
+\tikzstyle{correct} = [
+    rectangle, rounded corners, 
+    minimum width=3cm, 
+    minimum height=1cm,
+    text centered,  
+    align=center,
+    fill=Notared!30
+]
+
+\tikzstyle{curly} = [
+    decorate,
+    decoration={brace,amplitude=10pt},
+    xshift=-0.5cm,
+    yshift=0pt
+]
+
+\usetikzlibrary{decorations.pathreplacing}
+
+\begin{tikzpicture}[node distance=2cm]
+
+    \node (dist)      [dist]                                    {$\df^i$};
+    \node (fields)    [fields, xshift= 3cm]                     {$\Phi_1^i,~\Apar^i,~\Bpar^i$};
+    \node (rhs)       [dist,   xshift= 6cm]                     {$\rhs^{i+1}$};
+    \node (distp)     [dist,   xshift= 12cm, yshift = -0.75cm]  {$\df^{i+1}$};
+    \node (correct)   [correct,xshift= 9cm, yshift = -0.75cm]  {$\Epar$ Correction};
+    \node (addfields) [addfields, xshift= 6cm, yshift = -1.5cm] {$\Epar^{i+1}$};
+
+        
+    \draw [arrow] (dist)   -- (fields);
+    \draw [arrow] (fields) -- (rhs);
+    \draw [arrow] (rhs)    -- (addfields);
+    \draw [curly] (rhs.north east) -- (addfields.south east);
+    \draw [arrow] (correct)    -- (distp);
+
+
+\end{tikzpicture}

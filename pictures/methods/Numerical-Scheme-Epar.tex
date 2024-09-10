@@ -18,13 +18,22 @@
     fill=Notablue!30
 ]
 
+\tikzstyle{addfields} = [
+    rectangle, rounded corners, 
+    minimum width=2cm, 
+    minimum height=1cm,
+    text centered,  
+    align=center,
+    fill=Notablue!30
+]
+
 \begin{tikzpicture}[node distance=2cm]
 
-        \node (dist)      [dist]                                  {$\df^i$};
-        \node (fields)    [fields, xshift= 3cm]                   {$\Phi_1^i,~\Apar^i,~\Bpar^i$};
-        \node (rhs)       [dist,   xshift= 6cm]                   {$\vlaright^{i+1}$};
-        \node (distp)     [dist,   xshift= 9cm]                   {$\df^{i+1}$};
-        \node (addfields) [fields, xshift= 6cm, yshift = -1.5cm]  {$\Epar^{i+1}$};
+        \node (dist)      [dist]                                     {$g^i$};
+        \node (fields)    [fields, xshift= 3cm]                      {$\Phi_1^i,~\Apar^i,~\Bpar^i$};
+        \node (rhs)       [dist,   xshift= 6cm]                      {$\rhs^{i+1}$};
+        \node (distp)     [dist,   xshift= 8.5cm]                      {$g^{i+1}$};
+        \node (addfields) [addfields, xshift= 6cm, yshift = -1.5cm]  {$\Epar^{i+1}$};
 
         
         \draw [arrow] (dist)   -- (fields);
