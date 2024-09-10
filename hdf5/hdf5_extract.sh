@@ -367,7 +367,7 @@ DATASETS=(
 #"input/linear_term_switches/idisp"
 #"input/linear_term_switches/lampere"
 #"input/linear_term_switches/lbpar"
-#"input/linear_term_switches/lg2f_correction"
+#"input/linear_term_switches/lapar_correction"
 #"input/linear_term_switches/lneo_equil"
 #"input/linear_term_switches/lneo_rad"
 #"input/linear_term_switches/lneo_trap"

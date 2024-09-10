@@ -1,54 +1,11 @@
-\section{Implementation of $\Epar$ Feature}
-\label{sec:localSimulation}
-
-\subsection{Implementation of $\Epar$ Field Equation into the local version of \gkw}
+\subsection{$\Epar$ Field Equation}
 \label{sub:implementationFieldEpar}
-
-At the beginning, it is necessary to talk about the applied code improvements which where done to ensure a valid implementation of the Faraday Law into \gkw.
-\begin{enumerate}
-    \item[(1)] In diagnostics part of \gkw serveral subroutines and functions relies on the definition of the variable \code{requirements} from the module \code{diagnostics.f90}. The variable \code{requirements} is a matrix which communticates which type of data or ghost cell needs to be provided to the diagnostic. In the previous implementation the number of columns were hard coded the field identifier for the gyroaveraged parallel magnetic field $\gaBpar$ with \code{BPAR\_GA\_FIELD}. This type of problem was found on multiple occasions throughout the code most noteable in \code{dist.f90} with \code{derivs\_in\_lin\_terms} and the token array in \code{diagnos\_generic.f90}. Furthermore, it was found that in the code more inconvienece sturcutures were established. For example slicing the \code{requirements} matrix was performend by \code{PHI\_FIELD:BPAR\_FIELD} and \code{PHI\_GA\_FIELD:BPAR\_GA\_FIELD}, the start of the tokens for moments with \code{BPAR\_GA\_FIELD} and the definition for the distrubution function to the number 4. To prevent any errors with future modifications, for example an additional new field, new variabels and scheme gets introduced in \code{global.f90} as
-    \begin{itemize}
-        \item \code{MIN\_FIELD} as the smallest number of field identifier, 
-        \item \code{MIN\_GA\_FIELD} as the smallest number of gyroaverages field identifier
-        \item \code{MAX\_FIELD} as the greatest number of field identifier, 
-        \item \code{MAX\_GA\_FIELD} as the greatest number of gyroaverages field identifier,
-        \item \code{DISTRIBUTION} should always have the greatest number and
-        \item \code{MAX\_IDX\_FIELD} is the greatest number, i.e. \code{DISTRIBUTION}.
-    \end{itemize}
-    These changes allowed to the implementation \code{EPAR\_FIELD} and \code{EPAR\_GA\_FIELD} as 
-    \begin{itemize}
-        \item \code{EPAR\_FIELD = 4}, 
-        \item \code{EPAR\_GA\_FIELD = 8}
-    \end{itemize}
-    as well as a new scheme for slicing gets introduced 
-    \begin{itemize}
-        \item \code{PHI\_FIELD:BPAR\_FIELD} replaced by \code{MIN\_FIELD:MAX\_FIELD}, 
-        \item \code{PHI\_GA\_FIELD:BPAR\_GA\_FIELD} replaced by \code{MIN\_GA\_FIELD:MAX\_GA\_FIELD}.
-    \end{itemize}
-    Note that, with the variables the slicing gets performend from \code{PHI\_FIELD} to \code{EPAR\_FIELD} and \code{PHI\_GA\_FIELD} to \code{EPAR\_GA\_FIELD}, since the field indentifier for inductive electric field $\Epar$ is the greatest number in both cases.
-    The field identifier for the distribution functionen $\df$ changed to the number 9 and the size of the arrays or matrix is defined by \code{MAX\_IDX\_FIELD}. It is advicable to make sure that the field identifier for the distrubution function is always the greatest number. Further changes were performed in the whole code to ensure the new scheme. The changed code sequence in \code{global.f90} is listed below
-    \lstinputlisting[language=Fortran, firstline=131, lastline=155]{../gkw/src/global.F90}
-    \item[(2)] Since the calculation of $\Epar$ needs the right-hand side of the Vlasov equation $\vlaright$ and the regular fields perform the calculation with the distrubution function $df$ a seperation between additional and regular field equations were done. For that purpose new the variables gets introduced in \code{dist.f90} that follows the existing notation 
-    \begin{itemize}
-        \item \code{nregular\_fields\_start} as the start of the solutions of the regular fields, i.e. $\Phi$, $\Apar$ and $\Bpar$, in \code{fdisi},
-        \item \code{nadditional\_fields\_start} as the start of the solutions of the additional fields, i.e. $\Epar$, in \code{fdisi},
-        \item \code{nadditional\_fields\_end} as the end of the solutions of the regular fields in \code{fdisi}.
-    \end{itemize}
-    Here, \code{nregular\_fields\_start} replaces the variable \code{n\_phi\_start} to improve the code to a more general naming scheme. Note that, the declaration of the new variables have a specific place in the code and should not be changed. So, if someone wants to add a new regular field the definition of the number of elements in \code{fdisi} and ghost cells should be put above the declaration from \code{nregular\_fields\_start} and \code{nregular\_fields\_end} the same goes for additonal fields. 
-    \newpage
-    \item[(3)] The size of the field matrix \code{poisson\_int} and \code{mat\_field\_diag} in the module \code{matdat.f90} was implemented to big with the size of \code{ntot} which is the number grid points for the whole array \code{fdisi}. To add a more natrual way to define the size of the regular field matrices the new variable \code{nelem\_regular\_fields} gets defined as \code{nelem\_regular\_fields = nf \ast (1 * number\_of\_fields)} in \code{dist.f90}. Here, \code{nf = nsp\ast nx\ast nmu\ast nvpar\ast nmod} stands for the number of grid points for the distribution function $\df$ and \code{number\_of\_fields} is an integer which gets incremented by one for every activated field calculation. In general, \code{nelem\_regular\_fields} is always lesser than \code{ntot} which could improve the runtime of the code, because allocating the field matixes does take less time than before. The declaration of \code{nelem\_regular\_fields} is in the same code block as \code{nregular\_fields\_start} and \code{nregular\_fields\_end} and should not be changed, since it relies heavily on the parameter \code{number\_of\_fields}.
-    \item[(4)] In the subroutine \code{calculate\_fields} in \code{fields.f90} the division of the diagonal parts of the regular fields was performed by a loop starting at \code{nregular\_fields\_start} and ends at the size of \code{mat\_field\_diag}. Since it was very unintuitiv to start a loop not at one further investigations were done and it was found that in \code{linear\_terms.f90} a unity block of the size of \code{nf} was added in the front of the first element of \code{mat\_field\_diag}. This performed action was removed and teh loop in \code{calculate\_fields} adjust to loop from the first element to the last element of \code{mat\_field\_diag}.
-\end{enumerate} 
-
-\newpage
 
 Since the code is capable of parallization the inserted code is written to use the OpenMPI libary. This will from now on uncomment. Further subtile changes or import statements will be uncommented since most of them are just following the eastablished stucture for $\Apar$ and add them for $\Epar$ into the code as well. The reader is referred to the branch in bibucket\cite{FeatureEparBitbucket} for more in depth documentation on the process and implementation.
 
 \subsubsection*{Feature Switch}
 
-For the calculation for $\Epar$ one has to add a switch into \code{control.f90} which relates to the parameter \code{nlepar}. By default, \code{nlepar} is set to \code{.false.} what also relates to the so called g-version of \gkw. If \code{nlepar} is set to \code{.true.}, \gkw switches to the f-version of the code. Additionally, \code{nlapar} will also be set \code{.true.}, because $\Epar = \partial_t \Apar$, and a warning messages will be printed, that the user now uses the f-version of \gkw. If needed a new switch called \code{fversion} could be implemented to turn all necessary switches on until now \code{nlepar} will be used for that purpose. In the subroutine \code{control\_initt} one could add additonal switches for the f-version of \gkw into the given code sequence below
-\lstinputlisting[language=Fortran, firstline=670, lastline=674]{../gkw/src/control.f90}
-All upcoming changes in the code can only be accessed if \code{nlepar} is set to \code{.true.} which gets implemented with an if statement.
+For the calculation for $\Epar$ one has to add a switch into \code{control.f90} which relates to the parameter \code{nlepar}. By default, \code{nlepar} is set to \code{.false.}. Additionally, \code{nlapar} will also be set \code{.true.}, because $\Epar = \partial_t \Apar$. All upcoming changes in the code can only be accessed if \code{nlepar} is set to \code{.true.} which gets implemented with an if statement.
 
 \subsubsection*{Identifiers \code{iepar} and \code{iepar\_ga}}
 
@@ -71,9 +28,9 @@ It is necessary to mentioned that the implementation of the grid points for $\Ep
 
 \subsection*{Calculation of $\Epar$}
 
-Before the implementation for the calculation of $\Epar$ gets discussed it is necessary to talk about the scheme of the calculation. As stated in Equation (\ref{eq:fieldElectricLocalNorm}) is the right-hand side of the Vlasov equation $\vlaright$ necessary for the calculation of $\Epar$. Now, if one takes a closer look at Equations (\ref{eq:modifiedDistrubutionFunction}) and (\ref{eq:gyrocenterDeltafSubVlasovReduced}) it can be derived that
+Before the implementation for the calculation of $\Epar$ gets discussed it is necessary to talk about the scheme of the calculation. As stated in Equation (\ref{eq:fieldElectricLocalNorm}) is the right-hand side of the Vlasov equation $\rhs$ necessary for the calculation of $\Epar$. Now, if one takes a closer look at Equations (\ref{eq:modifiedDistrubutionFunction}) and (\ref{eq:gyrocenterDeltafSubVlasovReduced}) it can be derived that
 \begin{gather}
-    \vlaright = \frac{\partial g}{\Dt}~,
+    \frac{\partial g}{\Dt} = \rhs~,
     \label{eq:rightHandSide}
 \end{gather}
 where $g$ is the modified distribution. Since \gkw has already implemented $\partial_t g$ as \code{rhs} (right-hand side) and the Vlasov equation with the modified distribution function [Eq (\ref{eq:modifiedGyrocenterDeltafSubVlasov})] has only one additional term containing $g$, which is nonlinear, i.e. ignored in linear cases, \code{rhs} will be used as the right-hand side of the Vlasov equation in the calculation of $\Epar$. In the next step the numerical scheme for every Runge Kutta step ($i \rightarrow i+1$) has to be considered. Figure \ref{fig:numericalSchemeEpar} gives an illustration of the scheme.
@@ -82,7 +39,7 @@ where $g$ is the modified distribution. Since \gkw has already implemented $\par
 	Numerical scheme used to calculate the induced eletric field $\Epar$ in \gkw.
 }{fig:numericalSchemeEpar}
 
-As visible, the order of calculations is important in the numerical scheme, i.e. first calculate the right-hand side of the Vlasov equation $\vlaright$ and afterwards the induced electric field $\Epar$. To achieve this structure the calculation of $\Epar$ gets performed in \code{calculate\_rhs} from the module \code{exp\_integration}. For that, the following code lines get added in \code{calculate\_rhs}
+As visible, the order of calculations is important in the numerical scheme, i.e. first calculate the right-hand side of the Vlasov equation $\rhs$ and afterwards the induced electric field $\Epar$. To achieve this structure the calculation of $\Epar$ gets performed in \code{calculate\_rhs} from the module \code{exp\_integration}. For that, the following code lines get added in \code{calculate\_rhs}
 
 \lstinputlisting[language=Fortran, firstline=924, lastline=943]{../gkw/src/exp_integration.F90}
 
@@ -90,14 +47,14 @@ To ensure that the right Runge Kutta step for the calculatation of $\Epar$ is us
 
 \lstinputlisting[language=Fortran, firstline=231, lastline=243]{../gkw/src/exp_integration.F90}
 
-Note that, before the implementation of $\Epar$ feature, \code{calculate\_fields} gets called for local simulations, but since the calculation of $\Epar$ requires the calculation of the right-hand side $\vlaright$, which calculates the regular fields already in the subroutine \code{calculate\_rhs}, the call for \code{calculate\_fields} can be neglected if $\Epar$ gets calculated.
+Note that, before the implementation of $\Epar$ feature, \code{calculate\_fields} gets called for local simulations, but since the calculation of $\Epar$ requires the calculation of the right-hand side $\rhs$, which calculates the regular fields already in the subroutine \code{calculate\_rhs}, the call for \code{calculate\_fields} can be neglected if $\Epar$ gets calculated.
 
 The calculation of $\Epar$ itself gets performed by \code{calculate\_additonal\_fields} from the module \code{fields}. The subroutine is listed below
 
 \lstinputlisting[language=Fortran, firstline=329, lastline=417]{../gkw/src/fields.F90}
 
 This subroutine has the same structure as \code{calculate\_fields} with two major differences.
-No tearing modes are implemented yet and if tearing modes are activated, a warning gets printed to the console. \code{rhs} and \code{DTIM} as additonal argument for the subroutine. The use of \code{rhs} was already discussed at the beginning of this section but the variable \code{rhs}, which gets communticated in \code{calculate\_rhs} is not already the right right-hand side needed for the calculation of $\Epar$. \code{rhs} is a product of \code{rhs} and the time step \code{deltatime}. This is due to the Runge Kutta scheme for the calculatation of the distribution function $g$. To ensure that the "pure" right-hand side $\vlaright$ will be used for $\Epar$ the argument \code{DTIM} in \code{calculate\_additonal\_fields} is used to divide \code{rhs} by \code{DTIM}, which is \code{deltatime} from \code{calculate\_rhs}. \bigskip
+No tearing modes are implemented yet and if tearing modes are activated, a warning gets printed to the console. \code{rhs} and \code{DTIM} as additonal argument for the subroutine. The use of \code{rhs} was already discussed at the beginning of this section but the variable \code{rhs}, which gets communticated in \code{calculate\_rhs} is not already the right right-hand side needed for the calculation of $\Epar$. \code{rhs} is a product of \code{rhs} and the time step \code{deltatime}. This is due to the Runge Kutta scheme for the calculatation of the distribution function $g$. To ensure that the "pure" right-hand side $\rhs$ will be used for $\Epar$ the argument \code{DTIM} in \code{calculate\_additonal\_fields} is used to divide \code{rhs} by \code{DTIM}, which is \code{deltatime} from \code{calculate\_rhs}. \bigskip
 
 In \gkw the calculation of the $\Epar$ field gets performed in two steps:
 \begin{enumerate}
@@ -139,7 +96,7 @@ Here, the calculated values for $\Epar$ gets copied from \code{fdisi} (or \code{
 \end{itemize}
 have to adjusted to contain the two zero columns from $\Epar$ in the file \code{parallel.dat}
 
-\subsection{Benchmark of $\Epar$ Field Equation - Linear $\beta$ Scan}
+\subsection*{Benchmark of $\Epar$ Field Equation - Linear $\beta$ Scan}
 \label{sub:benchmarkFieldEpar}
 
 To benchmark the implementation of Faraday's law with $\Epar$ multiple linear simulations for different plasma beta $\beta$ gets performed. The goal is to extract the linear growth rate $\gamma$ and frequency $\omega$ to compare the result for $\Epar$ with $\Apar$. General a given quantity saved in \code{parallel.dat} gets saved in two columns containing real and imaginary values. The rows are sorted by the species $\Nsp$, bidnormal gird points $\Nmod$, radial grid points $\Nx$ and grid points along the field line $\Ns$ and therefore $\Nsp\Nmod\Nx\Ns$ rows. Data stored in \code{parallel.dat} is defined as
@@ -163,6 +120,8 @@ where $\widehat{L}(s,t)$ is the calculated data and $\widehat{L}(s)$ is the stor
     } \nonumber
     \label{eq:parallelDataEparEqApar}
 \end{gather}
+
+\newpage
 
 \subsection*{Simulation Setup}
 For the plasma beta following values are investigated
@@ -189,15 +148,23 @@ The values will be set with the parameter \code{beta} in the input file. As base
     \captionof{table}{Adjusted input parameter for linear $\beta$ scan: \textbf{Variables}}
     \label{tab:adjustInputparameter}
 \end{center}
-The simulations were performed local on the maschine \code{btppx25} and in the University Bayreuth cluster \code{emil}. Since the simulation perfroms well on the cluster it was shown that parallelization with OpenMPI works. The result of the linear $\beta$ scan can be seen in Figure \ref{fig:betaScan}.
+The simulations were performed local on the maschine \code{btppx25} and in the University Bayreuth cluster \code{emil}. Since the simulation perfroms well on the cluster it was shown that parallelization with OpenMPI works. The result of the linear $\beta$ scan can be seen in Figure \ref{fig:betaScan}. The obtained data shows good agreement with Ref. \citenum{Pueschel2008} although due to the different normalization scheme, i.e. GENE normalises with speed of sound and \gkw normalise by the thermal velocity $\vth$, the values are $\sqrt{2}$ times smaller. Furthermore, one would notice by comparing the beta scan in Ref. \citenum{Pueschel2008} and Figure \ref{fig:betaScan} that the transition from ion temperature gradient mode (ITG) to trapped electron mode (TEM) and from (TEM) to kinetic balloning mode (KBM) are located at different values of plasma beta $\beta$. This behaviour is due to different values for the wave vector $k_\zeta \rho$ and the resolution of parallel velocity grid $\Nvpar$. %TODO: negativeruler values
 
-% \includegraphicsHere{../pictures/evaluation/benchmark/beta0.000-0.0016_growth_freq.pdf}{
-%     Growth rate $\gamma$ and frequency $\omega$ for different plasma beta $\beta$ benchmarked with linear $\beta$ scan
-% }{fig:betaScan}{0.5}
+\includegraphicsHere{../pictures/evaluation/benchmark/g-version/kthrho0.300_beta0.000-0.016_scan_g-version.pdf}{
+    Growth rate $\gamma$ and frequency $\omega$ for different plasma beta $\beta$. Here, (ITG) stands for ion temperature gradient modes, (TEM) for trapping electron modes and (KBM) for kinetic balloning modes.
+}{fig:betaScan}{1.0}
 
-% TODO: Add code from gaEpar
+The comparision of the induced electric field $\Epar$ and plasma induction $\Apar$ yields that the implementation of the $\Epar$ field equation was successful. An example of the camparison for $\beta = 0.8\,\%$ is shown in Figure \ref{fig:fieldComparisionGVersion} and for different plasma beta values in Appendix \ref{append:fieldComparision}. 
+
+\includegraphicsHere{../pictures/evaluation/benchmark/g-version/fields/kthrho0.300_beta0.008_fields_g-version.pdf}{
+    Comparision between real and imaginary part of the induced electric field $\Epar$ and plasma Induction $\Apar$ for $\beta = 0.8\,\%$.
+}{fig:fieldComparisionGVersion}{1.0}
+
+% TODO: Add code from gaEpar betet
 
 % For $\gaEpar$ the function \code{get\_averaged\_epar} in \code{fields} gets used and works like \code{get\_epar}. Here, the function differs between local and global simulations. As defined in Chapter \ref{sub:gyroOperatorLocal} is the gyroaverage of a quantity in a local simulation the product with the zeroth order Besselfunction $J_0$ and the quantity self, i.e. $\gaEpar = J_0 \Epar$, which gets calculated in \code{get\_averaged\_epar}. If the simulation is global it will return the calculated $\gaEpar$ from \code{fdisi} and as in \code{get\_epar} if \code{nlepar} is \code{.false.} it will return a zero data set. The function \code{get\_averaged\_epar} is listed below for a closer look.
 % \lstinputlisting[language=Fortran, firstline=114, lastline=140]{../gkw/src/fields.f90}
 
 % number of grid points for \gaEpar as well... 
+
+\newpage

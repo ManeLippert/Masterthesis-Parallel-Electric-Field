@@ -1,0 +1,23 @@
+\subsection{Nonlinear Terms}
+\label{sub:implementationNonlinearTerms}
+
+Until now only the linear terms of the gyrokinetic equations got discussed. To complete the transformation to the f-version \gkw the nonlinear terms has to be considered as well. Because of the substitition of the modified distribution function $g$ the nonlinear terms 
+\begin{gather*}
+    \vchi \cdot \nabla \df ~ \& ~ -\frac{\fm}{T} \vBperp \cdot (Z e \nabla \bar{\Phi} + \mu \nabla \gaBpar)
+    \label{eq:nonlinearTermsFVersion}
+\end{gather*}
+got replaced with $\vchi \cdot \nabla g$. To implement the nonlinear terms one has simple to insert the definition of the modified distribution into the already implemented nonlinear term. This results in the following relation
+\begin{gather}
+    \begin{aligned}
+        % TODO: CHECK Signs in Source TErm
+        \vchi \cdot \nabla g &= \vchi \cdot \nabla \left(\df + \frac{Ze \vpar}{T} \gaApar \fm\right) \\
+                             &= \vchi \cdot \nabla \df + \vchi \cdot \nabla \left(\frac{Ze \vpar}{T} \gaApar \fm \right) \\
+                             &= \vchi \cdot \nabla \df + \frac{Ze \fm}{T} \vchi \cdot \nabla (\vpar\gaApar) \\
+                             &= \vchi \cdot \nabla \df + \frac{Ze \fm}{T} \vBperp \cdot \left( \nabla \bar{\Phi} - \nabla (\vpar \gaApar) + \frac{\mu}{Ze} \nabla \gaBpar \right) \\
+                             &= \vchi \cdot \nabla \df + \frac{\fm}{T} \vBperp \cdot ( Ze \nabla \bar{\Phi} + \mu \nabla \gaBpar) ~,
+    \end{aligned}
+    \label{eq:nonlinearTermsGVersionToFVersion}
+\end{gather}
+although the term with $\vchi \cdot \nabla \fm$ gets neglected due to order of $\rhost^2$. Since the introduction of the f-version of \gkw the distribution array \code{fdisi} is already $\df$, so only the $\Apar$ term has to be added to \code{fdisi}, i.e. apply the $\Apar$ correction. For that a new matrix \code{matf2g} gets introduced which basically is the same as \code{matg2f} only the minus signs of the elements are swap. For convienence, the elements for \code{matf2g} will be set in subroutine \code{apar\_correct}. The $\Apar$ correction itself gets performed via loop over the elements of \code{fdisi} in the subroutine \code{add\_non\_linear\_terms} and saved in the temporary distribution array \code{fdis\_tmp}. Then, the array \code{fdis\_tmp} will be used to calculate the nonlinear terms. It is important to insure the usage of \code{fdis\_tmp} only since in the f-version the distribution $\df$ gets used for further calculation and should not be changed. To advance errors \code{fdis\_tmp} will be written as well, if the f-version is not used and is simply the array \code{fdisi}. The above implementation is valid if \code{nlepar} and \code{non\_linear} is set to \code{.true.}.
+
+% TODO: Discussion about naming scheme and redefinement 

@@ -24,32 +24,27 @@ where the gyrophase $\theta$ is still an ignorable coordinate and the time deriv
 Inserting Equation (\ref{eq:gyrocenterPertrubationLagrangian}) into the Euler-Lagrange equation and apply multiple calculations detailed in Ref. \citenum{GKWDerivation} the equations of motion can be obtained as
 \begin{gather}
 	\begin{aligned}
-		\dot{\X} &= \vpar\vecb_0 + \vchi + \vD &\quad \dot{v}_\parallel &= \frac{\dot{\X}}{mv_\parallel} \cdot \Bigl( Ze \gaE -\mu\nabla (B_0 + \gaBpar) + \underbrace{\frac{1}{2} m \nabla u_0^2}_{mR \Omega^2 \nabla R} \Bigr) \\
+		\dot{\X} &= \vecb_0\vpar + \vchi + \vD &\quad \dot{v}_\parallel &= \frac{\dot{\X}}{mv_\parallel} \cdot \Bigl( Ze \gaE -\mu\nabla (B_0 + \gaBpar) + \underbrace{\frac{1}{2} m \nabla u_0^2}_{mR \Omega^2 \nabla R} \Bigr) \\
 		\dot{\mu} &= 0  &\quad \dot{\theta} &= \omega_\mathrm{c} - \frac{Ze}{m} \partial_\mu \left(Ze\gaA \cdot \dot{\X} - Ze\gaPhi - \mu\gaBpar\right)~,
 	\end{aligned}
 	\label{eq:motionEquation}
 \end{gather}
-with the drift velocity $\vchi$ defined as the sum of the streaming velocity perpendicular to the pertubated magnetic field $\velo_{\gaBperp}$, the $\exb$ drift in the total electric field $\velo_{\ga{E}}$ and the grad-$B$ dirft of the parallel perturbed magnetic field $\velo_{\nabla \gaBpar}$. The drift velocity $\vD$ containing the sum of the curvature drift $\velo_C$, the grad-$B$ drift of the equilibrium magnetic field $\velo_{\nabla B_0}$ and the drifts due to the Coriolis force $\velo_\mathrm{Co}$ and centrifugal force $\velo_\mathrm{Ce}$. The quantity $\chi$ can be expressed as
+with the drift velocity $\vchi$ defined as the sum of the streaming velocity perpendicular to the pertubated magnetic field $\vBperp$, the $\exb$ drift in the total electric field $\velo_{\ga{E}}$ and the grad-$B$ dirft of the parallel perturbed magnetic field $\velo_{\nabla \gaBpar}$. The drift velocity $\vD$ containing the sum of the curvature drift $\velo_C$, the grad-$B$ drift of the equilibrium magnetic field $\velo_{\nabla B_0}$ and the drifts due to the Coriolis force $\velo_\mathrm{Co}$ and centrifugal force $\velo_\mathrm{Ce}$. Note that, the term containing $u_0^2$ got replaced with Equation (\ref{eq:rotvelocity}) with $u_0^2 = R^2 \Omega^2$. The quantity $\chi$ can be expressed as
 \begin{gather}
 	\chi = \underbrace{(\Phi_0 + \gaPhi)}_{\bar{\Phi}} - \vpar \gaApar + \frac{\mu}{Ze} \gaBpar
 	\label{eq:driftPotential}
 \end{gather}
-with which follows the drift velocity $\vchi$ 
+which results the drift velocity $\vchi$ 
 \begin{gather}
-	\vchi = \frac{\vecb \times \nabla \chi}{B_0} = \velo_{\gaBperp} + \velo_{\ga{E}} + \velo_{\nabla \gaBpar}~.
+	\vchi = \frac{\vecb_0 \times \nabla \chi}{B_0} = \velo_{\ga{E}} + \vBperp + \velo_{\nabla \gaBpar}~,
 	\label{eq:veloDriftPotential}
 \end{gather}
-\bigskip
-
-Note that the term containing $u_0^2$ got replaced with Equation (\ref{eq:rotvelocity}) with $u_0^2 = R^2 \Omega^2$ and the total electric field $\gaE$ is defined as 
+with $\vecb_0 \times (\nabla \Apar) \approx \nabla \times (\Apar \vecb_0) = \vect{B}_{1\perp}$. The total electric field $\gaE$ is defined as 
 \begin{gather}
-	\gaE = - \nabla \bar{\Phi} - \partial_t \gaA \approx - \nabla \gaPhi ~,
+	\gaE = - \nabla \bar{\Phi} - \partial_t \gaA = - \nabla \bar{\Phi} - \partial_t \left(\vecb_0 \cdot \gaApar + \bar{\vect{A}}_{1\perp} \right)  ~.
 	\label{eq:totalElectricField}
 \end{gather}
-since the time derivative of the vector potential $\partial_t \gaA$ is one order smaller as the gradient of the electrostatic potential $\nabla \bar{\Phi}$ due to normalization assumptions in gyrokinetics\cite{Peeters2009A}.
-
-
-
+Since the time derivative of the vector potential $\partial_t \gaA$ is one order smaller as the gradient of the electrostatic potential $\nabla \bar{\Phi}$, due to normalization assumptions in gyrokinetics \cite{Peeters2009A}, the contribution of the vector potential will be neglected in the $\velo_{\ga{E}}$ velocity term.
 
 \newpage
 
@@ -103,7 +98,7 @@ where the $\nabla \omega_\varphi$ terms are the result of the derivatives of the
 \begin{gather}
 	\begin{aligned}
 		S = -& (\vchi + \vD) \cdot \widetilde{\nabla} \fm - \frac{Z e \vpar}{T} \partial_t \gaApar \fm \\
-		    -& \frac{\fm}{T} (\vpar \vecb_0 + \vD + \velo_{\gaBperp}) \cdot (Z e \nabla \gaPhi + \mu \nabla \gaBpar)~,
+		    -& \frac{\fm}{T} (\vpar \vecb_0 + \vD + \vBperp) \cdot (Z e \nabla \bar{\Phi} + \mu \nabla \gaBpar)~,
 	\end{aligned}
 	\label{eq:sourceTerm}
 \end{gather}
