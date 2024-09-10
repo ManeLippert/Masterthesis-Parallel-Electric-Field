@@ -1,0 +1,5 @@
+Boxsize Lpsi x Lzeta
+
+n_x(Lpsi)            = ((n_x(1)  - 1) * Lpsi ) + 1
+nmod(Lzeta)          = ((nmod(1) - 1) * Lztea) + 1
+ikxspace(Lpsi,Lzeta) = ikspace(1,1) * (Lpsi/Lzeta)
