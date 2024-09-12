@@ -148,17 +148,19 @@ The values will be set with the parameter \code{beta} in the input file. As base
     \captionof{table}{Adjusted input parameter for linear $\beta$ scan: \textbf{Variables}}
     \label{tab:adjustInputparameter}
 \end{center}
-The simulations were performed local on the maschine \code{btppx25} and in the University Bayreuth cluster \code{emil}. Since the simulation perfroms well on the cluster it was shown that parallelization with OpenMPI works. The result of the linear $\beta$ scan can be seen in Figure \ref{fig:betaScan}. The obtained data shows good agreement with Ref. \citenum{Pueschel2008} although due to the different normalization scheme, i.e. GENE normalises with speed of sound and \gkw normalise by the thermal velocity $\vth$, the values are $\sqrt{2}$ times smaller. Furthermore, one would notice by comparing the beta scan in Ref. \citenum{Pueschel2008} and Figure \ref{fig:betaScan} that the transition from ion temperature gradient mode (ITG) to trapped electron mode (TEM) and from (TEM) to kinetic balloning mode (KBM) are located at different values of plasma beta $\beta$. This behaviour is due to different values for the wave vector $k_\zeta \rho$ and the resolution of parallel velocity grid $\Nvpar$. %TODO: negativeruler values
+The simulations were performed local on the maschine \code{btppx25} and in the University Bayreuth cluster \code{emil}. Since the simulation perfroms well on the cluster it was shown that parallelization with OpenMPI works. The result of the linear $\beta$ scan can be seen in Figure \ref{fig:betaScanGVersion}. The obtained data shows good agreement with Ref. \citenum{Pueschel2008} although due to the different normalization scheme, i.e. GENE normalises with speed of sound and \gkw normalise by the thermal velocity $\vth$, the values are $\sqrt{2}$ times smaller. Furthermore, one would notice by comparing the beta scan in Ref. \citenum{Pueschel2008} and Figure \ref{fig:betaScanGVersion} that the transition from ion temperature gradient mode (ITG) to trapped electron mode (TEM) and from (TEM) to kinetic balloning mode (KBM) are located at different values of plasma beta $\beta$. This behaviour is due to different values for the wave vector $k_\zeta \rho$ and the resolution of parallel velocity grid $\Nvpar$. %TODO: negativeruler values
 
 \includegraphicsHere{../pictures/evaluation/benchmark/g-version/kthrho0.300_beta0.000-0.016_scan_g-version.pdf}{
     Growth rate $\gamma$ and frequency $\omega$ for different plasma beta $\beta$. Here, (ITG) stands for ion temperature gradient modes, (TEM) for trapping electron modes and (KBM) for kinetic balloning modes.
-}{fig:betaScan}{1.0}
+}{fig:betaScanGVersion}{1.0}
 
-The comparision of the induced electric field $\Epar$ and plasma induction $\Apar$ yields that the implementation of the $\Epar$ field equation was successful. An example of the camparison for $\beta = 0.8\,\%$ is shown in Figure \ref{fig:fieldComparisionGVersion} and for different plasma beta values in Appendix \ref{append:fieldComparision}. 
+The comparision of the induced electric field $\Epar$ and plasma induction $\Apar$ yields that the implementation of the $\Epar$ field equation was successful. An overall camparison is shown in Figure \ref{fig:fieldComparisionGVersion} and for a more detailed look for different plasma beta values the reader is referred to Appendix \ref{subappend:fieldComparisionGVersion}. 
 
-\includegraphicsHere{../pictures/evaluation/benchmark/g-version/fields/kthrho0.300_beta0.008_fields_g-version.pdf}{
+\newpage
+
+\includegraphicsRotHere{../pictures/evaluation/benchmark/comparison/kthrho0.300_beta0.000-0.016_fields_g-version.pdf}{
     Comparision between real and imaginary part of the induced electric field $\Epar$ and plasma Induction $\Apar$ for $\beta = 0.8\,\%$.
-}{fig:fieldComparisionGVersion}{1.0}
+}{fig:fieldComparisionGVersion}{0.94}
 
 % TODO: Add code from gaEpar betet
 

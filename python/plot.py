@@ -71,13 +71,17 @@ def parameters(figsize, dpi, fontsize = 40, USETEX = True,
     
     # LEGEND ========================================================
     
+    plt.rcParams['legend.frameon'] = False
+    
     if LEGENDONTOP:
         plt.rcParams['legend.loc'] = 'upper center'
-        plt.rcParams['legend.frameon'] = False
         plt.rcParams['legend.borderpad'] = 1
         # plt.rcParams['legend.borderaxespad'] = 0
         #plt.rcParams['legend.handleheight'] = 1
         # plt.rcParams['legend.borderpad'] = legendpad
+    else:
+        plt.rcParams['legend.loc'] = 'center right'
+        plt.rcParams['legend.borderpad'] = 1
         
     # WHITE PLOT ====================================================
     
@@ -132,12 +136,12 @@ def savefig_subplot(fig, ax, path, pad, bbox_input = None):
     fig.savefig(path, bbox_inches=bbox)
     
     
-def postprocessing(fig, leg_col = 5):
+def postprocessing(fig, legcol = 5):
     
     fig.align_labels()
     
     try:
-        fig.legend(ncol=leg_col)
+        fig.legend(ncol=legcol)
     except UserWarning:
         pass
 

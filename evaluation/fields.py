@@ -70,6 +70,8 @@ for v in versions:
         ax_r.tick_params(axis='y', colors=colors[0])
         
         ax_r_right = ax_r.twinx()
+        ax_r_right.sharey(ax_r)
+        
         ax_r_right.plot(s, e*1e3, color=colors[1])
         ax_r_right.set_ylabel(r'$\widehat{E}_{1\parallel}^\mathrm{R}$', color=colors[1])
         ax_r_right.tick_params(axis='y', colors=colors[1])
@@ -80,10 +82,12 @@ for v in versions:
         ax_i.tick_params(axis='y', colors=colors[0])
         
         ax_i_right = ax_i.twinx()
+        ax_i_right.sharey(ax_i) 
+        
         ax_i_right.plot(s, ie*1e3, color=colors[1])
         ax_i_right.set_ylabel(r'$\widehat{E}_{1\parallel}^\mathrm{I}$', color=colors[1])
         ax_i_right.tick_params(axis='y', colors=colors[1])
-        
+            
         # fig.suptitle(rf'$\beta = {b}\,\%$')
         fig.subplots_adjust(wspace=0.5)
         
