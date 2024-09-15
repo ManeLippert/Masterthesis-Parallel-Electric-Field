@@ -75,7 +75,7 @@ def parameters(figsize, dpi, fontsize = 40, USETEX = True,
     
     if LEGENDONTOP:
         plt.rcParams['legend.loc'] = 'upper center'
-        plt.rcParams['legend.borderpad'] = 1
+        plt.rcParams['legend.borderpad'] = 0
         # plt.rcParams['legend.borderaxespad'] = 0
         #plt.rcParams['legend.handleheight'] = 1
         # plt.rcParams['legend.borderpad'] = legendpad
