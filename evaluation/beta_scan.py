@@ -75,6 +75,9 @@ for v,m,s,c in zip(versions, markers, mark_size, colors):
     ax_growth.set_ylim(0,1.2)
     ax_freq.set_ylim(0,2.0)
     
+    ax_growth.set_xlim(0, max(beta)*100)
+    ax_freq.set_xlim(0, max(beta)*100)
+    
     # Horzontal Lines
     ax_growth.plot(np.repeat(1.0, 100), np.linspace(*ax_growth.get_ylim(), 100),linestyle='dashed', color='gray')
     ax_growth.plot(np.repeat(1.2, 100), np.linspace(*ax_growth.get_ylim(), 100),linestyle='dashed', color='gray')
@@ -82,19 +85,21 @@ for v,m,s,c in zip(versions, markers, mark_size, colors):
     ax_freq.plot(np.repeat(1.2, 100), np.linspace(*ax_freq.get_ylim(), 100),linestyle='dashed', color='gray')
     
     # Text
-    ax_growth.text(0.5, 0.75, 'ITG', horizontalalignment='center', verticalalignment='center')
-    ax_growth.text(1.1, 0.75, 'TEM', horizontalalignment='center', verticalalignment='center')
-    ax_growth.text(1.4, 0.75, 'KBM', horizontalalignment='center', verticalalignment='center')
+    ax_growth.text(0.5, 1.2*0.95, 'ITG', horizontalalignment='center', verticalalignment='center')
+    ax_growth.text(1.1, 1.2*0.95, 'TEM', horizontalalignment='center', verticalalignment='center')
+    ax_growth.text(1.75, 1.2*0.95, 'KBM', horizontalalignment='center', verticalalignment='center')
     
-    ax_freq.text(0.5, 1.875, 'ITG', horizontalalignment='center', verticalalignment='center')
-    ax_freq.text(1.1, 1.875, 'TEM', horizontalalignment='center', verticalalignment='center')
-    ax_freq.text(1.4, 1.875, 'KBM', horizontalalignment='center', verticalalignment='center')
+    ax_freq.text(0.5, 2.0*0.95, 'ITG', horizontalalignment='center', verticalalignment='center')
+    ax_freq.text(1.1, 2.0*0.95, 'TEM', horizontalalignment='center', verticalalignment='center')
+    ax_freq.text(1.75, 2.0*0.95, 'KBM', horizontalalignment='center', verticalalignment='center')
 
     ax_growth.set_xlabel(r'$\beta~[\%]$')
     ax_freq.set_xlabel(r'$\beta~[\%]$')
     ax_growth.set_ylabel(r'$\gamma~[v_{\mathrm{th,ref}}/R_\mathrm{ref}]$')
     ax_freq.set_ylabel(r'$\omega~[v_{\mathrm{th,ref}}/R_\mathrm{ref}]$')
 
+    fig.subplots_adjust(wspace=0.3)
+    
     plot.postprocessing(fig)
  
     plt.savefig(f'{picDir}/kthrho{kthrho:.3f}_beta{min(beta_percent)/100:.3f}-{max(beta_percent)/100:.3f}_scan_{v}-version.pdf')

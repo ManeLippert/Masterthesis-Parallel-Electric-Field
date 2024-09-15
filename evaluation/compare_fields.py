@@ -89,6 +89,8 @@ for v in versions:
         ax_ar.set_ylabel(r'$- \gamma \widehat{A}_{1\parallel}^\mathrm{R} + \omega \widehat{A}_{1\parallel}^\mathrm{I}~[2T_\mathrm{ref} \rho_\ast / e R_\mathrm{ref}]$') #, color=colors[0])
         # ax_ar.tick_params(axis='y', colors=colors[0])
         
+        ax_ar.set_title("Real")
+        
         ax_er.plot(s, e, color=colors[1], alpha=i/len(epar))
         ax_er.set_xlabel(r'$s$')
         ax_er.set_ylabel(r'$\widehat{E}_{1\parallel}^\mathrm{R}~[2T_\mathrm{ref} \rho_\ast / e R_\mathrm{ref}]$') #, color=colors[1])
@@ -98,6 +100,8 @@ for v in versions:
         # ax_ai.set_xlabel(r'$s$')
         ax_ai.set_ylabel(r'$- \omega \widehat{A}_{1\parallel}^\mathrm{R} - \gamma \widehat{A}_{1\parallel}^\mathrm{I}~[2T_\mathrm{ref} \rho_\ast / e R_\mathrm{ref}]$') #, color=colors[0])
         # ax_ai.tick_params(axis='y', colors=colors[0])
+        
+        ax_ai.set_title("Imaginary")
         
         ax_ei.plot(s, ie, color=colors[1], alpha=i/len(epar)) #, label=rf'$\beta = {b:.1f}\,\%$')
         ax_ei.set_xlabel(r'$s$')
