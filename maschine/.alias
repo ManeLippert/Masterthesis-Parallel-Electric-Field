@@ -20,6 +20,7 @@ alias print="lp -d btppp2"
 alias gkw-rename-run="mv $GKW_RUN/gkw*.x $GKW_RUN/gkw.x && mv $GKW_RUN/gkw*.x.info $GKW_RUN/gkw.x.info"
 
 alias gkw-clean-run="cd $GKW_RUN && rm -fv !('gkw.x'|'gkw.x.info'|'input.dat') && cd $WORKDIR"
+alias gkw-reset-data="rm -fv !('jobscript'|'input.dat')"
 alias gkw-clean-data="find $WORKDIR/data -type f \( -name "slurm*" -o -name "*_first.dat" \) -print -delete 2>/dev/null"
 
 alias gkw-make-new="gkwmake && rm -f $GKW_RUN/gkw.x && rm -f $GKW_RUN/gkw.x.info && gkw-rename-run"
