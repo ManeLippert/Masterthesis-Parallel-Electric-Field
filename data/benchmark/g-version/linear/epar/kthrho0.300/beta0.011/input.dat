@@ -11,6 +11,7 @@
  NTIME  = 2000
  NAVERAGE = 100
  nlapar = .true.
+ nlepar = .true.
  collisions = .false.
  disp_par = 1.0
  disp_vp  = 0.2
@@ -47,7 +48,7 @@
  EPS  = 0.19
 /
 &SPCGENERAL
- beta = 0.014
+ beta = 0.011
  adiabatic_electrons = .false.
 /
 &SPECIES
