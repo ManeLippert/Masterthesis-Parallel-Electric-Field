@@ -6,23 +6,27 @@
 \begin{tikzpicture}
     % Circle
     \draw[lightgray] (0,0) circle (1.5);
+    \draw[lightgray] (0,0) circle (2);
     \filldraw (0,0) circle (1.5pt);
     % Force
-    \draw[thick, Notagrey, <-, >=stealth] (90:0.5) node[right, Notagrey]{$\vect{F}_{\perp, B}$} -- ++ (90:1.0) node[coordinate] (x) {};
+    \draw[thick, Notagrey, <-, >=stealth] (90:0.5) node[right, Notagrey]{$\vect{F}^e_{\perp, B}$} -- ++ (90:1.0) node[coordinate] (x) {};
     % Larmor radius
     \draw[thick, black, ->, >=stealth] (0,0) -- ++(0:1.5);
-    \draw (0.6,-0.4) node {$\rho$};
+    \draw[thick, black, ->, >=stealth] (0,0) -- ++(0:-2);
+
+    \draw (0.6,-0.4) node {$\rho_e$};
+    \draw (-0.8,-0.4) node {$\rho_i$};
     % Velocity
-    \draw[thick,Notaorange, ->, >=stealth] (x) -- ++(180:1cm) node[left, Notaorange]{$\vect{v}^-$};
-    \draw[thick,Notaorange, ->, >=stealth] (0,-1.5) -- ++(180:1cm) node[left, Notaorange]{$\vect{v}^+$};
+    \draw[thick,Notaorange, ->, >=stealth] (x) -- ++(180:1cm) node[above left, Notaorange]{$\vect{v}_{\perp, e}$};
+    \draw[thick,Notaorange, ->, >=stealth] (0,-2) -- ++(180:1cm) node[below left, Notaorange]{$\vect{v}_{\perp, i}$};
     % Cyclontron freqency
     \draw[thick, ->, blue, >=stealth] (90:1.0*1.5) arc(90:150:1.0*1.5);
-    \draw[thick, <-, red, >=stealth] (210:1.0*1.5) arc(210:270:1.0*1.5);
+    \draw[thick, <-, red, >=stealth] (210:1.0*2) arc(210:270:1.0*2);
     % Charges
     \draw [fill=blue, blue] (x) circle (0.2) node[white, font=\boldmath]{$-$};
-    \draw [fill=red, red] (0,-1.5) circle (0.2) node[white, font=\boldmath]{$+$};
+    \draw [fill=red, red] (0,-2) circle (0.3) node[white, font=\boldmath]{$+$};
     % Magnetic field
-    \draw [thick, Notagreen] (1.5,-1.5) circle (0.2);
-    \filldraw [Notagreen] (1.5,-1.5) circle (1.5pt);
-    \draw (1.8,-1.2) node[Notagreen]{$\vect{B}$};
+    \draw [thick, Notagreen] (2,-2) circle (0.2);
+    \filldraw [Notagreen] (2,-2) circle (1.5pt);
+    \draw (2.3,-1.7) node[Notagreen]{$\vect{B}$};
 \end{tikzpicture}

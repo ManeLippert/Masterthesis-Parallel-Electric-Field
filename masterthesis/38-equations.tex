@@ -1,0 +1,254 @@
+\section{Field Equations}
+\label{sec:fieldEquations}
+
+\subsection{Coulomb's Law - Perturbated Electrostatic Potential $\Phi_1$}
+\label{sub:fieldPotential}
+
+To evaluate the pertrubated electrostatic potential $\Phi_1$ in the gyrocenter phase space Equation (\ref{eq:pullback}) gets inserted into the equation for the particle density $n(\x)$ which results in
+\begin{gather}
+	\begin{aligned}
+		n_1(\x) &= \frac{B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \left(\df - \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right) \right)\\
+		     &= \ga{n}_1(\x) + n_\mathcal{P}(\x)~,
+	\end{aligned}
+	\label{densityPullback}
+\end{gather}
+with the density of the gyrocenter $\ga{n}_1(\x)$ and the variations on the gyro orbit to the particle density $n_\mathcal{P}(\x)$ which describes the polarization effects of the fluctuating fields on the gyro orbit \cite{Brizard2007}. The gyrocenter density can be simplyfied with the gyroperator $\mathcal{G}^\dagger$ [Eq. (\ref{eq:gyroOperatorDagger})] to
+\begin{gather}
+		\ga{n}_1(\x) = \frac{B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \df = \frac{2\pi B_0}{m} \ints \dvpar\dmu ~ \gad{\df}~.
+	\label{eq:gyrocenterDensity}
+\end{gather}
+The polarization density $n_\mathcal{P}$ is given by
+\begin{gather}
+	n_\mathcal{P}(\x) =  - \frac{2\pi B_0}{m} \ints \dvpar\dmu ~ \frac{\fm}{T} \left( Ze \left(\Phi_1(\x) - \gad{\gaPhi}(\x) \right) -  \mu \gad{\gaBpar} \right) ~.
+	\label{eq:polarizationDensity}
+\end{gather}
+To derive the term for the polarization density $n_\mathcal{P}$ the oscillating Part of the electro static potential got replaced with $\widetilde{\Phi}_1(\X+ \rrho) = \Phi_1(\X + \rrho) - \gaPhi (\X)$ and the gyrooperator $\mathcal{G}^\dagger$ were used. Taking everything into account and insert it into the quaisneutrality equation $\spec{\sum} \spec{Z} e \, \specc{n}{1} = 0$ the field equation for the perturbated electrostatic potential $\Phi_1$ is given by
+\begin{gather}
+	\begin{aligned}
+		&\spec{\sum} \frac{\spec{Z^2} e^2}{\spec{m}} \ints \dvpar\dmu ~ \frac{\speccrm{F}{M}}{\spec{T}} \left(\Phi_1(\x) - \gad{\gaPhi}(\x) \right) =  \\
+		&\spec{\sum} \frac{\spec{Z} e}{\spec{m}} \ints \dvpar\dmu ~ \gad{\specc{\fgy}{1}} + \frac{\speccrm{F}{M}}{\spec{T}} \mu \gad{\gaBpar} ~.
+	\end{aligned}
+	\label{eq:fieldPotential}
+\end{gather}
+
+With the use of the local gyrooperator $\mathcal{G}$ the density of the gyrocenter $\ga{n}_1$ and the polarization density $n_\mathcal{P}$ can be expressed as
+\begin{gather}
+	\ga{n}_1(\x) = \frac{2\pi B_0}{m} \ints \dvpar\dmu ~ J_0(\lambda) \df(\x, \vpar, \mu)~, \\
+    \begin{aligned}
+	    n_\mathcal{P}(\x) = &\frac{Ze \nReq(\x)}{T} e^{-\cfen/T} (\Gamma_0(b) - 1) \Phi_1(\x) \\
+                            &+ \nReq(\x) e^{-\cfen/T} (\Gamma_0(b) - \Gamma_1(b))\frac{\Bpar(\x)}{B_0}~,
+    \end{aligned}
+	\label{eq:particleDensityLocal}
+\end{gather}
+where $\nReq$ is the background density at postion $R_0$. To derive the term for the polarization density $n_\mathcal{P}$ the integrals mentioned in Chapter \ref{sub:integralBesselfunction} were performed. Then, the field equation for the perturbated electrostatic potential $\Phi_1$ in the local simulation is given by
+\begin{gather}
+    \begin{aligned}
+        &\spec{\sum} \frac{\spec{Z}^2e^2}{\spec{T}} \specc{n}{R_0} e^{-\spec{\cfen}/\spec{T}} \left(1 - \Gamma_0(\spec{b})\right) \Phi_1(\x) = \\
+        &\spec{\sum} \spec{Z}e \left(\specc{\ga{n}}{1} + \specc{n}{R_0} e^{-\spec{\cfen}/\spec{T}} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b}))\frac{\Bpar(\x)}{B_0} \right)
+        \label{eq:fieldPotentialLocal}
+    \end{aligned}
+\end{gather}
+and takes the following form after performing the Fourier-transform and applying the normalizing expressions [Ch. \ref{sec:normalizationLocal}]
+\begin{gather}
+    \begin{aligned}
+        &\spec{\sum} \spec{Z} \specR{n} e^{-\specN{\cfen}/\specR{T}} \left(1 - \Gamma_0(\spec{b})\right) \frac{\spec{Z}}{\specR{T}} \FPhiN = \\
+        &\spec{\sum} \spec{Z}\specR{n} 2\pi\BN \ints \dvparN \dmuN ~ J_0(k_\perp \spec{\rho}) \speccN{\Ffgy}{1} \\
+        + & \spec{\sum} \spec{Z}\specR{n} e^{-\specN{\cfen}/\specR{T}} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b}))\frac{\FBparN}{\BN}
+        \label{eq:fieldPotentialLocalNorm}
+    \end{aligned}
+\end{gather}
+\newpage
+
+\subsection{Plasma Compression - Perturbated Parallel Magnetic Field $\Bpar$}
+\label{sub:fieldMagnetic}
+
+The perpendicular compentent of Ampere's law can be written as 
+\begin{gather}
+	\nabla^2 \Aperp = (\nabla \times \Bpar)_\perp = \left( \begin{array}{c} \partial_y \Bpar - \partial_z B_{1 y} \\ \partial_z B_{1x} - \partial_x \Bpar \end{array} \right) = \mu_0 \vecj_{1 \perp}~,
+	\label{eq:perpendicularAmpereLawLocal}
+\end{gather}
+where $z$ is the direction of the equilibrium magnetic field $B_0$ and the Coulomb gauge $\nabla \cdot \A_1 = 0$ was used. The parallel gradients of the pertrubated magnetic field can be neglegted since they are one order smaller than the perpendicular ones, which results in
+\begin{gather}
+	\left( \begin{array}{r} \partial_y \Bpar \\ - \partial_x \Bpar \end{array} \right) = \nabla_{\!\perp} \Bpar \times \vecb = \mu_0 \vecj_{1 \perp}~.
+\end{gather}
+After performing the pull back operation the perpendicular current $\vecj_{1\perp}$ is given by 
+\begin{gather}
+		\vecj_{1\perp} = \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vperp \left(\df - \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right) \right) ~.
+	\label{eq:perpendicularCurrentPullbackLocal}
+\end{gather}
+Inserting the pertrubated perpenedicular current $\vecj_{1 \perp}$ into Ampere's law and apply the same method as in Ref \citenum{GKWDerivation} results in the field equation for the pertrubated parallel magnetic field $\Bpar$ which can be expressed as
+\begin{gather}
+    \begin{aligned}
+        &\left(1 + \spec{\sum} \spec{\beta} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b})) e^{-\spec{\cfen}/\spec{T}}\right) \Bpar = \\
+	 &- \spec{\sum} \frac{2\pi \mu_0 B_0}{\spec{m}} \ints \dvpar\dmu ~ \mu I_n(\spec{\lambda}) \specc{\fgy}{1}  \\
+        &- \spec{\sum} (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b}))e^{-\spec{\cfen}/\spec{T}} \frac{\spec{Z}e \mu_0 \specc{n}{R_0}}{B_0} \Phi_1 ~,
+    \end{aligned}
+    \label{eq:fieldMagneticLocal}
+\end{gather}
+with $\spec{\beta}$ as the plasma beta of a given species. Fourier's transformation and normalization yields
+\begin{gather}
+    \begin{aligned}
+        &\left(1 + \spec{\sum} \frac{\specR{T}\specN{n}}{\BN^2} \betaref (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b})) e^{-\specN{\cfen}/\specR{T}}\right) \FBparN = \\
+        &-\spec{\sum} \betaref 2\pi \BN \specR{T} \specR{n} \ints \dvparN \dmuN ~ \muN I_1(\kperp \spec{\rho}) \speccN{\Ffgy}{1} \\
+        &-\spec{\sum} \betaref (\Gamma_0(\spec{b}) - \Gamma_1(\spec{b})) e^{-\specN{\cfen}/\specR{T}} \frac{\spec{Z}\specR{n}}{2 \BN} \FPhiN ~.
+    \end{aligned}
+\end{gather}
+\newpage
+
+\subsection{Ampere's Law - Plasma Induction $\Apar$}
+\label{sub:fieldInduction}
+
+To express the parallel pertrubation of the vector potential $\Apar$, i.e. the plasma induction, the method is analogous to Chapter \ref{sub:fieldPotential}. The parallel compentent of Ampere's law can be expressed as
+\begin{gather}
+	\nabla^2 \Apar = - \mu_0 j_{1\parallel} = - \mu_0 \spec{\sum} j_{1\parallel,s}~.
+	\label{eq:parallelAmpereLaw}
+\end{gather}
+Performing the pull back again the parallel perturbation of the current density $j_{1\parallel}$ is given by
+\begin{gather}
+	\begin{aligned}
+		j_{1\parallel} &= \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vpar \left(\df - \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right) \right)\\
+					   &= \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vpar \df \\
+					   &= \frac{2\pi Ze B_0}{m} \ints \dvpar\dmu ~ \gad{\vpar \df}~,
+	\end{aligned}
+	\label{eq:parallelCurrentPullback}
+\end{gather}
+although the term $\vpar \fm$ vanishes during the integration along $\vpar$, due to symmetry of the Maxwellian $\fm$. 
+Inserting Equation (\ref{eq:parallelCurrentPullback}) into Ampere's law yields the field equation for the plasma induction as follows
+\begin{gather}
+	\nabla^2 \Apar = - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \ints \dvpar\dmu ~ \gad{\vpar \specc{\fgy}{1}}~
+	\label{eq:fieldInduction}
+\end{gather}
+and after the use of definition of the local gyroperator
+\begin{gather}
+	\nabla^2 \Apar = - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \ints \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \specc{\fgy}{1}(\x, \vpar, \mu)~.
+	\label{eq:fieldInductionLocal}
+\end{gather}
+Fourier transformation and normalization yields
+\begin{gather}
+	\kperpN^2 \FAparN = 2 \pi \BN \betaref\spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN\dmuN ~ \vparN J_0(\kperp \spec{\rho}) \speccN{\Ffgy}{1}~.
+	\label{eq:fieldInductionLocalNorm}
+\end{gather}
+\newpage
+
+\subsection{Cancellation Problem}
+\label{sub:cancelProblem}
+
+Local and global Gyrokinetic simulations are suffering from numerical problems, mainly from saturation of the heat fluxes at a high level of transport (nonzonal transition (NZT)) and the cancellation problem \cite{Chen2001}. The cancellation problem is examined in codes which uses the paticle-in-cell or the Eulerian methods \cite{Cummings_PHD}. In the following chapter the origin of the cancellation problem will be discussed.\bigskip
+
+As in Chapter \ref{sub:approximation} discussed appears in the Source term [Eq. (\ref{eq:sourceTerm})] the time derivative of the parallel pertrubed vector potential $\partial_t \gaApar$. This $\Apar$-Term and the $\Dt \df$ term in the gyrokinetic equation are computationally difficult to handle, as it is not immediately clear how to evaluate the terms by using a simple Runge-Kutta scheme. To avoid further complications a modified distribution function $g$ gets introduced
+\begin{gather}
+	g = \df + \frac{Ze \vpar}{T} \gaApar \fm ~.
+	\label{eq:modifiedDistrubutionFunction}
+\end{gather}
+Substituting the modified distribution function $g$ into Equation (\ref{eq:gyrocenterDeltafSubVlasov}) results in
+\begin{gather}
+	\frac{\partial g}{\partial t} + \vchi \cdot \nabla g + (\vpar \vecb_0 + \vD) \cdot \nabla \df - \frac{\vecb_0}{m} \cdot (Z e \nabla \Phi_0 + \mu \nabla B_0 - m R \Omega^2 \nabla R) \frac{\partial \df}{\partial \vpar} = S
+	\label{eq:modifiedGyrocenterDeltafSubVlasov}
+\end{gather}
+with the source term $S$ defined as
+\begin{gather}
+	S = - (\vchi + \vD) \cdot \tilde{\nabla} \fm - \frac{\fm}{T} (\vpar \vecb_0 + \vD) \cdot (Ze \nabla \bar{\Phi} + \mu \nabla \gaBpar) ~.
+	\label{eq:modifiedSourceTerm}
+\end{gather}
+The advantage of this substitition is clear, because now only one time derivative appears in the gyrokinetic equation. Due to the substitition the distrubution function $\df$ in the field equations has to be replaced by with the modified distribution $g$ as
+\begin{gather}
+	\df = g - \frac{Ze \vpar}{T} \gaApar \fm ~.
+\end{gather}
+For the equations of pertrubated electrostatic potential $\Phi_1$ and parallel magnetic field $\Bpar$ the replacement is trivial since the integral $\int \dvpar \vpar \fm = 0$ (due to symmetry) results in the elimination of the $\Apar$-Term in both equation leaving the modified distribution $g$ in the integral. For the field equation for $\Apar$ the substitition has a different effect. By replacing $\df$ with $g$ the new normalized fourier transformed field equation for $\Apar$ is given by
+\begin{gather}
+    \begin{aligned}
+        &\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \FAparN = \\
+        & 2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN \dmuN ~ \vparN J_0(\kperp \spec{\rho}) \specN{\widehat{g}} ~.
+    \end{aligned}
+    \label{eq:fieldInductionLocalModifiedNorm}
+\end{gather}
+Comparing Eq. (\ref{eq:fieldInductionLocalNorm}) and Eq. (\ref{eq:fieldInductionLocalModifiedNorm}) one will notice the additional term in the brackets of Eq. (\ref{eq:fieldInductionLocalModifiedNorm}). This term is the so-called \textit{skin term} \cite{Mishchenko2017} and has no physical meaning and only appears because of the substitution of the distribution function. To understand the cancellation problem completely, one has to consider the "hidden" $\Apar$ term in the distrubution $g$. This $\Apar$ term has to be cancelled exactly with the skin term. But due to the different numerical representation of the skin term (analytically) and the integral over the modified distribution function (numerically), the cancellation is inexact and leads to the cancellation problem. The error of the cancellation scales with $\betaref/\kperpN^2$, making simulations with high plasma beta und small $\kperp$ very challenging. \cite{Naitou1995} To mitigate the cancellation problem the gamma function $\Gamma(b)$ gets also calculated with the same numerical scheme as the integral over the distrubution, but this approuch has to be performed carefully and could still lead to errors.
+\newpage
+
+\subsection{Faraday's Law - Inductive Electric Field $\Epar$}
+\label{sub:fieldEpar}
+
+In this Chapter the $\partial_t \gaApar$ term will get handled differntly with the consideration of electromagnetic fields. This section follows the work of Paul Crandall in chapter 5 of his Disseration\cite{Crandall_PHD}.
+\bigskip
+
+First the Vlasov equation gets written down in the $\df$ framework with the source term [Eq. (\ref{eq:gyrocenterDeltafSubVlasov}) \& (\ref{eq:sourceTerm})] and gets simplified into 
+\begin{gather}
+    \frac{\partial \df}{\partial t} + \frac{Ze \vpar}{T} \partial_t \gaApar \fm = \rhs~,
+    \label{eq:gyrocenterDeltafSubVlasovReduced}
+\end{gather}
+where $\rhs$ represents all terms of the Vlasov Equation which excludes the time derivative of plasma induction $\partial_t \gaApar$. The equation of the $\gaApar$ is already established in Chapter \ref{sub:fieldInduction} but for this derivation a recall will be made. The equation for $\gaApar$ is given by
+\begin{gather}
+    \nabla^2 \Apar = - \mu_0 j_{1\parallel} = - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}} \ints \dvpar\dmu ~ \gad{\vpar \specc{\fgy}{1}}~.
+    \label{eq:Aparallel}
+\end{gather}
+Now the Faraday law will be considered
+\begin{gather}
+	\Epar = - \frac{\partial \Apar}{\partial t}~.
+	\label{eq:faradayLaw}
+\end{gather}
+Taking the time derivative of Equation (\ref{eq:Aparallel}) results directly into the Faraday law and so in the field equation for the induced electric field $\Epar$ which can be expressed as
+\begin{gather}
+	\nabla^2 \Epar - \spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}} \ints \dvpar\dmu ~ \gad{\vpar \frac{\partial \specc{\fgy}{1}}{\partial t}} = 0 ~.
+	\label{eq:preFieldElectric}
+\end{gather}
+In Equation (\ref{eq:preFieldElectric}) the time derivative of the gyrocenter distrubution function has to be further simplified. For that, the gyrokinetic equation shall be rewritten as 
+\begin{gather}
+	\frac{\partial \df}{\partial t} = \rhs + \frac{Ze \vpar}{T} \gaEpar \fm~.
+	\label{eq:gyrocenterDeltafSubVlasovReducedIndElectric}
+\end{gather}
+Plugging Equation (\ref{eq:gyrocenterDeltafSubVlasovReducedIndElectric}) into Equation (\ref{eq:preFieldElectric}), one can derive the equation for the induced electric field 
+\begin{gather}
+	\begin{aligned}
+		&\left(\nabla^2 - \spec{\sum} \frac{2\pi (\spec{Z}e)^2 \mu_0 B_0}{\spec{T}\spec{m}} \ints \dvpar\dmu ~ \tgad{\vpar^2 F_{\mathrm{M}s} \tga{}}\right) \Epar = \\
+		&\spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \ints \dvpar\dmu ~ \tgad{\left\{\vpar \spec{\rhs}\right\}} = \mu_0 \frac{\partial j_{1\parallel}}{\partial t}~,
+	\end{aligned}
+	\label{eq:fieldElectric}
+\end{gather}
+although the relation of $\gaEpar =  \tga{\left\{\Epar\right\}}$ and the definition of $\mathcal{G}^\dagger$ was used to simplyfied the integral on the right-hand side. 
+To complete the derivation of this section the delta-\!$f$ Vlasov equation will be recalled with the induced electric field $\Epar$ in the source term. The delta-\!$f$ Vlasov equation is given by
+\begin{gather}
+	\frac{\partial \df}{\partial t} + \dot{\X} \cdot \nabla \df - \frac{\vecb_0}{m} \cdot \left(Ze\nabla \Phi_0 + \mu \nabla B_0 - mR \Omega^2 \nabla R \right) \cdot \frac{\partial \df}{\partial v_\parallel} = S~,
+	\label{eq:gyrocenterDeltafSubVlasovRecall}
+\end{gather}
+with the source term
+\begin{gather}
+	\begin{aligned}
+		S = -& (\vchi + \vD) \cdot \tilde{\nabla} \fm + \frac{Z e \vpar}{T} \gaEpar \fm \\
+		    -& \frac{\fm}{T} (\vpar \vecb_0 + \vD + \vBperp) \cdot (Z e \nabla \bar{\Phi} + \mu \nabla \gaBpar)~.
+	\end{aligned}
+	\label{eq:sourceTermElectric}
+\end{gather}
+
+Using the local definition of the gyrooperator into Equation (\ref{eq:preFieldElectric}), one can derive the equation for the included electric field 
+\begin{gather}
+    \begin{aligned}
+        &\left(\nabla^2 - \spec{\sum} \frac{2\pi (\spec{Z}e)^2 \mu_0 B_0}{\spec{T}\spec{m}}  \ints \dvpar\dmu ~ \vpar^2 J_0^2(\spec{\lambda}) F_{\mathrm{M}s} \right) \Epar = \\
+	    &\spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \ints \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \spec{\rhs} = \mu_0 \frac{\partial j_{1\parallel}}{\partial t}~.
+    \end{aligned}
+	\label{eq:prefieldElectricLocal}
+\end{gather}
+The integral itself can be more simplified with performing the integral over $\vpar$ and $\mu$
+\begin{gather}
+	\begin{aligned}
+		I &= \frac{2\pi (Ze)^2 \mu_0 B_0}{Tm}  \ints \dvpar\dmu ~ \vpar^2 J_0^2(\lambda) \fm \\
+		  &= \frac{2\pi (Ze)^2 \mu_0 B_0}{Tm} e^{-\cfen/T} \underbrace{\ints \dvpar ~ \vpar^2 \fm(\vpar)}_{\nReq/2\pi} \underbrace{\ints \dmu ~ J_0^2(\lambda) \fm(\mu)}_{T/B_0~\Gamma_0(b)} \\
+		  &= \frac{(Ze)^2 \mu_0 \nReq}{m} \Gamma_0(b) e^{-\cfen/T} ~,
+	\end{aligned}
+\end{gather}
+where the seperation of the Maxwellian was used [Eq. (\ref{eq:maxwellianSeperated})]. Finally, the field equation for the induced electric field can be written as
+\begin{gather}
+    \begin{aligned}
+        &\left(\nabla^2 - \spec{\sum} \frac{\spec{Z}^2e^2 \mu_0 \specc{n}{R_0}}{\spec{m}} \Gamma_0(\spec{b}) e^{-\spec{\cfen}/\spec{T}} \right) \Epar = \\
+	    &\spec{\sum} \frac{2\pi \spec{Z}e \mu_0 B_0}{\spec{m}}  \ints \dvpar\dmu ~ \vpar J_0(\spec{\lambda}) \spec{\rhs} = \mu_0 \frac{\partial j_{1\parallel}}{\partial t}~.
+    \end{aligned}
+	\label{eq:fieldElectricLocal}
+\end{gather}
+After performing the Fourier transform and normalize Equation (\ref{eq:fieldElectricLocal}) the final field equation for the induced electric field is given by
+\begin{gather}
+    \begin{aligned}
+        &\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \FEparN = \\
+        &- 2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN \dmuN ~ \vparN J_0(\kperp \spec{\rho}) \specN{\Frhs} ~.
+    \end{aligned}
+    \label{eq:fieldElectricLocalNorm}
+\end{gather}
+\newpage

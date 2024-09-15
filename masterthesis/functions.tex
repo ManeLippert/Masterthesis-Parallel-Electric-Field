@@ -75,11 +75,13 @@
 
 \newcommand{\includegraphicsRotHere}[4]{
 	\begin{center}
+		\begin{sidewaysfigure}
 		\centering
 		\captionsetup{type=figure}
-    	\includegraphics[angle=90,width=#4\textwidth]{#1}
+    	\includegraphics[width=#4\textwidth]{#1}
 		\captionof{figure}{#2}
     	\label{#3}
+		\end{sidewaysfigure}
 	\end{center}
 }
 

@@ -26,10 +26,10 @@
 	  \draw [thick, Notagreen, <-, >=stealth] (-0.95*\H, 0.7*\y/\H) to[out= \out,in= \in,looseness=0.8] (0.25*\W, \y);
 	  \draw [thick, Notagreen, <-, >=stealth] (-0.95*\H,-0.7*\y/\H) to[out=-\out,in=-\in,looseness=0.8] (0.25*\W,-\y);
 	}
-	\node [Notagreen] at (0.26*\W,0.52*\H) {$\vect{B}$};
+	\node [Notagreen] at (0.26*\W,0.75*\H) {$\vect{B}$};
 	% Force
-	\draw [thick, Notagrey, ->, >=stealth] ( 95:{\Rx} and {\Ry}) --++ (-25:0.8*\Ry) node[right=0, Notagrey] {$\vect{F}_{\parallel,\nabla_{\!\parallel} B}$};
-	\draw [thick, Notagrey, ->, >=stealth] (-95:{\Rx} and {\Ry}) --++ ( 25:0.8*\Ry) node[right=1, Notagrey] {$\vect{F}_{\parallel,\nabla_{\!\parallel} B}$};
+	\draw [thick, Notagrey, ->, >=stealth] ( 95:{\Rx} and {\Ry}) --++ (-25:0.8*\Ry) node[above right=0, Notagrey] {$\vect{F}_{\parallel,\nabla_{\!\parallel} B}$};
+	\draw [thick, Notagrey, ->, >=stealth] (-95:{\Rx} and {\Ry}) --++ ( 25:0.8*\Ry) node[below right=1, Notagrey] {$\vect{F}_{\parallel,\nabla_{\!\parallel} B}$};
 	% Magnetic momentum (2/2)
 	\draw [thick, Notared] (0,\Ry) arc (90:-90:{\Rx} and {\Ry});
 	\draw [thick, Notared, ->, >=stealth] (0,0) --++ (-0.3*\W,0) node[left, Notared] {$\vect{\mu}$};

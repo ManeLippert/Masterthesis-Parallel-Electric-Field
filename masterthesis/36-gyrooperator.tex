@@ -1,0 +1,80 @@
+\section{Gyrooperator $\mathcal{G}$}
+\label{sec:gyroOperator}
+
+As stated in Chapter \ref{sub:guidingcenterLagrangian} the gyrooperator $\mathcal{G}$ averages over the gyrophase $\theta$ which is mostly used in the derivation of the field equation and is defined as
+\begin{gather}
+    \tga{\{G(\x)\}} = \ga{G}(\X) = \frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ G(\X + \rrho(\theta))~.
+    \label{eq:gyroOperatorRevision}
+\end{gather}
+To derive the field equations a second kind of gyrooperator will be introduced as
+\begin{gather}
+    \tgad{\{G(\X)\}} = \gad{G}(\x) = \frac{1}{2\pi} \intss{0}{2\pi} \dX\dtheta ~ \delta(\X + \rrho(\theta) - \x) G(\X)~,
+    \label{eq:gyroOperatorDagger}
+\end{gather}
+where $\mathcal{G}^\dagger$ the hermitian conjugate of $\mathcal{G}$\cite{Told_PHD} and the delta function $\delta$ originates from the pull back operation from Chapter \ref{sec:pullback}.\cite{Merlo_PHD} Furthermore, the double gyroaverage operator is defined as
+\begin{gather}
+    \tgad{\bigl\{ \tga{\{G(\x)\}} \bigr\}} = \gad{\ga{G}}(\x) = \frac{1}{(2\pi)^2} \intss{0}{2\pi} \dtheta \intss{0}{2\pi} \dtheta' ~ G(\X - \rrho(\theta) + \rrho(\theta'))~,
+    \label{eq:gyroOperatorDouble}
+\end{gather}
+which performs a gyroaverage of the field value at all guiding center positions $\X$ with particle position $\x$ in their trajectory. \cite{Maurer_PHD}
+
+In the case of local simulations the gyrooperators $\mathcal{G}$ and $\mathcal{G}^\dagger$ simplies to
+\begin{gather}
+    \begin{aligned}
+        \ga{\vect{G}}(\x) &= J_0(\lambda) \vect{G}(\X) \\
+        \gad{\vect{G}(\X)} &= J_0(\lambda) \vect{G}(\x)
+    \end{aligned}
+    \label{eq:gyroOperatorLocal}
+\end{gather}
+with $J_0$ as the zeroth order Bessel function. Note, that $\gaBpar(\X) = - I_1(\lambda)\mu \Bpar (\X)$, where $I_1$ is the modified first order Bessel function of first kind defined as $I_1(\lambda) = 2/\lambda \, J_1(\lambda)$. To obtain Equation (\ref{eq:gyroOperatorLocal}) the process of gyroaveraging will be performend in the Fourier space as follows
+\begin{gather}
+    \begin{aligned}
+        \ga{\vect{G}}(\x) &= \ga{\vect{G}}(\X + \vect{r}) = \tga{\left\{\ints \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot (\X + \vect{r})} \right\}} \\
+                          &= \frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ \ints \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} e^{ i k_\perp \rho \cos \theta} \\
+                          &= \ints \mathrm{d}\vect{k} ~ \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} \underbrace{\frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ e^{ i k_\perp \rho \cos \theta}}_{J_0(\rho k_\perp)}\\
+                          &= \ints \mathrm{d}\vect{k} ~ J_0(\rho k_\perp) \hat{\vect{G}}(\vect{k}) e^{i \vect{k} \cdot \X} = J_0(\lambda) \vect{G}(\X)~,
+    \end{aligned}
+    \label{eq:gyroOperatorLocalDerivation}
+\end{gather}
+where the wave vector $\vect{k}$ is defined as $\vect{k} = \hat{e}_1 k_\perp$. The argument $\lambda$ is given by $i \rho \nabla_{\!\perp}$ which is the inverse Fourier transformated expression of $\rho k_\perp$. The same routine can be applied for the gyrooperator $\mathcal{G}^\dagger$ with the same result. In general the Bessel function is defined as \cite{Dannert_PHD}
+\begin{gather}
+    \begin{aligned}
+        J_n(z) &= \left(\frac{z}{2}\right)^n \underbrace{\sum^{\infty}_{\nu = 0} \frac{(\left(- 1/4 z^2\right)^\nu)}{\nu! (1 + \nu) !}}_{I_n(z)}~, \\
+        J_n(z) &= \frac{i^{-n}}{\pi} \int_{0}^{\pi}\!\!\dtheta ~ e^{i z \cos \theta} \cos (n\theta)~.
+    \end{aligned}
+    \label{eq:Besselfunction}
+\end{gather}
+
+\subsection*{Integrals with Bessel Function}
+\label{sub:integralBesselfunction}
+
+In the upcoming section there will be often integrals which contain the zeroth Besselfunction $J_0(\lambda)$ and the modified Besselfunctions $I_1(\lambda)$. In general this types of integrals have the form
+\begin{gather}
+	\ints \dvpar\dmu~ \vpar^m \mu^n J_0^{2-n}(\lambda) I_1^n(\lambda) \fm ,
+	\label{eq:integralBesselfunctionGeneral}
+\end{gather}
+wuth the natural number $n,~m = \{0, 1, 2\}$. Equation (\ref{eq:integralBesselfunctionGeneral}) can be seperated together with the Maxwellian [Eq. (\ref{eq:maxwellianSeperated})] to
+\begin{gather}
+	e^{-\cfen/T} \ints \dvpar ~ \vpar^m \fm(\vpar) \ints \dmu ~ \mu^n J_0^{2-n}(\lambda) I_1^n(\lambda) \fm(\mu) ~.
+	\label{eq:integralBesselfunctionGeneralSperated}
+\end{gather}
+The first integral appears in the following types
+\begin{gather}
+	\begin{aligned}
+		1)& \ints \dvpar ~         \fm(\vpar) &\quad &= \frac{\nReq m}{2\pi T} \\
+		2)& \ints \dvpar ~ \vpar   \fm(\vpar) &\quad &= 0 \qquad \mathrm{(Due~to~symmetry)}\\
+		3)& \ints \dvpar ~ \vpar^2 \fm(\vpar) &\quad &= \frac{\nReq}{2\pi} \\
+	\end{aligned}
+	\label{eq:integralMaxwellian}
+\end{gather}
+and the last integral occurs in three types
+\begin{gather}
+	\begin{aligned}
+		1)& \ints \dmu ~ J_0^2(\lambda) \fm(\mu) &\quad &= \frac{T}{B_0} \Gamma_0(b) \\
+		2)& \ints \dmu ~ \mu J_0(\lambda) I_1(\lambda) \fm(\mu) &\quad &= \frac{T^2}{B_0^2} (\Gamma_0(b) - \Gamma_1(b)) \\
+		3)& \ints \dmu ~ \mu^2 I_1^2(\lambda) \fm(\mu) &\quad &= \frac{T^3}{B_0^3} 2 (\Gamma_0(b) - \Gamma_1(b))~, \\
+	\end{aligned}
+	\label{eq:integralBesselfunction}
+\end{gather}
+with the notation $\Gamma_n(b) = I_n(b) e^{-b}$ with the modified Bessel function $I_n$ [Eq. (\ref{eq:Besselfunction})] and $b= - \rhoth^2 \nabla^2\!_\perp$. $\rhoth$ referres the thermal Larmor radius [Eq. (\ref{eq:thermalLarmorradius})]. \cite{GKWDerivation}
+\newpage

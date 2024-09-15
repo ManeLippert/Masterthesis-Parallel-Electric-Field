@@ -16,7 +16,7 @@ In the gyrocenter phase space $\{\X, v_\parallel, \mu\}$, the overbar introduced
 	\frac{\partial \fgy}{\partial t} + \dot{\X} \cdot \frac{\partial \fgy}{\partial \vect{X}} + \dot{v}_\parallel \cdot \frac{\partial \fgy}{\partial v_\parallel} = 0~,
 	\label{eq:gyrocenterVlasov}
 \end{gather}
-where the gyrophase $\theta$ is still an ignorable coordinate and the time derivative of the magnetic moment $\mu$ is zero, beacause the magnetic moment $\mu$ is an exact invariant. In Equation (\ref{eq:gyrocenterVlasov}) the terms of the time derivative of the gyrocenter $\dot{\X}$ and the parallel velocity $\dot{v_\parallel}$ have to be expressed through the gyrocenter Lagrangian with the Euler-Lagrange equation. The Euler-Lagrange equation can be written as 
+where the gyrophase $\theta$ is still an ignorable coordinate and the time derivative of the magnetic moment $\mu$ is zero, because the magnetic moment $\mu$ is an exact invariant. In Equation (\ref{eq:gyrocenterVlasov}) the terms of the time derivative of the gyrocenter $\dot{\X}$ and the parallel velocity $\dot{v_\parallel}$ have to be expressed through the gyrocenter Lagrangian with the Euler-Lagrange equation. The Euler-Lagrange equation can be written as 
 \begin{gather}
 	\left(\frac{\partial \gamma_j}{\partial z^i} - \frac{\partial \gamma_i}{\partial z^j}\right) \frac{\dz^j}{\dt} = \frac{\partial H}{\partial z^i} + \frac{\partial \gamma_i}{\partial t}~.
 	\label{eq:eulerLagrange}
@@ -29,7 +29,7 @@ Inserting Equation (\ref{eq:gyrocenterPertrubationLagrangian}) into the Euler-La
 	\end{aligned}
 	\label{eq:motionEquation}
 \end{gather}
-with the drift velocity $\vchi$ defined as the sum of the streaming velocity perpendicular to the pertubated magnetic field $\vBperp$, the $\exb$ drift in the total electric field $\velo_{\ga{E}}$ and the grad-$B$ dirft of the parallel perturbed magnetic field $\velo_{\nabla \gaBpar}$. The drift velocity $\vD$ containing the sum of the curvature drift $\velo_C$, the grad-$B$ drift of the equilibrium magnetic field $\velo_{\nabla B_0}$ and the drifts due to the Coriolis force $\velo_\mathrm{Co}$ and centrifugal force $\velo_\mathrm{Ce}$. Note that, the term containing $u_0^2$ got replaced with Equation (\ref{eq:rotvelocity}) with $u_0^2 = R^2 \Omega^2$. The quantity $\chi$ can be expressed as
+with the drift velocity $\vchi$ defined as the sum of the streaming velocity perpendicular to the pertubated magnetic field $\vBperp$, the $\exb$ drift in the total electric field $\velo_{\ga{E}}$ and the grad-$B$ dirft of the parallel perturbed magnetic field $\velo_{\nabla \gaBpar}$. The drift velocity $\vD$ containing the sum of the curvature drift $\velo_C$, the grad-$B$ drift of the equilibrium magnetic field $\velo_{\nabla B_0}$ and the drifts due to the Coriolis force $\velo_\mathrm{Co}$ and centrifugal force $\velo_\mathrm{Ce}$. Note that, the term containing $u_0^2$ got replaced with $u_0^2 = R^2 \Omega^2$ from Equation (\ref{eq:rotvelocity}). The quantity $\chi$ can be expressed as
 \begin{gather}
 	\chi = \underbrace{(\Phi_0 + \gaPhi)}_{\bar{\Phi}} - \vpar \gaApar + \frac{\mu}{Ze} \gaBpar
 	\label{eq:driftPotential}
@@ -44,7 +44,7 @@ with $\vecb_0 \times (\nabla \Apar) \approx \nabla \times (\Apar \vecb_0) = \vec
 	\gaE = - \nabla \bar{\Phi} - \partial_t \gaA = - \nabla \bar{\Phi} - \partial_t \left(\vecb_0 \cdot \gaApar + \bar{\vect{A}}_{1\perp} \right)  ~.
 	\label{eq:totalElectricField}
 \end{gather}
-Since the time derivative of the vector potential $\partial_t \gaA$ is one order smaller as the gradient of the electrostatic potential $\nabla \bar{\Phi}$, due to normalization assumptions in gyrokinetics \cite{Peeters2009A}, the contribution of the vector potential will be neglected in the $\velo_{\ga{E}}$ velocity term.
+Due to normalization assumptions in gyrokinetics \cite{Peeters2009A} is the time derivative of the vector potential $\partial_t \gaA$ one order smaller as the gradient of the electrostatic potential $\nabla \bar{\Phi}$ and the contribution of the vector potential will be neglected in the $\velo_{\ga{E}}$ velocity term.
 
 \newpage
 
@@ -56,7 +56,7 @@ The delta-\!$f$ approximation separates the density distrubution function $\fgy$
 	\frac{\partial \df}{\partial t} + \dot{\X} \cdot \nabla \df + \dot{v}_\parallel \cdot \frac{\partial \df}{\partial v_\parallel} = \underbrace{- \dot{\X} \cdot \nabla \fgy_0 - \dot{v}_\parallel \frac{\partial \fgy_0}{\partial v_\parallel}}_S~,
 	\label{eq:gyrocenterDeltafVlasov}
 \end{gather}
-with the source term $S$. Substituting from Equation (\ref{eq:motionEquation}) the equations for $\dot{\X}$ and $\dot{v}_\parallel$ into the delta-$f$ approximated Vlasov equation results in
+with the source term $S$. Substituting the equations for $\dot{\X}$ and $\dot{v}_\parallel$ from Equation (\ref{eq:motionEquation})into the delta-$f$ approximated Vlasov equation results in
 \begin{gather}
 	\frac{\partial \df}{\partial t} + \dot{\X} \cdot \nabla \df - \frac{\vecb_0}{m} \cdot \left(Ze\nabla \Phi_0 + \mu \nabla B_0 - mR \Omega^2 \nabla R \right) \cdot \frac{\partial \df}{\partial v_\parallel} = S~.
 	\label{eq:gyrocenterDeltafSubVlasov}
@@ -71,20 +71,18 @@ In the rotating frame the included energy term can be written as
 	\label{eq:rotEnergy}
 \end{gather}
 % TODO: Flux Surface Average = Gyro average?
-where $\langle\;\cdot\;\rangle$ denote flux-surface averaging, $\omega_\varphi$ the plasma rotation frequency [Eq. (\ref{eq:refFramePlasmaFrequency})], $R$ the local major radius and $R_0$ is an integration constant which can be chosen, i.e. major radius of the plasma or flux surface average of the major radius. The Maxwellian is given by the following expression
+where $\langle\;\cdot\;\rangle$ denotes flux-surface averaging, $\omega_\varphi$ the plasma rotation frequency [Eq. (\ref{eq:refFramePlasmaFrequency})], $R$ the local major radius and $R_0$ is an integration constant which can be chosen, i.e. major radius of the tokamak or flux surface average of the major radius. The Maxwellian is given by the following expression
 \begin{gather}
 	\fgy_0 = \fm(\X, \vpar, \mu) = \frac{\nReq}{(2\pi T/m)^{3/2}}\exp\left(-\frac{\frac{1}{2} m (\vpar - \upar)^2 + \mu B_0 + \cfen}{T}\right)~,
 	\label{eq:maxwellian}
 \end{gather}   
-where $\nReq$ is the particle density at the position $R = R_0$ and is related to equilibrium particle density through the relation $n_0 = \nReq \exp(-\cfen/T)$. \cite{Peeters2009B} 
-
-Furthermore, $\upar$ is the rotation speed of the plasma in the rotating frame parallel to the magnetic field [Eq. (\ref{eq:rotParallelVelocity})]. The Maxwellian can seperated in 
+where $\nReq$ is the particle density at the position $R = R_0$ and is related to equilibrium particle density through the relation $n_0 = \nReq \exp(-\cfen/T)$. \cite{Peeters2009B} Furthermore, $\upar$ is the rotation speed of the plasma in the rotating frame parallel to the magnetic field [Eq. (\ref{eq:rotParallelVelocity})]. The Maxwellian can seperated in 
 \begin{gather}
 	\fm(\X, \vpar, \mu) = \fm(\vpar) \fm(\mu) e^{-\cfen/T} , \\[0,5cm]
-	\fm(\vpar) = \frac{\nReq}{(2\pi T/m)^{3/2}} \exp\left(-\frac{\frac{1}{2} m (\vpar - \upar)^2}{T}\right) \qquad \fm(\mu) = \exp\left(-\frac{\mu B_0}{T}\right) ~.
+	\fm(\vpar) = \frac{\nReq}{(2\pi T/m)^{3/2}} \exp\left(-\frac{\frac{1}{2} m (\vpar - \upar)^2}{T}\right) \qquad \fm(\mu) = \exp\left(-\frac{\mu B_0}{T}\right) ~
 	\label{eq:maxwellianSeperated}
 \end{gather}
-The derivatives of the Maxwellian can be expressed as 
+and the derivatives of the Maxwellian can be expressed as 
 \begin{gather}
 	\begin{aligned}
 		\nabla \fm           &= \left[\frac{\nabla \nReq}{\nReq} + \left(\frac{\frac{1}{2} m \vpar^2 + \mu B_0 + \cfen}{T} - \frac{3}{2}\right)\frac{\nabla T}{T} - \frac{\mu B_0}{T} \frac{\nabla B_0}{B_0} \right. \\ 
@@ -104,6 +102,7 @@ where the $\nabla \omega_\varphi$ terms are the result of the derivatives of the
 \end{gather}
 where $\widetilde{\nabla}$ referres to only the $\nabla \nReq$, $\nabla T$ and $\nabla \omega_\varphi$ terms of $\nabla \fm$. \bigskip
 
+\newpage
 % In Equation (\ref{eq:sourceTerm}) the appearence of the term of the pertrubed vector potential $\gaApar$ is computationally difficult to evaluate. To avoid further complications a modified distribution function $g$ will be introduced as
 % \begin{gather}
 % 	g = \df + \frac{Ze \vpar}{T} \gaApar \fm ~.
@@ -118,4 +117,4 @@ where $\widetilde{\nabla}$ referres to only the $\nabla \nReq$, $\nabla T$ and $
 % 	S = - (\vchi + \vD) \cdot \tilde{\nabla} \fm + \frac{\fm}{T} (\vpar \vecb_0 + \vD) \cdot (-Ze \nabla \gaPhi - \mu \nabla \gaBpar) ~.
 % 	\label{eq:modifiedSourceTerm}
 % \end{gather}
-% This is the for of the Vlasov equation currently implemented in \gkw\source and which will be further modified in the course of this thesis.
+% This is the for of the Vlasov equation currently implemented in {\gkw}\source and which will be further modified in the course of this thesis.

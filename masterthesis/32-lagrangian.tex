@@ -1,5 +1,5 @@
 \newpage
-\section{Gyrokinetic Lagrangian (Fundamental One-Form)}
+\section{Gyrokinetic Lagrangian}
 \label{sec:lagrangian}
 
 \subsection{Lagrangian in Patricle Phase Space}
@@ -10,7 +10,7 @@ The Lagrangian of a particle $\gamma$ with mass $m$ and charge number $Z$ in the
     \gamma = \gamma_\nu \dz^\nu = \underbrace{\left(m\vect{v} + Ze\vect{A}(\vect{x}) \right)}_{\mathrm{Sympletic~Part}}\cdot\;\dx - \underbrace{\left(\frac{1}{2}mv^2 + Ze\Phi(\x)\right)}_{\mathrm{Hamiltonian}~H(\x,\velo)} \dt ~,
     \label{eq:particleLagrangian}
 \end{gather}
-where $\A$ and $\Phi$ are the vector and scalar potential, $\nu$ indexes the six coordinates, and Einstein notation is applied. This form is also known as fundamental one-form. \bigskip
+where $\A$ and $\Phi$ are the vector and scalar potential, $\nu$ indexes the six coordinates and Einstein notation is applied. This form is also known as fundamental one-form. \bigskip
 
 The defined Lagrangian $\gamma$ will then be transformed in the rotating frame of reference [Ch. \ref{sec:confinement}], which can be achieved the following Lorentz transformation
 \begin{gather}
@@ -66,12 +66,7 @@ To transform the fundamental one-from into the guiding center coordinates the fo
     \Gamma_\eta = \gamma_\nu \frac{\dz^\nu}{\dZ^\eta}~,
     \label{eq:trafoLagrangian}
 \end{gather} 
-where $\Gamma_\eta$ is a component of the guiding center fundamental one-form. To calculate the new coordinates the transformation [Eq. (\ref{eq:guidingcenterCoords})] have to be inverted to provide the old coordinates as function of the new one $z(Z)$. Here, the direct transformation is clearly uniquely determined if the magnetic field is known at the particle postion. However, the inverse transformation is not uniquely due to the dependence of the Larmor radius $\rho$ on magnetic field at the particle position $\x$. Taylor expansion of the Larmor radius $\rho$ around the guiding center $\X$ yields $\rho(\x) \approx \rho(\X)$. Note, that terms of order $\rho^2$, which leads to second order terms in $\rhost$, will get neglected due to the gyrokinetic ordering. The Larmor radius $\rho$ also depends on the velocity $\velo$ in particle phase space [Eq. (\ref{eq:Larmorradius})], or the magnetic moment $\mu$ in the guiding center phase space through the formular
-\begin{gather}
-    \rho(\X, \mu) = \frac{1}{Ze} \sqrt{\frac{2\mu m}{B(\X)}}~.
-    \label{eq:guidingcenterLarmorradius}
-\end{gather}
-This dependence will be only used if greater clarity is needed. With result of the taylor expansion the particle position $\x$ can be expressed with the guiding center coordinates as 
+where $\Gamma_\eta$ is a component of the guiding center fundamental one-form. To calculate the new coordinates the transformation [Eq. (\ref{eq:guidingcenterCoords})] have to be inverted to provide the old coordinates as function of the new one $z(Z)$. Here, the direct transformation is clearly uniquely determined if the magnetic field is known at the particle postion. However, the inverse transformation is not uniquely due to the dependence of the Larmor radius $\rho$ on magnetic field at the particle position $\x$. Applying Taylor expansion around the guiding center $\X$ for the Larmor radius $\rho$ yields $\rho(\x) \approx \rho(\X)$. Note, that terms of order $\rho^2$, which leads to second order terms in $\rhost$, will get neglected due to the gyrokinetic ordering. With result of the taylor expansion the particle position $\x$ can be expressed with the guiding center coordinates as 
 \begin{gather}
     \x(\X,\theta) \approx \X + \rho(\X)\vect{a}(\theta)~.
     \label{eq:guidingcenterParticleCoord}
@@ -81,38 +76,17 @@ The particle velocity $\velo$ is the sum of the velocity along the magnetic fiel
     \velo = v_\parallel \vect{b}(\x) + \velo_\perp = v_\parallel \vect{b}(\x) + \rho(\x) \dot{\vect{a}}(\theta)~.
     \label{eq:guidingcenterVelocity}
 \end{gather}
-Applying Taylor expansion again around the guding center $\X$ teh following expression can be obtained
+Applying Taylor expansion again around the guiding center $\X$ the following expression can be obtained
 \begin{gather}
     \velo(\X, v_\parallel, \mu, \theta) \approx v_\parallel \left[\vect{b}(\X) + \partial_{\X} \vect{b}(\X) \cdot \vect{a}(\theta)\rho(\X,\mu) \right] + \rho(\X,\mu)\dot{\vect{a}}(\theta)~.
     \label{eq:guidingcenterVelocityCoord}
 \end{gather}
-
-Now, the transformation [Eq. (\ref{eq:trafoLagrangian})] can be applied to express the fundamental one-form in the new coordinates with the following components
-\begin{gather}
-    \begin{aligned}
-        \Gamma_{X^i} &= \gamma_{x^j} \frac{\mathrm{d}x^j}{\mathrm{d}X^i} + \gamma_{v^j} \frac{\mathrm{d}v^j}{\mathrm{d}X^i} + \gamma_{t} \frac{\mathrm{d}t}{\mathrm{d}X^i} = \gamma_{x^j} \frac{\mathrm{d}x^j}{\mathrm{d}X^i} &\qquad \Gamma_{v_\parallel} &= \gamma_{x^j} \frac{\mathrm{d}x^j}{\mathrm{d}v_\parallel} + \gamma_{v^j} \frac{\mathrm{d}v^j}{\mathrm{d}v_\parallel} = 0 \\
-        \Gamma_{\mu} &= \gamma_{x^j} \frac{\mathrm{d}x^j}{\mathrm{d}\mu}                                                                                                                                                      &\qquad \Gamma_{\theta}      &= \gamma_{x^j} \frac{\mathrm{d}x^j}{\mathrm{d}\theta}\\
-        \Gamma_{t}   &= \gamma_{t} \frac{\mathrm{d}t}{\mathrm{d}t} + \mu B(\X) = \gamma_t + \mu B(\X) ~. & & \\
-    \end{aligned}
-    \label{eq:guidingcenterLagrangianTrafo}
-\end{gather}
-Note, that to the Hamiltonian part $\Gamma_t$ the energy term of the magnetic field $B$ at the guiding center $\X$ has to be added, due to the circular motion of the particle around the center.
-\newpage
-In Equation (\ref{eq:guidingcenterLagrangianTrafo}) the components of the fundamental one-form of the particle phase space $\gamma_\nu$ and the equation for $\velo$ in guiding center coordinates [Eq. (\ref{eq:guidingcenterVelocityCoord})] will be inserted and the Taylor expansion up to the first order applied for terms containing the particle position $\x$ as argument. After that, the gyroaveraging operator $\mathcal{G}$ will be used, which is defined as the integral over the gyrophase $\theta$
+Now, the transformation [Eq. (\ref{eq:trafoLagrangian})] can be applied to express the fundamental one-form in the new coordinates. For that the components of the fundamental one-form of the particle phase space $\gamma_\nu$ and the equation for $\velo$ in guiding center coordinates [Eq. (\ref{eq:guidingcenterVelocityCoord})] will be inserted. After that, the gyroaveraging operator $\mathcal{G}$ will be used, which is defined as the integral over the gyrophase $\theta$
 \begin{gather}
     \tga{\{G(\x)\}} = \ga{G}(\X) = \frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ G(\X + \rrho(\theta))~,
     \label{eq:gyroOperator}
 \end{gather}
-with an example field $G(\x)$. Due to the definition of the vector $\vect{a}$ [Eq. (\ref{eq:guidingcenterUnitvect})] the first order terms in $\vect{a}$ and $\dot{\vect{a}}$ disappear under gyroaveraging. Following all the previous steps, one can obtain
-\begin{gather}
-    \begin{aligned}
-        \ga{\Gamma}_{\X}  &= m v_\parallel b_i(\X) + mu_{0i} + Ze\A(\X)  &\qquad \ga{\Gamma}_{v_\parallel} &= 0 \\
-        \ga{\Gamma}_{\mu} &= 0                                           &\qquad \ga{\Gamma}_{\theta}      &= \frac{2\mu m}{Ze}\\
-        \ga{\Gamma}_{t}   &= - \left(\frac{1}{2}mv_\parallel^2 - \frac{1}{2}mu_0^2 + Ze\Phi(\X) + \mu B(\X) \right) ~, & & \\
-    \end{aligned}
-    \label{eq:guidingcenterLagrangianTrafoAverage}
-\end{gather}
-which results in the fundamental one-form in guiding center coordinates
+with an example field $G(\x)$. Due to the definition of the vector $\vect{a}$ [Eq. (\ref{eq:guidingcenterUnitvect})] the first order terms in $\vect{a}$ and $\dot{\vect{a}}$ disappear under gyroaveraging. Following all the previous steps, one can obtain the fundamental one-form in guiding center coordinates
 \begin{gather}
     \begin{aligned}
         \ga{\Gamma} =  &\left(m v_\parallel \vect{b}(\X) + m\ueq + Ze\A(\X)\right) \cdot \mathrm{d}\X + \frac{2\mu m}{Ze} \mathrm{d}\theta \\
@@ -122,31 +96,13 @@ which results in the fundamental one-form in guiding center coordinates
 \end{gather}
 Note that as a consequence of the Lagrangian being independent of the gyrophase $\theta$, the magnetic moment $\mu$ (the associated conjugated coordinate pair of $\theta$) becomes an invariant of the motion ($\dot{\mu} = 0$). \bigskip
 
-As in Chapter \ref{sub:particleLagrangian} perturbations [Eq. (\ref{eq:electromagneticPertubation})] will get introduced to the guiding center Lagrangian. The transformation of the equilibrium part is already performed above, so only the pertrubation part with the pertubated Lagrangian in the particle phase space $\gamma_1$ has to be transfromed to the guiding center phase space. The transformation is analogous to the calculation before, the key difference is that the fluctuations quantities vary on a small length scale and Taylor expansion around the guiding center $\X$ can not be applied advantageous. Their values have to be taken at the particle position, which is a function of the gyroangle in guiding center coordinates. After this clearification the components of the perturbated Lagrangian in the guiding center phase space can be written as
-\begin{gather}
-    \begin{aligned}
-        \Gamma_{1, X^i} &= \gamma_{1, x^j} \frac{\mathrm{d}x^j}{\mathrm{d}X^i} &\qquad \Gamma_{1. v_\parallel} &= 0\\
-        \Gamma_{1, \mu} &= \gamma_{1, x^j} \frac{\mathrm{d}x^j}{\mathrm{d}\mu} &\qquad \Gamma_{1, \theta}      &= \gamma_{1, x^j} \frac{\mathrm{d}x^j}{\mathrm{d}\theta}\\
-        \Gamma_{1, t}   &= \gamma_{1,t} ~. & & \\
-    \end{aligned}
-    \label{eq:guidingcenterPertrubationLagrangianTrafo}
-\end{gather}
-After inserting the components of the perturbated Lagrangian $\gamma_1$ and neglecting terms of order $\rho^2$, due to gyrokinetic ordering, the pertrubated compentents in the guiding center coordinates can be expressed as
-\begin{gather}
-    \begin{aligned}
-        \Gamma_{1, \X} &\approx Ze\A_{1}(\x)                                                           &\qquad \Gamma_{1. v_\parallel} &= 0 \\
-        \Gamma_{1, \mu} &= \frac{Z}{\abs{Z}} \frac{1}{v_\perp(\X,\mu)} \A_1(\x) \cdot \vect{a}(\theta) &\qquad \Gamma_{1, \theta}      &= \frac{Z}{\abs{Z}} \frac{2\mu}{v_\perp(\X,\mu)} \A_1(\x) \cdot \frac{\mathrm{d}\vect{a}(\theta)}{\mathrm{d}\theta} \\
-        \Gamma_{1, t}   &= -Ze \Phi_1(\x) ~. & & \\
-    \end{aligned}
-    \label{eq:guidingcenterPertrubationLagrangian}
-\end{gather}
-Finally, the fundamental one-form in the guiding center phase space $\Gamma$ with perturbation can be written as
+As in Chapter \ref{sub:particleLagrangian} perturbations [Eq. (\ref{eq:electromagneticPertubation})] will get introduced to the guiding center Lagrangian. The transformation of the equilibrium part is already performed above, so only the pertrubation part with the pertubated Lagrangian in the particle phase space $\gamma_1$ has to be transfromed to the guiding center phase space. The transformation is analogous to the calculation before, the key difference is that the fluctuations quantities vary on a small length scale and Taylor expansion around the guiding center $\X$ can not be applied advantageous. After inserting the components of the perturbated Lagrangian $\gamma_1$ into the transformation [Eq. (\ref{eq:trafoLagrangian})] and neglecting terms of order $\rho^2$, due to gyrokinetic ordering, the fundamental one form in the guiding center coordinates can be expressed as
 \begin{gather}
     \begin{aligned}
         \Gamma        &= \ga{\Gamma}_0 + \Gamma_1 \\
         \ga{\Gamma}_0 &= \left(m v_\parallel \vect{b}(\X) + m\ueq + Ze\A_0(\X)\right) \cdot \mathrm{d}\X + \frac{2\mu m}{Ze} \mathrm{d}\theta \\
                       &\quad - \left(\frac{1}{2}mv_\parallel^2 - \frac{1}{2}mu_0^2 + Ze\Phi_0(\X) + \mu B_0(\X) \right) \mathrm{d}t \\
-        \Gamma_1      &= Ze\A_{1}(\x) \cdot \mathrm{d}\X + \frac{Z}{\abs{Z}} \frac{1}{v_\perp} \A_1(\x) \cdot \vect{a} \mathrm{d}\mu + \frac{Z}{\abs{Z}} \frac{2\mu}{v_\perp} \A_1(\x) \cdot \frac{\mathrm{d}\vect{a}}{\mathrm{d}\theta} \mathrm{d}\theta - Ze \Phi_1(\x) \mathrm{d}t~. 
+        \Gamma_1      &= Ze\A_{1}(\x) \cdot \mathrm{d}\X + \frac{Z}{\abs{Z}} \frac{1}{v_\perp} \A_1(\x) \cdot \vect{a}(\theta) \mathrm{d}\mu + \frac{Z}{\abs{Z}} \frac{2\mu}{v_\perp} \A_1(\x) \cdot \frac{\mathrm{d}\vect{a}(\theta)}{\mathrm{d}\theta} \mathrm{d}\theta - Ze \Phi_1(\x) \mathrm{d}t~. 
     \end{aligned}
 \end{gather}
 
@@ -155,7 +111,7 @@ Finally, the fundamental one-form in the guiding center phase space $\Gamma$ wit
 \subsection{Lagrangian in Gyrocenter Phase Space}
 \label{sub:gyrocenterLagrangian}
 
-The transformation of the guiding center Lagrangian $\Gamma$ into the Lagrangian in gyrocenter phase space $\bar{\Gamma}$ aims to remove the gyroangle $\theta$ dependence resulting from the introduction of fluctuations. To destinguish between the guiding center and the gyrocenter coordinates all quantities associated with the gyrocenter are getting an overbar, i.e. $\bar{\Gamma}$.  The new set of gyrocenter coordinates are given by $\{\bar{\X}, \bar{v}_\parallel, \bar{\mu}\}$, but these coordinates will not been used in this thesis. Since the derivation of fundamental the one-form in gyrocenter phase space $\bar{\Gamma}$ uses the Lie transform pertubation method, which is beyond the scopes of this thesis, the reader is referred to the Refs. \citenum{Dannert_PHD} and \citenum{GKWDerivation} for more details. The Lagrangian in the gyrocenter phase space can be expressed as
+The transformation of the guiding center Lagrangian $\Gamma$ into the Lagrangian in gyrocenter phase space $\bar{\Gamma}$ aims to remove the gyroangle $\theta$ dependence introduced by the fluctuations of the guiding center lagrangian. To destinguish between the guiding center and the gyrocenter coordinates all quantities associated with the gyrocenter are getting an overbar, i.e. $\bar{\Gamma}$.  The new set of gyrocenter coordinates are given by $\{\bar{\X}, \bar{v}_\parallel, \bar{\mu}\}$. Since the derivation of fundamental one-form in gyrocenter phase space $\bar{\Gamma}$ uses the Lie transform pertubation method, which is beyond the scopes of this thesis, the reader is referred to the Refs. \citenum{Dannert_PHD} and \citenum{GKWDerivation} for more details. The Lagrangian in the gyrocenter phase space can be expressed as
 \begin{gather}
     \begin{aligned}
         \bar{\Gamma} &= \bar{\Gamma}_0 + \bar{\Gamma}_1 \\
@@ -174,4 +130,3 @@ although the oscillating parts will be added to the gauge function of the Lie tr
     \tga{\{Ze \A_1(\x) \cdot \velo_\perp (\X,\mu,\theta)\}} = \mu\gaBpar(\X)~. 
     \label{eq:gyrocenterGyroaveragedMagnetic}
 \end{gather}
-Additionally 

@@ -1,15 +1,12 @@
-
-This chapter is based on Ref. \citenum{Wesson2004} 
-
 \section{Charged Particle Motion in Magnetic and Electric Field}
 \label{sec:motion}
 
-In magnetic confinement devices like the tokamak reactor, the charged particles experience forces caused by magnetic and electric fields which results in distinct motion under the associated force. Charged particles can be separated in species, e.g. electrons and ions, which will be later on not displayed in the governing equation. Throughout this thesis the charge $q$, the mass $m$ or the temperature $T$ indicate the quantities of a specific species, i.e., electrons or ions.
+In magnetic confinement devices like the tokamak reactor, the charged particles experience forces caused by magnetic and electric fields which results in distinct motion under the associated force. Charged particles can be separated in species, e.g. electrons and ions, which will be later on indicated by the index $s$ in the governing equations in Chapter \ref{chap:fields}. Until then for simplicity reasons the index will be dropped.
 
-\subsection{Particle Motion perpendicular to the Magnetic Field}
-\label{sub:gyromotion}
+\subsection{Particle Motion in Electromagnetic Field}
+\label{sub:motion}
 
-Due to the Lorentz force, particles with a velocity component perpendicular to the homogenous magnetic field $v_{\perp}$ undergo a circular motion in the plane perpendicular to the magnetic field [Fig. \ref{fig:perp-par-motion}(a)]. This type of motion has circular frequency, which is often referred to as \textit{cyclotron frequency} and is defined as
+Due to the Lorentz force, particles with a velocity $v_{\perp}$ perpendicular to the homogenous magnetic field, undergo a circular motion in the plane perpendicular to the magnetic field [Fig. \ref{fig:perp-par-motion}(a)]. This type of motion has circular frequency, which is often referred to as \textit{cyclotron frequency} and is defined as
 \begin{gather}
     \omega_\mathrm{c} = \frac{|q|B}{m}~,
     \label{eq:cyclotron}
@@ -19,9 +16,7 @@ where $m$ and $q$ are the mass and the charge of the particle and $B$ the streng
     \rho = \frac{mv_{\perp}}{|q|B}
     \label{eq:Larmorradius}
 \end{gather}
-with the center often being referred to as \textit{gyrocenter}. Note that since the Lorentz force depends on the species charge of the particle, the circulation direction is the opposite between electron in ions.\\\bigskip
-
-Due to Coulomb collisions the plasma gets thermalized. Together with the Maxwell-Boltzmann distribution the typical thermal velocity is
+with the center often being referred to as \textit{guiding center}. Note that since the Lorentz force depends on the species charge of the particle, the circulation direction is the opposite between electron in ions. Due to Coulomb collisions the plasma gets thermalized. Together with the Maxwell-Boltzmann distribution the typical thermal velocity is
 \begin{gather}
     \vth = \sqrt{\frac{2T}{m}}~,
     \label{eq:thermalVelocity}
@@ -31,15 +26,9 @@ where $T$ represents the species temperature. Based on the thermal velocity $v_\
     \rhoth = \frac{m\vth}{|q|B}~.
     \label{eq:thermalLarmorradius}
 \end{gather}
+\bigskip
 
-\newpage
-
-\subsection{Particle Motion parallel to the Magnetic Field}
-\label{sub:parallelmotion}
-
-In absence of forces in the direction parallel to the magnetic field the particles can move freely in parallel direction to the homogenous magnetic field. The velocity of this motion is of order of the thermal velocity $\vth$ and is dominated by electrons due to their lighter mass compared to ions ($v_\mathrm{th,e}/v_\mathrm{th,i} = 60$). 
-
-When an electric field with a component parallel to the magnetic field $E_\parallel$ influences the plasma the charged particles are accelerated by the electric force
+In absence of forces in the direction parallel to the magnetic field the particles can move freely in parallel direction to the homogenous magnetic field. The velocity of this motion is of order of the thermal velocity $\vth$ and is dominated by electrons due to their lighter mass compared to ions ($v_\mathrm{th,e}/v_\mathrm{th,i} = 60$). When an electric field $E_\parallel$ with a component parallel to the magnetic field influences the plasma, the charged particles are accelerated by the electric force
 \begin{gather}
     F_{\parallel,E} = qE_\parallel~.
     \label{eq:forceElectricParallel}
@@ -56,13 +45,13 @@ causes the force
     F_{\parallel,\nabla_{\!\parallel} B} = - \frac{mv^2_{\perp}}{2B} \nabla_{\!\parallel} B = - \mu \nabla_{\!\parallel} B~;~~~~\mu = \frac{mv^2_{\perp}}{2B}
     \label{eq:magneticMoment}
 \end{gather}
-with \textit{magnetic moment} $\mu$. The magnetic moment $\mu$ is an adabatic invariant (constant of motion) if the variation of the magnetic field over time is smaller than the inverse of the cyclotron frequency $\omega^{-1}_\mathrm{c}$ and the spatial variation is larger the Larmor radius $\rho_\mathrm{L}$. The resulting force has its application in the mirror effect where a charged particle gets reflected due to this force [Fig. \ref{fig:perp-par-motion}(c)].
+with \textit{magnetic moment} $\mu$. The magnetic moment $\mu$ is an adabatic invariant (constant of motion) if the variation of the magnetic field over time is smaller than the inverse of the cyclotron frequency $\omega^{-1}_\mathrm{c}$ and the spatial variation is larger than Larmor radius $\rho$. Note that, the force is not depending on the charge $q$, so the direction of the force $ F_{\parallel,\nabla_{\!\parallel} B}$ is for electrons and ions the same. The resulting force has its application in the mirror effect where a charged particle gets reflected due to this force [Fig. \ref{fig:perp-par-motion}(c)].
 
 \newpage
 
 \begin{center}
     \captionsetup{type=figure}
-    \begin{tabular}{c c c c c c}
+    \begin{tabular}{c c c}
         \input{../pictures/theory/Lorentz-Force.tex} &
         \input{../pictures/theory/Electric-Force.tex} &
         \input{../pictures/theory/Inhomogenous-Magnetic-Field.tex}\\[0.3cm]
@@ -70,11 +59,9 @@ with \textit{magnetic moment} $\mu$. The magnetic moment $\mu$ is an adabatic in
     \end{tabular}
     \captionof{figure}{Forces acting on a charged particle:\\
         \begin{tabular}{l l}
-            \textbf{(a)} & Lorentz force $\vect{F}_{\perp, B}$ perpendicular to velocity $\vect{v}^\pm$ and \\
-                         & magnetic field $\vect{B}$ which causes, circular motion with different \\
-                         & directions for electron and ions, Lamor radius $\rho_\mathrm{L}$ and \\ 
-                         & cyclotron frequency $\omega_\mathrm{c}$, \\
-            \textbf{(b)} & Electric force $\vect{F}_{\parallel,E}^\pm$ with electric field $\vect{E}$,\\
+            \textbf{(a)} & Circular motion caused by Lorentz force $\vect{F}^s_{\perp, B}$  \\
+                         & with perpendicular velocity $\vect{v}_{\perp, s}$ and Larmor radius $\rho_s$, \\
+            \textbf{(b)} & Electric force $\vect{F}_{\parallel,E}^s$ with electric field $\vect{E}$,\\
             \textbf{(c)} & Mirror effect with force $\vect{F}_{\parallel,\nabla_{\!\parallel} B}$ and magnetic moment $\mu$ \\
                          & caused by an inhomogeneous magnetic field $\vect{B}$.  \\
         \end{tabular}
@@ -84,10 +71,10 @@ with \textit{magnetic moment} $\mu$. The magnetic moment $\mu$ is an adabatic in
 
 \newpage
 
-\subsection{Drifts in the Gyrocenter}
+\subsection{Drifts in the Guiding Center}
 \label{sub:drift}
 
-In the presence of a magnetic field (homogenous, inhomogeneous or perturbed) and electric fields the gyrocenter undergoes slow (compared to the thermal velocity $\vth$) drift motions perpendicular to the magnetic field. There are several examples for this drift motion. According to this thesis topic only the main three drift types will be covered in the following.
+In the presence of a magnetic field (homogenous, inhomogeneous or perturbed) and electric fields the guiding center undergoes slow (compared to the thermal velocity $\vth$) drift motions perpendicular to the magnetic field. There are several examples for this drift motion. Here the main three drift types will be covered in the following. 
 
 \begin{enumerate}
     \item {\boldmath $\exb$} \textbf{Drift:}\\
@@ -113,8 +100,6 @@ In the presence of a magnetic field (homogenous, inhomogeneous or perturbed) and
     where $\vect{b}$ is the unit vector along the magnetic field. To obtain the result for the curvature $\vect{C}$ in Eq. (\ref{eq:curvature}) the plasma pressure has to be small compared to the magnetic field strength $B$. In the form of Eq. (\ref{eq:curvature}) $\nabla B$ and curvature drift can be treated similarly.
 \end{enumerate}
 
-% TODO: #4 Include more Drifts 
-
 \newpage
 
 \begin{center}
@@ -128,7 +113,7 @@ In the presence of a magnetic field (homogenous, inhomogeneous or perturbed) and
         \begin{tabular}{l l}
             \textbf{(a)} & $\exb$ Drift with drift velocity $\vect{v}_E$, electric field $\vect{E}$ and\\
                          & magnetic field $\vect{B}$,\\
-            \textbf{(b)} & $\nabla B$ Drift/Curvature Drift with drift velocity $\vect{v}^{\pm}_{\nabla B;\kappa}$, magnetic\\
+            \textbf{(b)} & $\nabla B$ Drift/Curvature Drift with drift velocity $\vect{v}^{s}_{\nabla B;C}$, magnetic\\
                          & field $\vect{B}$ and gradient of the magnetic field $\nabla B$. \\
         \end{tabular}
     }
