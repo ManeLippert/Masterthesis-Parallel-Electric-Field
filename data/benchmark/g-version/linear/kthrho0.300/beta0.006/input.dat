@@ -11,6 +11,7 @@
  NTIME  = 2000
  NAVERAGE = 100
  nlapar = .true.
+ nlepar = .true.
  collisions = .false.
  disp_par = 1.0
  disp_vp  = 0.2
@@ -31,9 +32,9 @@
  nperiod = 5
  number_of_species = 2 ! Number of species. Note: do not count the adiabatic species
 
- N_procs_mu   = 4                                                     
+ N_procs_mu   = 8                                                     
  N_procs_vpar = 1                    
- N_procs_s    = 3            
+ N_procs_s    = 4              
 /
 &MODE
  mode_box = .false.
