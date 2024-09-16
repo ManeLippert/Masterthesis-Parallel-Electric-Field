@@ -1,0 +1,248 @@
+
+ Running with            1  MPI processes
+
+ Number of threads requested when encountering parallel  regions (on each process):           1
+
+
+ With mode_box off input value of krhomax is ignored
+ No 2D diagnostics will be written
+ Ensure you have            1  value(s) in kthrho list
+
+*** WARNING *** Perpendicular dissipation is only with mode_box
+*** WARNING *** spcgeneral: beta_ref value has been overriden by beta.  "beta" input deprecated, use "beta_ref" instead
+*** WARNING *** spcgeneral: zonal_adiabatic always false for kinetic electrons
+*** WARNING *** spcgeneral_check: input value of beta_ref ignored for this electrostatic run
+*** WARNING *** spcgeneral: When adiabatic_electrons=.false. the initialization option finit="cosine2" (default) may lead to initial bursts. The option finit="cosine5" may be used instead.
+ * Optional namelist eiv_integration MISSING.
+ * Optional namelist linear_terms MISSING.
+ * Optional namelist collisions MISSING.
+ * Optional namelist krook MISSING.
+ * Optional namelist gyroaverage MISSING.
+ * Optional namelist source_time MISSING.
+ * Optional namelist finite_rho_parallel MISSING.
+ * Optional namelist diagnostic MISSING.
+ SZIP compression is available but is not used.
+*** WARNING *** You use the f version of gkw. nlapar will be set to .true.
+*** WARNING *** setup_grid: n_procs_<something> has been set > 1 for a single processor run
+
+ Geometry numerical accuracy:  2.131E-13
+
+*** WARNING *** xy_slice_ipar out of range, will use central point
+*** WARNING *** Cannot use the field_fsa_kyzero (Rosenbluth-Hinton) diagnostic: There is no k_y=0 mode.
+ No restart file FDS found, intialising new run
+ matrix "matrix of the linear terms" has format gkw-crs
+
+ Von Neumann stability factor for the Alfven wave (also ES limit)
+ Timestep (unscaled for scheme):   2.06774E-02
+ ------------------------------------------------------
+
+ Von Neumann stability factor for linear term: I: vpar_grad_df
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1   1   1   1    2
+ Timestep (unscaled for scheme):   7.67592E-04
+ ------------------------------------------------------
+
+ Von Neumann stability factor for linear term: parallel dissipation
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1 288   1   1    2
+ Timestep (unscaled for scheme):   1.30889E-03
+ ------------------------------------------------------
+
+ Von Neumann stability factor for linear term: IV: trapdf_4d
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1  71  16   1    2
+ Timestep (unscaled for scheme):   3.77515E-03
+ ------------------------------------------------------
+
+ Von Neumann stability factor for linear term: parallel velocity dissipation
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1  71   1   1    2
+ Timestep (unscaled for scheme):   5.29004E-02
+ ------------------------------------------------------
+
+ Von Neumann stability factor for linear term: VII: vpar_grd_phi (Landau damping)
+ at global location:  (imod,  ix,  i,  j,  k, isp)
+                          1    1   1   1  25    2
+ Timestep (unscaled for scheme):   2.97523E-02
+ ------------------------------------------------------
+
+*** WARNING *** Diffusive dominated: EXP meth -4,-6,-7 should allow larger timesteps
+*** WARNING *** Linear timestep automatically reduced
+
+ Maximum linear timestep estimate:  1.84222E-03
+ Input timestep:                    1.00000E-02
+ Timestep in use:                   1.75011E-03
+
+ matrix "matrix of the linear Maxwell background terms" has format gkw-crs
+ matrix "poisson matrix" has format gkw-crs
+ matrix "additional field matrix, int part" has format gkw-crs
+ matrix "field matrix, diag part" has format gkw-crs
+ matrix "additional field matrix, diag part" has format gkw-crs
+ matrix "rhs-for-f conversion matrix" has format gkw-crs
+ For initialization of the distribution funciton use amplitude:    1.0000000000000000E-003   0.0000000000000000     
+*** WARNING *** No zero mode exists. Radial diagnostics are disabled.
+
+ Enter main loop (time integration)...
+
+nMode   1 xMode   1 Growth rate   1.40503E+02
+nMode   1 xMode   1 Real frequency   2.07528E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.30082E-07  -1.06134E-11   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -9.07397E-07  -3.37759E-11   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.37480E-21  -2.84156E-22   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.30082E-07  -1.06134E-11   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -2.06222E-06  -6.66114E-08   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -7.67110E-20  -1.46770E-18   0.00000E+00
+
+Time step :     100 Normalised time :   1.75011E-01
+
+
+
+ Iteration 1 completed successfully.
+ Predicted runtime:         1749  minutes
+
+ WARNING: Run likely to terminate from max_seconds input
+ Stop will occur after         1419 minutes
+ Iterations expected:         1623 of         2000  requested
+
+==============================================================
+ Number of code pieces tracked    18
+==============================================================
+Name                     Number of calls   time spent  percent
+==============================================================
+rk4                                   98  0.48054E+02   100.00
+Calc RHS                             393  0.44468E+02    92.54
+Calc Fields                          393  0.49797E+01    10.36
+fields - poisson mat multiply        393  0.49777E+01    10.36
+fields - MPI allreduce               393  0.31233E-04     0.00
+fields - n4 renorm diag              393  0.10068E-02     0.00
+Copy fdis vector to tmp              786  0.53077E+00     1.10
+Collisions conservation              393  0.71049E-04     0.00
+Init RHS to zero                     393  0.70802E+00     1.47
+MPI radial ghost comms               393  0.97990E-04     0.00
+Non linear terms: FFT, No MPI        393  0.16606E+01     3.46
+MPI other ghost comms                393  0.92506E-04     0.00
+Linear terms matmul, No MPI          393  0.29468E+02    61.32
+Calc Additonal Fields                393  0.46654E+01     9.71
+add fields - int mat multiply        393  0.46638E+01     9.71
+add fields - MPI allreduce           393  0.11921E-04     0.00
+add fields - n4 renorm diag          393  0.56791E-03     0.00
+Apply epar correction                393  0.24538E+01     5.11
+perflib / other                        - -0.50525E+02  -105.14
+
+   (timing error:  0.000000s)
+==============================================================
+nMode   1 xMode   1 Growth rate   1.81873E+02
+nMode   1 xMode   1 Real frequency   2.07528E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.30082E-07  -1.06134E-11   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -9.07397E-07  -3.37759E-11   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.69583E-21   3.93845E-22   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.30082E-07  -1.06134E-11   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -2.06222E-06  -6.66114E-08   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   9.95926E-20   1.96157E-18   0.00000E+00
+
+Time step :     200 Normalised time :   3.50022E-01
+
+
+nMode   1 xMode   1 Growth rate   1.81873E+02
+nMode   1 xMode   1 Real frequency   2.07528E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.30082E-07  -1.06134E-11   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -9.07397E-07  -3.37759E-11   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -6.10694E-21   2.71596E-22   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.30082E-07  -1.06134E-11   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -2.06222E-06  -6.66114E-08   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   8.06299E-20   1.76763E-18   0.00000E+00
+
+Time step :     300 Normalised time :   5.25033E-01
+
+
+nMode   1 xMode   1 Growth rate   1.81873E+02
+nMode   1 xMode   1 Real frequency   2.07528E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.30082E-07  -1.06134E-11   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -9.07397E-07  -3.37759E-11   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -1.01738E-20   6.96033E-22   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.30082E-07  -1.06134E-11   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -2.06222E-06  -6.66114E-08   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.17899E-19   4.26792E-18   0.00000E+00
+
+Time step :     400 Normalised time :   7.00044E-01
+
+
+nMode   1 xMode   1 Growth rate   1.81873E+02
+nMode   1 xMode   1 Real frequency   2.07528E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.30082E-07  -1.06134E-11   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -9.07397E-07  -3.37759E-11   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :  -2.74856E-20   2.81928E-21   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.30082E-07  -1.06134E-11   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -2.06222E-06  -6.66114E-08   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   1.04420E-18   1.98331E-17   0.00000E+00
+
+Time step :     500 Normalised time :   8.75055E-01
+
+
+ **** max_gr: Run unstable: STOP ****
+
+nMode   1 xMode   1 Growth rate   1.81873E+02
+nMode   1 xMode   1 Real frequency   2.07528E-01
+Toroidal mode   1 Radial mode   1 Species  1
+The particle flux  (ES/APAR/BPAR) :   2.30082E-07  -1.06134E-11   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -9.07397E-07  -3.37759E-11   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.45258E-21   7.93835E-22   0.00000E+00
+
+Toroidal mode   1 Radial mode   1 Species  2
+The particle flux  (ES/APAR/BPAR) :   2.30082E-07  -1.06134E-11   0.00000E+00
+The energy flux    (ES/APAR/BPAR) :  -2.06222E-06  -6.66114E-08   0.00000E+00
+The momentum flux  (ES/APAR/BPAR) :   2.90550E-19   5.03839E-18   0.00000E+00
+
+Time step :     600 Normalised time :   1.05007E+00
+
+
+ Internal: stop
+
+ parallel.dat: normalized (rotated in complex plane) by: 
+               (11.414087966199489,2.4445984320094283)
+
+ Run successfully completed, Run time :   340.71810007095337     
+                     (main loop time):   314.69318985939026     
+
+==============================================================
+ Number of code pieces tracked    18
+==============================================================
+Name                     Number of calls   time spent  percent
+==============================================================
+rk4                                  598  0.29324E+03   100.00
+Calc RHS                            2398  0.27007E+03    92.10
+Calc Fields                         2398  0.30645E+02    10.45
+fields - poisson mat multiply       2398  0.30601E+02    10.44
+fields - MPI allreduce              2398  0.20409E-03     0.00
+fields - n4 renorm diag             2398  0.22189E-01     0.01
+Copy fdis vector to tmp             4796  0.33305E+01     1.14
+Collisions conservation             2398  0.46611E-03     0.00
+Init RHS to zero                    2398  0.44088E+01     1.50
+MPI radial ghost comms              2398  0.61512E-03     0.00
+Non linear terms: FFT, No MPI       2398  0.90841E+01     3.10
+MPI other ghost comms               2398  0.55909E-03     0.00
+Linear terms matmul, No MPI         2398  0.18108E+03    61.75
+Calc Additonal Fields               2398  0.27689E+02     9.44
+add fields - int mat multiply       2398  0.27663E+02     9.43
+add fields - MPI allreduce          2398  0.10967E-03     0.00
+add fields - n4 renorm diag         2398  0.19273E-01     0.01
+Apply epar correction               2398  0.13818E+02     4.71
+perflib / other                        - -0.30519E+03  -104.08
+
+   (timing error:  0.000000s)
+==============================================================

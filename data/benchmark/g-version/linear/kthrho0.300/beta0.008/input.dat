@@ -33,7 +33,7 @@
 
  N_procs_mu   = 8                                                     
  N_procs_vpar = 1                    
- N_procs_s    = 4              
+ N_procs_s    = 2              
 /
 &MODE
  mode_box = .false.

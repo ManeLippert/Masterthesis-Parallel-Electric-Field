@@ -31,9 +31,9 @@
  nperiod = 5
  number_of_species = 2 ! Number of species. Note: do not count the adiabatic species
 
- N_procs_mu   = 8                                                     
+ N_procs_mu   = 4                                                     
  N_procs_vpar = 1                    
- N_procs_s    = 2              
+ N_procs_s    = 3             
 /
 &MODE
  mode_box = .false.
