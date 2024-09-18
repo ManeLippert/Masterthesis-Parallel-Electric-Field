@@ -97,27 +97,27 @@ Time step :     100 Normalised time :   1.75011E-01
 
 
  Iteration 1 completed successfully.
- Predicted runtime:          792  minutes
+ Predicted runtime:          824  minutes
 
 ==============================================================
  Number of code pieces tracked    13
 ==============================================================
 Name                     Number of calls   time spent  percent
 ==============================================================
-rk4                                   98  0.21553E+02   100.00
-Calc RHS                             392  0.19613E+02    91.00
-Calc Fields                          392  0.24894E+01    11.55
-fields - poisson mat multiply        392  0.24875E+01    11.54
-fields - MPI allreduce               392  0.21935E-04     0.00
-fields - n4 renorm diag              392  0.99897E-03     0.00
-Copy fdis vector to tmp              392  0.10630E+01     4.93
-Collisions conservation              392  0.62704E-04     0.00
-Init RHS to zero                     392  0.34316E+00     1.59
-MPI radial ghost comms               392  0.10800E-03     0.00
-Non linear terms: FFT, No MPI        392  0.66330E+00     3.08
-MPI other ghost comms                392  0.73433E-04     0.00
-Linear terms matmul, No MPI          392  0.15053E+02    69.84
-perflib / other                        - -0.20160E+02   -93.54
+rk4                                   98  0.22505E+02   100.00
+Calc RHS                             392  0.20565E+02    91.38
+Calc Fields                          392  0.34556E+01    15.35
+fields - poisson mat multiply        392  0.34537E+01    15.35
+fields - MPI allreduce               392  0.20504E-04     0.00
+fields - n4 renorm diag              392  0.98991E-03     0.00
+Copy fdis vector to tmp              392  0.10821E+01     4.81
+Collisions conservation              392  0.44346E-04     0.00
+Init RHS to zero                     392  0.33952E+00     1.51
+MPI radial ghost comms               392  0.86308E-04     0.00
+Non linear terms: FFT, No MPI        392  0.65499E+00     2.91
+MPI other ghost comms                392  0.62466E-04     0.00
+Linear terms matmul, No MPI          392  0.15032E+02    66.79
+perflib / other                        - -0.22079E+02   -98.11
 
    (timing error:  0.000000s)
 ==============================================================
@@ -162,10 +162,6 @@ Toroidal mode   1 Radial mode   1 Species  2
 The particle flux  (ES/APAR/BPAR) :   1.98187E-02  -1.80993E-03   0.00000E+00
 The energy flux    (ES/APAR/BPAR) :   6.47354E-02  -6.30129E-02   0.00000E+00
 The momentum flux  (ES/APAR/BPAR) :   8.01265E-18  -3.17792E-16   0.00000E+00
-
- WARNING: Diagnostics are slow:
- Diagnostics time (last call):       3.41828E+00
- Non-diagnostics time (last step):   3.33724E+01
 
 Time step :     400 Normalised time :   7.00044E-01
 
@@ -766,10 +762,6 @@ Toroidal mode   1 Radial mode   1 Species  2
 The particle flux  (ES/APAR/BPAR) :   4.95205E-02  -5.37353E-03   0.00000E+00
 The energy flux    (ES/APAR/BPAR) :   2.73178E-01  -5.69527E-02   0.00000E+00
 The momentum flux  (ES/APAR/BPAR) :  -1.12355E-16  -1.93294E-16   0.00000E+00
-
- WARNING: Diagnostics are slow:
- Diagnostics time (last call):       3.37948E+00
- Non-diagnostics time (last step):   3.19265E+01
 
 Time step :    4400 Normalised time :   7.70048E+00
 
@@ -1700,10 +1692,6 @@ Toroidal mode   1 Radial mode   1 Species  2
 The particle flux  (ES/APAR/BPAR) :   1.73692E-02  -8.92732E-03   0.00000E+00
 The energy flux    (ES/APAR/BPAR) :   1.83837E-01  -5.90759E-02   0.00000E+00
 The momentum flux  (ES/APAR/BPAR) :  -3.25025E-17   1.48403E-15   0.00000E+00
-
- WARNING: Diagnostics are slow:
- Diagnostics time (last call):       3.43105E+00
- Non-diagnostics time (last step):   2.92218E+01
 
 Time step :   10600 Normalised time :   1.85512E+01
 
@@ -4877,34 +4865,34 @@ Time step :   31700 Normalised time :   5.54785E+01
  Internal: stop
  * wrote restart file FDS, count=      589824
  * restart_file_version=           2
- * in   1.44472E-01 seconds
+ * in   1.47657E-01 seconds
 
 
  parallel.dat: normalized (rotated in complex plane) by: 
              (-2.5667077833370224,-3.1314700725427418)
 
- Run successfully completed, Run time :   10212.708774089813     
-                     (main loop time):   10199.623450756073     
+ Run successfully completed, Run time :   7564.1137905120850     
+                     (main loop time):   7550.8680913448334     
 
 ==============================================================
  Number of code pieces tracked    13
 ==============================================================
 Name                     Number of calls   time spent  percent
 ==============================================================
-rk4                                31698  0.94553E+04   100.00
-Calc RHS                          126792  0.85961E+04    90.91
-Calc Fields                       126792  0.10994E+04    11.63
-fields - poisson mat multiply     126792  0.10985E+04    11.62
-fields - MPI allreduce            126792  0.78793E-02     0.00
-fields - n4 renorm diag           126792  0.47088E+00     0.00
-Copy fdis vector to tmp           126792  0.46638E+03     4.93
-Collisions conservation           126792  0.16741E-01     0.00
-Init RHS to zero                  126792  0.14703E+03     1.56
-MPI radial ghost comms            126792  0.41783E-01     0.00
-Non linear terms: FFT, No MPI     126792  0.28869E+03     3.05
-MPI other ghost comms             126792  0.21451E-01     0.00
-Linear terms matmul, No MPI       126792  0.65940E+04    69.74
-perflib / other                        - -0.88354E+04   -93.44
+rk4                                31698  0.70033E+04   100.00
+Calc RHS                          126792  0.63784E+04    91.08
+Calc Fields                       126792  0.87450E+03    12.49
+fields - poisson mat multiply     126792  0.87391E+03    12.48
+fields - MPI allreduce            126792  0.12464E-01     0.00
+fields - n4 renorm diag           126792  0.30936E+00     0.00
+Copy fdis vector to tmp           126792  0.34198E+03     4.88
+Collisions conservation           126792  0.17958E-01     0.00
+Init RHS to zero                  126792  0.10959E+03     1.56
+MPI radial ghost comms            126792  0.28467E-01     0.00
+Non linear terms: FFT, No MPI     126792  0.21213E+03     3.03
+MPI other ghost comms             126792  0.26527E-01     0.00
+Linear terms matmul, No MPI       126792  0.48398E+04    69.11
+perflib / other                        - -0.66274E+04   -94.63
 
    (timing error:  0.000000s)
 ==============================================================
