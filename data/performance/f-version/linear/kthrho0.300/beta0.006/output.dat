@@ -101,36 +101,32 @@ Time step :     100 Normalised time :   1.75011E-01
 
 
  Iteration 1 completed successfully.
- Predicted runtime:         1779  minutes
-
- WARNING: Run likely to terminate from max_seconds input
- Stop will occur after         1419 minutes
- Iterations expected:         1595 of         2000  requested
+ Predicted runtime:          917  minutes
 
 ==============================================================
  Number of code pieces tracked    18
 ==============================================================
 Name                     Number of calls   time spent  percent
 ==============================================================
-rk4                                   98  0.48799E+02   100.00
-Calc RHS                             393  0.45381E+02    93.00
-Calc Fields                          393  0.62639E+01    12.84
-fields - poisson mat multiply        393  0.62618E+01    12.83
-fields - MPI allreduce               393  0.18358E-04     0.00
-fields - n4 renorm diag              393  0.10028E-02     0.00
-Copy fdis vector to tmp              786  0.50572E+00     1.04
-Collisions conservation              393  0.54121E-04     0.00
-Init RHS to zero                     393  0.71199E+00     1.46
-MPI radial ghost comms               393  0.10061E-03     0.00
-Non linear terms: FFT, No MPI        393  0.11947E+01     2.45
-MPI other ghost comms                393  0.82254E-04     0.00
-Linear terms matmul, No MPI          393  0.29809E+02    61.09
-Calc Additonal Fields                393  0.47077E+01     9.65
-add fields - int mat multiply        393  0.47062E+01     9.64
-add fields - MPI allreduce           393  0.25988E-04     0.00
-add fields - n4 renorm diag          393  0.53215E-03     0.00
-Apply epar correction                393  0.21863E+01     4.48
-perflib / other                        - -0.52932E+02  -108.47
+rk4                                   98  0.25237E+02   100.00
+Calc RHS                             393  0.23335E+02    92.46
+Calc Fields                          393  0.37458E+01    14.84
+fields - poisson mat multiply        393  0.37439E+01    14.83
+fields - MPI allreduce               393  0.90599E-05     0.00
+fields - n4 renorm diag              393  0.99468E-03     0.00
+Copy fdis vector to tmp              786  0.29988E+00     1.19
+Collisions conservation              393  0.53883E-04     0.00
+Init RHS to zero                     393  0.34234E+00     1.36
+MPI radial ghost comms               393  0.11015E-03     0.00
+Non linear terms: FFT, No MPI        393  0.66258E+00     2.63
+MPI other ghost comms                393  0.78678E-04     0.00
+Linear terms matmul, No MPI          393  0.15085E+02    59.77
+Calc Additonal Fields                393  0.21138E+01     8.38
+add fields - int mat multiply        393  0.21124E+01     8.37
+add fields - MPI allreduce           393  0.24080E-04     0.00
+add fields - n4 renorm diag          393  0.52977E-03     0.00
+Apply epar correction                393  0.10835E+01     4.29
+perflib / other                        - -0.27289E+02  -108.13
 
    (timing error:  0.000000s)
 ==============================================================
@@ -4878,39 +4874,39 @@ Time step :   31700 Normalised time :   5.54785E+01
  Internal: stop
  * wrote restart file FDS, count=      589824
  * restart_file_version=           2
- * in   1.86780E-01 seconds
+ * in   1.46559E-01 seconds
 
 
  parallel.dat: normalized (rotated in complex plane) by: 
              (-2.5667077833373773,-3.1314700725426130)
 
- Run successfully completed, Run time :   16805.043541669846     
-                     (main loop time):   16778.858493328094     
+ Run successfully completed, Run time :   8285.9057073593140     
+                     (main loop time):   8272.1001150608063     
 
 ==============================================================
  Number of code pieces tracked    18
 ==============================================================
 Name                     Number of calls   time spent  percent
 ==============================================================
-rk4                                31698  0.15671E+05   100.00
-Calc RHS                          127109  0.14476E+05    92.38
-Calc Fields                       127109  0.18252E+04    11.65
-fields - poisson mat multiply     127109  0.18239E+04    11.64
-fields - MPI allreduce            127109  0.46297E-01     0.00
-fields - n4 renorm diag           127109  0.67040E+00     0.00
-Copy fdis vector to tmp           254218  0.17141E+03     1.09
-Collisions conservation           127109  0.19426E-01     0.00
-Init RHS to zero                  127109  0.22097E+03     1.41
-MPI radial ghost comms            127109  0.47686E-01     0.00
-Non linear terms: FFT, No MPI     127109  0.43276E+03     2.76
-MPI other ghost comms             127109  0.11008E+00     0.00
-Linear terms matmul, No MPI       127109  0.97028E+04    61.91
-Calc Additonal Fields             127109  0.14092E+04     8.99
-add fields - int mat multiply     127109  0.14081E+04     8.99
-add fields - MPI allreduce        127109  0.23403E-01     0.00
-add fields - n4 renorm diag       127109  0.41345E+00     0.00
-Apply epar correction             127109  0.71286E+03     4.55
-perflib / other                        - -0.16514E+05  -105.38
+rk4                                31698  0.77239E+04   100.00
+Calc RHS                          127109  0.71174E+04    92.15
+Calc Fields                       127109  0.83155E+03    10.77
+fields - poisson mat multiply     127109  0.83093E+03    10.76
+fields - MPI allreduce            127109  0.48258E-02     0.00
+fields - n4 renorm diag           127109  0.30789E+00     0.00
+Copy fdis vector to tmp           254218  0.80507E+02     1.04
+Collisions conservation           127109  0.27032E-01     0.00
+Init RHS to zero                  127109  0.10983E+03     1.42
+MPI radial ghost comms            127109  0.33903E-01     0.00
+Non linear terms: FFT, No MPI     127109  0.21107E+03     2.73
+MPI other ghost comms             127109  0.22189E-01     0.00
+Linear terms matmul, No MPI       127109  0.48478E+04    62.76
+Calc Additonal Fields             127109  0.69052E+03     8.94
+add fields - int mat multiply     127109  0.69008E+03     8.93
+add fields - MPI allreduce        127109  0.74103E-02     0.00
+add fields - n4 renorm diag       127109  0.15976E+00     0.00
+Apply epar correction             127109  0.34557E+03     4.47
+perflib / other                        - -0.80318E+04  -103.99
 
    (timing error:  0.000000s)
 ==============================================================
