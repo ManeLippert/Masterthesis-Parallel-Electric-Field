@@ -1,0 +1,80 @@
+%---------------------------------------------------------------------
+% Colors
+%---------------------------------------------------------------------
+
+% Primary Colors
+\definecolor{MainColor}{RGB}{69, 155, 113}
+
+\if@doDarkMode%
+    \definecolor{BackgroundColor}{rgb}{0, 0, 0}
+    \definecolor{TextColor}{rgb}{1, 1, 1}
+\else%
+    \definecolor{TextColor}{rgb}{0, 0, 0}
+    \definecolor{BackgroundColor}{rgb}{1, 1, 1}
+\fi%
+
+% Primary Colors
+\definecolor{Red}{rgb}{0.882352941,0,0.098039216}
+\definecolor{White}{rgb}{1, 1, 1}
+\definecolor{RedDark}{rgb}{0.588235294,0,0.058823529}
+\definecolor{LightGray}{rgb}{0.85,0.85,0.85}
+\definecolor{WarmGreyDark}{rgb}{0.274509804,0.254901961,0.235294118}
+\definecolor{WarmGreyLight}{rgb}{0.666666667,0.647058824,0.62745098}
+
+% Secondary Colors
+\definecolor{Sec1}{rgb}{0,0.588235294,0.509803922}
+\definecolor{Sec1Dark}{rgb}{0,0.392156863,0.31372549}
+\definecolor{Sec1Comp}{rgb}{0.294117647,0.745098039,0.882352941}
+\definecolor{Sec1CompDark}{rgb}{0.196078431,0.490196078,0.568627451}
+
+\definecolor{Sec2}{rgb}{0.607843137,0.764705882,0.156862745}
+\definecolor{Sec2Dark}{rgb}{0.411764706,0.490196078,0.098039216}
+\definecolor{Sec2Comp}{rgb}{0.254901961,0.156862745,0.509803922}
+\definecolor{Sec2CompDark}{rgb}{0.176470588,0.098039216,0.333333333}
+
+\definecolor{Sec3}{rgb}{0.509803922,0.078431373,0.31372549}
+\definecolor{Sec3Dark}{rgb}{0.338345865,0.058823529,0.196078431}
+\definecolor{Sec3Comp}{rgb}{1,0.509803922,0}
+\definecolor{Sec3CompDark}{rgb}{0.666666667,0.333333333,0}
+
+\setbeamercolor{normal text}{fg=TextColor}
+\setbeamercolor{alerted text}{fg=Red}
+\setbeamercolor{example text}{fg=TextColor}
+\setbeamercolor{copyright text}{fg=WarmGreyLight}
+
+\setbeamercolor{structure}{fg=TextColor}
+
+\setbeamercolor{line}{fg=White, bg=MainColor}
+\setbeamercolor{background canvas}{bg=BackgroundColor}
+
+% Titlepage
+\setbeamercolor{title}{parent = normal text}
+\setbeamercolor{subtitle}{parent = normal text}
+\setbeamercolor{institute}{parent = normal text}
+
+% Content
+
+\if@doTransparentline%
+    \setbeamercolor{section in head/foot}{fg=TextColor}
+    \colorlet{underline}{BackgroundColor}
+    \setbeamercolor{frametitle}{fg=MainColor}
+\else%
+    \setbeamercolor{section in head/foot}{fg=White, bg=MainColor}
+    \colorlet{underline}{MainColor}
+    \setbeamercolor{frametitle}{fg=TextColor}
+\fi%
+
+% Blocks
+\setbeamercolor{block title}{fg=TextColor, bg=WarmGreyLight}
+\setbeamercolor{block body}{fg=White, bg=MainColor}
+\setbeamercolor{block title example}{fg=White, bg=Sec1Dark}
+\setbeamercolor{block body example}{fg=White, bg=Sec1}
+\setbeamercolor{block title alerted}{fg=White, bg=RedDark}
+\setbeamercolor{block body alerted}{fg=White, bg=Red}
+
+% Notes
+\setbeamercolor{note page}{fg=White, bg=MainColor}
+\setbeamercolor{note date}{fg=TextColor, bg=LightGray}
+
+% Page Number
+\setbeamercolor{page number in head/foot}{fg=LightGray}

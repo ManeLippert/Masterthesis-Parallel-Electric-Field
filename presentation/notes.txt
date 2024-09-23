@@ -1,0 +1,149 @@
+------------------------------------------------------------------------------------------------------------------
+STARTPAGE
+
+------------------------------------------------------------------------------------------------------------------
+MOTIVATION
+
+- Plasma beta is one of the fundamental dimensionless parameters in plasma physics
+- Kinetic Models 
+- Numerical approach needed due to partial differential equations
+	-> numerical problems concerning the plasma beta in local and global simulations
+- Cancellation Problem
+	-> low plasma beta
+	-> greater perpendicular wave vectors kperp
+	-> New mitigation technique in global nonlinear simulations
+
+Is it possible to mitigate the cancellation problem in local gyrokinetic simulations with the introduction of a new field equation?
+
+- Talk about mitigation technique and what was previous done and how it will be done now
+
+------------------------------------------------------------------------------------------------------------------
+CHARGED PARTICLE MOTION
+
+- Lorentz Force
+
+ 	-> Circular Motion with Larmor Radius and Cyclotron Frequency
+	-> Direction of Circulation depends on charge	
+	-> Thermal Quantities rho and vth
+
+- Coulumb Force
+
+	-> Should be known
+
+- Inhomogenous magnetic field 
+
+	-> Explain Mirror Effect or just mention it 
+
+------------------------------------------------------------------------------------------------------------------
+DRIFT MOTION
+
+- E × B Drift
+
+	-> Same directions for every carge
+
+- Grad B/Curvature Drift
+
+	-> Direction depends on charge (charge in equation)
+	-> Curvature vector can be transfromed into gradient B vector for plasma pressure small compared to magnetic field strength
+
+------------------------------------------------------------------------------------------------------------------
+PLASMA BETA
+
+- Plasma Beta
+	-> fusion rate ~ beta^2
+	-> bootstrap fraction ~ beta
+	-> MHD Stability
+	-> Confinement quality of a fusion device (explain later)
+- Electromagnetic fields vanish for beta -> 0
+	-> Indicator for electromagentic effects in gyrokinetic systems
+
+
+------------------------------------------------------------------------------------------------------------------
+ORDERING
+
+- Low frequency: frequency of fluctuation smaller than the cyclotron frequency
+- Anisotropy: Length scales of turbulence (caracterized by wave vector k) in parallel direction is significant smaller than perpendicular direction (to the ambient magnetic field).
+- Strong Magnetization: Larmor radius is small compared to the gradient lengths of density, temperature and magnetic field
+- Small fluctuation: pertrubation of the gyrocenter distrubution function is small compared to the background distribution function
+
+- epsilion small parameter
+	-> for GKW it is rho_star 
+
+------------------------------------------------------------------------------------------------------------------
+DERIVATION
+
+- Fundamental one form -> Time integral over the langrangian
+- Particle phase space -> guiding center (coordinate transformation) -> gyrocenter (perturbations of the guiding center)
+	-> potentials gets seperated in equilibrium and perturbated part which gets 
+	   seperated into an gyroaveraged (circle integral over theta) and oscillated part
+- Vlasov Equation 
+- v_chi = drift motion due to potentials and magnetic field
+- v_D = drift due to curvature, zentrifugal, coriolis
+
+
+------------------------------------------------------------------------------------------------------------------
+FIELDS
+
+- Maxwell system
+	-> Coulumbs law gets replaced with quasi neutrality condition
+- Particle density and current expressed with moments of distribution function
+- Pullback to use gyrocenter distribution instead of guiding center
+	-> Correction term describes the polarization and magnetization of the fluctuation of the gyro orbit
+- Moments of distribution for the guiding center distribution
+	-> Delta function ensures that all particle which gyro orbit intersects at x will be counted into the particel density at x
+	-> Correction term will vanish due to the point symmetry of the vpar F_M
+- Fields equation
+	-> Coulomb's law -> Electrostatic potential
+	-> Peprendicular Ampere's law -> Magnetic compression
+	-> Parallel Ampere's law -> Parallel Vector Potential
+		-> Imporant for this work -> Here the equation (normalized and fft)
+		-> Note the dependence of the equation because of beta
+
+------------------------------------------------------------------------------------------------------------------
+CANCELLATION PROBLEM
+
+- Gyrokinetc Equation again
+	-> Two time derivative in PDE not trivial solvable with Runge Kutta
+	-> Replace F with g (IMPORTANT Say that Apar term is the Apar correction)
+	-> Gyrokinetic equations changed (Nonlinear terms and Time derivative)
+- Amperes Law gets adjusted with the so called skin term
+- Describe Cancellation Problem (analytically vs numerical)
+- Error scall with beta/k^2
+
+-------------------------------------------------------------------------------------------------------------------
+FARADAY'S LAW
+
+- Faradays law defined as ...
+- time derivative gets replaced with RHS plus the Epar Correction term
+- Normalized and FFT Equation
+- New changes to the gyrokinetic equation
+- Implementation
+	-> Input Switch nlepar (could be changed later an)
+	-> Explain flow diagramm (make clear that the f-version has to be backed in the g-version)
+	-> Do not forget to recall the definition of Apar Correct and Epar Correct
+	-> Motivate the decesion to calculated Fraday's law seperate
+-Benchmark
+	-> Hamada coordinates (Psi radial, Zeta binormal, s filed aligned)
+	-> CBC with Kinetic electrons und maximum at kperp 0.3
+	-> Good agreement between g-version and f-version (10% more runtime)
+	   - gamma and omega for the most dominate mode of the turbulence
+	   - ITG Ion temperature gradient mode
+	   - TEM Trapped electron mode
+	   - KBM Kinetic balloning mode
+	-> Benchmark show that Epar does align well with Apar (+ Evolution)
+- Mitigation
+	-> Mitigation only in local linear simulations tested and does not work
+	-> Two differnet testcases used
+	-> Explanation 
+		- Only in Global nonlinear simulations possible mitigation like in the disseration
+		- Electrostatic potential gets calculated with an analytical gamma function (numerical scheme has to be everywhere the same)
+		- Ampere's law (g-version) same structure as Faraday's law (f-version) 
+		- Comparision between terms does not help
+
+-------------------------------------------------------------------------------------------------------------------
+CONCLUSION
+
+- Local linear f-version sucessfully implemented
+	-> Nonlinear version runs as well with same results
+- Benchmark of the nonlinear is not completed yet
+- Future sight: Groundwork for the global f-version done

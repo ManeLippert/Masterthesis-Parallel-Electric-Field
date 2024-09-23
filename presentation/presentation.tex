@@ -1,0 +1,485 @@
+% Author         : Manuel Lippert
+% Version        : 1.1
+% Created on     : 11.06.2023
+% Last Edited on : 11.06.2023
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                    !!! Compile with LuaLaTex !!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[compress,aspectratio=1610,noflama]{beamer}
+
+%--------------------------------------------------------------------------
+% Theme
+%--------------------------------------------------------------------------
+
+\usepackage{theme/beamerthemefancy}
+\usetheme{fancy}
+
+\usepackage{theme/dtklogos} % must be loaded after theme
+
+%--------------------------------------------------------------------------
+% Common packages
+%--------------------------------------------------------------------------
+
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{multimedia}
+\usepackage{media9}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{soul}
+\usepackage{multirow}
+\usepackage{xcolor}
+
+%--------------------------------------------------------------------------
+% Inputs
+%--------------------------------------------------------------------------
+
+\input{../masterthesis/colors.tex}
+\input{../masterthesis/flowdiagramm.tex}
+\input{../masterthesis/variables.tex}
+\input{../masterthesis/tikz.tex}
+
+%--------------------------------------------------------------------------
+% Functions
+%--------------------------------------------------------------------------
+
+% Vector Quantities bold
+\newcommand{\vect}[1]{\boldsymbol{\mathbf{#1}}}
+
+% Common Indexes in Gyrokinetics
+\newcommand{\iref}[1]{#1_\mathrm{ref}}
+\newcommand{\ith}[1]{#1_\mathrm{th}}
+
+% Add _s to any Quantity with seperation into Species
+\newcommand{\spec}[1]{#1_s}
+\newcommand{\specN}[1]{#1_{\mathrm{N},s}}
+\newcommand{\speccN}[2]{#1_{#2\mathrm{N},s}}
+\newcommand{\specthN}[1]{#1_{\mathrm{th}\mathrm{N},s}}
+\newcommand{\specR}[1]{#1_{\mathrm{R},s}}
+\newcommand{\specthR}[1]{#1_{\mathrm{th}\mathrm{R},s}}
+\newcommand{\specref}[1]{#1_{\mathrm{ref},s}}
+
+\newcommand{\specc}[2]{#1_{#2,s}}
+\newcommand{\speccrm}[2]{#1_{\mathrm{#2},s}}
+
+% Gyroaverage Operator
+\newcommand{\ga}[1]{\bar{#1}}
+\newcommand{\gad}[1]{\langle#1\rangle}
+% \newcommand{\tga}[1]{\mathcal{G}\!\left\{ #1 \right\}}
+% \newcommand{\tgad}[1]{\mathcal{G}^\dagger\!\left\{ #1 \right\}}
+\newcommand{\tga}[1]{\mathcal{G} #1}
+\newcommand{\tgad}[1]{\mathcal{G}^\dagger #1}
+
+% Optimize Spacing of integrals
+\newcommand{\ints}{\int \!}
+\newcommand{\intss}[2]{\int_{#1}^{#2} \!\!\!\!\!}
+
+\newcommand{\highlight}[1]{
+  \colorbox{Notared!50}{$\displaystyle#1$}}
+
+\newcommand{\highlightt}[1]{
+	\colorbox{Notared!0}{$\displaystyle#1$}}
+
+\newcommand{\code}[1]{{\ttfamily\small{#1}}}
+
+%--------------------------------------------------------------------------
+% Variables
+%--------------------------------------------------------------------------
+
+\graphicspath{{../pictures/}}
+
+\newcommand{\backgroundpicture}{evaluation/benchmark/f-version/fields/kthrho0.300_beta0.008_fields_f-version.pdf}
+\newcommand{\backgroundxshift}{0.27\paperwidth}
+\newcommand{\backgroundwidth}{0.7\paperwidth} 
+
+\newcommand{\logopicture}{Uni_Logo_white_black}
+
+%--------------------------------------------------------------------------
+% Document
+%--------------------------------------------------------------------------
+
+\title{Mitigation of \\ the Cancellation Problem \\ in local gyrokinetic Simulations}
+\subtitle{~}
+\author{Manuel Lippert}
+\institute{Theoretical Physics V}
+
+\begin{document}
+
+	\maketitle
+
+	\section*{Motivation}
+	\begin{frame}
+		\frametitle{Motivation}
+
+		\begin{center}
+			\begin{itemize}
+				\item <2-> In plasma physics the plasma beta $\beta$ is one of the fundamental dimensionless parameters
+				% \item <3-> Electromagentic fields vanish in the limit $\beta \rightarrow 0$ \\ $\rightarrow$ Indicator for the relevance of electromagnetic effects
+				\item <3-> Kinetic Models describes plasma in the 6D phase space through the Vlasov equation and Maxwell equations.
+				\item <4-> \textbf{Cancellation Problem:} Limits gyrokinetic investigations to low plasma beta high perpendicular wave vectors $\kperp$
+				\item <5-> New technique for global nonlinear simulations found to mitigate the cancellation problem by using an additional field equation
+			\end{itemize}
+			\bigskip
+			\onslide<6-> \textbf{Is it possible to mitigate the cancellation problem in local gyrokinetic simulations with the introduction of a new field equation?}
+		\end{center}
+	\end{frame}
+
+	\section*{Plasma Physics Basics}
+
+	\begin{frame}
+		\frametitle{Charged Particle Motion}
+
+		\begin{center}
+			\begin{tabular}{>{\onslide<2->}c<{\onslide}@{\hspace{0.5cm}} >{\onslide<2->}c<{\onslide}@{\hspace{0.5cm}} >{\onslide<2->}c<{\onslide}}
+				\textbf{Lorentz force} & 
+				\textbf{Electric force} & 
+				\textbf{Inhomogeneous magnetic field} \\
+				$F_{\perp, B} = |q| v_\perp B$ & 
+				$F_{\parallel,E} = qE_\parallel$ & 
+				$F_{\parallel,\nabla_{\!\parallel} B} = - \underbrace{\frac{mv^2_{\perp}}{2B}}_{\mu} \nabla_{\!\parallel} B$ \\
+				\input{../pictures/theory/Lorentz-Force.tex} & 
+				\input{../pictures/theory/Electric-Force.tex} & 
+				\input{../pictures/theory/Inhomogenous-Magnetic-Field.tex} \\
+				$\rho = \frac{m\vperp}{|q|B}~~~\omega_\mathrm{c} = \frac{|q|B}{m}$ & $\rhoth = \frac{m\vth}{|q|B}$ & $\vth=\sqrt{\frac{2T}{m}}$ \\
+			\end{tabular}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Drifts in the Guiding Center}
+		\begin{center}
+			\begin{tabular}{>{\onslide<2->}c<{\onslide} >{\onslide<3->}c<{\onslide} >{\onslide<3->}c<{\onslide}}
+				{\boldmath $\exb$} \textbf{Drift} & 
+				{\boldmath $\nabla B$} \textbf{Drift} & 
+				\textbf{Curvature Drift} \\
+				$\vect{v}_{E} = \frac{\vect{E}\times\vect{B}}{B^2}$ & 
+				$\vect{v}_{\nabla B} = \frac{m v^2_{\perp}}{2 q}\frac{\vect{B}\times \nabla B}{B^3}$ & 
+				$\vect{v}_{C} = \frac{m v^2_{\parallel}}{qB^2}\vect{B}\times \underbrace{\vect{C}}_{\frac{\nabla B}{B}} = \frac{m v^2_{\parallel}}{q} \frac{\vect{B}\times \nabla B}{B^3}$\\[1cm]
+				\input{../pictures/theory/ExB-Drift.tex} & 
+				\multicolumn{2}{>{\onslide<3->}c<{\onslide}}{\input{../pictures/theory/GradB-Drift.tex}} \\
+			\end{tabular}
+		\end{center}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Plasma Beta}
+
+		\begin{center}
+			% \only<2>{\input{../pictures/theory/Tokamak-Torus.tex}}
+			\onslide<2-> $\beta = \frac{\overbrace{nT}^\mathrm{plasma~pressure}}{\underbrace{B^2/2\mu_0}_\mathrm{magnetic~field~pressure}}$
+			\bigskip
+			\begin{itemize}
+				\item <3-> Characterizes quality of confinement (Best confinement for $\beta < 1$)
+				\item <3-> Relevant for fusion rate ($\sim \beta^2$), MHD stability of a fusion device
+				\item <3-> Indicator for the relevance of electromagnetic effects 
+				\item <3-> Electromagentic fields vanish in the limit $\beta \rightarrow 0$
+			\end{itemize}
+		\end{center}
+	\end{frame}
+
+	\section*{Gyrokinetic Theory}
+
+	\begin{frame}
+		\frametitle{Gyrokinetic Ordering}
+
+		\begin{center}
+			\begin{itemize}
+				\item <2-> Low frequency: $\omega/\omega_\mathrm{c} \ll 1$
+				\item <2-> Anisotropy: $k_\parallel/k_\perp \ll 1$
+				\item <2-> Strong Magnetization: $\rho/L_n \sim \rho/L_T \sim \rho/L_B \ll 1 \qquad L_G = G_0 \left(\frac{\mathrm{d}G_0}{\mathrm{dx}}\right)^{-1}$
+				\item <2-> Small fluctuations: $\fgy_1 / \fgy_0 \ll 1$
+			\end{itemize}
+
+			\bigskip
+			
+			\onslide<3-> {
+				\begin{gather*}
+					\omega /\omega_\mathrm{c} \sim k_\parallel/k_\perp \sim \rho/L_n \sim \rho/L_T \sim \rho/L_B \sim \fgy_1/\fgy_0 \sim \epsilon_\delta \\
+					\rhost = \frac{\rhothref}{L_B} = \frac{\mref \vthref}{e \Bref} \sim \epsilon_\delta
+				\end{gather*}
+			}
+		\end{center}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Derivation of gyrokinetic equation}
+
+		\begin{center}
+			\only<4>{\input{../pictures/theory/Guiding-Center-Coordinates.tex}}
+			\begin{itemize}
+				\only<2-3,5-6>{
+					\item Find fundamental one-form of the gyrocenter phase space \\
+					\begin{gather*}
+						\int \dt ~ L = \int \gamma
+					\end{gather*}
+				}
+				\only<3,5-6>{
+					\item Particle phase space $\{\x,\velo\}$ $\rightarrow$ guiding center $\{\X,\vpar, \mu, \theta\}$ $\rightarrow$ gyrocenter $\{\bar{\X},\bar{\vpar},\bar{\mu}\}$
+					\begin{gather*}
+						\Phi = \Phi_0 + \underbrace{\tilde{\Phi}_1 + \bar{\Phi}_1}_{\Phi_1} \qquad \A = \A_0 + \underbrace{\tilde{\A}_1 + \bar{\A}_1}_{\A_1}
+					\end{gather*}
+				}
+				\only<6>{
+					\item Vlasov Equation in gyrocenter phase space without collisions
+					\begin{gather*}
+						\frac{\partial \fgy}{\Dt} + \dot{\X} \cdot \frac{\partial \fgy}{\partial \vect{X}} + \dot{v}_\parallel \cdot \frac{\partial \fgy}{\partial v_\parallel} = 0
+					\end{gather*}
+				}
+				\item <7-> Delta-$f$ approximation $F = F_0 + \df$
+				\begin{gather*}
+					\frac{\partial \df}{\Dt} + \dot{\X} \cdot \nabla \df + \dot{v}_\parallel \cdot \frac{\partial \df}{\partial v_\parallel} = \underbrace{- \dot{\X} \cdot \nabla \fgy_0 - \dot{v}_\parallel \frac{\partial \fgy_0}{\partial v_\parallel}}_S
+				\end{gather*}
+				\item <8> Maxwellian as equilibrium distribution $F_0 = \fm$ and $\dot{\X}$ and $\dot{\vpar}$ from Lagrangian
+				\begin{gather*}
+					\frac{\partial \df}{\Dt} + \dot{\X} \cdot \nabla \df - \frac{\vecb_0}{m} \cdot \left(Ze\nabla \Phi_0 + \mu \nabla B_0 - mR \Omega^2 \nabla R \right) \cdot \frac{\partial \df}{\partial v_\parallel} = S 
+				\end{gather*}
+				\begin{align*}
+						S = -& (\vchi + \vD) \cdot \widetilde{\nabla} \fm - \frac{Z e \vpar}{T} \partial_t \gaApar \fm \\
+						    -& \frac{\fm}{T} (\vpar \vecb_0 + \vD + \vBperp) \cdot (Z e \nabla \bar{\Phi} + \mu \nabla \gaBpar)
+				\end{align*}
+			\end{itemize}
+		\end{center}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Derivation of Field Equations}
+		
+		\begin{center}
+			\only<4-5>{\input{../pictures/theory/Maxwell-Equation-Derivation.tex}}
+			\only<6>{\input{../pictures/theory/Particle-Density.tex}}
+
+			\begin{itemize}
+				\only<2-3>{
+					\item Maxwell's equations
+					\begin{align*}
+						\spec{\sum} \spec{Z} e \, \spec{n} &= 0  &\qquad \nabla \times \vect{E}_1 &= - \frac{\partial \vect{B}_1}{\Dt}\\
+						\nabla \cdot \vect{B}_1 &= 0 &\qquad \nabla \times \vect{B}_1 &= \mu_0 \spec{\sum} \spec{\vecj}
+					\end{align*}
+				}
+				\only<3>{
+					\item Moments of the distribution $f$
+					\begin{gather*}
+						n(\x) = \ints \dvelo ~ f(\x, \velo) \\
+					j_\parallel = Ze \ints \dvelo ~ \vpar f(\x, \velo) \qquad \vecj_\perp = Ze \ints \dvelo ~ \vperp f(\x, \velo)
+					\end{gather*}
+				}
+				\only<4-5>{\item Pullback transformation
+				\begin{gather*}
+					\fgc = \mathcal{P} \left\{ \fgy \right\} = \fgy \underbrace{- \frac{\fm}{T}\left(Ze \widetilde{\Phi}_1 - \mu \gaBpar\right)}_{\mathrm{Correction~Term}}
+				\end{gather*}}
+				\only<5>{
+					\item Moments of the distribution $\fgc$
+					\begin{align*}
+						n &= \ints \dvelo ~ f(\x, \velo) = \frac{B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \fgc \\
+						j_\parallel &= Ze \ints \dvelo ~ \vpar f(\x, \velo)= \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vpar \fgc \\
+						\vecj_\perp &= Ze \ints \dvelo ~ \vperp f(\x, \velo) = \frac{Ze B_0}{m} \ints \dX\dvpar\dtheta\dmu ~ \delta(\X + \rrho - \x) \vperp \fgc
+					\end{align*}
+				}
+				\item <7-> Coulomb's law \\ $\rightarrow \spec{\sum} \spec{Z} e \, \spec{n}  = 0 \rightarrow \Phi_1$
+				\item <7-> Magnetic Compression \\ $\rightarrow \nabla^2 \Aperp = (\nabla \times \Bpar)_\perp = - \mu_0 \vecj_{1 \perp} \rightarrow \Bpar$
+				\item <7-> Ampere's law \\ $\rightarrow \nabla^2 \Apar = - \mu_0 j_{1\parallel} \rightarrow \Apar$
+				\onslide<8>{
+					\begin{gather*}
+						\kperpN^2 \FAparN = 2 \pi \BN \betaref\spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN\dmuN ~ \vparN J_0(\kperp \spec{\rho}) \speccN{\Ffgy}{1}
+					\end{gather*}
+				}
+			\end{itemize}
+		\end{center}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{The Cancellation Problem}
+		
+		\begin{itemize}
+			\only<2>{
+				\item Gyrokinetic equation
+				\begin{gather*}
+					\highlightt{\frac{\partial \df}{\Dt}} + \dot{\X} \cdot \nabla \df - \frac{\vecb_0}{m} \cdot \left(Ze\nabla \Phi_0 + \mu \nabla B_0 - mR \Omega^2 \nabla R \right) \cdot \frac{\partial \df}{\partial v_\parallel} = S 
+				\end{gather*}
+				\begin{align*}
+						S = -& (\vchi + \vD) \cdot \widetilde{\nabla} \fm -\highlightt{\frac{Z e \vpar}{T} \partial_t \gaApar \fm} \\
+						    -& \frac{\fm}{T} (\vpar \vecb_0 + \vD + \vBperp) \cdot (Z e \nabla \bar{\Phi} + \mu \nabla \gaBpar)
+				\end{align*}
+			}
+			\only<3>{
+				\item Gyrokinetic equation
+				\begin{gather*}
+					\highlight{\frac{\partial \df}{\Dt}} + \dot{\X} \cdot \nabla \df - \frac{\vecb_0}{m} \cdot \left(Ze\nabla \Phi_0 + \mu \nabla B_0 - mR \Omega^2 \nabla R \right) \cdot \frac{\partial \df}{\partial v_\parallel} = S 
+				\end{gather*}
+				\begin{align*}
+						S = -& (\vchi + \vD) \cdot \widetilde{\nabla} \fm -\highlight{\frac{Z e \vpar}{T} \partial_t \gaApar \fm} \\
+						    -& \frac{\fm}{T} (\vpar \vecb_0 + \vD + \vBperp) \cdot (Z e \nabla \bar{\Phi} + \mu \nabla \gaBpar)
+				\end{align*}
+			}
+			\only<4>{
+				\item Modified distribution function
+				\begin{gather*}
+					g = \df + \frac{Ze \vpar}{T} \gaApar \fm
+				\end{gather*}
+				\item Modified gyrokinetic equation
+				\begin{gather*}
+					\highlightt{\frac{\partial g}{\Dt} + \vchi \cdot \nabla g} + (\vpar \vecb_0 + \vD) \cdot \nabla \df - \frac{\vecb_0}{m} \cdot (Z e \nabla \Phi_0 + \mu \nabla B_0 - m R \Omega^2 \nabla R) \frac{\partial \df}{\partial \vpar} = S \\
+					S = - (\vchi + \vD) \cdot \tilde{\nabla} \fm - \highlightt{\frac{\fm}{T} (\vpar \vecb_0 + \vD) \cdot (Ze \nabla \bar{\Phi} + \mu \nabla \gaBpar)}
+				\end{gather*}
+			}
+			\only<5>{
+				\item Modified distribution function
+				\begin{gather*}
+					g = \df + \frac{Ze \vpar}{T} \gaApar \fm
+				\end{gather*}
+				\item Modified gyrokinetic equation
+				\begin{gather*}
+					\highlight{\frac{\partial g}{\Dt} + \vchi \cdot \nabla g} + (\vpar \vecb_0 + \vD) \cdot \nabla \df - \frac{\vecb_0}{m} \cdot (Z e \nabla \Phi_0 + \mu \nabla B_0 - m R \Omega^2 \nabla R) \frac{\partial \df}{\partial \vpar} = S \\
+					S = - (\vchi + \vD) \cdot \tilde{\nabla} \fm - \highlight{\frac{\fm}{T} (\vpar \vecb_0 + \vD) \cdot (Ze \nabla \bar{\Phi} + \mu \nabla \gaBpar)}
+				\end{gather*}
+			}
+			\only<6>{
+				\item Adjusted Ampere's Law
+				\begin{align*}
+					&\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \FAparN = \\
+					& 2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN \dmuN ~ \vparN J_0(\kperp \spec{\rho}) \specN{\widehat{g}}
+				\end{align*}
+			}
+			\only<7>{
+				\item Adjusted Ampere's Law
+				\begin{align*}
+					&\left(\kperpN^2 + \highlight{\betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}}} \right) \FAparN = \\
+					& 2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN \dmuN ~ \vparN J_0(\kperp \spec{\rho}) \speccN{\Ffgy}{1} \\
+					& + \highlight{2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN \dmuN ~ \vparN^2 J_0^2(\kperp \spec{\rho}) \frac{Ze \vth}{\Tref\TR} \fmN} \FAparN 
+				\end{align*}
+			}
+			\item <7> Error scales with $\sim {\beta}/{\kperp^2}$
+		\end{itemize}
+	
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Mitigation of the Cancellation Problem - Faraday's Law} 
+		
+		\begin{center}
+			\begin{itemize}
+				\only<2-3>{
+					\item Faraday's law
+					\begin{gather*}
+						\rightarrow \Epar = - \frac{\partial \Apar}{\Dt} \rightarrow \nabla^2 \left( - \frac{\partial \Apar}{\Dt}\right) = \mu_0 \frac{\partial j_{1\parallel}}{\Dt} \rightarrow \Epar
+					\end{gather*}
+					\begin{gather*}
+						\kperpN^2 \underbrace{\left(- \frac{\partial \FAparN}{\partial \tN}\right)}_{\FEparN} = - 2 \pi \BN \betaref\spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN\dmuN ~ \vparN J_0(\kperp \spec{\rho}) \frac{\partial \speccN{\Ffgy}{1}}{\partial \tN} 
+					\end{gather*}
+				}
+				\only<3>{
+					\item Replacing the time derivative of the gyrocenter distribution function
+					\begin{gather*}
+						\frac{\partial \df}{\Dt} = \rhs - \frac{Ze \vpar}{T} \frac{\partial \gaApar}{\Dt} \fm = \rhs + \frac{Ze \vpar}{T} \gaEpar \fm
+					\end{gather*}
+				}
+				\only<4-5>{
+					\item Field Equation for induced electric field $\Epar$
+					\begin{align*}
+						&\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \FEparN = \\
+						&- 2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN \dmuN ~ \vparN J_0(\kperp \spec{\rho}) \specN{\Frhs}
+					\end{align*}
+				}
+				\only<5>{
+					\item New source term in gyrokinetic equation
+					\begin{gather*}
+						\frac{\partial \df}{\Dt} + \dot{\X} \cdot \nabla \df - \frac{\vecb_0}{m} \cdot \left(Ze\nabla \Phi_0 + \mu \nabla B_0 - mR \Omega^2 \nabla R \right) \cdot \frac{\partial \df}{\partial v_\parallel} = S 
+					\end{gather*}
+					\begin{align*}
+							S = -& (\vchi + \vD) \cdot \widetilde{\nabla} \fm - \highlight{\frac{Z e \vpar}{T} \gaEpar \fm} \\
+							    -& \frac{\fm}{T} (\vpar \vecb_0 + \vD + \vBperp) \cdot (Z e \nabla \bar{\Phi} + \mu \nabla \gaBpar)
+					\end{align*}
+				}
+			\end{itemize}
+		\end{center}
+	\end{frame}
+
+	\section*{Mitigation in local Simulations}
+
+	\begin{frame}
+		\frametitle{Implementation of Faraday's Law}
+		
+		\onslide <2-> {\input{../pictures/methods/Numerical-Scheme-nonlinear-f-Version.tex}}
+
+		\begin{itemize}
+			\item <2-> {\gkw} calculates the modified distribution $g$ (g-version)\\
+			$\rightarrow$ Switch to the calculation of the gyrocenter distribution $\df$ (f-version)
+			\item <3-> Input switch \code{nlepar}
+			\item <4-> Apply $\Apar$ correction on $\df$ for the calculation of the nonlinear terms
+			\item <5-> Calculation of Faraday's law in an additional subroutine with $\rhs$ 
+			\item <6-> Apply $\Epar$ correction on $\rhs$ for the calculation of $\df$
+		\end{itemize}
+	
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Benchmark of the f-version}
+		
+		\only<2>{
+			\begin{center}
+				\begin{itemize}
+					\item Flux-tube version of {\gkw} with field aligned Hamada coordinates $\{s,\psi, \zeta, \vpar, \mu \}$
+					\item Cyclone base case (CBC) beta scan for 
+					\begin{gather*}
+						\beta \in [0.0,~0.2,~0.4,~0.6,~0.8,~1.0,~1.1,~1.2,~1.4,~1.6,~1.8,~2.0,~2.2]\,\%
+					\end{gather*}
+					\item Kinetic electrons (\code{adiabatic\_electrons} = \code{.false.})
+					\item $k_\zeta \rho = 0.3$ (Maximum of the nonlinear transport spectrum)
+				\end{itemize}
+				\bigskip
+				\begin{tabular}{c c c | c c c c c c c}
+					\code{DTIM} & \code{NTIME} & \code{NAVERAGE} & $\Nmod$ & $\Nx$ & $\Ns$ & $\Nvpar$ & $\Nmu$ & $\Nsp$ & \code{nperiod} \\ \hline
+					0.01 & 2000 & 100 & 1 & 1 & 288 & 64 & 16 & 2 & 5
+				\end{tabular}
+			\end{center}
+		}
+
+		\centering
+		\only<3>{\includegraphics[height = 0.7\paperheight]{evaluation/benchmark/comparison/kthrho0.300_beta0.000-0.022_scan_comparison.pdf}\\ $10\,\%$ more runtime for the f-version}
+		\only<4>{\includegraphics[width = 0.9\paperwidth]{evaluation/benchmark/f-version/fields/kthrho0.300_beta0.008_fields_f-version.pdf}\\ $\beta = 0.8\,\%$}
+		\only<5>{\includegraphics[height = 0.8\paperheight]{evaluation/benchmark/comparison/kthrho0.300_beta0.000-0.022_fields_f-version.pdf}}
+	
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Mitigation in local Simulations}
+		
+		\begin{center}
+			\begin{itemize}
+				\item <2-> Mitigation could only be tested in the local linear simulations \\ $\rightarrow$ Local nonlinear simulations not benchmarked yet
+				\item <3-> CBC and AUG (ASDEX-Upgrade) test cases fails \\ for the same value of $\kperp$ in both versions
+				\begin{align*}
+					&\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \FEparN = \\
+					&- 2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN \dmuN ~ \vparN J_0(\kperp \spec{\rho}) \specN{\Frhs}
+				\end{align*}
+				\begin{align*}
+					&\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \FAparN = \\
+					& 2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN \dmuN ~ \vparN J_0(\kperp \spec{\rho}) \specN{\widehat{g}}
+				\end{align*}
+
+			\end{itemize}
+		\end{center}
+	
+	\end{frame}
+
+	\section*{Conclusion}
+	\begin{frame}
+		\frametitle{Conclusion}
+		
+		\begin{center}
+			\onslide<2->{\includegraphics[width = 0.6\paperwidth]{evaluation/benchmark/f-version/fields/kthrho0.300_beta0.008_fields_f-version.pdf}}
+			\begin{itemize}
+				\item <2-> Local linear f-Version successfully implemented \\ $\rightarrow$ $10\,\%$ more runtime
+				\item <3-> Nonlinear benchmark not completed yet
+				\item <4-> Groundwork for global f-version of {\gkw} done
+			\end{itemize}
+		\end{center}
+	
+	\end{frame}
+
+\end{document}
