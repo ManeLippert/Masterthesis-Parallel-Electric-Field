@@ -23,7 +23,7 @@
  ntime  = 4000
  naverage = 1000,
  
- nlepar = .true.
+ f_version = .true.
  nlbpar = .true.
  collisions = .true.
  

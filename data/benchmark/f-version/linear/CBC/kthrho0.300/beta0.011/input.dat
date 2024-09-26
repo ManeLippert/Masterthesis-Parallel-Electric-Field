@@ -10,8 +10,7 @@
  DTIM   = 0.01
  NTIME  = 2000
  NAVERAGE = 100
- nlapar = .true.
- nlepar = .true.
+ f_version = .true.
  collisions = .false.
  disp_par = 1.0
  disp_vp  = 0.2
@@ -34,7 +33,7 @@
 
  N_procs_mu   = 8                                                     
  N_procs_vpar = 1                    
- N_procs_s    = 4              
+ N_procs_s    = 3              
 /
 &MODE
  mode_box = .false.

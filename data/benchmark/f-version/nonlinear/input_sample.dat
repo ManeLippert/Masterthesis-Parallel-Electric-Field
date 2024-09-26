@@ -31,7 +31,7 @@
  ntime  = 20000
  naverage = 50
 
- nlepar = .true.
+ f_version = .true.
  collisions = .false.
 
  disp_par = 1.0

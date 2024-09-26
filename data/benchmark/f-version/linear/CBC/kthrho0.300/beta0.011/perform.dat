@@ -1,18 +1,18 @@
-rk4                               199998  0.80149E+03   100.00
-Calc RHS                          801992  0.76291E+03    95.19
-Calc Fields                       801992  0.80635E+02    10.06
-fields - poisson mat multiply     801992  0.67665E+02     8.44
-fields - MPI allreduce            801992  0.12158E+02     1.52
-fields - n4 renorm diag           801992  0.47177E+00     0.06
-Copy fdis vector to tmp          1603984  0.23276E+02     2.90
-Collisions conservation           801992  0.10356E+00     0.01
-Init RHS to zero                  801992  0.58392E+01     0.73
-MPI radial ghost comms            801992  0.66986E-01     0.01
-Non linear terms: FFT, No MPI     801992  0.15357E+02     1.92
-MPI other ghost comms             801992  0.74626E+01     0.93
-Linear terms matmul, No MPI       801992  0.46902E+03    58.52
-Calc Additonal Fields             801992  0.12877E+03    16.07
-add fields - int mat multiply     801992  0.11368E+03    14.18
-add fields - MPI allreduce        801992  0.14075E+02     1.76
-add fields - n4 renorm diag       801992  0.42261E+00     0.05
-Apply epar correction             801992  0.31215E+02     3.89
+rk4                               199998  0.48728E+05   100.00
+Calc RHS                          801992  0.44839E+05    92.02
+Calc Fields                       801992  0.52498E+04    10.77
+fields - poisson mat multiply     801992  0.52462E+04    10.77
+fields - MPI allreduce            801992  0.97535E-01     0.00
+fields - n4 renorm diag           801992  0.19536E+01     0.00
+Copy fdis vector to tmp          1603984  0.50182E+03     1.03
+Collisions conservation           801992  0.23452E+00     0.00
+Init RHS to zero                  801992  0.69524E+03     1.43
+MPI radial ghost comms            801992  0.26196E+00     0.00
+Non linear terms: FFT, No MPI     801992  0.15076E+04     3.09
+MPI other ghost comms             801992  0.19104E+00     0.00
+Linear terms matmul, No MPI       801992  0.30301E+05    62.18
+Calc Additonal Fields             801992  0.43336E+04     8.89
+add fields - int mat multiply     801992  0.43308E+04     8.89
+add fields - MPI allreduce        801992  0.69289E-01     0.00
+add fields - n4 renorm diag       801992  0.10188E+01     0.00
+Apply epar correction             801992  0.22465E+04     4.61

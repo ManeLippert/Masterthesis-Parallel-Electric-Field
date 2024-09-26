@@ -1,0 +1,21 @@
+ !Dump filename: FDS
+ !Written with restart file version:            2
+ !Write status error code:            0
+ !Restart file written with GKW version: Stable-20-g61a7be981-dirty                                      
+ !Executable name: gkw_btppx-gnu-DP_Stable-20-g61a7be981-dirty.x                   
+ !Run on            1 processor(s)
+ !Values in this file will override input.dat
+&RESTART
+ DTIM=  3.5566755915854864E-003,
+ TIME=  35.566755915854948     ,
+ NT_COMPLETE=        100,
+ NT_REMAIN=       1900,
+ NX_RST=          1,
+ NMOD_RST=          1,
+ NUMBER_OF_SPECIES_RST=          2,
+ FILE_COUNT=        100,
+ /
+&KX_SHIFT
+ T_SHEAR_BEGIN=  0.0000000000000000     ,
+ KXSHFT= 512*0          ,
+ /
