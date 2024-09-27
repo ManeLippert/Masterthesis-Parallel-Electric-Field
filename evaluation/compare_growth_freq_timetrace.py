@@ -15,7 +15,7 @@ sys.path.insert(1, '../python')
 
 import h5tools, plot, gkw
 
-picDir = '../pictures/evaluation/benchmark/comparison/timetrace'
+picDir = '../pictures/evaluation/benchmark/comparison/growth_rate_freq/timetrace'
 plot.create_pic_folder(picDir)
 
 data_path = '../data/benchmark'
@@ -41,7 +41,7 @@ for k in kthrho:
         
         for v, c in zip(versions, colors):
             try:
-                gamma, omega, time = gkw.beta_scan_data(f'{data_path}/{v}-version/linear/kthrho{k:.3f}/beta{b:.3f}/gkwdata.h5', FIELDS=False)
+                gamma, omega, time = gkw.beta_scan_data(f'{data_path}/{v}-version/linear/CBC/kthrho{k:.3f}/beta{b:.3f}/gkwdata.h5', FIELDS=False)
                 
                 ax_growth.plot(time, gamma, label = f'{v}-version', color=c)
                 ax_freq.plot(time, omega, color = c)
@@ -70,7 +70,7 @@ for k in kthrho:
 
 # GROWTH RATE/FREQUENCY TIMETRACE DIFF
 
-picDir = '../pictures/evaluation/benchmark/comparison/timetrace/difference'
+picDir = '../pictures/evaluation/benchmark/comparison/growth_rate_freq/timetrace/difference'
 plot.create_pic_folder(picDir)
 
 beta     = [b/1000 for b in range(0,17,2)]

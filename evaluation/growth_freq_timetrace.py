@@ -35,11 +35,11 @@ for k in kthrho:
         
         for v,c in zip(versions, colors):
             
-            picDir = f'../pictures/evaluation/benchmark/{v}-version/timetrace'
+            picDir = f'../pictures/evaluation/benchmark/{v}-version/growth_rate_freq/timetrace'
             plot.create_pic_folder(picDir)
             
             try:
-                gamma, omega, time = gkw.beta_scan_data(f'{data_path}/{v}-version/linear/kthrho{k:.3f}/beta{b:.3f}/gkwdata.h5', FIELDS=False)
+                gamma, omega, time = gkw.beta_scan_data(f'{data_path}/{v}-version/linear/CBC/kthrho{k:.3f}/beta{b:.3f}/gkwdata.h5', FIELDS=False)
                 
                 fig, (ax_growth, ax_freq) = plt.subplots(2, 1, sharex=True)
                 

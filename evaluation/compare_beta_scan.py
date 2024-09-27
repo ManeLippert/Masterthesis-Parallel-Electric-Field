@@ -31,7 +31,7 @@ isp, imod, ix = 0, 0, 0
 
 plot.parameters((25,12), 300)
     
-picDir = f'../pictures/evaluation/benchmark/comparison'
+picDir = f'../pictures/evaluation/benchmark/comparison/growth_rate_freq'
 plot.create_pic_folder(picDir)
 
 fig, (ax_growth, ax_freq) = plt.subplots(1, 2, sharex=True)
@@ -45,7 +45,7 @@ for b in beta:
     try:
         
         
-        gamma, omega, time = gkw.beta_scan_data(f'{data_path}/{versions[0]}-version/linear/kthrho{kthrho:.3f}/beta{b:.3f}/gkwdata.h5', FIELDS=False)
+        gamma, omega, time = gkw.beta_scan_data(f'{data_path}/{versions[0]}-version/linear/CBC/kthrho{kthrho:.3f}/beta{b:.3f}/gkwdata.h5', FIELDS=False)
             
         growth_rates.append(gamma[-1])
         frequencies.append(omega[-1])
@@ -59,7 +59,12 @@ gamma, omega = [], []
     
 for b, g, o in zip(beta_percent, growth_rates, frequencies):
         
-    if b > 1.0 and b < 1.4:
+    # if b > 1.0 and b < 1.4:
+    #     beta_per.append(np.nan)
+    #     gamma.append(np.nan)
+    #     omega.append(np.nan)
+        
+    if b > 1.1 and b < 1.4:
         beta_per.append(np.nan)
         gamma.append(np.nan)
         omega.append(np.nan)
@@ -79,7 +84,7 @@ for b in beta:
     
     try: 
         
-        gamma, omega, time = gkw.beta_scan_data(f'{data_path}/{versions[1]}-version/linear/kthrho{kthrho:.3f}/beta{b:.3f}/gkwdata.h5', FIELDS=False)
+        gamma, omega, time = gkw.beta_scan_data(f'{data_path}/{versions[1]}-version/linear/CBC/kthrho{kthrho:.3f}/beta{b:.3f}/gkwdata.h5', FIELDS=False)
             
         growth_rates.append(gamma[-1])
         frequencies.append(omega[-1])
@@ -93,7 +98,12 @@ gamma, omega = [], []
     
 for b, g, o in zip(beta_percent, growth_rates, frequencies):
         
-    if b > 1.0 and b < 1.4:
+    # if b > 1.0 and b < 1.4:
+    #     beta_per.append(np.nan)
+    #     gamma.append(np.nan)
+    #     omega.append(np.nan)
+        
+    if b > 1.1 and b < 1.4:
         beta_per.append(np.nan)
         gamma.append(np.nan)
         omega.append(np.nan)
@@ -109,18 +119,18 @@ ax_growth.set_ylim(0,1.2)
 ax_freq.set_ylim(0,2.0)
     
  # Horzontal Lines
-ax_growth.plot(np.repeat(1.0, 100), np.linspace(*ax_growth.get_ylim(), 100),linestyle='dashed', color='gray')
-ax_growth.plot(np.repeat(1.2, 100), np.linspace(*ax_growth.get_ylim(), 100),linestyle='dashed', color='gray')
-ax_freq.plot(np.repeat(1.0, 100), np.linspace(*ax_freq.get_ylim(), 100),linestyle='dashed', color='gray')
-ax_freq.plot(np.repeat(1.2, 100), np.linspace(*ax_freq.get_ylim(), 100),linestyle='dashed', color='gray')
+# ax_growth.plot(np.repeat(1.0, 100), np.linspace(*ax_growth.get_ylim(), 100),linestyle='dashed', color='gray')
+# ax_growth.plot(np.repeat(1.2, 100), np.linspace(*ax_growth.get_ylim(), 100),linestyle='dashed', color='gray')
+# ax_freq.plot(np.repeat(1.0, 100), np.linspace(*ax_freq.get_ylim(), 100),linestyle='dashed', color='gray')
+# ax_freq.plot(np.repeat(1.2, 100), np.linspace(*ax_freq.get_ylim(), 100),linestyle='dashed', color='gray')
     
 # Text
-ax_growth.text(0.5, 1.2*0.95, 'ITG', horizontalalignment='center', verticalalignment='center')
-ax_growth.text(1.1, 1.2*0.95, 'TEM', horizontalalignment='center', verticalalignment='center')
+ax_growth.text(0.6, 1.2*0.95, 'ITG', horizontalalignment='center', verticalalignment='center')
+# ax_growth.text(1.1, 1.2*0.95, 'TEM', horizontalalignment='center', verticalalignment='center')
 ax_growth.text(1.75, 1.2*0.95, 'KBM', horizontalalignment='center', verticalalignment='center')
     
-ax_freq.text(0.5, 2.0*0.95, 'ITG', horizontalalignment='center', verticalalignment='center')
-ax_freq.text(1.1, 2.0*0.95, 'TEM', horizontalalignment='center', verticalalignment='center')
+ax_freq.text(0.6, 2.0*0.95, 'ITG', horizontalalignment='center', verticalalignment='center')
+# ax_freq.text(1.1, 2.0*0.95, 'TEM', horizontalalignment='center', verticalalignment='center')
 ax_freq.text(1.75, 2.0*0.95, 'KBM', horizontalalignment='center', verticalalignment='center')
 
 ax_growth.set_xlabel(r'$\beta~[\%]$')

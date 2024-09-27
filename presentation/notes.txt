@@ -64,7 +64,7 @@ ORDERING
 - Low frequency: frequency of fluctuation smaller than the cyclotron frequency
 - Anisotropy: Length scales of turbulence (caracterized by wave vector k) in parallel direction is significant smaller than perpendicular direction (to the ambient magnetic field).
 - Strong Magnetization: Larmor radius is small compared to the gradient lengths of density, temperature and magnetic field
-- Small fluctuation: pertrubation of the gyrocenter distrubution function is small compared to the background distribution function
+- Small fluctuation: perturbation of the gyrocenter distribution function is small compared to the background distribution function
 
 - epsilion small parameter
 	-> for GKW it is rho_star 

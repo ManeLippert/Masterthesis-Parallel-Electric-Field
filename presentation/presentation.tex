@@ -93,7 +93,7 @@
 
 \graphicspath{{../pictures/}}
 
-\newcommand{\backgroundpicture}{evaluation/benchmark/f-version/fields/kthrho0.300_beta0.008_fields_f-version.pdf}
+\newcommand{\backgroundpicture}{evaluation/benchmark/f-version/fields/adjust_compare/kthrho0.300_beta0.008_fields_f-version.pdf}
 \newcommand{\backgroundxshift}{0.27\paperwidth}
 \newcommand{\backgroundwidth}{0.7\paperwidth} 
 
@@ -379,7 +379,7 @@
 					\end{gather*}
 				}
 				\only<4-5>{
-					\item Field Equation for induced electric field $\Epar$
+					\item Field Equation for plasma induction $\Epar$
 					\begin{align*}
 						&\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \FEparN = \\
 						&- 2\pi\BN \betaref \spec{\sum} \spec{Z} \specR{n} \specthR{v} \ints \dvparN \dmuN ~ \vparN J_0(\kperp \spec{\rho}) \specN{\Frhs}
@@ -440,9 +440,9 @@
 		}
 
 		\centering
-		\only<3>{\includegraphics[height = 0.7\paperheight]{evaluation/benchmark/comparison/kthrho0.300_beta0.000-0.022_scan_comparison.pdf}\\ $10\,\%$ more runtime for the f-version}
-		\only<4>{\includegraphics[width = 0.9\paperwidth]{evaluation/benchmark/f-version/fields/kthrho0.300_beta0.008_fields_f-version.pdf}\\ $\beta = 0.8\,\%$}
-		\only<5>{\includegraphics[height = 0.8\paperheight]{evaluation/benchmark/comparison/kthrho0.300_beta0.000-0.022_fields_f-version.pdf}}
+		\only<3>{\includegraphics[height = 0.7\paperheight]{evaluation/benchmark/comparison/growth_rate_freq/kthrho0.300_beta0.000-0.022_scan_comparison.pdf}\\ $10\,\%$ more runtime for the f-version}
+		\only<4>{\includegraphics[width = 0.9\paperwidth]{evaluation/benchmark/f-version/fields/adjust_compare/kthrho0.300_beta0.008_fields_f-version.pdf}\\ $\beta = 0.8\,\%$}
+		\only<5>{\includegraphics[height = 0.8\paperheight]{evaluation/benchmark/comparison/fields/kthrho0.300_beta0.000-0.022_fields_f-version.pdf}}
 	
 	\end{frame}
 
@@ -472,7 +472,7 @@
 		\frametitle{Conclusion}
 		
 		\begin{center}
-			\onslide<2->{\includegraphics[width = 0.6\paperwidth]{evaluation/benchmark/f-version/fields/kthrho0.300_beta0.008_fields_f-version.pdf}}
+			\onslide<2->{\includegraphics[width = 0.6\paperwidth]{evaluation/benchmark/f-version/fields/adjust_compare/kthrho0.300_beta0.008_fields_f-version.pdf}}
 			\begin{itemize}
 				\item <2-> Local linear f-Version successfully implemented \\ $\rightarrow$ $10\,\%$ more runtime
 				\item <3-> Nonlinear benchmark not completed yet

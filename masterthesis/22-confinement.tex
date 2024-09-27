@@ -2,15 +2,15 @@
 \section{Magnetic Confinement and Plasma Rotation}
 \label{sec:confinement}
 
-In tokamak devices strong magnetic fields confine the hot plasma. As mentioned in Chapter \ref{sec:motion} a magnetic field forces a perpendicular particle motion and a motion which contains the gyro motion and slow perpendicular guiding center drifts. Because of the much smaller size of the Larmor radius compared to the device size $R$ the particle and energy losses are caused by the guiding center drifts. To avoid additional loss of particles because of the parallel motion, the field lines of the magnetic field in the tokamak devices is shaped like a torus. This type of geometry has nested surfaces with constant magnetic flux, the so-called \textit{flux surfaces}, and magnetic field lines which lie on these surfaces. To maintain stability the magnetic field has a toroidal and a poloidal component. According to the force balance the magnetic field is equivalent to the plasma pressure which means on flux-surfaces the plasma pressure is constant. \cite{Stroth2018, Wesson2004} The toroidal component is produced by external coils whereas the poloidal component is provided by the toroidal plasma current. Together the components result in a magnetic field which follows helical trajectories [Fig \ref{fig:confinement}]. To characterize the quality of confinement the so-called \textit{plasma beta} is used and is given as
+In Tokamak devices strong magnetic fields confine the hot plasma. As mentioned in Chapter \ref{sec:motion} a magnetic field forces a perpendicular particle motion and a motion which contains the gyro motion and slow perpendicular guiding center drifts. Because of the much smaller size of the Larmor radius compared to the device size $R$ the particle and energy losses are caused by the guiding center drifts. To avoid additional loss of particles because of the parallel motion, the field lines of the magnetic field in the Tokamak devices is shaped like a torus. This type of geometry has nested surfaces with constant magnetic flux, the so-called \textit{flux surfaces}, and magnetic field lines which lie on these surfaces. To maintain stability the magnetic field has a toroidal and a poloidal component. According to the force balance the magnetic field is equivalent to the plasma pressure which means that on flux-surfaces the plasma pressure is constant. \cite{Stroth2018, Wesson2004} The toroidal component is produced by external coils whereas the poloidal component is provided by the toroidal plasma current. Together the components result in a magnetic field which follows helical trajectories [Fig \ref{fig:confinement}]. To characterize the quality of confinement the so-called \textit{plasma beta} is used and is given as
 \begin{gather}
     \beta = \frac{nT}{B^2/2\mu_0}~,
 \end{gather} 
-with $n$ the plasma density, $T$ as temperature, $\mu_0$ the permeability in vacuum and the magnetic field strength $B$. Respectively, the plasma beta compares the thermal plasma pressure $nT$ to the ambient magnetic field pressure $B^2/2\mu_0 $. For fusion devices the plasma beta has to be a bit smaller than 1 ($\beta < 1$) for optimal confinement. In a tokamak reactor the plasma beta has a typical order of a few percent. 
+with $n$ the plasma density, $T$ as temperature, $\mu_0$ the permeability in vacuum and the magnetic field strength $B$. Respectively, the plasma beta compares the thermal plasma pressure $nT$ to the ambient magnetic field pressure $B^2/2\mu_0 $. For fusion devices the plasma beta has to be a bit smaller than 1 ($\beta < 1$) for optimal confinement. In a Tokamak reactor the plasma beta has a typical order of a few percent. 
 The plasma beta is also considered to be one of the fundamental dimensionless parameters in plasma physics, due to its relevance for the outcome, the fusion rate ($\sim \beta^2$), bootstrap fraction ($\sim \beta$) and MHD stability of a fusion device. Furthermore, the plasma beta is an indicator for the relevance of electromagnetic effects in a gyrokinetic systems, since electromagentic fields vanish in the limit $\beta \rightarrow 0$.  \cite{Crandall_PHD}
 \bigskip
 
-The rotation of the plasma can be described in a co-rotating frame of reference, which is rigidly rotating with the velocity $\ueq$ and will be used later on in the derivation of the gyrokinetic equations in Chapter \ref{sec:lagrangian}. It assumens that the poloidal component of the plasma rotation is much smaller compared to the toridial component and will be neglected. With this assumption in mind the reference frame is chosen to move in the toridial direction exclusivly and its velocity $\ueq$ can be expressed as
+The rotation of the plasma can be described in a co-rotating frame of reference, which is rigidly rotating with the velocity $\ueq$ and will be used later on in the derivation of the gyrokinetic equations in Chapter \ref{sec:lagrangian}. It assumens that the poloidal component of the plasma rotation is much smaller compared to the toroidal component and will be neglected. With this assumption in mind the reference frame is chosen to move in the toroidal direction exclusivly and its velocity $\ueq$ can be expressed as
 \begin{gather}
     \ueq = \vect{\Omega} \times \x = R^2 \Omega \nabla \varphi~,
     \label{eq:rotvelocity}
@@ -29,10 +29,10 @@ with the rotation speed along the magnetic field line
     u_\parallel = \frac{RB_\mathrm{t}}{B} \omega_\varphi (\psi)~,
     \label{eq:rotParallelVelocity}
 \end{gather}
-where $B_\mathrm{t}$ is the toridial component of the magnetic field. \cite{Peeters2009B}
+where $B_\mathrm{t}$ is the toroidal component of the magnetic field. \cite{Peeters2009B}
 
 \inputgraphicsHere{../pictures/theory/Tokamak-Torus.tex}{
-	Toroidal flux surfaces in tokamak plasma with helical magnetic field (\textcolor{Notagreen}{green} line) in torus coordinates ($\psi$ (radial), $\varphi$ (toroidal), $\theta$ (poloidal)) or cylindrical coordinates ($z$, $R$, $-\varphi$). \cite{Barton2015}
+	Toroidal flux surfaces in Tokamak plasma with helical magnetic field (\textcolor{Notagreen}{green} line) in torus coordinates ($\psi$ (radial), $\varphi$ (toroidal), $\theta$ (poloidal)) or cylindrical coordinates ($z$, $R$, $-\varphi$). \cite{Barton2015}
 }{fig:confinement}
 
 \newpage

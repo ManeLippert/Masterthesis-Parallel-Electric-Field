@@ -1,0 +1,17 @@
+\begin{tikzpicture}[node distance=2cm]
+
+    \node (dist)        [dist]                                        {$\df^i$};
+    \node (fields)      [terms, xshift= 3.5cm,  minimum width=4.5cm]  {Linear Terms};
+    \node (rhs)         [dist,   xshift= 7cm]                         {$\rhs^{i+1}$};
+    \node (distp)       [dist,   xshift= 11.5cm, yshift = -0.75cm]    {$\df^{i+1}$};
+    \node (eparcorrect) [correct,xshift= 9.25cm, yshift = -0.75cm]    {$\Epar$ \\ Correct};
+    \node (addfields)   [fields, xshift= 7cm, yshift = -1.5cm]        {$\Epar^{i+1}$};
+
+    \draw [arrow] (dist)           -- (fields);
+    \draw [arrow] (fields)         -- (rhs);
+    \draw [arrow] (rhs)            -- (addfields);
+    \draw [curly] (rhs.north east) -- (addfields.south east);
+    \draw [arrow] (eparcorrect)    -- (distp);
+
+
+\end{tikzpicture}

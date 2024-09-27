@@ -42,7 +42,7 @@ for v in versions:
         
         try: 
         
-            gamma, omega, time, s, a, ia, e, ie = gkw.beta_scan_data(f'{data_path}/{v}-version/linear/kthrho{kthrho:.3f}/beta{b:.3f}/gkwdata.h5', FIELDS=True, isp=isp, imod=imod, ix=ix)
+            gamma, omega, time, s, a, ia, e, ie = gkw.beta_scan_data(f'{data_path}/{v}-version/linear/CBC/kthrho{kthrho:.3f}/beta{b:.3f}/gkwdata.h5', FIELDS=True, isp=isp, imod=imod, ix=ix)
             
             growth_rates.append(gamma[-1])
             frequencies.append(omega[-1])
@@ -56,8 +56,8 @@ for v in versions:
         except (FileNotFoundError, BlockingIOError):
             continue
     
-    plot.parameters((26,12), 300)
-    picDir = f'../pictures/evaluation/benchmark/{v}-version/fields'
+    plot.parameters((30,12), 300)
+    picDir = f'../pictures/evaluation/benchmark/{v}-version/fields/adjust_compare'
     plot.create_pic_folder(picDir)
     
     for gamma, omega, b, s, a, ia, e, ie in zip(growth_rates, frequencies, beta_percent, s_grid, apar, iapar, epar, iepar): 
@@ -93,7 +93,7 @@ for v in versions:
         ax_i_right.tick_params(axis='y', colors=colors[1])
             
         # fig.suptitle(rf'$\beta = {b}\,\%$')
-        fig.subplots_adjust(wspace=0.8)
+        fig.subplots_adjust(wspace=0.7)
         
         plot.postprocessing(fig)
         

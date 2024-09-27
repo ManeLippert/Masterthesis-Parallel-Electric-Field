@@ -1,9 +1,9 @@
-\section{Charged Particle Motion in Magnetic and Electric Field}
+\section{Charged Particle Motion}
 \label{sec:motion}
 
-In magnetic confinement devices like the tokamak reactor, the charged particles experience forces caused by magnetic and electric fields which results in distinct motion under the associated force. Charged particles can be separated in species, e.g. electrons and ions, which will be later on indicated by the index $s$ in the governing equations in Chapter \ref{chap:fields}. Until then for simplicity reasons the index will be dropped.
+In magnetic confinement devices like the Tokamak reactor, the charged particles experience forces caused by magnetic and electric fields which result in distinct motion under the associated force. Charged particles can be separated in species, e.g. electrons and ions, which will be later on indicated by the index "$s$" in the governing equations in Chapter \ref{sec:fieldEquations} if needed. Until then the index will be dropped for simplicity.
 
-\subsection{Particle Motion in Electromagnetic Field}
+\subsection{Motion in Electromagnetic Fields}
 \label{sub:motion}
 
 Due to the Lorentz force, particles with a velocity $v_{\perp}$ perpendicular to the homogenous magnetic field, undergo a circular motion in the plane perpendicular to the magnetic field [Fig. \ref{fig:perp-par-motion}(a)]. This type of motion has circular frequency, which is often referred to as \textit{cyclotron frequency} and is defined as
@@ -16,7 +16,7 @@ where $m$ and $q$ are the mass and the charge of the particle and $B$ the streng
     \rho = \frac{mv_{\perp}}{|q|B}
     \label{eq:Larmorradius}
 \end{gather}
-with the center often being referred to as \textit{guiding center}. Note that since the Lorentz force depends on the species charge of the particle, the circulation direction is the opposite between electron in ions. Due to Coulomb collisions the plasma gets thermalized. Together with the Maxwell-Boltzmann distribution the typical thermal velocity is
+with the center often being referred to as \textit{guiding center}. Note that since the Lorentz force depends on the species charge of the particle, the circulation direction is the opposite between electrons in ions. Due to Coulomb collisions the plasma gets thermalized. Together with the Maxwell-Boltzmann distribution the typical thermal velocity is
 \begin{gather}
     \vth = \sqrt{\frac{2T}{m}}~,
     \label{eq:thermalVelocity}
@@ -26,14 +26,13 @@ where $T$ represents the species temperature. Based on the thermal velocity $v_\
     \rhoth = \frac{m\vth}{|q|B}~.
     \label{eq:thermalLarmorradius}
 \end{gather}
-\bigskip
 
-In absence of forces in the direction parallel to the magnetic field the particles can move freely in parallel direction to the homogenous magnetic field. The velocity of this motion is of order of the thermal velocity $\vth$ and is dominated by electrons due to their lighter mass compared to ions ($v_\mathrm{th,e}/v_\mathrm{th,i} = 60$). When an electric field $E_\parallel$ with a component parallel to the magnetic field influences the plasma, the charged particles are accelerated by the electric force
+In the absence of forces in the direction parallel to the magnetic field the particles can move freely in parallel direction to the homogenous magnetic field. The velocity of this motion is in the order of the thermal velocity $\vth$ and is dominated by electrons due to their lighter mass compared to ions ($v_\mathrm{th,e}/v_\mathrm{th,i} = 60$). When an electric field $E_\parallel$ with a component parallel to the magnetic field influences the plasma, the charged particles are accelerated by the electric force
 \begin{gather}
     F_{\parallel,E} = qE_\parallel~.
     \label{eq:forceElectricParallel}
 \end{gather}
-The parallel motion follows then from the equation of motion. Here the direction of the motion also depends on the species type [Fig. \ref{fig:perp-par-motion}(b)].\\\bigskip
+The parallel motion derives from the equation of motion. Here the direction of the motion also depends on the species type [Fig. \ref{fig:perp-par-motion}(b)].\\\bigskip
 
 Since magnetic fields are not always homogenous, an inhomogeneous magnetic field with its gradient $\nabla B$ containing a component parallel to the magnetic field which is given by
 \begin{gather}
@@ -45,15 +44,13 @@ causes the force
     F_{\parallel,\nabla_{\!\parallel} B} = - \frac{mv^2_{\perp}}{2B} \nabla_{\!\parallel} B = - \mu \nabla_{\!\parallel} B~;~~~~\mu = \frac{mv^2_{\perp}}{2B}
     \label{eq:magneticMoment}
 \end{gather}
-with \textit{magnetic moment} $\mu$. The magnetic moment $\mu$ is an adabatic invariant (constant of motion) if the variation of the magnetic field over time is smaller than the inverse of the cyclotron frequency $\omega^{-1}_\mathrm{c}$ and the spatial variation is larger than Larmor radius $\rho$. Note that, the force is not depending on the charge $q$, so the direction of the force $ F_{\parallel,\nabla_{\!\parallel} B}$ is for electrons and ions the same. The resulting force has its application in the mirror effect where a charged particle gets reflected due to this force [Fig. \ref{fig:perp-par-motion}(c)].
-
-\newpage
+with \textit{magnetic moment} $\mu$. The magnetic moment $\mu$ is an adabatic invariant (constant of motion) if the variation of the magnetic field over time is smaller than the inverse of the cyclotron frequency $\omega^{-1}_\mathrm{c}$ and the spatial variation is larger than Larmor radius $\rho$. Note that, the force is not dependant on the charge $q$, so the direction of the force $ F_{\parallel,\nabla_{\!\parallel} B}$ is the same for electrons and ions. The resulting force has its application in the mirror effect where a charged particle gets reflected due to this force [Fig. \ref{fig:perp-par-motion}(c)].
 
 \begin{center}
     \captionsetup{type=figure}
     \begin{tabular}{c c c}
         \input{../pictures/theory/Lorentz-Force.tex} &
-        \input{../pictures/theory/Electric-Force.tex} &
+        \input{../pictures/theory/Electric-Force.tex} & \hspace{-1cm}
         \input{../pictures/theory/Inhomogenous-Magnetic-Field.tex}\\[0.3cm]
         \textbf{(a)} & \textbf{(b)} & \textbf{(c)} \\
     \end{tabular}
@@ -78,21 +75,21 @@ In the presence of a magnetic field (homogenous, inhomogeneous or perturbed) and
 
 \begin{enumerate}
     \item {\boldmath $\exb$} \textbf{Drift:}\\
-    If an electric field $\vect{E}$ with a perpendicular component together with the magnetic field $\vect{B}$ (both fields are homogenous) is present the acting Coulomb force and Lorentz force results into a drift of the gyrocenter with
+    If an electric field $\vect{E}$ with a perpendicular component together with the magnetic field $\vect{B}$ (both fields are homogenous) is present the acting Coulomb force and Lorentz force result into a drift of the guiding center with
     \begin{gather}
         \vect{v}_{E} = \frac{\vect{E}\times\vect{B}}{B^2}
         \label{eq:exb}
     \end{gather}
-    which is called the $\exb$ drift. Since both acting forces direction depends on the species type the direction of the $\exb$ drift is for every species the same [Fig. \ref{fig:drift}(a)].
+    which is called the $\exb$ drift. Since the direction of both acting forces depends on the species type the $\exb$ drift is the same for every species [Fig. \ref{fig:drift}(a)].
     \item {\boldmath $\nabla B$} \textbf{Drift:}\\
-    Inhomogeneous magnetic field causes a gradient $\nabla B$ of the magnetic field. Because of that gradient the gyrocenter undergoes a $\nabla B$ drift defined by
+    An inhomogeneous magnetic field causes a gradient $\nabla B$ of the magnetic field. Because of that gradient the guiding center undergoes a $\nabla B$ drift defined by
     \begin{gather}
         \vect{v}_{\nabla B} = \frac{m v^2_{\perp}}{2 q}\frac{\vect{B}\times \nabla B}{B^3}~.
         \label{eq:gradB}
     \end{gather}
-    The gradient of the magnetic field $\nabla B$ varies thereby on scales larger compared to the Larmor radius. The direction of the $\nabla B$ drift depends on the species type [Fig. \ref{fig:drift}(b)].
+    The direction of the $\nabla B$ drift depends on the species type [Fig. \ref{fig:drift}(b)].
     \item \textbf{Curvature Drift:}\\
-    Due to centrifugal force acting on the particle in a curved magnetic field the gyrocenter experiences a curvature drift according to
+    Due to centrifugal force acting on the particle in a curved magnetic field the guiding center experiences a curvature drift according to
     \begin{gather}
         \vect{v}_{C} = \frac{m v^2_{\parallel}}{q}\frac{\vect{B}\times \vect{C}}{B^2} = \frac{m v^2_{\parallel}}{q} \frac{\vect{B}\times \nabla B}{B^3}~;\qquad\vect{C} = -(\vect{b}\cdot \nabla)\vect{b} = \frac{\nabla B}{B}~,
         \label{eq:curvature}

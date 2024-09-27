@@ -55,7 +55,7 @@ for v in versions:
         
         try: 
         
-            gamma, omega, time, s, a, ia, e, ie = gkw.beta_scan_data(f'{data_path}/{v}-version/linear/kthrho{kthrho:.3f}/beta{b:.3f}/gkwdata.h5', FIELDS=True, isp=isp, imod=imod, ix=ix)
+            gamma, omega, time, s, a, ia, e, ie = gkw.beta_scan_data(f'{data_path}/{v}-version/linear/CBC/kthrho{kthrho:.3f}/beta{b:.3f}/gkwdata.h5', FIELDS=True, isp=isp, imod=imod, ix=ix)
             
             growth_rates.append(gamma[-1])
             frequencies.append(omega[-1])
@@ -70,7 +70,7 @@ for v in versions:
             continue
     
     plot.parameters((26,24), 300, LEGENDONTOP=False)
-    picDir = f'../pictures/evaluation/benchmark/comparison'
+    picDir = f'../pictures/evaluation/benchmark/comparison/fields'
     plot.create_pic_folder(picDir)
     
     fig, ((ax_ar, ax_ai), (ax_er, ax_ei)) = plt.subplots(2, 2, sharex=True)
@@ -123,3 +123,19 @@ for v in versions:
         
     plt.savefig(f'{picDir}/kthrho{kthrho:.3f}_beta{min(beta_percent)/100:.3f}-{max(beta_percent)/100:.3f}_fields_{v}-version.pdf')
     plt.close()
+
+    
+    # for b, a, ia, e, ie in zip(beta_percent, apar, iapar, epar, iepar): 
+        
+    #     plot.parameters((26,12), 300, LEGENDONTOP=False)
+    #     fig, ((ax_r, ax_i)) = plt.subplots(1, 2, sharex=True)
+        
+    #     ax_r.plot(a, color=colors[0])
+    #     ax_r.plot(e, color=colors[1])
+    #     ax_i.plot(ia, color=colors[0])
+    #     ax_i.plot(ie, color=colors[1])
+        
+    #     fig.subplots_adjust(wspace=0.4, hspace=0.1)
+    #     fig.align_labels()
+    #     plt.savefig(f'{picDir}/kthrho{kthrho:.3f}_beta{b/100:.3f}_fields_test_{v}-version.pdf')
+    #     plt.close()

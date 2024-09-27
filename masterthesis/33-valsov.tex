@@ -5,23 +5,23 @@
 \subsection{Vlasov Equation}
 \label{sub:vlasov}
 
-Because of the large number of particles in the fusion plasma a prediction on the basis of Newton-Maxwell dynamics results in an impossible task for simulation, but this problem can be solved with a statistical approach. For that the distribution function $f(\vect{x}, \vect{v}, t)$ in the particle phase space $\{\vect{x}$, $\vect{v}\}$ will be considered. Because collisions are happening at much smaller frequencies than the characteristic frequencies connected to turbulence, the collisionless model is often preferred \cite{Garbet2010} which results through evolution of the particle density distribution function in the \textit{Vlasov equation}
+Because of the large number of particles in the fusion plasma a prediction on the basis of Newton-Maxwell dynamics cannot be achieved in simulation, but this problem can be solved with a statistical approach. Therefore, the distribution function $f(\vect{x}, \vect{v}, t)$ in the particle phase space $\{\vect{x}$, $\vect{v}\}$ will be considered. Because collisions occur at much smaller frequencies than the characteristic frequencies connected to turbulence, the collisionless model is often preferred \cite{Garbet2010} which results through evolution of the particle density distribution function in the \textit{Vlasov equation}
 \begin{gather}
-	\frac{\partial f}{\partial t} + \dot{\x} \cdot \frac{\partial f}{\partial \vect{x}}  + \dot{\velo} \cdot \frac{\partial f}{\partial \vect{v}} = 0~.
+	\frac{\partial f}{\Dt} + \dot{\x} \cdot \frac{\partial f}{\partial \vect{x}}  + \dot{\velo} \cdot \frac{\partial f}{\partial \vect{v}} = 0~.
 	\label{eq:vlasov}
 \end{gather}
 
 In the gyrocenter phase space $\{\X, v_\parallel, \mu\}$, the overbar introduced in Chapter \ref{sub:gyrocenterLagrangian} gets droped for simplicity for all quantities, the Vlasov equation with the gyrocenter distribution function $\fgy$ takes the following form
 \begin{gather}
-	\frac{\partial \fgy}{\partial t} + \dot{\X} \cdot \frac{\partial \fgy}{\partial \vect{X}} + \dot{v}_\parallel \cdot \frac{\partial \fgy}{\partial v_\parallel} = 0~,
+	\frac{\partial \fgy}{\Dt} + \dot{\X} \cdot \frac{\partial \fgy}{\partial \vect{X}} + \dot{v}_\parallel \cdot \frac{\partial \fgy}{\partial v_\parallel} = 0~,
 	\label{eq:gyrocenterVlasov}
 \end{gather}
 where the gyrophase $\theta$ is still an ignorable coordinate and the time derivative of the magnetic moment $\mu$ is zero, because the magnetic moment $\mu$ is an exact invariant. In Equation (\ref{eq:gyrocenterVlasov}) the terms of the time derivative of the gyrocenter $\dot{\X}$ and the parallel velocity $\dot{v_\parallel}$ have to be expressed through the gyrocenter Lagrangian with the Euler-Lagrange equation. The Euler-Lagrange equation can be written as 
 \begin{gather}
-	\left(\frac{\partial \gamma_j}{\partial z^i} - \frac{\partial \gamma_i}{\partial z^j}\right) \frac{\dz^j}{\dt} = \frac{\partial H}{\partial z^i} + \frac{\partial \gamma_i}{\partial t}~.
+	\left(\frac{\partial \gamma_j}{\partial z^i} - \frac{\partial \gamma_i}{\partial z^j}\right) \frac{\dz^j}{\dt} = \frac{\partial H}{\partial z^i} + \frac{\partial \gamma_i}{\Dt}~.
 	\label{eq:eulerLagrange}
 \end{gather}
-Inserting Equation (\ref{eq:gyrocenterPertrubationLagrangian}) into the Euler-Lagrange equation and apply multiple calculations detailed in Ref. \citenum{GKWDerivation} the equations of motion can be obtained as
+Inserting Equation (\ref{eq:gyrocenterPertrubationLagrangian}) into the Euler-Lagrange equation and applying multiple calculations detailed in Ref. \citenum{GKWDerivation} the equations of motion can be obtained as
 \begin{gather}
 	\begin{aligned}
 		\dot{\X} &= \vecb_0\vpar + \vchi + \vD &\quad \dot{v}_\parallel &= \frac{\dot{\X}}{mv_\parallel} \cdot \Bigl( Ze \gaE -\mu\nabla (B_0 + \gaBpar) + \underbrace{\frac{1}{2} m \nabla u_0^2}_{mR \Omega^2 \nabla R} \Bigr) \\
@@ -29,12 +29,12 @@ Inserting Equation (\ref{eq:gyrocenterPertrubationLagrangian}) into the Euler-La
 	\end{aligned}
 	\label{eq:motionEquation}
 \end{gather}
-with the drift velocity $\vchi$ defined as the sum of the streaming velocity perpendicular to the pertubated magnetic field $\vBperp$, the $\exb$ drift in the total electric field $\velo_{\ga{E}}$ and the grad-$B$ dirft of the parallel perturbed magnetic field $\velo_{\nabla \gaBpar}$. The drift velocity $\vD$ containing the sum of the curvature drift $\velo_C$, the grad-$B$ drift of the equilibrium magnetic field $\velo_{\nabla B_0}$ and the drifts due to the Coriolis force $\velo_\mathrm{Co}$ and centrifugal force $\velo_\mathrm{Ce}$. Note that, the term containing $u_0^2$ got replaced with $u_0^2 = R^2 \Omega^2$ from Equation (\ref{eq:rotvelocity}). The quantity $\chi$ can be expressed as
+with the drift velocity $\vchi$ defined as the sum of the streaming velocity perpendicular to the perturbated magnetic field $\vBperp$, the $\exb$ drift in the total electric field $\velo_{\ga{E}}$ and the grad-$B$ dirft of the parallel perturbed magnetic field $\velo_{\nabla \gaBpar}$. The drift velocity $\vD$ containing the sum of the curvature drift $\velo_C$, the grad-$B$ drift of the equilibrium magnetic field $\velo_{\nabla B_0}$ and the drifts due to the Coriolis force $\velo_\mathrm{Co}$ and centrifugal force $\velo_\mathrm{Ce}$. Note that, the term containing $u_0^2$ got replaced with $u_0^2 = R^2 \Omega^2$ from Equation (\ref{eq:rotvelocity}). The quantity $\chi$ can be expressed as
 \begin{gather}
 	\chi = \underbrace{(\Phi_0 + \gaPhi)}_{\bar{\Phi}} - \vpar \gaApar + \frac{\mu}{Ze} \gaBpar
 	\label{eq:driftPotential}
 \end{gather}
-which results the drift velocity $\vchi$ 
+which defines the drift velocity $\vchi$ 
 \begin{gather}
 	\vchi = \frac{\vecb_0 \times \nabla \chi}{B_0} = \velo_{\ga{E}} + \vBperp + \velo_{\nabla \gaBpar}~,
 	\label{eq:veloDriftPotential}
@@ -44,26 +44,26 @@ with $\vecb_0 \times (\nabla \Apar) \approx \nabla \times (\Apar \vecb_0) = \vec
 	\gaE = - \nabla \bar{\Phi} - \partial_t \gaA = - \nabla \bar{\Phi} - \partial_t \left(\vecb_0 \cdot \gaApar + \bar{\vect{A}}_{1\perp} \right)  ~.
 	\label{eq:totalElectricField}
 \end{gather}
-Due to normalization assumptions in gyrokinetics \cite{Peeters2009A} is the time derivative of the vector potential $\partial_t \gaA$ one order smaller as the gradient of the electrostatic potential $\nabla \bar{\Phi}$ and the contribution of the vector potential will be neglected in the $\velo_{\ga{E}}$ velocity term.
+Due to normalization assumptions in gyrokinetics \cite{Peeters2009A} the time derivative of the vector potential $\partial_t \gaA$ is one order smaller tham the gradient of the electrostatic potential $\nabla \bar{\Phi}$ and the contribution of the vector potential will be neglected in the $\velo_{\ga{E}}$ velocity term.
 
 \newpage
 
 \subsection{The delta-\!$f$ Approximation}
 \label{sub:approximation}
 
-The delta-\!$f$ approximation separates the density distrubution function $\fgy$ into an equilibrium part $\fgy_0$ and pertubation part $\df$, i.e. $\fgy = \fgy_0 + \df$. Applying the delta-\!$f$ approximation on the gyrocenter Vlasov equation leads to
+The delta-\!$f$ approximation separates the density distribution function $\fgy$ into an equilibrium part $\fgy_0$ and perturbation part $\df$, i.e. $\fgy = \fgy_0 + \df$. Applying the delta-\!$f$ approximation on the gyrocenter Vlasov equation leads to
 \begin{gather}
-	\frac{\partial \df}{\partial t} + \dot{\X} \cdot \nabla \df + \dot{v}_\parallel \cdot \frac{\partial \df}{\partial v_\parallel} = \underbrace{- \dot{\X} \cdot \nabla \fgy_0 - \dot{v}_\parallel \frac{\partial \fgy_0}{\partial v_\parallel}}_S~,
+	\frac{\partial \df}{\Dt} + \dot{\X} \cdot \nabla \df + \dot{v}_\parallel \cdot \frac{\partial \df}{\partial v_\parallel} = \underbrace{- \dot{\X} \cdot \nabla \fgy_0 - \dot{v}_\parallel \frac{\partial \fgy_0}{\partial v_\parallel}}_S~,
 	\label{eq:gyrocenterDeltafVlasov}
 \end{gather}
 with the source term $S$. Substituting the equations for $\dot{\X}$ and $\dot{v}_\parallel$ from Equation (\ref{eq:motionEquation})into the delta-$f$ approximated Vlasov equation results in
 \begin{gather}
-	\frac{\partial \df}{\partial t} + \dot{\X} \cdot \nabla \df - \frac{\vecb_0}{m} \cdot \left(Ze\nabla \Phi_0 + \mu \nabla B_0 - mR \Omega^2 \nabla R \right) \cdot \frac{\partial \df}{\partial v_\parallel} = S~.
+	\frac{\partial \df}{\Dt} + \dot{\X} \cdot \nabla \df - \frac{\vecb_0}{m} \cdot \left(Ze\nabla \Phi_0 + \mu \nabla B_0 - mR \Omega^2 \nabla R \right) \cdot \frac{\partial \df}{\partial v_\parallel} = S~.
 	\label{eq:gyrocenterDeltafSubVlasov}
 \end{gather}
 Note that only the terms of order $\rhost$ has to be kept in $\dot{v}_\parallel \partial_{v_\parallel} \df$, which results in neglecting the drift velocities $\vchi$ and $\vD$ and the contribution of $\gaBpar$ and $\gaPhi$, since these terms are after calculation of order $\rhost^2$. \bigskip
 
-The equilibrium distribution fuction $\fgy_0$ is assumed to be a Maxwellian which includes a finite equilibrium electric field $\Phi_0$ to balance the centrifugal force (in the co-rotating frame) due toridial rotation of the plasma. 
+The equilibrium distribution function $\fgy_0$ is assumed to be a Maxwellian which includes a finite equilibrium electric field $\Phi_0$ to balance the centrifugal force (in the co-rotating frame) due to toroidal rotation of the plasma. 
 
 In the rotating frame the included energy term can be written as 
 \begin{gather}
@@ -71,7 +71,7 @@ In the rotating frame the included energy term can be written as
 	\label{eq:rotEnergy}
 \end{gather}
 % TODO: Flux Surface Average = Gyro average?
-where $\langle\;\cdot\;\rangle$ denotes flux-surface averaging, $\omega_\varphi$ the plasma rotation frequency [Eq. (\ref{eq:refFramePlasmaFrequency})], $R$ the local major radius and $R_0$ is an integration constant which can be chosen, i.e. major radius of the tokamak or flux surface average of the major radius. The Maxwellian is given by the following expression
+where $\langle\;\cdot\;\rangle$ denotes flux-surface averaging, $\omega_\varphi$ the plasma rotation frequency [Eq. (\ref{eq:refFramePlasmaFrequency})], $R$ the local major radius and $R_0$ is an integration constant which can be chosen, i.e. major radius of the Tokamak or flux surface average of the major radius. The Maxwellian is given by the following expression
 \begin{gather}
 	\fgy_0 = \fm(\X, \vpar, \mu) = \frac{\nReq}{(2\pi T/m)^{3/2}}\exp\left(-\frac{\frac{1}{2} m (\vpar - \upar)^2 + \mu B_0 + \cfen}{T}\right)~,
 	\label{eq:maxwellian}
@@ -92,29 +92,17 @@ and the derivatives of the Maxwellian can be expressed as
 	\end{aligned}
 	\label{eq:derivativeMaxwellian}
 \end{gather} 
-where the $\nabla \omega_\varphi$ terms are the result of the derivatives of the parallel rotation velocity $\upar$ and rotation energy $\cfen$ evaluated at zero rotation speed locally in the co-rotating frame. \cite{Peeters2009B} It can be shown with Equations (\ref{eq:motionEquation}) and (\ref{eq:derivativeMaxwellian}) that the $\nabla B_0$ term in $-\dot{\X}\cdot \nabla \fm$ cancels with $(\dot{\X}/m \vpar) \mu \nabla B_0 \partial_{\vpar} \fm$ for purely torodial rotation. Finally, the source term can than be written as 
+where the $\nabla \omega_\varphi$ terms are the result of the derivatives of the parallel rotation velocity $\upar$ and rotation energy $\cfen$ evaluated at zero rotation speed locally in the co-rotating frame. \cite{Peeters2009B} It can be shown with Equations (\ref{eq:motionEquation}) and (\ref{eq:derivativeMaxwellian}) that the $\nabla B_0$ term in $-\dot{\X}\cdot \nabla \fm$ cancels with $(\dot{\X}/m \vpar) \mu \nabla B_0 \partial_{\vpar} \fm$ for purely toroidal rotation. Finally, the Vlasov equation (gyrokinetic equation) can than be written as 
+\begin{gather*}
+	\frac{\partial \df}{\Dt} + \dot{\X} \cdot \nabla \df - \frac{\vecb_0}{m} \cdot \left(Ze\nabla \Phi_0 + \mu \nabla B_0 - mR \Omega^2 \nabla R \right) \cdot \frac{\partial \df}{\partial v_\parallel} = S
+\end{gather*}
 \begin{gather}
 	\begin{aligned}
-		S = -& (\vchi + \vD) \cdot \widetilde{\nabla} \fm - \frac{Z e \vpar}{T} \partial_t \gaApar \fm \\
+		S = -& (\vchi + \vD) \cdot \widetilde{\nabla} \fm - \frac{Z e \vpar}{T}  \frac{\partial \gaApar}{\Dt} \fm \\
 		    -& \frac{\fm}{T} (\vpar \vecb_0 + \vD + \vBperp) \cdot (Z e \nabla \bar{\Phi} + \mu \nabla \gaBpar)~,
 	\end{aligned}
-	\label{eq:sourceTerm}
+	\label{eq:gyrocenterDeltafSubVlasovSourceTerm}
 \end{gather}
-where $\widetilde{\nabla}$ referres to only the $\nabla \nReq$, $\nabla T$ and $\nabla \omega_\varphi$ terms of $\nabla \fm$. \bigskip
+where $\widetilde{\nabla}$ referes to only the $\nabla \nReq$, $\nabla T$ and $\nabla \omega_\varphi$ terms of $\nabla \fm$. \bigskip
 
 \newpage
-% In Equation (\ref{eq:sourceTerm}) the appearence of the term of the pertrubed vector potential $\gaApar$ is computationally difficult to evaluate. To avoid further complications a modified distribution function $g$ will be introduced as
-% \begin{gather}
-% 	g = \df + \frac{Ze \vpar}{T} \gaApar \fm ~.
-% 	\label{eq:modifiedDistrubutionFunction}
-% \end{gather}
-% Substituting the modified distribution function $g$ into Equation (\ref{eq:gyrocenterDeltafSubVlasov}) results in
-% \begin{gather}
-% 	\frac{\partial g}{\partial t} + \vchi \cdot \nabla g + (\vpar \vecb_0 + \vD) \cdot \nabla \df - \frac{\vecb_0}{m} \cdot (Z e \nabla \Phi_0 + \mu \nabla B_0 - m R \Omega^2 \nabla R) \frac{\partial \df}{\partial \vpar} = S
-% 	\label{eq:modifiedGyrocenterDeltafSubVlasov}
-% \end{gather}
-% \begin{gather}
-% 	S = - (\vchi + \vD) \cdot \tilde{\nabla} \fm + \frac{\fm}{T} (\vpar \vecb_0 + \vD) \cdot (-Ze \nabla \gaPhi - \mu \nabla \gaBpar) ~.
-% 	\label{eq:modifiedSourceTerm}
-% \end{gather}
-% This is the for of the Vlasov equation currently implemented in {\gkw}\source and which will be further modified in the course of this thesis.

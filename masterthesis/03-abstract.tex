@@ -2,22 +2,14 @@
 \chapter*{Abstract}
 \label{chap:abstractENG}
 
-Ion temperature gradient-driven turbulence (ITG) close to marginal stability exhibits zonal flow pattern formation on mesoscales, so-called $\exb$ staircase structures. Such pattern formation has been observed in local gradient-driven flux-tube simulations as well as global gradient-driven and global flux-driven studies. \bigskip
+The so-called cancellation problem limits electromagnetic gyrokinetic simulations to low plasma beta values und long perpendicular turbulent length scales. To mitigate this problem an new numerical scheme was found for global nonlinear gyrokinetic simulations. This scheme relies on the introduction of an electromagnetic additional field, the plasma induction, through Faraday's law. The implementation of Faraday's law into {\gkw} results in the calculation of the gyrocenter distribuition, which was before modified. For local linear simulations the computational time increases by 10\,\%. \bigskip
 
-To reduce the computational effort for the simulations lower input parameter of {\gkw} (Gyro Kinetic Workshop) were tested to find the optimum of minimum resolution for the performed simulations. \bigskip
-
-For convenience, a \texttt{python} script (\texttt{slurm\_monitor.py}) was written to monitor the simulation on the \texttt{btrzx1}-cluster and start/restart until the completion criterion is fulfilled. \bigskip
-
-Furthermore, it is shown by multiple box size convergence scans that a mesoscale pattern  size of $\sim 57-76\,\rhoth$ is inherent to ITG-driven turbulence with Cyclone Base Case parameters in the local limit. This outcome also implies that a typical scale for avalanche-like transport is inherent to ITG-driven turbulence.
+With local linear benchmarks the validity of the implementation was proven. However, the cancellation problem could not be solved by the plasma induction in linear simulations. Simulations using the nonlinear version of {\gkw} showing a trend that the implementation is vali, but they could not be finished.
 
 %\NewPage
 \chapter*{Zusammenfassung}
 \label{chap:abstractDE}
 
-Ionen-Temperaturgradienten getriebene Turbulenzen (ITG) weisen nahe niedriger Stabilität Zonal Flow Strukturbildungen, sogenannte $\exb$ Treppenstrukturen, auf Mesoskalen auf. Solche Strukturbildungen wurden sowohl in lokal gradientengetriebene Flussschlauchsimulationen als auch in global gradientengetriebenen und global flussgetriebenen Untersuchungen entdeckt. \bigskip
+Das sogenannte Auslöschungsproblem limitiert elektromagnetische gyrokinetische Simulationen auf kleine Plasma Beta Werte und lange senkrechte turbulente Längenskalen. Um das Auslöschungsproblem zu vermeiden, wurde ein neues nummerische Schema in globalen nichtliniearen Simulationen gefunden. Dieses Schema führt zusätzliches electromagnetisches Feld, genannt Plasma Induktion, über das Faradaysche Gesetz ein. Die Implementierung des Faradayschen Gesetz hat zur Folge, dass {\gkw} nun die Verteilungsfunktion im Gyrozentrum unmodifiziert berechnen kann. Für lokale lineare Simulations erhöhte sich die Laufzeit des Codes um 10\,\%.\bigskip
 
-Um den Aufwand der Berechnungen der Simulationen zu reduzieren wurden mehrere kleinere Inputparameter für {\gkw} (Gyro Kinetic Workshop) getestet um die optimal kleinste Auflösung für die ausgeführten Simulationen zu finden. \bigskip
-
-Der Einfachheit halber wurde ein \texttt{python}-Skript (\texttt{slurm\_monitor.py}) geschrieben, was Simulationen auf den \texttt{btrzx1}-Cluster überwacht und gegebenenfalls startet/neustartet bis das Kriterium zur Vollendung erfüllt ist. \bigskip
-
-Weiterhin wurde doch mehrere radiale konvergierende Boxgrößen-Scans gezeigt, dass eine Mesoskalengröße von $\sim 57-76\,\rhoth$ inhärent zur ITG getriebenen Turbulenz mit Cyclone Base Parameter in lokalen Limit ist. Dieses Ergebnis impliziert auch, dass eine typische Skala für den lawinenenartig Transport inhärent für die ITG getriebene Turbulenz ist.
+Die Validität der Implemtierung wurde mit lokalen linearen Simulationen geprüft. Dennoch konnte das Auslöschungsproblem nicht linearen simulationen behoben werden. Simulationen, welche die nichtlineare Version von {\gkw} nutzen, zeigten einen Trend, dass die Implementierung valide ist, aber sie konnten nicht abgeschlossen werden.

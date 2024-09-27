@@ -10,9 +10,9 @@ The Lagrangian of a particle $\gamma$ with mass $m$ and charge number $Z$ in the
     \gamma = \gamma_\nu \dz^\nu = \underbrace{\left(m\vect{v} + Ze\vect{A}(\vect{x}) \right)}_{\mathrm{Sympletic~Part}}\cdot\;\dx - \underbrace{\left(\frac{1}{2}mv^2 + Ze\Phi(\x)\right)}_{\mathrm{Hamiltonian}~H(\x,\velo)} \dt ~,
     \label{eq:particleLagrangian}
 \end{gather}
-where $\A$ and $\Phi$ are the vector and scalar potential, $\nu$ indexes the six coordinates and Einstein notation is applied. This form is also known as fundamental one-form. \bigskip
+where $\A$ and $\Phi$ are the vector and scalar potential, $\nu$ indexes the six coordinates and Einstein notation is applied. \bigskip
 
-The defined Lagrangian $\gamma$ will then be transformed in the rotating frame of reference [Ch. \ref{sec:confinement}], which can be achieved the following Lorentz transformation
+The defined Lagrangian $\gamma$ will then be transformed in the rotating frame of reference [Ch. \ref{sec:confinement}], which can be achieved through the following Lorentz transformation
 \begin{gather}
     \velo \rightarrow \velo + \ueq \qquad \vect{E} \rightarrow \vect{E} + \ueq \times \vect{B} \qquad \Phi \rightarrow \Phi + \A \cdot \ueq ~.
 \end{gather}
@@ -22,12 +22,12 @@ After performing the transformation outlined in Ref. \citenum{Peeters2009B} the 
     \label{eq:particleLagrangianRot}
 \end{gather} 
 
-In the next step small scale perturbations of the electromagnetic field gets introduced as following
+In the next step small scale perturbations of the electromagnetic field are introduced as following
 \begin{gather}
     \Phi = \Phi_0 + \Phi_1 \qquad \A = \A_0 + \A_1~.
     \label{eq:electromagneticPertubation}
 \end{gather}
-Here, it is assumend that the equilibrium electric field is zero in a stationary plasma, but it will be kept in case for finite plasma rotation. According to the gyrokinetic ordering [Ch. \ref{sec:gyroordering}] the perturbations are in the first order of $\rhost$. Taking everything into account the Lagrangian in the particle phase space with perturbations can be written as
+Here, it is assumend that the equilibrium electric field is zero in a stationary plasma, but it will be kept in case of finite plasma rotation. According to the gyrokinetic ordering [Ch. \ref{sec:gyroordering}] the perturbations are in the first order of $\rhost$. Taking everything into account the Lagrangian in the particle phase space with perturbations can be written as
 \begin{gather}
     \begin{aligned}
         \gamma   &= \gamma_0 + \gamma_1 \\
@@ -40,7 +40,7 @@ Here, it is assumend that the equilibrium electric field is zero in a stationary
 \subsection{Lagrangian in Guiding Center Phase Space}
 \label{sub:guidingcenterLagrangian}
 
-For the description of charged particle behaviour in the tokamak device the \textit{guiding center coordinates} are used [Fig. \ref{fig:guidingcenterCoords}]. This set of coordinates are defined as the following
+For the description of charged particle behaviour in the Tokamak device the \textit{guiding center coordinates} are used [Fig. \ref{fig:guidingcenterCoords}]. This set of coordinates are defined as the following
 \begin{gather}
     \begin{aligned}
         \X(\x,\velo) &= \x - \rrho &\qquad v_\parallel &= \velo \cdot \vect{b}(\x) \\
@@ -61,32 +61,32 @@ The vectors $\vect{b}$, $\hat{\vect{e}}_1$ and $\hat{\vect{e}}_2$ form a local C
 
 \newpage
 
-To transform the fundamental one-from into the guiding center coordinates the following relation will be used
+To transform the lagrangian into the guiding center coordinates the following relation will be used
 \begin{gather}
     \Gamma_\eta = \gamma_\nu \frac{\dz^\nu}{\dZ^\eta}~,
     \label{eq:trafoLagrangian}
 \end{gather} 
-where $\Gamma_\eta$ is a component of the guiding center fundamental one-form. To calculate the new coordinates the transformation [Eq. (\ref{eq:guidingcenterCoords})] have to be inverted to provide the old coordinates as function of the new one $z(Z)$. Here, the direct transformation is clearly uniquely determined if the magnetic field is known at the particle postion. However, the inverse transformation is not uniquely due to the dependence of the Larmor radius $\rho$ on magnetic field at the particle position $\x$. Applying Taylor expansion around the guiding center $\X$ for the Larmor radius $\rho$ yields $\rho(\x) \approx \rho(\X)$. Note, that terms of order $\rho^2$, which leads to second order terms in $\rhost$, will get neglected due to the gyrokinetic ordering. With result of the taylor expansion the particle position $\x$ can be expressed with the guiding center coordinates as 
+where $\Gamma_\eta$ is a component of the guiding center Lagrangian. To calculate the new coordinates the transformation [Eq. (\ref{eq:guidingcenterCoords})] has to be inverted to provide the old coordinates as a function of the new one $z(Z)$. Here, the direct transformation is uniquely determined if the magnetic field is known at the particle postion $\x$. However, the inverse transformation is not uniquely due to the dependence of the Larmor radius $\rho$ on magnetic field at the particle position $\x$. Applying Taylor expansion around the guiding center $\X$ for the Larmor radius $\rho$ yields $\rho(\x) \approx \rho(\X)$. Note, that terms of order $\rho^2$, which lead to second order terms in $\rhost$, will be neglected due to the gyrokinetic ordering. The Taylor expansion results in the particle position $\x$ being expressed with the guiding center coordinates as 
 \begin{gather}
     \x(\X,\theta) \approx \X + \rho(\X)\vect{a}(\theta)~.
     \label{eq:guidingcenterParticleCoord}
 \end{gather}
-The particle velocity $\velo$ is the sum of the velocity along the magnetic field $v_\parallel$, the gyration velocity $\velo_\perp$ and the drift velocity, which will be neglected because the particle drifts can be described by the motion of the guiding center. So to summarize the velocity $\velo$ in the guiding center frame can be expressed as 
+The particle velocity $\velo$ is the sum of the velocity along the magnetic field $v_\parallel$, the gyration velocity $\velo_\perp$ and the drift velocity, which will be neglected since the particle drifts can be described by the motion of the guiding center. To summarize the velocity $\velo$ in the guiding center frame can be expressed as 
 \begin{gather}
     \velo = v_\parallel \vect{b}(\x) + \velo_\perp = v_\parallel \vect{b}(\x) + \rho(\x) \dot{\vect{a}}(\theta)~.
     \label{eq:guidingcenterVelocity}
 \end{gather}
-Applying Taylor expansion again around the guiding center $\X$ the following expression can be obtained
+Applying Taylor expansion around the guiding center $\X$ results in the following expression
 \begin{gather}
     \velo(\X, v_\parallel, \mu, \theta) \approx v_\parallel \left[\vect{b}(\X) + \partial_{\X} \vect{b}(\X) \cdot \vect{a}(\theta)\rho(\X,\mu) \right] + \rho(\X,\mu)\dot{\vect{a}}(\theta)~.
     \label{eq:guidingcenterVelocityCoord}
 \end{gather}
-Now, the transformation [Eq. (\ref{eq:trafoLagrangian})] can be applied to express the fundamental one-form in the new coordinates. For that the components of the fundamental one-form of the particle phase space $\gamma_\nu$ and the equation for $\velo$ in guiding center coordinates [Eq. (\ref{eq:guidingcenterVelocityCoord})] will be inserted. After that, the gyroaveraging operator $\mathcal{G}$ will be used, which is defined as the integral over the gyrophase $\theta$
+Now, the transformation [Eq. (\ref{eq:trafoLagrangian})] can be applied to express the Lagrangian in the new coordinates. For that the components of the Lagrangian of the particle phase space $\gamma_\nu$ and the equation for $\velo$ in guiding center coordinates [Eq. (\ref{eq:guidingcenterVelocityCoord})] will be inserted. After that, the gyroaveraging operator $\mathcal{G}$ will be used, which is defined as the integral over the gyrophase $\theta$
 \begin{gather}
     \tga{\{G(\x)\}} = \ga{G}(\X) = \frac{1}{2\pi} \intss{0}{2\pi} \dtheta ~ G(\X + \rrho(\theta))~,
     \label{eq:gyroOperator}
 \end{gather}
-with an example field $G(\x)$. Due to the definition of the vector $\vect{a}$ [Eq. (\ref{eq:guidingcenterUnitvect})] the first order terms in $\vect{a}$ and $\dot{\vect{a}}$ disappear under gyroaveraging. Following all the previous steps, one can obtain the fundamental one-form in guiding center coordinates
+with an example field $G(\x)$. Due to the definition of the vector $\vect{a}$ [Eq. (\ref{eq:guidingcenterUnitvect})] the first order terms in $\vect{a}$ and $\dot{\vect{a}}$ disappear under gyroaveraging. Following all the previous steps, the Lagrangian in guiding center coordinates merges
 \begin{gather}
     \begin{aligned}
         \ga{\Gamma} =  &\left(m v_\parallel \vect{b}(\X) + m\ueq + Ze\A(\X)\right) \cdot \mathrm{d}\X + \frac{2\mu m}{Ze} \mathrm{d}\theta \\
@@ -96,7 +96,7 @@ with an example field $G(\x)$. Due to the definition of the vector $\vect{a}$ [E
 \end{gather}
 Note that as a consequence of the Lagrangian being independent of the gyrophase $\theta$, the magnetic moment $\mu$ (the associated conjugated coordinate pair of $\theta$) becomes an invariant of the motion ($\dot{\mu} = 0$). \bigskip
 
-As in Chapter \ref{sub:particleLagrangian} perturbations [Eq. (\ref{eq:electromagneticPertubation})] will get introduced to the guiding center Lagrangian. The transformation of the equilibrium part is already performed above, so only the pertrubation part with the pertubated Lagrangian in the particle phase space $\gamma_1$ has to be transfromed to the guiding center phase space. The transformation is analogous to the calculation before, the key difference is that the fluctuations quantities vary on a small length scale and Taylor expansion around the guiding center $\X$ can not be applied advantageous. After inserting the components of the perturbated Lagrangian $\gamma_1$ into the transformation [Eq. (\ref{eq:trafoLagrangian})] and neglecting terms of order $\rho^2$, due to gyrokinetic ordering, the fundamental one form in the guiding center coordinates can be expressed as
+As in Chapter \ref{sub:particleLagrangian} perturbations [Eq. (\ref{eq:electromagneticPertubation})] will get introduced to the guiding center Lagrangian. The transformation of the equilibrium part was performed above, so only the perturbation part with the perturbated Lagrangian in the particle phase space $\gamma_1$ has to be transformed to the guiding center phase space. The transformation is analogous to the calculations before, the key difference being that fluctuation quantities vary on a small length scale and Taylor expansion around the guiding center $\X$ can not be applied advantageous. After inserting the components of the perturbated Lagrangian $\gamma_1$ into the transformation [Eq. (\ref{eq:trafoLagrangian})] and neglecting terms of order $\rho^2$, due to gyrokinetic ordering, the fundamental one form in the guiding center coordinates can be expressed as
 \begin{gather}
     \begin{aligned}
         \Gamma        &= \ga{\Gamma}_0 + \Gamma_1 \\
@@ -111,7 +111,7 @@ As in Chapter \ref{sub:particleLagrangian} perturbations [Eq. (\ref{eq:electroma
 \subsection{Lagrangian in Gyrocenter Phase Space}
 \label{sub:gyrocenterLagrangian}
 
-The transformation of the guiding center Lagrangian $\Gamma$ into the Lagrangian in gyrocenter phase space $\bar{\Gamma}$ aims to remove the gyroangle $\theta$ dependence introduced by the fluctuations of the guiding center lagrangian. To destinguish between the guiding center and the gyrocenter coordinates all quantities associated with the gyrocenter are getting an overbar, i.e. $\bar{\Gamma}$.  The new set of gyrocenter coordinates are given by $\{\bar{\X}, \bar{v}_\parallel, \bar{\mu}\}$. Since the derivation of fundamental one-form in gyrocenter phase space $\bar{\Gamma}$ uses the Lie transform pertubation method, which is beyond the scopes of this thesis, the reader is referred to the Refs. \citenum{Dannert_PHD} and \citenum{GKWDerivation} for more details. The Lagrangian in the gyrocenter phase space can be expressed as
+The transformation of the guiding center Lagrangian $\Gamma$ into the Lagrangian in gyrocenter phase space $\bar{\Gamma}$ aims to remove the gyroangle $\theta$ dependence introduced by the fluctuations of the guiding center lagrangian. To destinguish between the guiding center and the gyrocenter coordinates all quantities associated with the gyrocenter are getting an overbar, i.e. $\bar{\Gamma}$.  The new set of gyrocenter coordinates are given by $\{\bar{\X}, \bar{v}_\parallel, \bar{\mu}\}$. Since the derivation of the lagrangian in the gyrocenter phase space $\bar{\Gamma}$ uses the Lie transform perturbation method, which is beyond the scope of this thesis, the reader is referred to the Refs. \citenum{Dannert_PHD} and \citenum{GKWDerivation} for more details. The Lagrangian in the gyrocenter phase space can be expressed as
 \begin{gather}
     \begin{aligned}
         \bar{\Gamma} &= \bar{\Gamma}_0 + \bar{\Gamma}_1 \\
@@ -120,7 +120,7 @@ The transformation of the guiding center Lagrangian $\Gamma$ into the Lagrangian
     \end{aligned}
     \label{eq:gyrocenterPertrubationLagrangian}
 \end{gather}
-where $B_0$ is the equilibrium magnetic field and $\gaBpar$ is the magnetic field introduced by the vector potential $\A_1$. Note, that the pertubations of the scalar and vector potential will be seperated into an oscillating and a gyroaveraged part which will be expressed as
+where $B_0$ is the equilibrium magnetic field and $\gaBpar$ is the magnetic field introduced by the vector potential $\A_1$. Note, that the perturbations of the scalar and vector potential will be seperated into an oscillating and a gyroaveraged part which will be expressed as
 \begin{gather}
     \Phi_1 = \widetilde{\Phi}_1 + \gaPhi  \qquad \A_1 = \widetilde{\A}_1 + \gaA ~,
     \label{eq:electromagneticPertubationSeperated}
