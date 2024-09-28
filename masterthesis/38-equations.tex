@@ -135,7 +135,7 @@ The Fourier transformation and normalization yield
 
 Local and global Gyrokinetic simulations are suffering from numerical problems, mainly from saturation of the heat fluxes at a high level of transport (nonzonal transition (NZT)) and the cancellation problem \cite{Chen2001}. The cancellation problem is examined in codes which uses the particle-in-cell or the Eulerian methods \cite{Cummings_PHD}. In the following chapter the origin of the cancellation problem will be discussed.\bigskip
 
-As discussed in Chapter \ref{sub:approximation} the time derivative of the parallel pertrubed vector potential $\partial_t \gaApar$ appears in the Source term [Eq. (\ref{eq:gyrocenterDeltafSubVlasovSourceTerm})]. This $\Dt \Apar$-Term and the $\Dt \df$ term in the gyrokinetic equation are computationally difficult to handle, as it is not immediately clear how to evaluate the terms by using a simple Runge-Kutta scheme. To avoid further complications a modified distribution function $g$ is introduced
+As discussed in Chapter \ref{sub:approximation} the time derivative of the parallel pertrubed vector potential $\partial_t \gaApar$ appears in the Source term [Eq. (\ref{eq:gyrocenterDeltafSubVlasovSourceTerm})]. This $\Dt \Apar$-term and the $\Dt \df$-term in the gyrokinetic equation are computationally difficult to handle, as it is not immediately clear how to evaluate the terms by using a simple Runge-Kutta scheme. To avoid further complications a modified distribution function $g$ is introduced
 \begin{gather}
 	g = \df + \frac{Ze \vpar}{T} \gaApar \fm ~.
 	\label{eq:modifiedDistributionFunction}
@@ -154,7 +154,7 @@ The advantage of this substitution becomes apperent as now only one time derivat
 \begin{gather}
 	\df = g - \frac{Ze \vpar}{T} \gaApar \fm ~.
 \end{gather}
-For the equations of perturbated electrostatic potential $\Phi_1$ and parallel magnetic field $\Bpar$ the replacement is trivial since the integral $\int \dvpar \vpar \fm = 0$ (due to symmetry) results in the elimination of the $\Apar$-Term in both equation leaving the modified distribution $g$ in the integral. For the field equation for $\Apar$ the substitution has a different effect. By replacing $\df$ with $g$ the new normalized Fourier transformed field equation for $\Apar$ is given by
+For the equations of perturbated electrostatic potential $\Phi_1$ and parallel magnetic field $\Bpar$ the replacement is trivial since the integral $\int \dvpar \vpar \fm = 0$ (due to symmetry) results in the elimination of the $\Apar$-term in both equation leaving the modified distribution $g$ in the integral. For the field equation for $\Apar$ the substitution has a different effect. By replacing $\df$ with $g$ the new normalized Fourier transformed field equation for $\Apar$ is given by
 \begin{gather}
     \begin{aligned}
         &\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \FAparN = \\
@@ -168,7 +168,7 @@ Comparing Eq. (\ref{eq:fieldInductionLocalNorm}) and Eq. (\ref{eq:fieldInduction
 \subsection{Faraday's Law - Plasma Induction $\Epar$}
 \label{sub:fieldEpar}
 
-In this Chapter the $\partial_t \gaApar$ term will be handled differently with an additional electromagnetic field in mind. This section follows the work of Paul Crandall in chapter 5 of his Disseration\cite{Crandall_PHD}.
+In this Chapter the $\partial_t \gaApar$-term will be handled differently with an additional electromagnetic field in mind. This section follows the work of Paul Crandall in chapter 5 of his Disseration\cite{Crandall_PHD}.
 \bigskip
 
 First the Vlasov equation is written for the gyrocenter distribution $\df$ with the source term [Eq. (\ref{eq:gyrocenterDeltafSubVlasov}) \& (\ref{eq:gyrocenterDeltafSubVlasovSourceTerm})] and is simplified into 

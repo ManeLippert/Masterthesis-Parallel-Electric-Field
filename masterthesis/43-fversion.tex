@@ -4,12 +4,12 @@
 \subsection{Implementation}
 \label{sub:implementationLinearFVersion}
 
-As stated in Chapter \ref{sub:cancelProblem} the current version of {\gkw} implements the Vlasov equation with the use of the modified distribution function $g$. To preserve the established structure of the code and to calculate the distribution function $\df$ the right-hand side $\rhs$ is transformed. This version will be from now on called the \textit{f-version} and the old version the \textit{g-version}. To recall the right-hand side of the Vlasov equatiuon $\rhs$ is definded as
+As stated in Chapter \ref{sub:cancelProblem} the current version of {\gkw} implements the Vlasov equation with the use of the modified distribution function $g$. To preserve the established structure of the code and to calculate the distribution function $\df$ the right-hand side $\rhs$ is transformed. This version will be from now on called the \textit{f-version} and the old version the \textit{g-version}. To recall the right-hand side of the Vlasov equation $\rhs$ is definded as
 \begin{gather}
     \frac{\partial g}{\Dt} = \rhs
     \label{eq:rightHandSideRecall}
 \end{gather}
-which is implemented numerical with Runge Kutta (one timestep ($i \rightarrow i+1$)) as
+which is implemented numerically with Runge Kutta (one timestep ($i \rightarrow i+1$)) as
 \begin{gather}
     g^{i+1} = g^{i} + \Delta t \cdot \left(\rhs^{i+1}\right) ~.
     \label{eq:numericalSchemeModifiedDistribution}
@@ -19,7 +19,7 @@ To transform the established scheme to the distribution function $\df$, Equation
     \frac{\partial \df}{\Dt} = \rhs + \frac{Ze \vpar}{T} J_0 \Epar \fm~,
     \label{eq:gyrocenterDeltafSubVlasovReducedIndElectricRecall}
 \end{gather}
-where $J_0 \Epar = \gaEpar$ in the local simulation and the term will be called \textit{$\Epar$-correction}, which can be written normalised and fourier transformed as 
+where $J_0 \Epar = \gaEpar$ in the local simulation and the term will be called \textit{$\Epar$-correction}, which can be written normalised and Fourier transformed as 
 \begin{gather}
     \frac{\partial \speccN{\Ffgy}{1}}{\partial \tN} = \FrhsN + \frac{2 Z \vthR \vparN}{\TR} J_0 \FEparN \fmN~.
     \label{eq:gyrocenterDeltafSubVlasovReducedIndElectricNorm}
@@ -29,36 +29,35 @@ Here, the numerical Runge Kutta scheme can be expressed as
     \df^{i+1} = \df^{i} + \Delta t \cdot \left(\rhs^{i+1} + \frac{Ze \vpar}{T} J_0 \Epar^{i+1} \right) ~.
     \label{eq:numericalSchemeModifiedDistribution}
 \end{gather}
-Note that, the transform to the gyrocenter distribution function $\df$, appling the $\Epar$-correction to the RHS is enough. The overall new numerical scheme can be seen in Figure \ref{fig:numericalSchemeLinearFVersion}.
-
+Note that, to transform the gyrocenter distribution function $\df$, applying the $\Epar$-correction to the RHS is enough. The overall new numerical scheme can be seen in Figure \ref{fig:numericalSchemeLinearFVersion}.
+\newpage
 \inputgraphicsHere{../pictures/methods/Numerical-Scheme-linear-f-Version.tex}{
 	Numerical scheme used to calculate the distribution function $\df$ in the linear f-version of {\gkw}. The gyrocenter distribution function $\df$ for the time step $i$ is used to calculate the RHS $\rhs$ for the time step $i+1$, which calculates the plasma induction $\Epar$ for timestep $i+1$. The plasma induction will be used to apply the $\Epar$-correction to the RHS $\rhs$, which calculates the distribution $\df$ for time step $i+1$
 }{fig:numericalSchemeLinearFVersion}
 
-\newpage
 To implement the f-version the following changes will be applied to {\gkw}:
 \begin{itemize}
-    \item An boolean input parameter called \code{f\_version} is defined in module \code{control}, which switches \code{nlepar} and \code{nlapar} on for the calculation of $\df$. The name is inspired by the fact that the solution \code{fdisi} stores the gyrocenter distribution $\df$ instead of the modified distribution $g$. In the subroutine \code{control\_initt} one could add additonal switches for the f-version of {\gkw}.
-    \item The matrix \code{matrhs4f} (RHS for $\df$) gets introduced in the module \code{matdat} with \code{nelem\_rhs4f} number of elements defined in the module \code{dist}.
-    \item The elements itself are set in the subroutine \code{epar\_correct} which originates from the subroutine \code{apar\_correct}. The only difference is the swap of sign for the matrix elements and the use of $\Epar$ identifiers instead of $\Apar$.
-    \item The RHS than gets correct right after the calculation of the $\Epar$ field in the subroutine \code{calculate\_rhs} in the module \code{exp\_integration}. Here, the loop method was used because it was found that the calculation of the new RHS needs 50\% longer with the \code{usmv} subroutine. Note that, the $\Epar$-correction has to be multiplied the time step \code{deltatime} to have the correct expression for the Runge Kutta scheme.
-    \item The function \code{get\_f\_from\_g}, which returns $df$ by appling the $\Apar$-correction to the distribution $g$, is modified to return \code{fdisi} without applying the $\Apar$-correction. Additionally any code using the $\Apar$-correction will be deactivated for the f-version and the definition of the matrix \code{matg2f} gets supressed as well to save disk space during execution.
-    \item The field equation of the perturbated vector potential $\Apar$ has to be adjusted, since it is the only field equation which changes significantly through the substitution of the modified distribution $g$ [Ch. \ref{sub:cancelProblem} \& Ch. \ref{sub:fieldInduction}]. For that, an if statemant for the f-version gets introduced into the subroutine \code{ampere\_dia} in the module \code{linear\_terms} which deactivates the skin term. Additionally, a second exception was added to set the \code{ampere\_dia} to zero if an zero mode ($\kperp = 0$) is initialized. This prevents large matrix elements due to the division by zero, since \code{ampere\_dia} equals $\kperp^2$ in the f-version. As already mentioned in Chapter \ref{sec:fieldEquations} the other field equation are still valid for the f-version.
+    \item An boolean input parameter called \code{f\_version} is defined in module \code{control}, which switches \code{nlepar} and \code{nlapar} on for the calculation of $\df$. The solution \code{fdisi} stores the gyrocenter distribution $\df$ instead of the modified distribution $g$. In the subroutine \code{control\_initt} adding additonal switches for the f-version of {\gkw}.
+    \item The matrix \code{matrhs4f} (RHS for $\df$) is introduced in the module \code{matdat} with \code{nelem\_rhs4f} number of elements defined in the module \code{dist} is possible.
+    \item The elements itself are set in the subroutine \code{epar\_correct} which originates from the subroutine \code{apar\_correct}. The difference is the swap of sign for the matrix elements and the use of $\Epar$ identifiers instead of $\Apar$.
+    \item The RHS then is corrected after the calculation of the $\Epar$ field in the subroutine \code{calculate\_rhs} in the module \code{exp\_integration}. Here, the loop method was used as the calculation of the new RHS needs 50\% longer with the \code{usmv} subroutine. Note that the $\Epar$-correction has to be multiplied with the time step \code{deltatime} to have the correct expression for the Runge Kutta scheme.
+    \item The function \code{get\_f\_from\_g}, which returns $\df$ by applying the $\Apar$-correction to the distribution $g$, is modified to return \code{fdisi} without the $\Apar$-correction. Additionally, any code using the $\Apar$-correction will be deactivated for the f-version and the definition of the matrix \code{matg2f} is supressed as well to save disk space during simulation.
+    \item The field equation of the perturbated vector potential $\Apar$ has to be adjusted, since it is the only field equation with significantly changes introduced by the substitution of the modified distribution $g$ [Ch. \ref{sub:cancelProblem} \& Ch. \ref{sub:fieldInduction}]. For that an "if statement" for the f-version is introduced into the subroutine \code{ampere\_dia} in the module \code{linear\_terms} which deactivates the skin term. Additionally, a second exception was added to set the \code{ampere\_dia} to zero if a zero mode ($\kperp = 0$) is initialized. This prevents large matrix elements caused by the division by zero, since \code{ampere\_dia} equals $\kperp^2$ in the f-version. As already mentioned in Chapter \ref{sec:fieldEquations} the other field equations are still valid for the f-version.
 \end{itemize}
 
 \subsection{Benchmark}
 \label{sub:benchmarkLinearFVersion}
 
 \includegraphicsHere{../pictures/evaluation/benchmark/comparison/growth_rate_freq/kthrho0.300_beta0.000-0.022_scan_comparison.pdf}{
-    Growth rate $\gamma$ and frequency $\omega$ for different plasma beta $\beta$. Here, (ITG) stands for ion temperature gradient modes, (TEM) for trapping electron modes and (KBM) for kinetic balloning modes.
+    Growth rate $\gamma$ and frequency $\omega$ for different plasma beta $\beta$. Here, (ITG) stands for ion temperature gradient modes, (TEM) for trapping electron modes and (KBM) for kinetic ballooning modes.
 }{fig:betaScanFVersion}{1.0}
 
-Again the same benchmark as in Chapter \ref{sub:benchmarkFieldEpar} will be performed with the same simulation setup. The only difference is that the plasma bata was varied between
+Again the same benchmark as in Chapter \ref{sub:benchmarkFieldEpar} will be performed with the same simulation setup. The plasma beta was varied between
 \begin{gather}
     \beta \in [0.0,~0.2,~0.4,~0.6,~0.8,~1.0,~1.1,~1.2,~1.4,~1.6,~1.8,~2.0,~2.2]\,\%~.
 \end{gather}
 % The result of the linear beta scan of the f-version yields great agreement with the one of the g-version [Fig. \ref{fig:betaScanFVersion}] only for $\beta = 1.1\,\%$ the values are significant different. This can be explained with the run time of both simulations since the simulation for the g-version run for 5438 normalised timesteps, where the f-version only run for 2000 normalised timesteps. The other simulations run the same normalized timesteps as the g-version. The only difference exists for $\beta = 1.1\,\%$, which is also the result of the much shorter run time of the simulation.
-To verify, that the f-version of {\gkw} calculates the field equation for the vector potential $\Apar$ right, since the field equation got changed (compare Eq. (\ref{eq:fieldInductionLocalNorm}) and (\ref{eq:fieldInductionLocalModifiedNorm})), the vector potential gets compared a second time with the plasma induction $\Epar$ [Fig. \ref{fig:fieldComparisionFVersion}]. Here, the comparision shows that the field equations are implemented successfully. For a more detailed look for different plasma beta values the reader is referred to Appendix \ref{subappend:fieldComparisionFVersion}. A performance measurement was also executed, to investigate the run time of the f-version compared to the g-version in local linear simulations. Here, the run time for each explicit timestep gets compared for different plasma beta values on a btppx maschine of the TPV chair with 12 processors selected. This comparision yields, that the f-version adds approximately 10\,\% of run time for each timesteps. Additionally, the resolutions ($\Ns$, $\Nvpar$ and $\Nmu$) for different plasma beta is halfed and the g-version and the f-version is compared resulting in no difference. This is not directly clear, as the resolution changes the discretization of the grid points, i.e. the calculation is less exact.
+To verify that the f-version of {\gkw} calculates the field equation for the vector potential $\Apar$ correctly, since the field equation was changed (compare Eq. (\ref{eq:fieldInductionLocalNorm}) and (\ref{eq:fieldInductionLocalModifiedNorm})), the vector potential is compared a second time with the plasma induction $\Epar$ [Fig. \ref{fig:fieldComparisionFVersion}]. Here, the comparison shows that the field equations are implemented successfully. For a more detailed look for different plasma beta values the reader is referred to Appendix \ref{subappend:fieldComparisionFVersion}. A performance measurement was also executed to investigate the run time of the f-version compared to the g-version in local linear simulations. Here, the run time for each explicit timestep is compared for different plasma beta values on a btppx maschine of the TPV chair with 12 processors selected. This comparison yields, that the f-version adds approximately 10\,\% of run time for each timestep. Additionally, the resolutions ($\Ns$, $\Nvpar$ and $\Nmu$) for different plasma beta is halfed and comparing the g-version and the f-version results in no difference, meaning that the resolution changes, i.e. the discretization of the grid points, do not make the simulatons less exact.
 
 \includegraphicsRotHere{../pictures/evaluation/benchmark/comparison/fields/kthrho0.300_beta0.000-0.022_fields_f-version.pdf}{
     Comparision between real and imaginary part of the plasma induction $\Epar$ and vector potential $\Apar$ for different plasma beta values for the f-verison of {\gkw}.
@@ -67,7 +66,7 @@ To verify, that the f-version of {\gkw} calculates the field equation for the ve
 \subsection{Mitigation of the Cancellation Problem in linear Simulations}
 \label{sub:mitigationLinearFVersion}
 
-One of the main goals of this thesis is to mitigate the cancellation problem [Ch. \ref{sub:cancelProblem}] in local simulations. The error of problem scales with $\sim \beta/\kperp^2$ \cite{Mishchenko2017}. Because of that, it was investigated if the new f-version improves the code run time for lower perpendicular wave vectors $\kperp$. First, a $\kperp$ scan was performed with the g-version of {\gkw} and CBC parameters for $\beta = 0.8\,\%$ to find the transition between stable simulations and instable ones. Here, it was found that the simulation is instable for $\kperp = 0.027\,1/\rhothref$. Unfortnetaly, the f-version is also instable for the exact same value of $\kperp$. Additionally, to the CBC parameters simulations the ASDEX-Upgrade input parameters (AUG) were performed with the same result. The g-version as well as the f-version both are instable for the same $\kperp$. Considering the $\Apar$ equation in the g-version and the $\Epar$ equation f-version
+One of the main goals of this thesis is to mitigate the cancellation problem [Ch. \ref{sub:cancelProblem}] in local simulations. The error of problem scales with $\sim \beta/\kperp^2$ \cite{Mishchenko2017}. Therefore, it was investigated if the new f-version improves the code run time for long perpendicular turbulent length scales $\kperp$. First, a $\kperp$ scan was performed with the g-version of {\gkw} and CBC parameters for $\beta = 0.8\,\%$ to find the transition between stable simulations and unstable ones. Here, it was found that the simulation is unstable for $\kperp = 0.027\,1/\rhothref$. Unfortunately, the f-version is also unstable for the exact same value of $\kperp$. Additionally, to the CBC parameters simulations the ASDEX-Upgrade input parameters (AUG) were performed with the same result. The g-version as well as the f-version both are unstable for the same $\kperp$. Considering the $\Apar$ equation in the g-version and the $\Epar$ equation f-version
 \begin{gather}
     \begin{aligned}
         &\left(\kperpN^2 + \betaref \spec{\sum} \frac{\spec{Z^2}\specR{n}}{\specR{m}} \Gamma_0(\spec{b}) e^{-\specN{\cfen}/\specR{T}} \right) \FAparN = \\
@@ -77,7 +76,7 @@ One of the main goals of this thesis is to mitigate the cancellation problem [Ch
     \end{aligned}
     \label{eq:compareAparEpar}
 \end{gather}
-it is visble that both equations have the same structure. In the modified distribution function $g$ is a "hidden" $\Apar$ term and in $\rhs$ is a "hidden" $\Epar$ term additional the skin term is calculated in both equations numerical and with the same scheme as the integrals. The only improvement of the mitigation technique has to be in the size of the plasma induction $\Epar$. For that, the $\Epar$ field has to be significant smaller than the $\Apar$ field. Howover, a direct comparison yields no significant difference. To conclude the cancellation problem still occurs in linear local simulations and the intoduced mitigation technique does not work.
+it shows both equations have the same structure. In the modified distribution function $g$ is a "hidden" $\Apar$-term and in $\rhs$ is a "hidden" $\Epar$-term additionaly the skin term is calculated in both equations numerically and with the same scheme as the integrals. Possibly, improvement of the mitigation technique relies on the size of the plasma induction $\Epar$. For that the $\Epar$ field has to be significantly smaller than the $\Apar$ field. However, a direct comparison yields no significant difference. To conclude, the cancellation problem still occurs in linear local simulations and the introduced mitigation technique does not work.
 
 % This behaviour could be explained with a physical picture. Due to the small mass of electrons the acceleration caused by the electric force originating from the electrostatic potential $\Phi$ is very high. This motion result in an current $\vect{j}$ which generate a vector potential $\A$ (Ampere's law). Furthermore, the vector potential itself generates and electric field (Faraday's law) which is in the opposite direction of the motion. If the cancellation is inexact the plasma induction is greater than the accelerating electric field which causes the electrons to change their direction, which flips the sign of the vector potential. To conclude the cancellation problem still occurs in linear local simulations and the intoduced mitigation technique does not work. 
 

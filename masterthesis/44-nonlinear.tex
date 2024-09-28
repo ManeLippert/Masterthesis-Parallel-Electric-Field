@@ -4,12 +4,12 @@
 \subsection{Implementation}
 \label{sub:implementationNonlinearFVersion}
 
-Until now only the linear terms of the gyrokinetic equations got discussed. To complete the transformation to the f-version of {\gkw} the nonlinear terms have to be considered as well. Because of the substitution of the modified distribution function $g$ the nonlinear terms 
+Until now only the linear terms of the gyrokinetic equations were discussed. To complete the transformation to the f-version of {\gkw} the nonlinear terms have to be considered as well. Because of the substitution of the modified distribution function $g$ the nonlinear terms 
 \begin{gather*}
     \vchi \cdot \nabla \df \qquad -\frac{\fm}{T} \vBperp \cdot (Z e \nabla \bar{\Phi} + \mu \nabla \gaBpar)
     \label{eq:nonlinearTermsFVersion}
 \end{gather*}
-got replaced with $\vchi \cdot \nabla g$. To implement the nonlinear terms back, one has to insert the definition of the modified distribution into the already implemented nonlinear terms subroutine. This results in the following relation
+were replaced with $\vchi \cdot \nabla g$. To implement the nonlinear terms again, the definition of the modified distribution into the already implemented nonlinear terms subroutine is inserted. This results in the following relation
 \begin{gather}
     \begin{aligned}
         \vchi \cdot \nabla g &= \vchi \cdot \nabla \left(\df + \frac{Ze \vpar}{T} \gaApar \fm\right) \\
@@ -19,29 +19,29 @@ got replaced with $\vchi \cdot \nabla g$. To implement the nonlinear terms back,
     \end{aligned}
     \label{eq:nonlinearTermsGVersionToFVersion}
 \end{gather}
-although the term with $\vchi \cdot \nabla \fm$ gets neglected due to order of $\rhost^2$. The numerical scheme used in the nonlinear f-version of {\gkw} can be seen in Figure \ref{fig:numericalSchemeNonlinearFVersion}. 
+although the term with $\vchi \cdot \nabla \fm$ is neglected due to order of $\rhost^2$. The numerical scheme used in the nonlinear f-version of {\gkw} can be seen in Figure \ref{fig:numericalSchemeNonlinearFVersion}. 
 
 \inputgraphicsHere{../pictures/methods/Numerical-Scheme-nonlinear-f-Version.tex}{
 	Numerical scheme used to calculate the distribution function $\df$ in the nonlinear f-version of {\gkw}. The gyrocenter distribution function $\df$ for the time step $i$ is used to calculate the RHS $\rhs$ for the time step $i+1$. Here, the $\Apar$-correction is applied to the distribution $\df$ to calculate the nonlinear terms, which contribute the RHS $\rhs$ as well. 
 }{fig:numericalSchemeNonlinearFVersion}
 \newpage
 
-To calculate the nonlinear terms with {\gkw} the following changes to the code will be applied:
+To calculate the nonlinear terms with {\gkw} the following changes to the code are applied:
 \begin{itemize}
-    \item Since the introduction of the f-version of {\gkw} the solution array \code{fdisi} stores already $\df$, so only the $\Apar$ term has to be added to distribution in \code{fdisi}, i.e. apply the $\Apar$-correction. The $\Apar$-correction to get $\df$ from $g$ is already implemented into {\gkw} with the matrix \code{matg2f} with its elements defined in the subroutine \code{apar\_correct}. To apply the $\Apar$-correction to $\df$ only the signs of the matrix element of \code{matg2f} have to be swaped. To distingish, the between teh f-version and the g-version the matrix element gets written into the matrix \code{matf2g} instead of using \code{matg2f}.
+    \item Since the introduction of the f-version of {\gkw}, the solution array \code{fdisi} stores $\df$, so the $\Apar$-term has to be added to distribution stored in \code{fdisi}, i.e. apply the $\Apar$-correction. The $\Apar$-correction to receive $\df$ from $g$ is already implemented into {\gkw} with the matrix \code{matg2f} with its elements defined in the subroutine \code{apar\_correct}. To apply the $\Apar$-correction to $\df$ the signs of the matrix element of \code{matg2f} have to be swaped. To distinguish, between the f-version and the g-version the matrix elements are written into the matrix \code{matf2g} instead of using \code{matg2f}.
     \item The $\Apar$-correction is performed via loop over the elements of \code{fdisi} in the subroutine \code{add\_non\_linear\_terms} and saved in the temporary distribution array \code{fdis\_tmp}. The array \code{fdis\_tmp} will be used to calculate the nonlinear terms. It is important to ensure the usage of \code{fdis\_tmp} since in the f-version the distribution $\df$ gets used for further calculation and should not be changed.
 \end{itemize}
-The changes are valid if the input parameter \code{f\_version} and \code{non\_linear} are switched on and local simulations are performed.
+The changes are valid if the input parameter \code{f\_version} and \code{non\_linear} are active and local simulations are performed.
 
 \subsection{Benchmark}
 \label{sub:benchmarkNonlinearFVersion}
 
-To benech mark the nonlinear f-version of {\gkw} the geometry of the CBC parameters will be changed to circular geometry and the box size of the simulation will be increased in binormal direction. Here, circular geometry implies that the flux surfaces are circular and concentric with the poloidal flux being a function of the radial coordinate $\Psi$. \cite{GKWManual} The change of the box size has the effect that the wave vector $\kperp$ increases as well, which is directly linked to the cancellation problem. To increse the box size following relation will be used to change the input parameter accordingly
+To benechmark the nonlinear f-version of {\gkw} the geometry of the CBC parameters are changed to circular geometry and the box size of the simulation is increased in binormal direction. Here, circular geometry implies that the flux surfaces are circular and concentric with the poloidal flux being a function of the radial coordinate $\Psi$. \cite{GKWManual} The change to the box size increases the wave vector $\kperp$, which is directly linked to the cancellation problem. To increase the box size the following relation will be used to change the input parameter accordingly
 \begin{gather}
     \begin{aligned}
         \Nx(\Lx) &= ((\Nx(1) - 1) \cdot \Lx) + 1 \\
         \Nmod(\Ly) &= ((\Nmod(1) - 1) \cdot \Lx) + 1 \\
-        \mathtt{ikxspace}(\Lx,\Ly) &= \mathtt{ikxspace}(1,1) \cdot \frac{\Lx}{\Ly}~,
+        \mathtt{ikxspace}(\Lx,\Ly) &= \mathtt{ikxspace}(1,1) \cdot \Lx/\Ly~,
     \end{aligned}
     \label{eq:boxsize}
 \end{gather}
@@ -50,4 +50,4 @@ where $\Lx$ relates to the box size in radial direction, $\Ly$ to the boxsize in
     \Lx \times \Ly \in \left[ 1\times 1, 1 \times 2, 1\times 3, 1 \times 6\right] ~.
 \end{gather*}
 
-Unfortnetaly, due to high demand on the \code{emil} cluster or \code{festus} cluster and some unresolved problmes within {\gkw}, it was not possible to finish the nonlinear investigation in time. It is only possible to say, by copmparing the fluxes between the nonlinear g-version and f-version, that the implementation is valid, but this is only a trend. 
+Unfortunately, due to high demand on the \code{emil} cluster or \code{festus} cluster and some unresolved problems within {\gkw}, it was not possible to finish the nonlinear investigation in time. Available data suggests that by comparing the fluxes between the nonlinear g-version and f-version, the implementation is valid, but this is only a trend. 
