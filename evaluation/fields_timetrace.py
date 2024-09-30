@@ -22,14 +22,14 @@ data_path = '../data/benchmark'
 
 colors   = '#a11a5b'
 
-picDir = f'../pictures/evaluation/benchmark/f-version/fields-timetrace'
+picDir = f'../pictures/evaluation/benchmark/f-version/fields/timetrace'
 plot.create_pic_folder(picDir)
 
 #%%
 
-is_grid = 284
+is_grid = 120
     
-start_idx, end_idx = 0, 572
+start_idx, end_idx = 500, 572
 apar, iapar = [], []
 try:
     with h5py.File('../data/benchmark/f-version/linear/CBC/kthrho0.027/beta0.008/naverage1_kykxsapar/gkwdata.h5', 'r+') as f:
@@ -58,10 +58,12 @@ try:
     
     plot.postprocessing(fig)
     
-    # plt.savefig(f'{picDir}/kthrho0.027_beta0.008_s{s}_t{time[start_idx]}-{time[end_idx-1]}_Apar.pdf')
+    plt.savefig(f'{picDir}/kthrho0.027_beta0.008_s{s}_t{time[start_idx]}-{time[end_idx-1]}_Apar.pdf')
     
     # plt.close()
     
 except (FileNotFoundError, BlockingIOError):
     pass
+# %%
+
 # %%
