@@ -1,25 +1,14 @@
 # Mitigation of the Cancellation Problem in Local Gyrokinetic Simulations
 
 
-# ![alt text](/pictures/Comparison/Boxsize/S6_rlt6.0_boxsize1-2-3-4x1-1.5-2-2.5-3-5_Ns16_Nvpar48_Nmu9_wexb_comparison_2.png)
-
-
-
-## Content
-
-1. [Introduction](#introduction)
-2. [Abstract](#abstract)
-3. [Journal](#journal)
-4. [Literature](#literature)
-
-
+# ![alt text](/pictures/evaluation/benchmark/comparison/fields/kthrho0.300_beta0.000-0.022_fields_f-version.png)
 
 ## Introduction
 
 This repository is focused on my work for my Master Thesis about the topic of the Mitigation of the Cancellation Problem in Local Gyrokinetic Simulations. This Thesis is based on the works of Paul Crendall.
 
 * [GKW-Code](https://bitbucket.org/gkw/gkw/wiki/Home)
-* Master-Thesis: [PDF](masterthesis/masterthesis.pdf)
+* Master-Thesis: [PDF](masterthesis/Lippert%20-%20Mitigation%20of%20the%20Cancellation%20Problem.pdf)
 * Literature: [BIB](masterthesis/literature.bib)
 
 ## Abstract

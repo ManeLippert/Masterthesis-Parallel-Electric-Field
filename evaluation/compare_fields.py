@@ -69,7 +69,7 @@ for v in versions:
         except (FileNotFoundError, BlockingIOError):
             continue
     
-    plot.parameters((26,24), 300, LEGENDONTOP=False)
+    plot.parameters((26,24), 300, LEGENDONTOP=False, WHITEPLOT = True)
     picDir = f'../pictures/evaluation/benchmark/comparison/fields'
     plot.create_pic_folder(picDir)
     
@@ -121,7 +121,9 @@ for v in versions:
      
     # plot.postprocessing(fig, legcol=1)
         
-    plt.savefig(f'{picDir}/kthrho{kthrho:.3f}_beta{min(beta_percent)/100:.3f}-{max(beta_percent)/100:.3f}_fields_{v}-version.pdf')
+    # plt.savefig(f'{picDir}/kthrho{kthrho:.3f}_beta{min(beta_percent)/100:.3f}-{max(beta_percent)/100:.3f}_fields_{v}-version.pdf')
+    plt.savefig(f'{picDir}/kthrho{kthrho:.3f}_beta{min(beta_percent)/100:.3f}-{max(beta_percent)/100:.3f}_fields_{v}-version.png', transparent = True)
+    
     plt.close()
 
     
